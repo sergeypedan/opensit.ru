@@ -1,8 +1,6 @@
 # OpenSit-ru
 
-This is a Russian fork of original [OpenSit](https://github.com/danbartlett/opensit)
-
-OpenSit is an open source meditation community - a place where meditators can share and develop their practice. It lives at **[OpenSit.com](http://opensit.com)**
+This is a Russian fork of the original [OpenSit](https://github.com/danbartlett/opensit) — an open source meditation community - a place where meditators can share and develop their practice.
 
 ## Getting Started
 
