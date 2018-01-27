@@ -1,0 +1,520 @@
+@import 'opensit/base';
+
+/* Sidebar */
+.sidebar {
+	.sidebar-content {
+    padding-left: 10px;
+    .display_name {
+      margin: 25px 0 20px 10%;
+      font-size: 1.7em;
+      font-weight: normal;
+    }
+    .username {
+      margin: -20px 0 20px 11%;
+      font-size: 0.9em;
+      font-weight: bold;
+      color: $dark-grey;
+    }
+		.stats {
+			float: left;
+			padding: 20px;
+		  overflow: auto;
+		  a {
+		    float: left;
+		    padding: 0 10px;
+		    border-left: 1px solid #CCC;
+		    color: gray;
+		    &:first-child {
+		      padding-left: 0;
+		      border: 0;
+		    }
+		  }
+		  strong {
+		    display: block;
+		  }
+		}
+		.follow_form {
+			float: left;
+			width: 75%;
+			text-align: center;
+			margin-bottom: 15px;
+		}
+  }
+  .avatar-container {
+  	width: 200px;
+  	height: 200px;
+  }
+}
+
+/* User summary */
+.user-summary {
+	padding-top: 10px;
+	float: left;
+	width: 100%;
+	.avatar {
+		float: left;
+		height: 50px;
+		width: 50px;
+	}
+	.name-location {
+		float: left;
+		width: calc(100% - 50px);
+		min-height: 50px;
+		margin-bottom: 10px;
+		.username {
+			width: 100%;
+			text-align: right;
+			font-size: 1em;
+			font-weight: bold;
+		}
+		.location {
+			width: 100%;
+			text-align: right;
+			font-size: 0.8em;
+			opacity: 0.7;
+		}
+	}
+	.user-details {
+		margin-top: 20px;
+		width: 100%;
+	}
+	.latest {
+		float: left;
+		width: 100%;
+		margin-top: 20px;
+		font-weight: bold;
+		font-size: 0.7em;
+	}
+	.full-journal-link {
+		clear: left;
+		float: left;
+		width: 100%;
+		font-size: 0.7em;
+		margin-left: 25px;
+	}
+}
+
+// Bullet points: city, followers, style, stats etc.
+.user-details {
+	float: left;
+	.info-block {
+    float: left;
+    width: 100%;
+    color: $dark-grey;
+    font-size: 0.8em;
+    margin: 5px 0;
+		.icon {
+			width: 10%;
+			float: left;
+		}
+		.value {
+			width: 90%;
+			float: left;
+		}
+	}
+	.user-website a {
+		word-break: break-word;
+	}
+}
+
+/* New user - add first sit */
+.add-a-sit {
+	width: 100%;
+	font-size: 1.5em;
+	text-align: center;
+	margin-top: 20px;
+	float: left;
+	padding: 10px 0 20px;
+}
+
+/* Recent activity */
+.recent-activity {
+	clear: left;
+	float: left;
+	width: 100%;
+	.activity {
+		padding: 5px;
+		float: left;
+		width: 100%;
+		border: 0;
+		border-radius: 0;
+		font-size: 0.8em;
+		margin-bottom: 5px;
+		&:hover {
+			.icon {
+				color: darken($link-color, 20%);
+			}
+	    cursor: pointer;
+  	}
+		.icon {
+			float: left;
+			width: 10%;
+			color: $link-color;
+			font-size: 1.4em;
+			margin-left: -9px;
+			margin-right: 5px;
+		}
+  	.details {
+  		float: left;
+  		width: 90%;
+			margin-top: 2px;
+			.title {
+				font-size: 14px;
+				margin-top: 2px;
+				.date {
+					float: right;
+					font-size: 0.8em;
+					font-style: italic;
+				}
+			}
+			.body {
+				opacity: 0.7;
+			}
+		}
+	}
+	.sit-teaser:hover {
+		cursor: pointer;
+		background: #eee;
+	}
+}
+
+/* Timeline select */
+.date_range_select {
+  float: right;
+	padding: 8px;
+	background: white;
+  border-radius: 5px;
+  color: $dark-grey;
+  font-size: 1.3em;
+}
+
+// Feed icon on sits / bio
+.user-sit-feed {
+	float: right;
+	clear: left;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+// View user
+.view-user {
+	.back-button {
+    margin-bottom: 15px;
+  }
+	.fill-out-your-profile {
+		text-align: center;
+	}
+	.profile {
+		float: left;
+		width: 100%;
+		background: white;
+		border-top: 3px solid $green;
+		margin-bottom: 20px;
+		padding: 20px 40px 0 40px;
+		@include rounded-bottom;
+		.lead {
+			clear: both;
+		}
+		.profile-field {
+			margin-bottom: 20px;
+			float: left;
+			font-size: 0.9em;
+			.title {
+				font-weight: bold;
+				color: $link-color;
+				margin-bottom: 10px;
+			}
+		}
+		.edit-profile-btn {
+			margin-bottom: 10px;
+		}
+    .edit-profile {
+      margin-top: -14px;
+      display: block;
+      font-weight: bold;
+      font-size: 12px;
+    }
+		// More ->
+		.expand-profile {
+			font-size: 0.8em;
+			font-weight: bold;
+			float: right;
+			margin: 20px;
+		}
+		.full-profile {
+			display: none;
+		}
+	}
+  .month-view {
+  	clear: left;
+  	background: white;
+		padding: 20px;
+		float: left;
+		width: 100%;
+		// box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+		border: 1px solid #e2e2e2;
+		border-radius: 5px 5px 5px 5px;
+    .month_stats_container {
+      float: left;
+      width: 100%;
+      text-align: center;
+      margin-top: 1em;
+      .month_stats {
+        font-size: 0.9em;
+        color: #999;
+      }
+    }
+  	.day-of-the-month {
+  		float: left;
+  		clear: left;
+  		border-right: 2px solid $green;
+  		padding-right: 17px;
+  		.weekday {
+  			text-transform: uppercase;
+  			font-size: 0.6em;
+  			color: $dark-grey;
+  			text-align: center;
+  		}
+  		.date {
+  			clear: left;
+  			font-size: 1.5em;
+  			text-align: center;
+  		}
+  	}
+  	.entry {
+  		margin-left: 59px;
+  		margin-top: 25px;
+  		font-size: 0.9em;
+  		.link {
+  			float: left;
+  			margin-bottom: 10px;
+  			width: 50px;
+  			margin-right: 0.5em;
+  			text-align: center;
+  			color: #999;
+  		}
+  		.teaser {
+  			float: left;
+  			margin-bottom: 10px;
+  			width: 90%;
+  		}
+        @media (max-width: 767px) {
+            margin-top: 0px;
+            .link {
+                float: none;
+                text-align: left;
+            }
+            .teaser {
+                float: none;
+                margin-bottom: 0px;
+            }
+        }
+  	}
+  	hr {
+			margin-top: 30px;
+			margin-bottom: 11px;
+			border: 0;
+			border-top: 1px solid #eeeeee;
+			float: left;
+			width: 100%;
+  	}
+    .month_navigation {
+    	margin-top: 20px;
+    	a {
+    		padding: 10px;
+    	}
+    	.previous {
+      	float: left;
+      }
+      .next {
+      	float: right;
+      }
+    }
+  }
+}
+
+// Edit etc
+.my-actions {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin: 25px 0 0 0;
+}
+
+// Edit profile
+.edit-profile {
+	#user_avatar {
+		margin-top: 10px;
+	}
+	.avatar-box {
+		width: 42%;
+		text-align: center;
+		float: right;
+		p {
+			margin-bottom: 20px;
+		}
+		input {
+			margin: 20px 0 0 90px;
+		}
+	}
+	.update-details {
+		float: left;
+		width: 100%;
+		text-align: center;
+		margin: 20px 0;
+		.btn-large {
+			margin: 0 auto;
+			float: none;
+			clear: left;
+		}
+	}
+	.contemplative-profile {
+		float: left;
+		width: 100%;
+		.control-group {
+			margin: 20px 0;
+			width: 100%;
+		}
+		.help-block {
+			font-size: 0.9em;
+			color: #666;
+			float: left;
+			clear: left;
+		}
+		.wysihtml5-toolbar {
+			display: none;
+		}
+	}
+	.privacy-setting .warning {
+		margin-top: 10px;
+		font-size: 0.9em;
+		color: $dark-grey;
+	}
+}
+
+/* User teaser with follow button */
+.user-teaser {
+	float: left;
+	width: 100%;
+	margin: 5px 0 20px;
+	.avatar {
+		float: left;
+		width: 60px;
+	}
+	.details {
+		float: left;
+		width: calc(100% - 60px);
+		.name {
+			float: left;
+		}
+		.sit-count {
+			float: left;
+			color: $dark-grey;
+			margin: 3px 0 0 5px;
+			font-size: 0.8em;
+		}
+		.location {
+			float: left;
+			clear: left;
+			font-size: 0.9em;
+			color: $dark-grey;
+		}
+		.joined {
+			color: #CCC;
+		}
+	}
+}
+
+/* Suggested users */
+.suggested-users {
+    font-size: 0.9em;
+    h2 {
+        text-transform: uppercase;
+        margin: 13px 0;
+        font-weight: bold;
+        font-size: 0.8em;
+        color: $dark-grey;
+    }
+    .suggested-user {
+        float: left;
+        position: relative;
+        width: 100%;
+        margin: 10px 0;
+        .avatar {
+            float: left;
+            width: 60px;
+        }
+        .details {
+            float: left;
+            width: calc(100% - 60px);
+            overflow: hidden;
+
+            .name {
+                float: left;
+                margin-top: 2px;
+            }
+            .location, .sit-count {
+                float: left;
+                clear: left;
+                font-size: 0.7em;
+                color: $dark-grey;
+            }
+        }
+        .follow_form {
+            position: absolute;
+            right: 0px;
+            top: 7px;
+            margin-top: 0px;
+            box-shadow: -10px 0px 10px 10px $background;
+            width: auto;
+        }
+    }
+}
+
+/* Not following anyone yet */
+.page-content .no-follow {
+	text-align: center;
+	padding-top: 3em;
+	a {
+		font-size: 1.3em;
+		font-weight: bold;
+	}
+	p {
+		margin-top: 4em;
+		font-size: 0.8em;
+		opacity: 0.6;
+	}
+}
+
+// Welcome
+.page-content .welcome-box {
+	h2 {
+		text-align: center;
+	}
+	p {
+		text-align: center;
+		font-size: 0.8em;
+		opacity: 0.6;
+	}
+  .fb-like {
+    padding: 0 10px;
+  }
+  .twitter-follow-container {
+  	display: inline-block;
+    padding-top: 3px;
+  }
+}
+
+// Delete user link for moderators
+.mod-delete-user {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-top: 2em;
+  font-size: 0.8em;
+  a {
+    opacity: 0.6;
+    color: red;
+  }
+}

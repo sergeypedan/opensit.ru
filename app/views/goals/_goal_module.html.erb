@@ -1,0 +1,10 @@
+<div class="current-goals">
+  <% @goals.each do |g| %>
+    <% if !g.completed? %>
+    <div class="goal-summary">
+      <%= coloured_rating(g) %>
+      <div class="text"><a href="/goals"><%= g.verbalise %></a></div>
+    </div>
+    <% end %>
+  <% end %>
+</div>

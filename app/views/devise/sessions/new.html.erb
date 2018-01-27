@@ -1,0 +1,26 @@
+<section class="sign-in">
+	<div class="well">
+		<h1><%= t "sign_in.welcome" %></h1>
+
+		<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+			<% if flash.any? %>
+				<div class="alert alert-danger">
+					<%- flash.each do |name, msg| -%>
+						<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+					<%- end -%>
+				</div>
+			<% end %>
+
+			<%= f.input :email,    placeholder: t("sign_in.email"),    label: false %>
+			<%= f.input :password, placeholder: t("sign_in.password"), label: false %>
+
+	    <%= f.input :remember_me, as: :boolean, label: false, inline_label: true if devise_mapping.rememberable? %>
+
+			<div><%= f.submit t("sign_in.button"), class: 'pull-right btn btn-primary btn-lg' %></div>
+
+		<% end %>
+
+		<%= render "devise/shared/links" %>
+	</div>
+</section>

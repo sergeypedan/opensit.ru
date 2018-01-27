@@ -1,0 +1,29 @@
+.new-notifications {
+	margin-top: -19px;
+	margin-left: 6px;
+	color: white;
+	font-weight: bold;
+	position: relative;
+}
+
+.notifications {
+	.new-notification {
+		font-weight: bold;
+	}
+	.avatar {
+		width: 65px;
+	}
+	.clickable-row {
+		display: block;
+		height: 40px;
+		font-size: 0.9em;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	.time-ago {
+		float: right;
+		font-size: 0.8em;
+		color: #999;
+	}
+}

@@ -1,0 +1,23 @@
+@import 'opensit/base';
+
+.search-results {
+	input.big-search {
+		font-size: 30px;
+		height: 55px;
+	}
+	.nav-tabs {
+		.active a {
+			background-color: #ddd;
+		}
+		.badge {
+			float: right;
+		}
+		i {
+			font-size: 1.5em;
+		}
+	}
+}
+
+.big-search {
+	margin-bottom: 20px;
+}

@@ -1,0 +1,87 @@
+@import 'opensit/base';
+
+.msg-overview {
+	.unread {
+		width: 30px;
+		padding-top: 12px;
+		font-size: 2em;
+		color: $green;
+	}
+	.msg-avatar {
+		width: 55px;
+	}
+	.msg-username {
+		font-size: 0.8em;
+		font-weight: bold;
+	}
+	.clickable-row {
+		display: block;
+		height: 50px;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	.msg-received {
+		float: right;
+		font-size: 0.8em;
+		color: #999;
+	}
+	.msg-delete {
+		float: right;
+		font-size: 0.7em;
+		font-weight: bold;
+		color: #ccc;
+	}
+}
+
+.view-message {
+	.title {
+		margin-top: 20px;
+	}
+	.body {
+		margin-top: 20px;
+		margin-left: 20px;
+	}
+	.message_details {
+		float: left;
+		width: 100%;
+		margin-bottom: 2em;
+		.from {
+			float: right;
+			margin: 20px 0 10px;
+			.avatar {
+				float: right;
+			}
+			.username {
+				float: right;
+				clear: right;
+				font-weight: bold;
+			}
+		}
+		.date {
+			float: right;
+			clear: right;
+			font-size: 0.8em;
+			font-weight: bold;
+			color: #999;
+		}
+		.delete {
+			float: right;
+			clear: right;
+			font-size: 0.8em;
+			a {
+				color: #999;
+			}
+		}
+	}
+}
+
+#new_message {
+	.controls {
+		margin-left: 100px;
+	}
+	input[type="submit"] {
+		float: right;
+		margin-right: 104px;
+	}
+}

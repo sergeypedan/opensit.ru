@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <%= render 'layouts/head' %>
+
+  <body>
+    <!-- A tab to launch the UserVoice Classic Widget -->
+    <script>
+      UserVoice = window.UserVoice || [];
+      UserVoice.push(['showTab', 'classic_widget', {
+        mode: 'full',
+        primary_color: '#63a961',
+        link_color: '#63a961',
+        default_mode: 'support',
+        forum_id: 208850,
+        support_tab_name: 'Report issues',
+        feedback_tab_name: 'Got an idea?',
+        tab_label: 'Feedback & Support',
+        tab_color: '#63a961',
+        tab_position: 'bottom-right',
+        tab_inverted: false
+      }]);
+    </script>
+
+    <% if (controller_name.in? ['registrations', 'sessions']) && controller.action_name != 'edit' %>
+      <% @page_class = 'sign-up-or-in' %>
+      <%= render 'shared/brand_header' %>
+    <% end %>
+
+    <div class="container base-container">
+      <%= render 'layouts/header' unless current_page?(root_path) %>
+
+      <div class="page-content <%= @page_class %>">
+
+        <div class="row">
+          <% unless (controller_name.in? ['registrations', 'sessions']) %>
+            <%= content_tag :div, flash[:notice], class: "alert alert-success" if flash[:notice] %>
+            <%= content_tag :div, flash[:error],  class: "alert alert-danger"  if flash[:error] %>
+          <% end %>
+
+          <%= yield %>
+        </div>
+
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+
+
+  </div> <!-- end #base-container -->
+
+  <%= render 'layouts/footer' %>
+  <%= render 'layouts/analytics' %>
+
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<div class="stamp header-tile col-md-3 tile">
+	<div class="content">
+		<div class="user-summary">
+			<div class="avatar">
+				<%= small_avatar_of(@user) %>
+			</div>
+			<div class="name-location">
+				<div class="username"><%= username(@user) %></div>
+				<% if !@user.city.blank? || !@user.country.blank? %>
+					<div class="location"><%= @user.location %></div>
+				<% end %>
+			</div>
+			<%= render 'shared/follow_button', user: @user %>
+
+			<%= render 'users/details' %>
+
+			<% if @latest.empty? %>
+				<% if current_user && (current_user.id == @user.id) %>
+					<div class="add-a-sit">
+						<a href="<%= new_sit_path %>" class="btn btn-lg btn-primary"> <i class="fa fa-plus"></i> <%= t "me.add_first_sit" %></a>
+					</div>
+				<% end %>
+			<% elsif @latest %>
+				<div class="latest"><%= t "me.latest" %></div>
+				<%= render 'shared/recent_activity' %>
+			<% end %>
+
+			<% if controller.action_name == 'me' %>
+				<%= render 'goals/goal_module' %>
+			<% else %>
+				<a class="full-journal-link" href="<%= user_path(@user) %>"><%= t "me.view_full_journal" %></a>
+			<% end %>
+		</div>
+	</div>
+</div>

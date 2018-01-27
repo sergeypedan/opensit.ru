@@ -1,0 +1,664 @@
+@import 'opensit/base';
+
+/*
+ *    LAYOUT
+ ************************/
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Stop width-jumps by putting scrollbars on all pages */
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background-color: $background;
+  font-size: 18px;
+}
+
+/* Sticky footer */
+$footer-height: 150px;
+
+.container-full-width {
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.base-container {
+  min-height: 100%;
+}
+
+.page-content {
+  padding-top: 80px; /* Due to fixed nav bar */
+  padding-bottom: 10px;
+}
+
+/* Section container for pages that have more than one column */
+.pagination-container {
+  margin: 20px 0 0 0;
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+/* Give content some padding between footer without breaking sticky footer */
+.spacer {
+  float: left;
+  clear: both;
+  height: 20px;
+}
+
+/* Footer */
+footer {
+  opacity: 0.8;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  position: relative;
+  margin-top: -$footer-height; /* negative value of footer height */
+  height: $footer-height - 1;
+  clear: both;
+  .header {
+    margin: 1em 0 0.5em;
+  }
+  a {
+    color: $dark-grey;
+    font-size: 0.9em;
+    &:hover {
+      color: $dark-grey;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .copyright-holder {
+    text-align: center;
+    .footer-logo {
+      margin: 1em 0 0.5em;
+      width: 100px;
+    }
+    .copyright {
+      color: $dark-grey;
+      font-size: 0.7em;
+    }
+  }
+}
+
+/*
+ *    NAVIGATION
+ *******************************/
+
+// NAVBAR
+$bgDefault      : $navbar;
+$bgHighlight    : #222;
+$colDefault     : $green;
+$colHighlight   : whitesmoke;
+
+.navbar-default {
+  background-color: $bgDefault;
+  // border-color: $bgHighlight;
+  .nav-logo {
+    margin-right: 20px;
+    float: left;
+    .navbar-brand {
+      padding: 0;
+      font-size: 1.6em;
+    }
+    .nav-logomark {
+      float: left;
+      width: 82px;
+      margin-top: 4px;
+      margin-right: 4px;
+    }
+    .nav-logotype {
+      color: #fcf9f6;
+      float: left;
+      margin-top: 21px;
+      &:hover {
+        color: white;
+      }
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight;
+    }
+  }
+  .navbar-nav {
+    > li {
+      > a.nav-option {
+        font-size: 1.4em;
+        padding-top: 20px;
+        padding-bottom: 23px;
+        color: $colDefault;
+        &:hover, &:focus {
+          background-color: $bgHighlight;
+          color: whitesmoke;   }
+        }
+        i {
+          font-size: 1em;
+        }
+        .nav-button-text {
+          font-size: 0.6em;
+          color: whitesmoke;
+        }
+      }
+      .active {
+        > a, > a:hover, > a:focus {
+          color: $colHighlight;
+          background-color: $bgHighlight;
+        }
+        .nav-option {
+          color: $colHighlight;
+        }
+      }
+      .open {
+        > a, > a:hover, > a:focus {
+          color: $colHighlight;
+          background-color: $bgHighlight;
+          .caret {
+            border-top-color: $colHighlight;
+            border-bottom-color: $colHighlight;
+          }
+        }
+      }
+      > .dropdown {
+        > a {
+          .caret {
+            border-top-color: $colDefault;
+            border-bottom-color: $colDefault;
+          }
+          &:hover, &:focus {
+            .caret {
+              border-top-color: $colHighlight;
+              border-bottom-color: $colHighlight;}}}}}
+          .dropdown-menu {
+              a {
+                font-size: 13px;
+                margin: 5px 0;
+                &:hover {
+                  background: $green;
+                }
+              }
+              .divider {
+                  background-color: $colDefault;
+              }
+        }
+        .search-box {
+          margin-top: 10px;
+        }
+  .navbar-toggle {
+      border-color: $bgHighlight;
+      margin-top: 15px;
+      &:hover, &:focus {
+          background-color: $bgHighlight; }
+      .icon-bar {
+          background-color: $colDefault; }}}
+  .navbar-collapse,
+  .navbar-form {
+      border-color: $colDefault; }
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: $colDefault;
+        &:hover, &:focus {
+            color: $colHighlight;
+            background-color: $bgHighlight; }}
+}
+
+// Guest nav bar - sign up or login
+.sign-up-nav {
+  background: $navbar;
+  height: 66px;
+  .nav-text {
+    img {
+      width: 80px;
+      margin-top: -10px;
+    }
+    .login-link {
+      text-decoration: underline;
+      color: white;
+    }
+    color: white;
+    float: none;
+    margin-top: 10px;
+  }
+}
+
+/*
+ *    CORE ELEMENTS
+ *******************************/
+
+/* Sidebar */
+.sidebar {
+  float: left;
+  img.polaroid {
+    padding: 3px;
+    border: 1px solid #CCC;
+    -moz-box-shadow: 5px 5px 3px #888;
+    -webkit-box-shadow: 5px 5px 3px #888;
+    box-shadow: 5px 5px 3px #888;
+  }
+}
+
+/* Header tiles */
+.header-tile {
+  padding: 0 10px 10px 0;
+  .content {
+    @include rounded-bottom;
+    box-shadow: none;
+    float: left;
+    width: 100%;
+    padding: 0 10px 10px 20px;
+    .text-title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+    .nav-stacked {
+      font-size: 0.9em;
+      li a {
+        padding: 7px 7px;
+      }
+      li.list-title {
+        text-transform: uppercase;
+        margin: 13px 0 0;
+        font-weight: bold;
+        font-size: 0.8em;
+        color: $dark-grey;
+      }
+      i {
+        margin: 3px 10px 0 2px;
+      }
+      .badge {
+        float: right;
+        background: #999;
+        color: white;
+        margin-top: 3px;
+      }
+      .active a {
+        background: $green;
+        color: white;
+      }
+    }
+    p {
+      opacity: 0.7;
+      font-size: 0.8em;
+    }
+  }
+}
+.sidebar .header-tile {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* Large white text section. e.g. viewing a sit */
+.text-section {
+  background: white;
+  padding: 20px;
+  border-top: 3px solid $green;
+  float: left;
+  width: 100%;
+  word-wrap: break-word;
+  @include rounded-bottom;
+  h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+/* Message boxes */
+.message-box {
+  @include rounded-bottom;
+  border-top: $green 3px solid;
+  background: white;
+  float: left;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  h2 {
+    margin: 7px 0 15px;
+  }
+}
+
+/* Sidebar modules */
+.nav-module {
+  @include rounded-bottom;
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loading-indicator {
+  display: none;
+  float: left;
+  clear: both;
+  margin-left: 443px;
+  margin-top: -47px;
+  color: $light-border;
+  font-size: 1.5em;
+}
+
+
+.sign-up-page {
+  .brand-header {
+    border-bottom: 0;
+  }
+}
+
+/* Tag cloud */
+#tag_cloud {
+  line-height: 1.6em;
+  .s { font-size: 1em; }
+  .m { font-size: 1.4em; }
+  .l { font-size: 2em; }
+}
+
+/* Follow button */
+.follow_form {
+  margin-top: 10px;
+  text-align: right;
+  width: 100%;
+  form {
+    margin-bottom: 5px;
+    input {
+      // margin-top: -90px;
+    }
+  }
+}
+
+/* Bootstrap alignment fixes */
+.radio input[type="radio"] {
+  position: relative;
+  float: none !important;
+  margin: 0 5px 4px -18px;
+}
+
+/* will_paginate Bootstrap pagination */
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  background: whitesmoke;
+  border-color: #ddd;
+  color: #999;
+}
+
+.label-primary {
+  background: $link-color;
+}
+
+/* Date time picker */
+.sit_created_at > div { padding-left: 0; }
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active,
+.bootstrap-datetimepicker-widget td span.active {
+  background: $link-color !important;
+}
+
+/* Bootstrap wysihtml button hiding */
+[data-wysihtml5-command="Indent"],
+[data-wysihtml5-command="Outdent"],
+{
+  display: none;
+}
+
+/* Alerts */
+.alert {
+  margin: 0 auto;
+  width: 40%;
+  padding: 8px;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+/* Bullet points with icons (sign up, welcome) */
+.points {
+  padding: 1em 4em;
+  .point {
+    font-size: 1.4em;
+    margin: 17px 0;
+    float: left;
+    width: 100%;
+    .icon {
+      float: left;
+      width: 50px;
+      i {
+        font-size: 1.2em;
+        color: lighten($link-color, 5%);
+      }
+    }
+    .text {
+      float: left;
+      width: calc(100% - 50px);
+      font-size: 0.8em;
+      color: $dark-grey;
+    }
+  }
+}
+
+/*
+ *    RESPONSIVE
+ *******************************/
+
+@media (max-width: 767px) {
+
+  // Sign up nav bar hint
+  .sign-up-nav {
+    .nav-text {
+      text-align: center;
+    }
+    .expanded {
+      display: none;
+    }
+    .btn-primary {
+      margin-left: 20px;
+    }
+  }
+
+  // Sign up page
+  .sign-up-box {
+    h1 {
+      font-size: 1em;
+    }
+    .user-snippet {
+      width: 33% !important;
+    }
+  }
+
+  // Welcome page
+  .page-content .welcome-box {
+    .points {
+      padding: 0.5em;
+    }
+    .text {
+      font-size: 14px;
+    }
+  }
+
+  // Sign in
+  .sign-in {
+    h1 {
+      font-size: 25px;
+    }
+    .remember label {
+      margin-top: 7px;
+    }
+  }
+
+  // Alerts
+  .alert {
+    width: 100%;
+  }
+
+  // Front page
+  .front-page {
+    .three-panes {
+      padding-left: 0 !important;
+    }
+    button.sign-up {
+      margin-top: 30px !important;
+    }
+    .copy {
+      font-size: 14px;
+      h1 {
+        font-size: 25px;
+      }
+    }
+  }
+
+  // Brand header
+  .brand-header .already-signed-up {
+    margin: -8px 10px 10px 0;
+  }
+
+  // Pages
+  .page {
+    padding: 1em !important;
+  }
+
+  // Contact
+  .contact {
+    img {
+      width: 150px;
+    }
+  }
+
+  // About
+  .about .logomark {
+    width: 100%;
+  }
+
+  // Explore comments
+  .comment-teaser {
+    .body {
+      margin-left: 0;
+    }
+    .comment-meta .text .summary {
+      margin-bottom: 10px;
+    }
+  }
+
+  // Explore users
+  .user-teaser .details .follow_form {
+    text-align: left;
+    float: left;
+    input {
+      margin-top: 0;
+    }
+  }
+
+  // Hide page images
+  .about .opendude,
+  .contribute .fa-github,
+  .contact img {
+    display: none;
+  }
+
+  // View sit
+  .view-sit {
+    .header-tile {
+      display: none;
+    }
+    .text-section {
+      .back-button {
+        margin-left: 10px;
+      }
+      header {
+        padding: 0 10px;
+        .mobile-user-summary {
+          display: block;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+      }
+      h1.sit-title {
+        font-size: 1.2em !important;
+        margin-bottom: 20px;
+      }
+      .body {
+        margin: 0 20px !important;
+        font-size: 0.9em !important;
+      }
+      .like-row {
+        margin-top: 1em;
+        margin-bottom: 0;
+      }
+      // Prev/next navigation
+      .sit_preview .content {
+        display: none;
+      }
+      .sit_preview.next .arrow {
+        float: right;
+      }
+    }
+  }
+  .sidebar,
+  .col-md-9 {
+    width: 100%;
+    position: static; // Unclickable links fix
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 25px;
+  }
+  .header-tile {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  // Month view / profile
+  .month-view {
+    .entry .link {
+      width: auto !important;
+    }
+  }
+
+  // Footer
+  footer {
+    ul, .header {
+      display: none;
+    }
+    .copyright-holder {
+      .footer-logo {
+        width: 75px;
+        margin: 0.5em 2em;
+      }
+    }
+    .mobile-nav {
+      display: block !important;
+      visibility: visible !important;
+    }
+  }
+
+  // Goals
+  .goals {
+    .goal {
+      .goal-desc {
+        font-size: 1em !important;
+      }
+      .content {
+        width: 70%;
+      }
+    }
+  }
+}

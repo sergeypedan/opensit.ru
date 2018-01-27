@@ -1,0 +1,31 @@
+<article class="sit-teaser">
+  <div class="side">
+    <%= small_avatar_of(sit.user) %>
+  </div>
+
+  <div class="sit-content">
+
+    <div class="top"><%= username(sit.user) %> <%= teaser_title(sit) %>
+    <% if sit.comments.count > 0 %>
+      &bull; <%= pluralize(sit.comments.count, 'comment') %>
+    <% end %>
+      <span class="pull-right">
+      <% if request.fullpath =~ /my/ %>
+        <%= sit.date %>
+      <% else %>
+       <%= time_ago_in_words(sit.created_at) %> ago
+      <% end %>
+      </span></div>
+
+    <div class="body">
+      <% if request.path =~ /search/ %>
+        <%= teaser(sit, 300, params[:q]) %>
+      <% else %>
+        <%= teaser(sit) %>
+      <% end %>
+    </div>
+    <%= display_lock_if_private(sit) %>
+
+  </div> <!-- end .sit-content -->
+
+</article>

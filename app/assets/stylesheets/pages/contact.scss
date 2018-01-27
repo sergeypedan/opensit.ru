@@ -1,0 +1,15 @@
+@import 'opensit/base';
+
+.contact {
+
+  img {
+    float: right;
+  }
+
+  .email {
+    text-align: center;
+    color: $link-color;
+    font-size: 1.8em;
+    margin: 1em 0 1.5em;
+  }
+}

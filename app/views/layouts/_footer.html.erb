@@ -1,0 +1,35 @@
+<footer>
+  <div class="container">
+    <div class="col-md-3">
+      <p class="header"><%= t "footer.community" %></p>
+      <ul>
+        <li><%= link_to "Twitter",  "https://twitter.com/opensit" %></li>
+        <li><%= link_to "Facebook", "https://www.facebook.com/opensit.meditation" %></li>
+        <li><%= link_to "Google+",  "https://www.google.com/+Opensitmeditation" %></li>
+      </ul>
+    </div>
+
+    <div class="col-md-3">
+      <p class="header"><%= t("footer.about") %></p>
+      <ul>
+        <li><%= link_to t("footer.journal"), 'http://danbartlett.co.uk/2014/05/15/7-reasons-to-start-a-meditation-journal/?utm_source=opensit&utm_content=footer_link' %></li>
+        <li><%= link_to t("footer.about"),    about_path %></li>
+        <li><%= link_to t("footer.contacts"), contact_path %></li>
+      </ul>
+    </div>
+
+    <div class="col-md-3">
+      <p class="header"><%= t("footer.contribute") %></p>
+      <ul>
+        <li><%= link_to t("footer.how_to_contribute"), '/contribute' %></li>
+        <li><%= link_to t("footer.github"), 'http://github.com/danbartlett/opensit' %></li>
+      </ul>
+    </div>
+
+    <div class="copyright-holder col-md-3">
+      <%= image_tag('/images/default_250.png', class: "footer-logo") %>
+      <p class="mobile-nav hidden"><%= link_to t("footer.about"), '/about' %> - <%= link_to t("footer.contribute"), "/contribute" %> - <%= link_to t("footer.contacts"), "/contact" %></p>
+      <p class="copyright">&copy; 2013-<%= Time.now.year %> OpenSit</p>
+    </div>
+  </div>
+</footer>

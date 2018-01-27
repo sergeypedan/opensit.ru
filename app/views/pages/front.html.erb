@@ -1,0 +1,45 @@
+<%= render 'shared/brand_header' %>
+
+<% if flash && flash[:error] %>
+  <div class='alert alert-danger'><%= flash[:error] %></div>
+<% end %>
+
+<div class="jumbotron">
+  <h1><%= t 'home.banner.title' %></h1>
+  <p><%= t 'home.banner.text' %></p>
+  <a class="sign-up btn btn-lg btn-primary" href="<%=new_user_registration_path%>"><%= t 'home.banner.button' %></a>
+</div>
+
+<div class="three-panes">
+  <div class="pane col-lg-offset-1 col-lg-3">
+    <i class="fa fa-book"></i>
+    <h3><%= t 'home.features.feature_1.title' %></h3>
+    <p><%= t 'home.features.feature_1.text' %></p>
+  </div>
+  <div class="pane col-lg-3">
+    <i class="fa fa-globe"></i>
+    <h3><%= t 'home.features.feature_2.title' %></h3>
+    <p><%= t 'home.features.feature_2.text' %></p>
+  </div>
+  <div class="pane col-lg-3">
+    <i class="fa fa-bolt"></i>
+    <h3><%= t 'home.features.feature_3.title' %></h3>
+    <p><%= t 'home.features.feature_3.text' %></p>
+  </div>
+</div>
+
+<div class="copy">
+  <h2><%= t 'home.join.title' %></h2>
+  <p><%= t 'home.join.text' %> <%= link_to t('home.join.link'), new_user_registration_path %>.</p>
+  <p><strong><%= t 'home.join.incentive' %></strong></p>
+  <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='5237488'></div>
+</div>
+
+<div class="padder">
+  <div class="sit-container">
+    <% @sits.each do |sit| %>
+      <%= render 'shared/sit_teaser_block', sit: sit, width: 2 %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+<div class="sidebar col-md-3">
+  <%= render 'explore_tile' %>
+</div>
+
+<div class="clearfix col-md-9">
+	<% @comments.each do |comment| %>
+	  <div class="comment-teaser">
+	    <div class="comment-meta">
+	    	<div class="avatar"><%= small_avatar_of(comment.user) %></div>
+	    	<div class="text">
+	    		<div class="time-ago"><%= time_ago_in_words(comment.created_at) %> ago</div>
+		    	<div class="summary">
+		    		<%= username(comment.user, true) %> commented on
+				    <% if comment.sit.is_sit? %>
+				    	<%= username(comment.sit.user, true) %>'s <%= link_to 'sit', "/sits/#{comment.sit_id}/#comment-#{comment.id}" %>
+				    <% else %>
+				    	<%= link_to comment.sit.full_title, "/sits/#{comment.sit_id}/#comment-#{comment.id}" %> by <%= username(comment.user, true) %>
+				    <% end %>
+				 	</div>
+				</div>
+	    </div>
+	    <div class="body">
+	    	<%= comment.body.html_safe %>
+	    </div>
+	  </div>
+	<% end %>
+
+	<div class="pagination-container">
+   	<%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>

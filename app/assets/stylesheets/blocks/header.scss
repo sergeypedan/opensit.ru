@@ -1,0 +1,36 @@
+@import 'opensit/base';
+
+/* Brand header: front page, sign up, sign in */
+.brand-header {
+  background: white;
+  // float: left;
+  width: 100%;
+  text-align: center;
+  margin: 4px 0 0 0;
+  border-bottom: 3px solid $green;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    width: 150px;
+  }
+
+  .opensit {
+    font-size: 1.6em;
+    margin-top: -10px;
+    color: $dark-grey;
+  }
+
+  .already-signed-up {
+    float: right;
+    font-size: 0.8em;
+    margin-top: -47px;
+    margin-right: 20px;
+
+    a {
+      margin-left: 8px;
+    }
+  }
+}

@@ -1,0 +1,404 @@
+@import 'opensit/base';
+
+/* Sit teaser */
+article.sit-teaser {
+  @include box-model;
+  background: white;
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid $light-border;
+  padding: 10px 10px;
+  &:hover {
+    cursor: pointer;
+    background: #eee;
+  }
+  /* Avatar */
+  .side {
+    float: left;
+    padding: 3px 2% 5px 5px;
+  }
+  .sit-content {
+    margin-left: 70px;
+    padding-bottom: 5px;
+    .top {
+      font-size: 0.9em;
+      opacity: 0.7;
+      a {
+        color: #333;
+      }
+    }
+    .body {
+      padding: 5px 0;
+      width: 97%;
+      font-size: 0.8em;
+    }
+  }
+  /* Lock icon for private events */
+  .private-event {
+    margin-top: -15px;
+  }
+}
+
+/* Sit teaser block */
+article.sit-teaser-block {
+  float: left;
+  padding: 0 10px 10px 0;
+  .block-content {
+    @include rounded-bottom;
+    border-radius: 5px;
+    float: left;
+    background: #fff;
+    margin: 0 0 10px 0;
+    width: 100%;
+    &:hover {
+      cursor: pointer;
+      background: #eee;
+    }
+  }
+  .body {
+    margin: 10px;
+    padding: 5px;
+    width: 92%;
+    font-size: 0.8em;
+    word-wrap: break-word;
+  }
+  .bottom-row {
+    font-size: 0.7em;
+    float: left;
+    width: 100%;
+    border-top: $green 3px solid;
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    .avatar {
+      float: left;
+      width: 50px;
+      margin: 10px;
+    }
+    .details {
+      float: left;
+      margin-top: 7px;
+      width: calc(100% - 70px);
+      padding-right: 1em;
+      .author-title {
+        height: 34px;
+      }
+      .meta {
+        font-size: 0.9em;
+        text-align: right;
+        width: 100%;
+        margin: 3px 5px 0 0;
+        color: $dark-grey;
+        opacity: 0.5;
+        .fa-heart,
+        .fa-comment {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+  /* Lock icon for private events */
+  .private-event {
+    margin-top: -15px;
+  }
+}
+
+/* View sit */
+.view-sit {
+  h1.sit-title {
+    text-align: center;
+    font-size: 2.1em;
+    margin-bottom: 15px;
+  }
+  .text-section {
+    // To allow prev/next areas to sit flush to edges
+    padding: 20px 0 0;
+
+    // Header, title, meta
+    header {
+      padding: 0 60px;
+      .sit-stats {
+        width: 100%;
+        text-align: center;
+        color: #999;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+        .stat {
+          display: inline-block;
+          margin-right: 10px;
+        }
+      }
+      .mobile-user-summary {
+        display: none;
+      }
+      .tags-container {
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+        font-size: 0.8em;
+        color: #999;
+        .fa-tags {
+          margin-right: 5px;
+        }
+        .tag-label {
+          margin: 0 2px;
+          background-color: #999;
+          display: inline-block;
+          &:hover {
+            background: #777;
+          }
+        }
+      }
+    }
+
+    // Content
+    .body {
+      font-size: 1.1em;
+      line-height: 1.5;
+      margin: 0 60px 3em 60px;
+      li {
+        margin: 10px 0;
+        line-height: 1.5;
+      }
+    }
+
+    // Likes
+    .like-row {
+      float: left;
+      width: 100%;
+      margin-bottom: 2em;
+      padding: 1em 0 0em;
+      color: $dark-grey;
+      font-size: 0.9em;
+      height: 110px;
+      #who_likes {
+        margin: 0px 0 5px 0;
+        width: 100%;
+        float: left;
+        text-align: center;
+      }
+      .toggle-like {
+        font-size: 2em;
+      }
+
+      // "This is an entry by x, sign up today" hint.
+      .guest-summary {
+        margin: 10px 10px 0;
+        text-align: center;
+        padding: 10px;
+        a {
+          font-weight: bold;
+        }
+      }
+    }
+    .like-row.my-sit {
+      height: auto;
+    }
+
+    // Reports
+    .report-flag {
+      float: right;
+      margin-right: 20px;
+      margin-top: -20px;
+      color: $green;
+      &:hover {
+        cursor: pointer;
+        &:before {
+          content: "\f024";
+        }
+      }
+    }
+    .report-modal {
+      label {
+        text-align: left;
+      }
+      .form-group {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    // Prev/next clickable areas
+    .prev-next-row {
+      margin-top: 1em;
+      border-top: 1px $light-border solid;
+      .sit_preview {
+        a {
+          font-size: 0.8em;
+          transition: background-color 0.5s ease;
+          padding: 20px;
+          display: block;
+          width: 50%;
+          float: left;
+          height: 100px;
+          color: $dark-grey;
+          &:hover {
+            background-color: #eee;
+          }
+        }
+        .arrow {
+          width: 40px;
+          float: left;
+          font-size: 2em;
+          text-align: left;
+        }
+        .content {
+          width: calc(100% - 40px);
+          float: left;
+        }
+      }
+
+      // Next sit preview
+      .sit_preview.next {
+        a {
+          float: right;
+        }
+        .content {
+          text-align: right;
+        }
+        .arrow {
+          text-align: right;
+        }
+      }
+    }
+    .col-centered {
+      float: none;
+      text-align: center;
+      margin-bottom: -30px;
+    }
+    .private-warning {
+      float: left;
+      width: 100%;
+      margin: -30px 0 20px;
+      text-align: center;
+      padding: 10px;
+    }
+  }
+
+  // Comments section
+  .comments {
+    @include box-model;
+    padding: 60px 0 30px 0;
+    float: left;
+    width: 100%;
+    h3 {
+      margin-bottom: 20px;
+      color: $dark-grey;
+    }
+    .comment {
+      @include box-model;
+      float: left;
+      width: 100%;
+      padding: 10px;
+      border-top: 1px solid #CCC;
+      .avatar {
+        float: left;
+        width: 65px;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .comment-body {
+        margin: 20px 0;
+        font-size: 0.9em;
+      }
+      .user {
+        float: right;
+        min-width: 190px;
+        font-size: 0.7em;
+        font-style: italic;
+        margin: 10px 0 5px;
+        .delete-comment-form {
+          display: inline;
+          input[type='submit'] {
+            background: none;
+            padding: 0;
+            border: none;
+            margin: 0;
+            color: $link-color;
+            outline: none;
+            color: #999;
+            &:hover {
+              color: $link-color;
+            }
+          }
+        }
+      }
+    }
+    .new-comment {
+      float: left;
+      width: 100%;
+      .post-comment-btn {
+        margin-top: 1em;
+      }
+      .new_comment {
+        width: 98%;
+        margin-left: 9px;
+        .wysihtml5-toolbar {
+          display: none;
+        }
+      }
+    }
+  }
+  .back-button {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+}
+
+/* New sit */
+.new-sit,
+.edit-sit {
+  .sit_type {
+    margin-bottom: 2em;
+    label {
+      font-size: 18px;
+    }
+  }
+  .new-sit-title {
+    display: none;
+    clear: left;
+  }
+  #sit_duration {
+    display: inline;
+    width: 63px;
+    font-size: 30px;
+    height: 47px;
+  }
+  .privacy-options {
+    float: right;
+    .dropdown-menu {
+      padding: 5px 18px 18px 20px;
+      margin-left: -145px;
+      width: 235px;
+    }
+  }
+  .sit_body {
+    clear: left;
+  }
+  .custom-date {
+    width: 211px;
+  }
+  .delete-entry {
+    margin-left: 10px;
+  }
+  .help-block {
+    font-size: 0.8em;
+  }
+}
+
+// Sit Streak
+.streak {
+  float: left;
+  text-align: center;
+  width: 100%;
+  margin-top: 1em;
+  .label-success {
+    border: 2px solid $green;
+    background: $green;
+    border-radius: 5px;
+    color: white;
+    .fa-bolt {
+      color: white;
+    }
+  }
+}

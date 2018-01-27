@@ -1,0 +1,39 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+
+ *= require bootstrap-sass
+
+ *= require blocks/loading-bar
+ *= require blocks/notifications
+ *= require blocks/header
+
+ *= require pages/front
+ *= require pages/about
+ *= require pages/comment-teaser
+ *= require pages/contact
+ *= require pages/contribute
+ *= require pages/static-page
+ *= require pages/sign-in-up
+ *= require pages/sign-in
+ *= require pages/sign-up
+ *= require pages/goals
+ *= require pages/search
+
+ *= require sits
+ *= require users
+ *= require messages
+ *= require tags
+ *= require opensit
+
+ *= require font-awesome
+ *= require bootstrap-wysihtml5
+ *= require chosen
+ *= require bootstrap-datetimepicker
+ */

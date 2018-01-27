@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.1.5
+env:
+  - DB=postgresql
+script:
+  - RAILS_ENV=test POLTERGEIST=true bundle exec rake --trace db:migrate spec
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database opensit_test' -U postgres
+cache: bundler
+sudo: false
