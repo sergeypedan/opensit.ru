@@ -1,10 +1,51 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.5.0'
 
-gem 'rails', '4.2'
-gem 'rack'
-gem 'puma'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+gem 'airbrake'
+gem 'aws-sdk'
+gem 'bootstrap-sass'
+gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap3-datetimepicker-rails'
+# gem 'chosen-rails'
+gem 'coffee-rails'
+gem 'colorize'
+# gem 'compass-rails', github: 'Compass/compass-rails' # Required by chosen, needs to be explicit
+gem 'compass-rails'
+gem 'country_select'
+gem 'devise'
+gem 'font-awesome-rails'
+gem 'honeypot-captcha'
+gem 'jquery-rails', "2.3.0"
+gem 'jquery-turbolinks'
+gem 'localer'
+gem 'mini_magick'
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'newrelic_rpm'
 gem 'nokogiri'
+gem 'nprogress-rails'
+gem 'paperclip'
+gem 'pg', '~> 0.15'
+gem 'protected_attributes' # Smoother upgrade to rails 4, provides attr_accessible
+gem 'puma'
+gem 'rack'
+gem 'rails', '4.2.8'
+gem 'rails_12factor', group: :production
+gem 'rakismet'
+gem 'sass-rails'
+gem 'simple_form'
+gem 'slim-rails'
+gem 'split', require: 'split/dashboard'
+gem 'textacular'
+gem 'therubyracer'
+gem 'turbolinks'
+gem 'uglifier'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 group :development do
   gem 'better_errors'
@@ -16,15 +57,15 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
-  gem 'meta_request', '0.2.6'
-  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'meta_request'
+  # gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
   gem 'pry-coolline'
 
   # Guard shizzle
   gem 'rb-inotify', '~> 0.9', require: false # Only needed on Linux. May need to install libnotify with OS's package manager
   gem 'rb-fsevent', require: false # For OS X
-  gem 'guard', '>=2.1.0'
+  gem 'guard'
   gem 'guard-rspec' # Automatically runs specs when corresponding files change
   gem 'guard-rails'   # Reloads Rails server when cached files like those in /config change
   gem 'guard-livereload' # Sends signal to Livereload extension in browser to reload page
@@ -33,17 +74,8 @@ group :development, :test do
   gem 'letter_opener'
 end
 
-# Previously assets group
-gem 'sass-rails', '~> 4.0.2'
-gem 'bootstrap-sass'
-gem 'therubyracer'
-gem 'uglifier', '>= 1.0.3'
-gem 'momentjs-rails', '~> 2.5.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
-gem 'font-awesome-sass', '4.0.3.1'
-
 group :test do
-  gem 'capybara', ">= 2.2.0"
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'faker' # Generates names, emails and other placeholders for factories
   gem 'shoulda-matchers'
@@ -51,49 +83,3 @@ group :test do
   gem 'launchy'
   gem 'timecop'
 end
-
-gem 'pg'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
-gem 'protected_attributes' # Smoother upgrade to rails 4, provides attr_accessible
-gem 'textacular'
-gem 'split', :require => 'split/dashboard'
-
-# Devise authentication
-gem 'devise'
-
-# Classier solution for file uploads for Rails
-gem 'paperclip'
-gem 'aws-sdk'
-gem 'mini_magick'
-
-# Simple form with country select
-gem 'simple_form'
-gem 'country_select'
-gem 'chosen-rails'
-gem 'compass-rails', '2.0.0'
-# gem 'compass-rails', github: 'Compass/compass-rails' # Required by chosen, needs to be explicit
-gem 'bootstrap-wysihtml5-rails'
-gem "jquery-rails", "2.3.0"
-
-# Pagination
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
-
-# Admin/tracking
-gem 'newrelic_rpm'
-gem 'airbrake'
-
-# Heroku assets and logging
-gem 'rails_12factor', group: :production
-
-# loading bar
-gem 'nprogress-rails'
-
-# Prevent automated bots signing up
-gem 'honeypot-captcha'
-
-# Spam protection
-gem 'rakismet'
-
-gem 'colorize'
