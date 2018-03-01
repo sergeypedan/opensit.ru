@@ -1,0 +1,37 @@
+footer
+  .container
+    .col-md-3
+      p.header = t "footer.community"
+      ul
+        li = link_to "Twitter",  "https://twitter.com/opensit"
+        li = link_to "Facebook", "https://www.facebook.com/opensit.meditation"
+        li = link_to "Google+",  "https://www.google.com/+Opensitmeditation"
+
+
+    .col-md-3
+      p.header = t "footer.about"
+      ul
+        li = link_to t("footer.journal"), "http://danbartlett.co.uk/2014/05/15/7-reasons-to-start-a-meditation-journal/?utm_source=opensit&utm_content=footer_link", target: "_blank"
+        li = link_to t("footer.about"),    about_path
+        li = link_to t("footer.contacts"), contact_path
+
+
+    .col-md-3
+      p.header = t "footer.contribute"
+      ul
+        li = link_to t("footer.how_to_contribute"), "/contribute"
+        li = link_to t("footer.github"),            "http://github.com/danbartlett/opensit"
+
+
+    div class="copyright-holder col-md-3"
+      = image_tag "/images/default_250.png", class: "footer-logo"
+      p class="mobile-nav hidden"
+        => link_to t("footer.about"), "/about"
+        | —
+        =<> link_to t("footer.contribute"), "/contribute"
+        | —
+        =< link_to t("footer.contacts"), "/contact"
+      p.copyright
+        | &copy; 2013–
+        => Time.now.year
+        | OpenSit

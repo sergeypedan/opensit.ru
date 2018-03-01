@@ -1,0 +1,21 @@
+section.sign-in
+	.well
+		h1 = t "sign_in.welcome"
+
+		= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+			- if flash.any?
+				.alert.alert-danger
+					- flash.each do |name, msg|
+						= content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String)
+
+			= f.input :email,    placeholder: t("authorization.email"),    label: false, required: true
+			= f.input :password, placeholder: t("authorization.password"), label: false, required: true
+			small = link_to t("authorization.forgot_password"), new_password_path(resource_name) if devise_mapping.recoverable? && (controller_name != 'passwords')
+
+			= f.input :remember_me, as: :boolean, label: false, inline_label: t("authorization.remember") if devise_mapping.rememberable?
+
+			= f.submit t("authorization.sign_in"), class: 'btn btn-primary btn-lg btn-block'
+
+		hr/
+		= render "devise/shared/links"
