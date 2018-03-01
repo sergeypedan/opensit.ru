@@ -54,14 +54,13 @@ en:
 
   sign_in:
     welcome: Welcome back!
-    email: Your email
-    password: Password
-    remember:
-    button: Login
 
   authorization:
+    remember: Remember me
+    password: Password
+    email: Email
     already: Already signed up?
-    sign_in: Login
+    sign_in: Log in
     sign_up: Sign up
     forgot_password: Forgot your password?
     miss_confirmation: Didn't receive confirmation instructions?
@@ -75,3 +74,16 @@ en:
     add_first_sit: Add your first sit
     latest: LATEST
     view_full_journal: "View full meditation journal &rarr;"
+
+  welcome_screen:
+    title: Welcome to our community!
+    subtitle: Here's a few things you should know.
+    li1:
+      start: Try
+      link: setting a goal
+      end: and get feedback on how well you're doing.
+    li2:
+      start: Your journal is public by default. That means anyone can read it. There is also a private journal option under
+      link: My profile
+    li3: Keep up to date with us!
+    button: OK, got it!
