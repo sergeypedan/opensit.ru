@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require chosen-jquery
+//  require chosen-1.8.3/chosen-jquery
 //= require bootstrap-wysihtml5
 //= require bootstrap/dropdown
 //= require bootstrap/tooltip
