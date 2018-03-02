@@ -19,30 +19,39 @@
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
             <li <%='class=active' if current_page?(notifications_path) %>>
-            <%= link_to(notifications_path, title: 'Notifications', class: 'nav-option') do %>
-              <%= new_notifications(current_user) %>
-            <% end %></li>
-            <li <%='class=active' if current_page?(new_sit_path) %>>
-            <%= link_to(new_sit_path, title: 'Add sit', class: 'nav-option') do %>
-              <i class="fa fa-plus"></i> <span class="nav-button-text">New</span>
-            <% end %></li>
-            <li <%='class=active' if current_page?(user_path(current_user)) %>>
-            <%= link_to(user_path(current_user), title: 'Me', class: 'nav-option') do %>
-              <i class="fa fa-user"></i> <span class="nav-button-text">Me</span>
-            <% end %></li>
-            <li <%='class=active' if current_page?(goals_path) %>>
-            <%= link_to(goals_path, title: 'Goals', class: 'nav-option') do %>
-              <i class="fa fa-bullseye"></i> <span class="nav-button-text">Goals</span>
-            <% end %></li>
-            <li <%='class=active' if current_page?(explore_path) %>>
-            <%= link_to(explore_path, title: 'Explore', class: 'nav-option') do %>
-              <i class="fa fa-globe"></i> <span class="nav-button-text">Explore</span>
-            <% end %></li>
+              <%= link_to new_notifications(current_user), notifications_path, title: 'Notifications', class: 'nav-option' %>
+            </li>
+
+            <%= content_tag :li, class: ('active' if current_page?(new_sit_path)) do %>
+              <%= link_to new_sit_path, title: t("menu.add_sit"), class: 'nav-option' do %>
+                <%= fa_icon "plus" %>
+                <span class="nav-button-text"><%= t("menu.add_sit") %></span>
+              <% end %>
+            <% end %>
+
+            <%= content_tag :li, class: ('active' if current_page?(user_path(current_user))) do %>
+              <%= link_to user_path(current_user), title: t("menu.me"), class: 'nav-option' do %>
+                <%= fa_icon "user" %>
+                <span class="nav-button-text"><%= t("menu.me") %></span>
+              <% end %>
+            <% end %>
+
+            <%= content_tag :li, class: ('active' if current_page?(goals_path)) do %>
+              <%= link_to goals_path, title: t("menu.goals"), class: 'nav-option' do %>
+                <%= fa_icon "bullseye" %>
+                <span class="nav-button-text"><%= t("menu.goals") %></span>
+              <% end %>
+            <% end %>
+
+            <%= content_tag :li, class: ('active' if current_page?(explore_path)) do %>
+              <%= link_to explore_path, title: t("menu.explore"), class: 'nav-option' do %>
+                <%= fa_icon "globe" %>
+                <span class="nav-button-text"><%= t("menu.explore") %></span>
+              <% end %>
+            <% end %>
           <% else %>
             <% if !current_page?(new_user_session_path) %>
-              <p class="navbar-text">
-                <%= link_to t("authorization.sign_in"), "/users/sign_in", class: "btn btn-primary" %>
-              </p>
+              <p class="navbar-text"><%= link_to t("authorization.sign_in"), "/users/sign_in", class: "btn btn-primary" %></p>
             <% end %>
           <% end %>
           <i class="loading-indicator fa fa-spinner fa-spin"></i>
@@ -60,18 +69,19 @@
                   </div>
                 </form>
               </li>
+
               <li <%='class=active' if current_page?(messages_path) %>>
-              <%= link_to(messages_path, class: 'pull-left', title: 'Inbox', class: 'nav-option') do %>
-                <i class="fa fa-envelope"></i> <span class="unread-count"><%= current_user.unread_count %></span>
-              <% end %>
+                <%= link_to(messages_path, class: 'pull-left', title: 'Inbox', class: 'nav-option') do %>
+                  <%= fa_icon "envelope" %>
+                  <span class="unread-count"><%= current_user.unread_count %></span>
+                <% end %>
               </li>
+
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= small_avatar_of(current_user, 'nav') %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to edit_user_registration_path do %>
-                    <i class="fa fa-user"></i> &nbsp;My profile <% end %></li>
-                  <li><%= link_to(destroy_user_session_path, :method => :delete) do %>
-                  <i class="fa fa-sign-out"></i> &nbsp;Sign out <% end %></li>
+                  <li><%= link_to fa_icon("user", text: t("menu.profile")), edit_user_registration_path %></li>
+                  <li><%= link_to fa_icon("sign-out", text: t("menu.logout")), destroy_user_session_path, method: :delete %></li>
                 </ul>
               </li>
             </ul>
@@ -86,8 +96,8 @@
     <div class="container">
       <div class="navbar-header">
         <div class="nav-text">
-          <a href="/"><%= image_tag 'logomark_trans.png', class: 'nav-logomark' %></a>
-          OpenSit <span class="expanded">is a place to share and develop your meditation practice &mdash;</span> <a href="<%=new_user_registration_path%>" class="btn btn-default btn-primary">Sign up</a> or <a href="<%=new_user_session_path%>" class="login-link">Login</a>
+          <%= link_to image_tag('logomark_trans.png', class: 'nav-logomark'), root_path %>
+          OpenSit <span class="expanded">is a place to share and develop your meditation practice &mdash;</span> <a href="<%=new_user_registration_path %>" class="btn btn-default btn-primary">Sign up</a> or <a href="<%=new_user_session_path%>" class="login-link">Login</a>
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ javascript:
         .icon = fa_icon "share"
         .text
           = t("welcome_screen.li3")
-          = tag.div class: "fb-like", data: { href: "http://opensit.com", layout: "button_count", action: "like", show_faces: true, share: false }
+          = content_tag :div, nil, class: "fb-like", data: { href: "http://opensit.com", layout: "button_count", action: "like", show_faces: true, share: false }
           .twitter-follow-container
             = link_to "Follow @opensit", "https://twitter.com/opensit", class: "twitter-follow-button", data: { dnt: true, show_count: false }
             javascript:

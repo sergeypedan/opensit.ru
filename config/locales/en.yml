@@ -87,3 +87,21 @@ en:
       link: My profile
     li3: Keep up to date with us!
     button: OK, got it!
+
+  menu:
+    profile: My profile
+    logout: Sign out
+    goals: Goals
+    me: Me
+    add_sit: Add sit
+    explore: Explore
+
+  profile:
+    empty:
+      title: Your profile is empty!
+      subtitle: Tell us a bit more about yourself.
+      button: Start my profile
+    feed:
+      empty: Nothing to see here, yet
+      nothing_this_month:
+      sat:
