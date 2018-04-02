@@ -1,0 +1,14 @@
+ruby:
+	text =  if request.referrer =~ /search/
+						"search results"
+					elsif request.referrer =~ /explore/
+						"explore"
+					elsif request.referrer =~ /tags/
+						"tag"
+					elsif request.referrer =~ /favs/
+						"favourites"
+					elsif request.referrer =~ /u/
+						"timeline"
+					end
+
+= link_to request.referrer, "← Back to #{text}", class: "back-button btn btn-default"
