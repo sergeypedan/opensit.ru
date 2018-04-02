@@ -27,4 +27,4 @@ production:
   pool: 5
   timeout: 5000
   username: root
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  # password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
