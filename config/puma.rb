@@ -17,7 +17,7 @@ port ENV.fetch("PUMA_PORT") { 3000 }
 rackup "#{app_dir}/config.ru"
 state_path "#{pids_dir}/puma.state"
 stdout_redirect "#{log_dir}/access.log", "#{log_dir}/errors.log", true
-threads 1, Integer(ENV.fetch("MAX_THREADS") { 6 }) # Min and Max threads per worker
+threads 1, Integer(ENV.fetch("MAX_THREADS") { 6 })  # Min and Max threads per worker
 workers Integer(ENV.fetch("WEB_CONCURRENCY") { 1 }) # Change to match your CPU core count
 
 
