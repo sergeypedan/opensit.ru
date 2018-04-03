@@ -3,11 +3,12 @@ require 'textacular/searchable'
 class User < ActiveRecord::Base
   # Spam
   include Rakismet::Model
-  rakismet_attrs :author => :username,
-    :author_email => :email,
-    :author_url => :website,
-    :content => :who,
-    :user_ip => :current_sign_in_ip
+
+  rakismet_attrs author: :username,
+                 author_email: :email,
+                 author_url: :website,
+                 content: :who,
+                 user_ip: :current_sign_in_ip
 
   attr_accessible :city, :country, :website, :default_sit_length, :dob,
                   :password, :email, :first_name, :gender, :last_name,
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
                   :who, :why, :password_confirmation, :remember_me, :avatar,
                   :private_stream
 
-  has_many :sits, :dependent => :destroy
+  has_many :sits, dependent: :destroy
   has_many :messages_received, -> { where receiver_deleted: false }, class_name: 'Message', foreign_key: 'to_user_id'
   has_many :messages_sent, -> { where sender_deleted: false }, class_name: 'Message', foreign_key: 'from_user_id'
   has_many :comments, :dependent => :destroy
