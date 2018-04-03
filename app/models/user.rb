@@ -107,13 +107,11 @@ class User < ActiveRecord::Base
   end
 
   def sits_by_month(month: month, year: year)
-    sits.where("EXTRACT(year FROM created_at) = ?
-      AND EXTRACT(month FROM created_at) = ?", year.to_s, month.to_s.rjust(2, '0'))
+    sits.where("EXTRACT(year FROM created_at) = ? AND EXTRACT(month FROM created_at) = ?", year.to_s, month.to_s.rjust(2, '0'))
   end
 
   def time_sat_this_month(month: month, year: year)
-    minutes = sits.where("EXTRACT(year FROM created_at) = ?
-      AND EXTRACT(month FROM created_at) = ?", year.to_s, month.to_s.rjust(2, '0')).sum(:duration)
+    minutes = sits.where("EXTRACT(year FROM created_at) = ? AND EXTRACT(month FROM created_at) = ?", year.to_s, month.to_s.rjust(2, '0')).sum(:duration)
     total_time = minutes.divmod(60)
     text = "#{total_time[0]} hours"
     text << " #{total_time[1]} minutes" if !total_time[1].zero?
@@ -131,13 +129,14 @@ class User < ActiveRecord::Base
     @stats = {}
     @stats[:days_sat_this_month] = days_sat_in_date_range(Date.new(year.to_i, month.to_i, 01), Date.new(year.to_i, month.to_i, -1))
     @stats[:time_sat_this_month] = time_sat_this_month(month: month, year: year)
-    @stats[:entries_this_month] = sits_by_month(month: month, year: year).count
+    @stats[:entries_this_month]  = sits_by_month(month: month, year: year).count
     @stats
   end
 
   # Returns the number of days, in a date range, where the user sat
   def days_sat_in_date_range(start_date, end_date)
-    all_dates = sits.where(created_at: start_date.beginning_of_day..end_date.end_of_day).order('created_at DESC').pluck(:created_at)
+    range = start_date.beginning_of_day..end_date.end_of_day
+    all_dates = sits.where(created_at: range).order(created_at: :desc).pluck(:created_at)
     last_one = total = 0
     # Dates are ordered so just check the current date aint the same day as the one before
     # This stops multiple sits in one day incrementing the total by more than 1
@@ -159,7 +158,8 @@ class User < ActiveRecord::Base
 
   # Returns the number of days, in a date range, where user sat for a minimum x minutes that day
   def days_sat_for_min_x_minutes_in_date_range(duration, start_date, end_date)
-    all_sits = sits.without_diaries.where(created_at: start_date.beginning_of_day..end_date.end_of_day).order('created_at DESC')
+    range = start_date.beginning_of_day..end_date.end_of_day
+    all_sits = sits.without_diaries.where(created_at: range).order(created_at: :desc)
     all_datetimes = all_sits.pluck(:created_at)
     all_dates = []
     all_datetimes.each do |d|
