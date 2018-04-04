@@ -39,7 +39,6 @@ Opensit::Application.routes.draw do
     resources :comments
   end
 
-
   resources :favourites, only: [:create, :destroy]
   resources :goals
   resources :likes, only: [:create, :destroy]
