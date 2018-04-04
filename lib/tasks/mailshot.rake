@@ -2,7 +2,7 @@ desc "Mass mail, with skip and limit to help with 200 a day limit"
 task :mailshot => :environment do
 
   limit = ARGV.select{|a| a =~ /limit=/}.last
-  skip = ARGV.select{|a| a =~ /skip=/}.last
+  skip  = ARGV.select{|a| a =~ /skip=/}.last
 
   if limit
     limit = limit.split("=").last
@@ -22,8 +22,8 @@ task :mailshot => :environment do
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
+    :user_name      => Rails.application.secrets.sendgrid['username'],
+    :password       => Rails.application.secrets.sendgrid['password'],
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
