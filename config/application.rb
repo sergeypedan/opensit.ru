@@ -4,7 +4,7 @@ require File.expand_path('../boot', __FILE__)
 require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-# require "active_resource/railtie"    <--- comment out this line
+# require "active_resource/railtie"
 
 if defined?(Bundler)
   # Require the gems listed in Gemfile, including any gems
@@ -35,7 +35,6 @@ module Opensit
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ru
-    # config.i18n.default_locale = :en
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -67,12 +66,12 @@ module Opensit
     # when rails generators are used.
     config.generators do |g|
       g.test_framework :rspec,
-        fixtures: true,
-        view_specs: false,
-        helper_specs: true,
-        routing_specs: false,
-        controller_specs: true,
-        request_specs: true
+                        fixtures: false,
+                        view_specs: false,
+                        helper_specs: false,
+                        routing_specs: false,
+                        controller_specs: false,
+                        request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
