@@ -35,8 +35,8 @@
 /public/assets
 /public/packs
 /public/packs-test
-/public/uploads
 /public/system
+/public/uploads
 /spec/tmp
 /tmp
 /vendor/assets/bower_components
@@ -52,5 +52,6 @@ gemsurance_report.html
 icon
 pickle-email-*.html
 rerun.txt
+secrets.yml
 todo.md
 yarn-debug.log*
