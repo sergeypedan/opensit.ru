@@ -56,7 +56,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'meta_request'
   # gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
