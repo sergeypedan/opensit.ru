@@ -20,7 +20,7 @@ gem 'country_select'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'honeypot-captcha'
-gem 'jquery-rails', "2.3.0"
+gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'localer'
 gem 'mini_magick'
