@@ -73,15 +73,13 @@ module Opensit
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
-    config.secret_key_base = 'paticcasamuppada'
-
     I18n.enforce_available_locales = false
 
     config.to_prepare do
       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "sign_up" }
     end
 
-    config.rakismet.key = '0f50d698ebf4'
-    config.rakismet.url = 'http://opensit.com/'
+    config.rakismet.key = Rails.application.secrets.rakismet_key
+    config.rakismet.url = Rails.application.secrets.rakismet_url
   end
 end

@@ -16,7 +16,7 @@ task :mailshot => :environment do
     skip = 0
   end
 
-  ActionMailer::Base.default_url_options = { :host => 'opensit.com' }
+  ActionMailer::Base.default_url_options = { host: Rails.application.secrets.domain }
 
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
