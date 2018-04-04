@@ -60,9 +60,6 @@ module Opensit
     # Heroku requires this to be false
     config.assets.initialize_on_precompile = false
 
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.1'
-
     # Settings for rspec to generate corresponding specs and factories
     # when rails generators are used.
     config.generators do |g|
