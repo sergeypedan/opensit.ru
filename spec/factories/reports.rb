@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :report do
     reason { Faker::Lorem.characters(20) }
     body { Faker::Lorem.characters(50) }

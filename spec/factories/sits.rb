@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :sit do
     body "I done a meditate."
     s_type 0

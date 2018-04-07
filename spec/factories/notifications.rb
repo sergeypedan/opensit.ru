@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :notification do
     message { Faker::Lorem.sentence(10) }
     sequence :user_id do |n|

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :favourite do
     sequence :user_id do |n|
       n
