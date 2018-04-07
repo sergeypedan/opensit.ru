@@ -1,12 +1,5 @@
 footer
   .container
-    .col-md-3
-      p.header = t "footer.community"
-      ul
-        li = link_to "Twitter",  "https://twitter.com/#{Rails.application.secrets.twitter_id}"
-        li = link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}"
-        li = link_to "Google+",  "https://www.google.com/+#{Rails.application.secrets.google_plus_id}"
-
 
     .col-md-3
       p.header = t "footer.about"
@@ -15,6 +8,12 @@ footer
         li = link_to t("footer.about"),    about_path
         li = link_to t("footer.contacts"), contact_path
 
+    .col-md-3
+      / p.header = t "footer.community"
+      / ul
+      /   li = link_to "Twitter",  "https://twitter.com/#{Rails.application.secrets.twitter_id}"
+      /   li = link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}"
+      /   li = link_to "Google+",  "https://www.google.com/+#{Rails.application.secrets.google_plus_id}"
 
     .col-md-3
       / p.header = t "footer.contribute"
@@ -22,8 +21,7 @@ footer
       /   li = link_to t("footer.how_to_contribute"), "/contribute"
       /   li = link_to t("footer.github"), "http://github.com/#{Rails.application.secrets.github_id}"
 
-
-    div class="copyright-holder col-md-3"
+    .col-md-3.copyright-holder
       = image_tag "/images/default_250.png", class: "footer-logo"
       p class="mobile-nav hidden"
         => link_to t("footer.about"), "/about"
