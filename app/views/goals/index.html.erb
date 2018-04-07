@@ -26,7 +26,7 @@
 
 				<% @goals.each do |g| %>
 					<% if !g.completed? %>
-						<%= render :partial => 'goal', locals: { goal: g, completed: false } %>
+						<%= render partial: "goal", locals: { goal: g, completed: false } %>
 					<% end %>
 				<% end %>
 			</div>
@@ -39,7 +39,7 @@
 			<div class="col-md-12 completed-goals">
 				<% @goals.each do |g| %>
 					<% if g.completed? %>
-						<%= render :partial => 'goal', locals: { goal: g, completed: true } %>
+						<%= render partial: "goal", locals: { goal: g, completed: true } %>
 					<% end %>
 				<% end %>
 			</div>

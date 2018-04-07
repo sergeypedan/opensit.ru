@@ -1,0 +1,6 @@
+/ After AJAX load, form has no access to @sit so reload it
+- @sit ||= Sit.find(params[:favourite][:favourable_id])
+
+= form_for @sit.favourites.find_by_user_id(current_user.id), html: { method: :delete }, remote: true do |f|
+	= f.hidden_field :favourable_id, value: @sit.id
+  = link_to fa_icon('bookmark'), '#', title: 'Remove from favourites', class: 'toggle-favourite'

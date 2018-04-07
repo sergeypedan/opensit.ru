@@ -1,0 +1,12 @@
+.sit-container
+	.tile.stamp.col-md-3.header-tile
+		.content
+			h2 My Favourites
+			p
+        strong> Tip!
+        | Click
+        =<> fa_icon "bookmark-o"
+        | on any sit to save it to your favourites.
+
+	- @fav_sits.each do |f|
+	  = render partial: 'shared/sit_teaser_block', locals: { sit: f, width: 3 }

@@ -3,9 +3,7 @@
   <%= render 'explore_tile' %>
 
   <% @sits.each do |sit| %>
-
-    <%= render :partial => 'shared/sit_teaser_block', :locals => { :sit => sit, :width => '3' } %>
-
+    <%= render partial: 'shared/sit_teaser_block', locals: { sit: sit, width: 3 } %>
   <% end %>
 
 </div>

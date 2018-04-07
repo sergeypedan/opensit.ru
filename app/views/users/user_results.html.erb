@@ -5,7 +5,7 @@
 <div class="clearfix col-md-9">
 	<% if !@users.empty? %>
 		<% @users.each do |user| %>
-			<%= render :partial => 'shared/user', :locals => { :u => user } %>
+			<%= render partial: 'shared/user', locals: { u: user } %>
 		<% end %>
 	<% else %>
 		<div class="message-box"><h2>No matches</h2></div>

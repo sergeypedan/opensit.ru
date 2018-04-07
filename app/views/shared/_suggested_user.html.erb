@@ -9,5 +9,5 @@
     </div>
     <div class="sit-count"><%= pluralize(suggested_user.sits.count, 'sit') %></div>
   </div>
-  <%= render :partial => "shared/follow_button", :locals => { :user => suggested_user } %>
+  <%= render partial: "shared/follow_button", locals: { user: suggested_user } %>
 </div>

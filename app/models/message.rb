@@ -1,13 +1,14 @@
 class Message < ActiveRecord::Base
-  belongs_to :from_user,  :class_name => 'User'
-  belongs_to :to_user,    :class_name => 'User'
+
+  belongs_to :from_user, class_name: 'User'
+  belongs_to :to_user,   class_name: 'User'
 
   attr_accessible :body, :subject, :from_user_id, :to_user_id, :read
 
-  validates :body, :from_user_id, :to_user_id, :presence => true
+  validates :body, :from_user_id, :to_user_id, presence: true
 
   scope :unread, -> { where(read: false) }
-  scope :newest_first, -> { order("created_at DESC") }
+  scope :newest_first, -> { order(created_at: :desc) }
 
   ##
   # VIRTUAL ATTRIBUTES

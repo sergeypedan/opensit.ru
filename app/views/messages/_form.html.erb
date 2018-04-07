@@ -1,16 +1,11 @@
-<%= simple_form_for(@message, :html => { :class => 'form-horizontal'}) do |f| %>
+<%= simple_form_for(@message, html: { class: 'form-horizontal'}) do |f| %>
   <% if @message.errors.any? %>
-    <div class="alert alert-danger">
-      Please complete the required fields.
-    </div>
+    <div class="alert alert-danger">Please complete the required fields.</div>
   <% end %>
 
 	<%= form_element(f, :to_user_id, 'message', "To", 4, { label: false, collection: @current_user.followed_users, label_method: 'username', input_html: { multiple: false, data: { placeholder: 'Choose a user'}, class: 'chzn-select' } }) %>
-
 	<%= form_element(f, :subject, 'message', "Subject", 4, { label: false }) %>
-
 	<%= form_element(f, :body, 'message', "Body", 9, { label: false, input_html: { class: 'rich-textarea', rows: 10 } }) %>
-
-  <%= f.submit 'Send message', :class => 'btn btn-lg btn-primary' %>
+  <%= f.submit 'Send message', class: 'btn btn-lg btn-primary' %>
 
 <% end %>

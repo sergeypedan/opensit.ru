@@ -1,0 +1,34 @@
+.section.sign-up-box
+  .well.col-sm-8
+
+    .row
+      .brand-header
+        = image_tag 'logomark_trans.png', class: 'main-logo'
+        p.opensit opensit
+
+    - unless I18n.locale == :ru
+      h1 = t "sign_up.h1"
+
+    .row
+      .left.col-md-offset-3.col-md-6
+
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { honeypot: true } ) do |f|
+          = f.error_notification
+          = f.input :username, placeholder: t("sign_up.form.username"), label: false, required: true, input_html: { autocomplete: true }
+          = f.input :email,    placeholder: t("sign_up.form.email"),    label: false, required: true, input_html: { autocomplete: true }
+          = f.input :password, placeholder: t("sign_up.form.password"), label: false, required: true, input_html: { autocomplete: true }
+          = f.submit t("sign_up.form.button"), class: 'btn btn-primary btn-lg cta pull-left'
+          .sign_in_link
+            = t "authorization.already"
+            = link_to t("authorization.sign_in"), new_user_session_path
+
+    .row.col-md-12
+      .our-community
+        h2 = t "sign_up.global_community"
+        - @users.each do |u|
+          .user-snippet
+            = sign_up_avatar(u)
+            .details = u.display_name
+            br
+            = u.location
+

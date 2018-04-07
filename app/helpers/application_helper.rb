@@ -23,7 +23,7 @@ module ApplicationHelper
 	end
 
   def tag_labels(tags)
-    raw tags.map { |t| link_to t.name, tag_path(t.name), :class => 'label label-default tag-label' }.join
+    raw tags.map { |t| link_to t.name, tag_path(t.name), class: 'label label-default tag-label' }.join
   end
 
   def new_notifications(user)

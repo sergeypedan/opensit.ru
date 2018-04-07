@@ -1,13 +1,13 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :sit
-  has_many :likes, :as => :likeable
+  has_many :likes, as: :likeable
 
   attr_accessible :body, :sit_id, :user_id
 
-  validates :body, :presence => true
+  validates :body, presence: true
 
-  scope :newest_first, -> { order("created_at DESC") }
+  scope :newest_first, -> { order(created_at: :desc) }
 
   self.per_page = 10
 

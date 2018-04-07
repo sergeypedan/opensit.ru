@@ -3,10 +3,10 @@
 </div>
 
 <div class="clearfix col-md-9">
-	<%= render :partial => "big_search" %>
+	<%= render partial: "big_search" %>
 	<% if !@sits.empty? %>
 		<% @sits.each do |sit| %>
-		  <%= render :partial => 'shared/sit_teaser', :locals => { :sit => sit } %>
+		  <%= render partial: "shared/sit_teaser", locals: { sit: sit } %>
 		<% end %>
 	<% else %>
 		<div class="message-box"><h2>No matches</h2></div>

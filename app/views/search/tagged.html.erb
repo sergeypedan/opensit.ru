@@ -3,10 +3,10 @@
 </div>
 
 <div class="clearfix col-md-9">
-	<%= render :partial => "big_search" %>
+	<%= render partial: "big_search" %>
 	<% if @tagged && !@tagged.empty? %>
 		<% @tagged.each do |sit| %>
-		  <%= render :partial => 'shared/sit_teaser', :locals => { :sit => sit } %>
+		  <%= render partial: "shared/sit_teaser", locals: { sit: sit } %>
 		<% end %>
 		<div class="pagination-container">
 				<%= will_paginate @tagged, renderer: BootstrapPagination::Rails %>

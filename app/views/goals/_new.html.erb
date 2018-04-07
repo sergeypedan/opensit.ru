@@ -1,4 +1,4 @@
-<%= simple_form_for(Goal.new, :html => { :id => 'new_goal_form' }) do |f| %>
+<%= simple_form_for(Goal.new, html: { id: 'new_goal_form' }) do |f| %>
 	<select id="goal_type" class="form-control" name="goal[type]">
 		<option value="ongoing">Ongoing</option>
 		<option value="fixed">Time limited</option>

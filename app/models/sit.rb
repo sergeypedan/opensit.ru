@@ -5,21 +5,21 @@ class Sit < ActiveRecord::Base
                   :body, :title, :created_at, :user_id, :views
 
   belongs_to :user, counter_cache: true
-  has_many :comments, :dependent => :destroy
+  has_many :comments, dependent: :destroy
   has_many :taggings
   has_many :tags, through: :taggings
-  has_many :favourites, :as => :favourable
-  has_many :likes, :as => :likeable
-  has_many :reports, :as => :reportable
+  has_many :favourites, as: :favourable
+  has_many :likes, as: :likeable
+  has_many :reports, as: :reportable
 
-  validates :s_type, :presence => true
-  validates :title, :presence => true, :if => "s_type != 0"
-  validates :duration, :presence => true, :if => "s_type == 0"
+  validates :s_type, presence: true
+  validates :title, presence: true, if: "s_type != 0"
+  validates :duration, presence: true, if: "s_type == 0"
   validates_numericality_of :duration, greater_than: 0, only_integer: true
 
   # Scopes
   scope :communal, -> { where(private: false) }
-  scope :newest_first, -> { order("created_at DESC") }
+  scope :newest_first, -> { order(created_at: :desc) }
   scope :today, -> { where("DATE(created_at) = ?", Date.today) }
   scope :yesterday, -> { where("DATE(created_at) = ?", Date.yesterday) }
   scope :with_body, -> { where.not(body: '')}

@@ -1,4 +1,4 @@
-<%= simple_form_for(@sit, :html => { :class => 'form-horizontal'}) do |f| %>
+<%= simple_form_for(@sit, html: { class: 'form-horizontal'}) do |f| %>
   <% if @sit.errors.any? %>
     <div class="alert alert-danger">
       Please fill in the required fields.
@@ -6,7 +6,7 @@
   <% end %>
 
   <%= if controller.action_name == 'edit'
-    link_to 'Delete', sit_path(@sit), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger delete-entry pull-right'
+    link_to 'Delete', sit_path(@sit), method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger delete-entry pull-right'
     end %>
 
   <% if !current_user.private_stream %>
@@ -84,7 +84,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit :class => 'btn btn-lg btn-primary' %>
+      <%= f.submit class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
 

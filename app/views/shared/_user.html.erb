@@ -14,7 +14,7 @@
 	  <div class="location">
 	  <%= "#{u.location}." if u.location %>
 	  <span class="joined">Joined <%= joined_date(u) %></span></div>
-	  <%= render :partial => "shared/follow_button", :locals => { :user => u } %>
+	  <%= render partial: "shared/follow_button", locals: { user: u } %>
 	 </div>
 	 <div>
 

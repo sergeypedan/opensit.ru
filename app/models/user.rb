@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :sits, dependent: :destroy
   has_many :messages_received, -> { where receiver_deleted: false }, class_name: 'Message', foreign_key: 'to_user_id'
   has_many :messages_sent, -> { where sender_deleted: false }, class_name: 'Message', foreign_key: 'from_user_id'
-  has_many :comments, :dependent => :destroy
+  has_many :comments, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
@@ -27,14 +27,14 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :likes, dependent: :destroy
-  has_many :notifications, :dependent => :destroy
+  has_many :notifications, dependent: :destroy
   has_many :favourites, dependent: :destroy
   has_many :favourite_sits, through: :favourites,
                             source: :favourable,
                             source_type: "Sit"
-  has_many :goals, :dependent => :destroy
+  has_many :goals, dependent: :destroy
 
-  has_many :reports, :dependent => :destroy
+  has_many :reports, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   # Scopes
-  scope :newest_first, -> { order("created_at DESC") }
+  scope :newest_first, -> { order(created_at: :desc) }
   scope :communal, -> { where(private: false) }
 
   MODERATOR_USERNAMES = ['danbartlett', 'Bluemoon', 'WhipWhompnWhoopWhoop']
