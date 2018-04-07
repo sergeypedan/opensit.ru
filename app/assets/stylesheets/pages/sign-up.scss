@@ -3,7 +3,10 @@
 .sign-up-box {
   .alert { width: inherit; }
   .well {
-    margin: 25px auto 25px auto;
+    margin: 35px auto;
+    max-width: 950px;
+    padding-top: 30px;
+    padding-bottom: 40px;
   }
   h1 {
     text-align: center;
@@ -20,16 +23,21 @@
     font-size: 1.2em;
   }
   .left {
+    max-width: 455px;
+    margin: 0 auto;
+
     .cta {
       width: 100%;
     }
-    .sign_in_link {
-      margin-top: 15px;
-      text-align: center;
-      color: $dark-grey;
-      font-size: 0.8em;
-    }
   }
+
+  .sign_in_link {
+    margin-top: 15px;
+    text-align: center;
+    color: $dark-grey;
+    font-size: 0.8em;
+  }
+
   .our-community {
     float: left;
     width: 100%;
