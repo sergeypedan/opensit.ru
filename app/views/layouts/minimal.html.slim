@@ -1,7 +1,7 @@
 doctype html
 html lang="ru"
   = render "layouts/head"
-  body class=@page_class == yield
-
-  = render 'layouts/footer'
-  = stylesheet_link_tag "vendor"
+  body class=@page_class
+    == yield
+    = render 'layouts/footer'
+    = stylesheet_link_tag "vendor"
