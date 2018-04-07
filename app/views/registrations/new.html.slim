@@ -22,7 +22,7 @@
             = t "authorization.already"
             =< link_to t("authorization.sign_in"), new_user_session_path
 
-    .row.col-md-12
+    - if @users.any?
       .our-community
         h2 = t "sign_up.global_community"
         - @users.each do |u|
