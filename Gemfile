@@ -54,32 +54,21 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'rspec-collection_matchers'
   gem 'factory_bot_rails'
+  gem 'letter_opener'
   gem 'meta_request'
-  # gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
   gem 'pry-coolline'
-
-  # Guard shizzle
-  gem 'rb-inotify', '~> 0.9', require: false # Only needed on Linux. May need to install libnotify with OS's package manager
-  gem 'rb-fsevent', require: false # For OS X
-  gem 'guard'
-  gem 'guard-rspec' # Automatically runs specs when corresponding files change
-  gem 'guard-rails'   # Reloads Rails server when cached files like those in /config change
-  gem 'guard-livereload' # Sends signal to Livereload extension in browser to reload page
-  gem 'guard-migrate' # Automatically runs migrations when needed
-  gem 'terminal-notifier-guard', require: false
-  gem 'letter_opener'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'faker' # Generates names, emails and other placeholders for factories
-  gem 'shoulda-matchers'
-  gem 'poltergeist'
   gem 'launchy'
+  gem 'poltergeist'
+  gem 'shoulda-matchers'
   gem 'timecop'
 end
