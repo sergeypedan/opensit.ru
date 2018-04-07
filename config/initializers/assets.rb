@@ -12,6 +12,8 @@ Rails.application.config.assets.precompile += [
   "application.css",
   "application.js",
   "bootstrap-customized.css",
+  "mail/common.css",
+  "mail/previewer.css",
   "vendor.js",
   "vendor.css"
 ]
