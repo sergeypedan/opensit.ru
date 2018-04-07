@@ -35,7 +35,7 @@ Opensit::Application.configure do
     storage: :s3,
     s3_credentials: {
       bucket: 'opensit',
-      access_key_id: Rails.application.secrets.aws_id,
+      access_key_id:     Rails.application.secrets.aws_id,
       secret_access_key: Rails.application.secrets.aws_key
     }
   }
