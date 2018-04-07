@@ -54,14 +54,16 @@ Opensit::Application.configure do
 
   config.action_mailer.default_url_options = { host: Rails.application.secrets.domain }
 
-  ActionMailer::Base.smtp_settings = {
-    address:        'smtp.sendgrid.net',
-    port:           '587',
-    authentication: :plain,
-    user_name:      Rails.application.secrets.sendgrid_username,
-    password:       Rails.application.secrets.sendgrid_password,
-    domain:         'heroku.com',
-    enable_starttls_auto: true
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.mailgun.com",
+    authentication:       :plain,
+    domain:               Rails.application.secrets.domain,
+    enable_starttls_auto: true, # false, если возникает SSL-ошибка о сертификате
+    password:             Rails.application.secrets.mailgun_password,
+    port:                 587,
+    user_name:            Rails.application.secrets.mailgun_username
   }
 
   # Enable threaded mode
