@@ -1,0 +1,15 @@
+//= require jquery
+//= require jquery.turbolinks
+//= require jquery_ujs
+//= require chosen-1.8.3/chosen.jquery
+//= require bootstrap-wysihtml5
+//= require bootstrap/dropdown
+//= require bootstrap/tooltip
+//= require bootstrap/popover
+//= require bootstrap/modal
+//= require bootstrap/collapse
+//= require moment
+//= require bootstrap-datetimepicker
+//= require turbolinks
+//= require nprogress
+//= require nprogress-turbolinks
