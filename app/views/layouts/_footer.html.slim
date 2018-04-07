@@ -11,16 +11,16 @@ footer
     .col-md-3
       p.header = t "footer.about"
       ul
-        li = link_to t("footer.journal"), "http://danbartlett.co.uk/2014/05/15/7-reasons-to-start-a-meditation-journal", target: "_blank"
+        / li = link_to t("footer.journal"), "http://danbartlett.co.uk/2014/05/15/7-reasons-to-start-a-meditation-journal", target: "_blank"
         li = link_to t("footer.about"),    about_path
         li = link_to t("footer.contacts"), contact_path
 
 
     .col-md-3
-      p.header = t "footer.contribute"
-      ul
-        li = link_to t("footer.how_to_contribute"), "/contribute"
-        li = link_to t("footer.github"), "http://github.com/#{Rails.application.secrets.github_id}"
+      / p.header = t "footer.contribute"
+      / ul
+      /   li = link_to t("footer.how_to_contribute"), "/contribute"
+      /   li = link_to t("footer.github"), "http://github.com/#{Rails.application.secrets.github_id}"
 
 
     div class="copyright-holder col-md-3"
