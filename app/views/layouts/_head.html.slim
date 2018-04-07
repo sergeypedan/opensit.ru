@@ -2,7 +2,7 @@ head
   meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
   meta name="viewport" content="width=device-width, initial-scale=1.0"
   title = full_title(@title)
-  link rel="shortcut icon" href=image_path('logos/logo_32.png')
+  = content_tag :link, nil, rel: "shortcut icon", href: image_path('logos/logo_32.png')
 
   - if !(request.fullpath =~ /sits/)
     meta name="description" content=meta_desc(@desc)
