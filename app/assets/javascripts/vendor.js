@@ -9,6 +9,7 @@
 //= require bootstrap/modal
 //= require bootstrap/collapse
 //= require moment
+//= require masonry-packaged-4.2.1
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require nprogress
