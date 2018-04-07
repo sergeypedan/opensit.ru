@@ -1,23 +1,23 @@
 doctype html
 html lang="ru"
-  = render 'layouts/head'
+  = render "layouts/head"
   body
 
     / = render "plugins/user_voice"
 
-    - if (controller_name.in? ['registrations', 'sessions']) && controller.action_name != 'edit'
-      - @page_class = 'sign-up-or-in'
-      = render 'shared/brand_header'
+    - if (controller_name.in? ["registrations", "sessions"]) && controller.action_name != "edit"
+      - @page_class = "sign-up-or-in"
+      = render "shared/brand_header"
 
     .container.base-container
-      = render 'layouts/header' unless current_page?(root_path)
+      = render "layouts/header" unless current_page?(root_path)
       = content_tag :div, class: ["page-content", @page_class]
         .row
-          - unless (controller_name.in? ['registrations', 'sessions'])
+          - unless (controller_name.in? ["registrations", "sessions"])
             = content_tag :div, flash[:notice], class: "alert alert-success" if flash[:notice]
             = content_tag :div, flash[:error],  class: "alert alert-danger"  if flash[:error]
           == yield
       .spacer
 
-    = render 'layouts/footer'
+    = render "layouts/footer"
     = stylesheet_link_tag "vendor"
