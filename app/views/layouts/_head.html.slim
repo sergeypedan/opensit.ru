@@ -1,15 +1,14 @@
-head
-  title = full_title(@title)
+title = full_title(@title)
 
-  meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
-  meta name="viewport" content="width=device-width, initial-scale=1.0"
-  = content_tag :link, nil, rel: "shortcut icon", href: image_path('logos/logo_32.png')
-  = content_tag :meta, nil, name: "description", content: meta_desc(@desc) if !(request.fullpath =~ /sits/)
+meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+meta name="viewport" content="width=device-width, initial-scale=1.0"
+= content_tag :link, nil, rel: "shortcut icon", href: image_path('logos/logo_32.png')
+= content_tag :meta, nil, name: "description", content: meta_desc(@desc) if !(request.fullpath =~ /sits/)
 
-  = csrf_meta_tags
+= csrf_meta_tags
 
-  = stylesheet_link_tag "bootstrap-customized"
-  = stylesheet_link_tag "application"
-  = javascript_include_tag "vendor"
-  = javascript_include_tag "application"
-  = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:400,700,400italic"
+= stylesheet_link_tag "bootstrap-customized"
+= stylesheet_link_tag "application"
+= javascript_include_tag "vendor"
+= javascript_include_tag "application"
+= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:400,700,400italic"
