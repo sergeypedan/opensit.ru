@@ -1,0 +1,8 @@
+.brand-header
+  = link_to root_path
+    = image_tag('logos/logomark_trans.png', class: 'main-logo')
+    p.opensit opensit
+
+  .already-signed-up
+    = t "authorization.already"
+    = link_to t("authorization.sign_in"), new_user_session_path, class: "btn btn-default"
