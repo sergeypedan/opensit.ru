@@ -5,12 +5,12 @@ app_dir     = File.expand_path("../..", __FILE__)
 db_config   = "#{app_dir}/config/database.yml"
 log_dir     = "/var/log/puma"
 pids_dir    = "/run"
-rails_env   = ENV.fetch("RAILS_ENV") { "production" }
+rails_env   = ENV.fetch("RAILS_ENV") { "development" }
 
 
 # activate_control_app "unix://#{pids_dir}/puma-ctl.sock"
 bind "unix://#{pids_dir}/puma.sock"
-daemonize true
+daemonize (rails_env == "production")
 environment rails_env
 pidfile "#{pids_dir}/puma.pid"
 port ENV.fetch("PUMA_PORT") { 3000 }
