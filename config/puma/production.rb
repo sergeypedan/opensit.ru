@@ -1,6 +1,6 @@
 # Example: https://github.com/puma/puma/blob/master/examples/config.rb
 
-app_dir     = File.expand_path("../..", __FILE__)
+app_dir     = File.expand_path("../../..", __FILE__)
 # cwd         = File.dirname(__FILE__) + "/.."
 db_config   = "#{app_dir}/config/database.yml"
 log_dir     = "/var/log/puma"
