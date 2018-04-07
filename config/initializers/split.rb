@@ -6,7 +6,7 @@ Split.configure do |config|
 end
 
 if ENV["REDISTOGO_URL"]
-   uri = URI.parse(ENV["REDISTOGO_URL"])
+   uri       = URI.parse(ENV["REDISTOGO_URL"])
    namespace = ["split", "opensit", Rails.env].join(":")
 
    redis = Redis.new(host: uri.host,

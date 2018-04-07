@@ -31,7 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
     if params[:user] && params[:user][:email]
       Blacklist::EMAIL_PATTERNS.each do |pattern|
         if params[:user][:email] =~ pattern
-          flash[:error] = "Registration blocked, abuse reported! If you think this is in error, please contact hello@opensit.com"
+          flash[:error] = "Registration blocked, abuse reported! If you think this is in error, please contact #{Rails.application.secrets.public_email}"
           Rails.logger.error("Registration blocked via blacklist! #{params[:user][:email]}")
           redirect_to root_path
           return

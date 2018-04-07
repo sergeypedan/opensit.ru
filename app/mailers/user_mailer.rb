@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
-  default from: "\"Dan from OpenSit\" <hello@opensit.com>"
+
+  default from: "OpenSit <#{Rails.application.secrets.public_email}>"
 
   def new_design(user)
     @email = user.email

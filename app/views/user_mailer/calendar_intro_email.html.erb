@@ -8,35 +8,26 @@
     <table width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td width="10%"></td>
-        <td width="80%"><img src="http://opensit.com/images/email_header.png" alt="OpenSit"></td>
+        <td width="80%"><img src="http://#{Rails.application.secrets.domain}/images/email_header.png" alt="OpenSit"></td>
         <td width="10%"></td>
       </tr>
       <tr>
           <td width="10%"></td>
-          <td style="background:white; border:1px solid #CCC; padding:20px" align="left" width="80%">
-            <p style="color: #666;line-height: 1.4;">Hi all,</p>
-
-            <p style="color: #666;line-height: 1.4;">Imagine a situation where you could enhance your practice by meditating with people from anywhere in the world. We want to make this happen! But we need your help.</p>
-
-            <p style="color: #666;line-height: 1.4;">OpenSit has a <a href="http://opensit.com/calendar?utm_source=calendar_mail&utm_medium=email&utm_campaign=host_a_group_sit">new calendar page</a> with listings for shared online meditation sessions, powered by Google Hangouts. We already have our first member hosting a daily 30 minute session. We are looking for more people who are also interested in hosting meditation sessions.</p>
-
-            <p style="color: #666;line-height: 1.4;">Please let us know (by replying to this email) if you would be interested in hosting a regular time slot. It's a pretty simple process:
-            <ol style="color: #666;line-height: 1.4;">
-              <li style="color: #666;line-height: 1.4;">We create a Google Hangout link for you and add it to the group calendar</li>
-              <li style="color: #666;line-height: 1.4;">You log in a minute before the meeting with either your favourite Dharma talk ready, or a guided meditation audio, or nothing at all!</li>
-              <li style="color: #666;line-height: 1.4;">Set a timer and sit, share and inspire each other!</li>
-              </ol></p>
-
-            <p style="color: #666;line-height: 1.4;">Easy in. Easy out. Meditation happens!</p>
-
-            <p style="color: #666;line-height: 1.4;">We will be scheduling a chat for people interested in learning more.</p>
-
-            <p style="color: #666;line-height: 1.4;">For those just interested in joining rather than hosting a session; stay tuned for more!</p>
-
-            <p style="color: #666;line-height: 1.4;">Dan<br><a href="http://opensit.com">opensit.com</a></p>
-
-            <p style="color: #999;line-height: 1.4;">P.S. Follow us on <a href="https://twitter.com/opensit">Twitter</a>, <a href="https://www.facebook.com/opensit.meditation">Facebook</a>, <a href="https://www.google.com/+Opensitmeditation">Google+</a> and <a href="http://github.com/danbartlett/opensit">GitHub</a> (we're open source!)</p>
-
+          <td style="background: white; border: 1px solid #CCC; padding: 20px" align="left" width="80%">
+            <p>Hi all,</p>
+            <p>Imagine a situation where you could enhance your practice by meditating with people from anywhere in the world. We want to make this happen! But we need your help.</p>
+            <p>OpenSit has a <a href="http://#{Rails.application.secrets.domain}/calendar">new calendar page</a> with listings for shared online meditation sessions, powered by Google Hangouts. We already have our first member hosting a daily 30 minute session. We are looking for more people who are also interested in hosting meditation sessions.</p>
+            <p>Please let us know (by replying to this email) if you would be interested in hosting a regular time slot. It's a pretty simple process:</p>
+            <ol>
+              <li>We create a Google Hangout link for you and add it to the group calendar</li>
+              <li>You log in a minute before the meeting with either your favourite Dharma talk ready, or a guided meditation audio, or nothing at all!</li>
+              <li>Set a timer and sit, share and inspire each other!</li>
+            </ol>
+            <p>Easy in. Easy out. Meditation happens!</p>
+            <p>We will be scheduling a chat for people interested in learning more.</p>
+            <p>For those just interested in joining rather than hosting a session; stay tuned for more!</p>
+            <p><%= Rails.application.secrets.public_person %><br><%= link_to Rails.application.secrets.domain, "http://#{Rails.application.secrets.domain}" %></p>
+            <p>P.S. Follow us on <a href="https://twitter.com/#{Rails.application.secrets.twitter_id}">Twitter</a>, <a href="https://www.facebook.com/#{Rails.application.secrets.facebook_id}">Facebook</a>, <a href="https://www.google.com/+#{Rails.application.secrets.google_plus_id}">Google+</a> and <a href="http://github.com/danbartlett/opensit">GitHub</a> (we're open source!)</p>
           </td>
           <td width="10%"></td>
       </tr>

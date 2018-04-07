@@ -5,7 +5,7 @@ javascript:
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=848416401858718&version=v2.0";
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=#{Rails.application.secrets.facebook_app_id}&version=v2.0";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
@@ -32,9 +32,9 @@ javascript:
         .icon = fa_icon "share"
         .text
           = t("welcome_screen.li3")
-          = content_tag :div, nil, class: "fb-like", data: { href: "http://opensit.com", layout: "button_count", action: "like", show_faces: true, share: false }
+          = content_tag :div, nil, class: "fb-like", data: { href: Rails.application.secrets.domain, layout: "button_count", action: "like", show_faces: true, share: false }
           .twitter-follow-container
-            = link_to "Follow @opensit", "https://twitter.com/opensit", class: "twitter-follow-button", data: { dnt: true, show_count: false }
+            = link_to "Follow @#{Rails.application.secrets.twitter_id}", "https://twitter.com/#{Rails.application.secrets.twitter_id}", class: "twitter-follow-button", data: { dnt: true, show_count: false }
             javascript:
               !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
