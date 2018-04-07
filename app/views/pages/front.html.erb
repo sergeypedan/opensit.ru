@@ -7,7 +7,7 @@
 <div class="jumbotron">
   <h1><%= t 'home.banner.title' %></h1>
   <p><%= t 'home.banner.text' %></p>
-  <a class="sign-up btn btn-lg btn-primary" href="<%=new_user_registration_path%>"><%= t 'home.banner.button' %></a>
+  <%= link_to t('home.banner.button'), new_user_registration_path, class: "sign-up btn btn-lg btn-primary" %>
 </div>
 
 <div class="three-panes">
