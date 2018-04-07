@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_filter :authenticate_user!, only: [:welcome, :me, :export]
   before_filter :check_date, only: :show
 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
 
   # GET /me page
   def me
-    @feed_items = current_user.socialstream.paginate(:page => params[:page])
+    @feed_items = current_user.socialstream.paginate(page: params[:page])
     @user = current_user
     @latest = @user.latest_sit(current_user)
     @goals = @user.goals
@@ -36,12 +37,12 @@ class UsersController < ApplicationController
 
   # GET /u/buddha
   def show
-    @user = User.where("lower(username) = lower(?)", params[:username]).first!
+    @user        = User.where("lower(username) = lower(?)", params[:username]).first!
     @total_hours = @user.total_hours_sat
-    @by_month = @user.journal_range
+    @by_month    = @user.journal_range
 
     month = params[:month] ? params[:month] : Date.today.month
-    year = params[:year] ? params[:year] : Date.today.year
+    year  = params[:year]  ? params[:year]  : Date.today.year
 
     index = @by_month[:list_of_months].index "#{year} #{month}" if @user.sits.present?
 
@@ -77,21 +78,16 @@ class UsersController < ApplicationController
     end
 
     @title = "#{@user.display_name}\'s meditation journal"
-    @desc = "#{@user.display_name}\'s meditation journal has #{@user.sits_count} entries on OpenSit, a free online meditation community."
+    @desc  = "#{@user.display_name}\'s meditation journal has #{@user.sits_count} entries on #{Rails.application.secrets.brand}, a free online meditation community."
     @page_class = 'view-user'
   end
 
   # GET /u/buddha/following
   def following
-    @user = User.where("lower(username) = lower(?)", params[:username]).first!
-    @users = @user.followed_users
+    @user   = User.where("lower(username) = lower(?)", params[:username]).first!
+    @users  = @user.followed_users
     @latest = @user.latest_sit(current_user)
-
-    if @user == current_user
-      @title = "People I follow"
-    else
-      @title = "People who #{@user.display_name} follows"
-    end
+    @title  = (@user == current_user) ? "People I follow" : "People who #{@user.display_name} follows"
 
     @page_class = 'following'
     render 'show_follow'
@@ -99,8 +95,8 @@ class UsersController < ApplicationController
 
   # GET /u/buddha/followers
   def followers
-    @user = User.where("lower(username) = lower(?)", params[:username]).first!
-    @users = @user.followers
+    @user   = User.where("lower(username) = lower(?)", params[:username]).first!
+    @users  = @user.followers
     @latest = @user.latest_sit(current_user)
 
     if @user == current_user
@@ -116,12 +112,12 @@ class UsersController < ApplicationController
   # Generate atom feed for user or all public content (global)
   def feed
     if params[:scope] == 'global'
-      @sits = Sit.communal.newest_first.limit(50)
+      @sits  = Sit.communal.newest_first.limit(50)
       @title = "Global SitStream | OpenSit"
     else
-      @user = User.where("lower(username) = lower(?)", params[:username]).first!
+      @user  = User.where("lower(username) = lower(?)", params[:username]).first!
       @title = "SitStream for #{@user.username}"
-      @sits = @user.sits.communal.newest_first.limit(20)
+      @sits  = @user.sits.communal.newest_first.limit(20)
     end
 
     # This is the feed's update timestamp
