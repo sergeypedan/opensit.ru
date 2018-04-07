@@ -32,7 +32,7 @@
   <h2><%= t 'home.join.title' %></h2>
   <p><%= t 'home.join.text' %> <%= link_to t('home.join.link'), new_user_registration_path %>.</p>
   <p><strong><%= t 'home.join.incentive' %></strong></p>
-  <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='5237488'></div>
+  <%#= render "plugins/shareaholic" %>
 </div>
 
 <div class="padder">
@@ -42,4 +42,3 @@
     <% end %>
   </div>
 </div>
-
