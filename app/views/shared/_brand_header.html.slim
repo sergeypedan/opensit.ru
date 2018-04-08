@@ -1,8 +1,12 @@
 .brand-header
-  = link_to root_path
+
+  .left-column
+    = link_to t("footer.journal"), about_journal_path
+
+  = link_to root_path, class: "logo-column"
     = image_tag('logos/logomark_trans.png', class: 'main-logo')
     p.opensit opensit
 
-  .already-signed-up
+  .right-column
     = t "authorization.already"
     = link_to t("authorization.sign_in"), new_user_session_path, class: "btn btn-default"
