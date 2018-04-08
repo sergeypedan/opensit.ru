@@ -1,14 +1,11 @@
 module UsersHelper
 
   def small_avatar_of(user, location = nil)
+    image_link = user.avatar.blank? ? image_path('logos/default_50.png') : user.avatar.url(:small_thumb)
     if location == 'nav'
-      image_link = user.avatar.blank? ? image_path('/images/default_50.png') : user.avatar.url(:small_thumb)
       image_tag image_link, size: "38x38", alt: user.username, title: user.username
     else
-      image_link = user.avatar.blank? ? image_path('/images/default_50.png') : user.avatar.url(:small_thumb)
-      link_to user_path(user) do
-        image_tag image_link, size: "50x50", alt: user.username, title: user.username, class: 'img-circle'
-      end
+      link_to image_tag(image_link, size: "50x50", alt: user.username, title: user.username, class: 'img-circle'), user_path(user)
     end
   end
 
