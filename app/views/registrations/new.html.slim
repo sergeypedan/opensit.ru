@@ -12,7 +12,7 @@
         = f.error_notification
         = f.input :username, placeholder: t("sign_up.form.username"), label: false, required: true, input_html: { autocomplete: "username" }
         = f.input :email,    placeholder: t("sign_up.form.email"),    label: false, required: true, input_html: { autocomplete: "email" }
-        = f.input :password, placeholder: t("sign_up.form.password"), label: false, required: true, input_html: { autocomplete: "new-password" }
+        = f.input :password, placeholder: t("sign_up.form.password"), label: false, required: true, input_html: { autocomplete: "new-password" }, hint: 'Не менее 6 символов'
         = f.submit t("sign_up.form.button"), class: 'btn btn-primary btn-lg cta'
 
       .sign_in_link
