@@ -1,6 +1,6 @@
 Opensit::Application.routes.draw do
 
-  root :to => 'pages#front'
+  root to: 'pages#front'
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   get 'me' => 'users#me'
