@@ -30,6 +30,7 @@ gem 'nokogiri'
 gem 'nprogress-rails'
 gem 'paperclip'
 gem 'pg', '~> 0.15'
+gem 'premailer-rails'
 gem 'protected_attributes' # Smoother upgrade to rails 4, provides attr_accessible
 gem 'puma'
 gem 'rack'

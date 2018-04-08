@@ -644,6 +644,8 @@ GEM
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
     crass (1.0.3)
+    css_parser (1.6.0)
+      addressable
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
     devise (4.4.1)
@@ -670,6 +672,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     honeypot-captcha (0.0.3)
+    htmlentities (4.3.4)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
@@ -728,6 +731,13 @@ GEM
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.10.2)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
     protected_attributes (1.1.4)
       activemodel (>= 4.0.1, < 5.0)
     pry (0.11.3)
@@ -910,6 +920,7 @@ DEPENDENCIES
   paperclip
   pg (~> 0.15)
   poltergeist
+  premailer-rails
   protected_attributes
   pry-byebug
   pry-coolline
