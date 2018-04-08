@@ -6,13 +6,8 @@ class UsersController < ApplicationController
   # GET /welcome
   def welcome
     @user = current_user
-
     # Prevent /welcome being revisited as GA records each /welcome as a new sign up
-    if @user.sign_in_count > 1 || (Time.now - @user.created_at > 10)
-      redirect_to me_path
-      return false
-    end
-
+    return redirect_to me_path if @user.sign_in_count > 1 || (Time.now - @user.created_at > 10)
     @users_to_follow = User.active_users.limit(3)
   end
 
