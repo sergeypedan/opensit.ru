@@ -12,7 +12,7 @@
 					<td width="10%"></td>
 					<td style="background: white; border: 1px solid #CCC; padding: 20px" align="center" width="80%">
 						<h1 style="color: #333">We've been busy...</h1>
-						<img src="http://<%= domain %>/images/logomark_trans_lg.png" width="300" >
+						<%= image_tag 'logos/logomark_trans_lg.png', width: 300, alt: Rails.application.secrets.brand %>
 						<p>Check out our <b>new design</b>! OpenSit is now fully responsive which means you can now browse and share your practice from your mobile or tablet.</p>
 						<br>
 						<a style="margin:20px; background:#51924f; text-decoration:none; padding:15px; color: white; border-radius:5px; font-size: 2em;" href="http://<%= domain %>/front">Take a look!</a>
