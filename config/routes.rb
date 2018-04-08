@@ -14,10 +14,11 @@ Opensit::Application.routes.draw do
     delete '/u/:username',        to: 'users#destroy',   as: :delete_user
   end
 
-  get 'about',      to: 'pages#about'
-  get 'calendar',   to: 'pages#calendar', as: :calendar
-  get 'contribute', to: 'pages#contribute'
-  get 'contact',    to: 'pages#contact'
+  get 'about',         to: 'pages#about'
+  get 'about-journal', to: 'pages#journal', as: :about_journal
+  get 'calendar',      to: 'pages#calendar', as: :calendar
+  get 'contribute',    to: 'pages#contribute'
+  get 'contact',       to: 'pages#contact'
 
   get 'explore',                   to: 'pages#explore'
   get 'explore/tags',              to: 'pages#tag_cloud',    as: :explore_tags
