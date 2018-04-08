@@ -1,0 +1,17 @@
+p
+  = Rails.application.secrets.public_person
+  br
+  = link_to Rails.application.secrets.domain, "http://#{Rails.application.secrets.domain}"
+
+
+p
+  | P.S. Follow us on
+  =< link_to "Twitter", "https://twitter.com/#{Rails.application.secrets.twitter_id}"
+  | ,
+  =< link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}"
+  | ,
+  =<> link_to "Google+", "https://www.google.com/+#{Rails.application.secrets.google_plus_id}"
+  | and
+  =<> link_to "GitHub", "http://github.com/#{Rails.application.secrets.github_id}"
+  | (we're open source!)
+

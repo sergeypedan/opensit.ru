@@ -28,8 +28,7 @@
             <p>Easy in. Easy out. Meditation happens!</p>
             <p>We will be scheduling a chat for people interested in learning more.</p>
             <p>For those just interested in joining rather than hosting a session; stay tuned for more!</p>
-            <p><%= Rails.application.secrets.public_person %><br><%= link_to Rails.application.secrets.domain, "http://#{Rails.application.secrets.domain}" %></p>
-            <p>P.S. Follow us on <%= link_to "Twitter", "https://twitter.com/#{Rails.application.secrets.twitter_id}" %>, <%= link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}" %>, <%= link_to "Google+", "https://www.google.com/+#{Rails.application.secrets.google_plus_id}" %> and <%= link_to "GitHub", "http://github.com/#{Rails.application.secrets.github_id}" %> (we're open source!)</p>
+            <%= render "user_mailer/signature" %>
           </td>
           <td width="10%"></td>
       </tr>

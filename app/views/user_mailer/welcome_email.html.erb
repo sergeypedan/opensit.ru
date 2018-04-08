@@ -24,8 +24,7 @@
 						<p>To get the most out of the site try <a href="http://<%= domain %>/users/edit">filling out your profile</a>, <a href="http://<%= domain %>/explore/users/active">making some new friends</a>, and exploring our <a href="http://<%= domain %>/explore">Global SitStream</a>.
 						<p>If you have any questions, suggestions or issues you can just reply to this email or send a new one to <%= mail_to Rails.application.secrets.public_email %>. My name is <%= Rails.application.secrets.public_person %>, and I'll get back to you quickly. You can also tweet us at @<%= link_to twitter_id, "https://twitter.com/#{twitter_id}" %>.</p>
 						<p>Happy sitting!</p>
-						<p><%= Rails.application.secrets.public_person %><br><%= link_to domain, "http://{domain}" %></p>
-						<p>P.S. Follow us on <%= link_to "Twitter", "https://twitter.com/#{Rails.application.secrets.twitter_id}" %>, <%= link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}" %>, <%= link_to "Google+", "https://www.google.com/+#{Rails.application.secrets.google_plus_id}" %> and <%= link_to "GitHub", "http://github.com/#{Rails.application.secrets.github_id}" %> (we're open source!)</p>
+						<%= render "user_mailer/signature" %>
 					</td>
 					<td width="10%"></td>
 			</tr>

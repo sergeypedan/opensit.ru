@@ -20,7 +20,7 @@
           <br><br>
           <p style="font-size:1.3em; color: #666; margin-top: 2em;">If you have any thoughts or issues we'd love to hear from you! Just reply to this email.</p>
           <p>Thanks,</p>
-          <p><%= Rails.application.secrets.public_person %><br><%= domain %></p>
+          <%= render "user_mailer/signature" %>
         </td>
     		<td width="10%"></td>
 	    </tr>

@@ -21,7 +21,7 @@
             <p>But we want to hear from you guys. Could you take a couple of minutes to answer a few questions? It would really help us out.</p>
             <strong><a href="https://docs.google.com/forms/d/1v8uusa7rlznemglna0MnwsJ2o_ps55POwaTQnUwgVwc/viewform?usp=send_form">Click here to have your say</a></strong>
             <p>If you have further ideas or feedback you can just reply to this email and I’ll get back to you directly. Thanks so much for your time!</p>
-            <p><%= Rails.application.secrets.public_person %><br><%= link_to domain, "http://#{domain}" %></p>
+            <%= render "user_mailer/signature" %>
           </td>
           <td width="10%"></td>
       </tr>
