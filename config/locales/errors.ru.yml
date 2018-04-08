@@ -50,3 +50,12 @@ ru:
         many: "%{model}: сохранение не удалось из-за %{count} ошибок"
         one: "%{model}: сохранение не удалось из-за %{count} ошибки"
         other: "%{model}: сохранение не удалось из-за %{count} ошибки"
+
+  # activerecord:
+  #   errors:
+  #     models:
+  #       user:
+  #         attributes:
+  #           password:
+  #             too_short: Пароль слишком короткий
+  #             blank: Пароль не может быть пустым
