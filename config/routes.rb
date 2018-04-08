@@ -52,6 +52,6 @@ Opensit::Application.routes.draw do
   get '/split' => Split::Dashboard, anchor: false, constraints: lambda { |request|
     request.env['warden'].authenticated?
     request.env['warden'].authenticate!
-    request.env['warden'].user.email == 'danbartlett@gmail.com'
+    request.env['warden'].user.email == 'sergey.pedan@@gmail.com'
   }
 end
