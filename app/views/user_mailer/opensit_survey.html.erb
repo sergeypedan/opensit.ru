@@ -1,3 +1,5 @@
+<% domain = Rails.application.secrets.domain %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,7 +10,7 @@
     <table width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td width="10%"></td>
-        <td width="80%"><img src="http://#{Rails.application.secrets.domain}/images/email_header.png" alt="OpenSit"></td>
+        <td width="80%"><%= image_tag "http://#{domain}/images/email_header.png", alt: Rails.application.secrets.brand %></td>
         <td width="10%"></td>
       </tr>
       <tr>
@@ -19,7 +21,7 @@
             <p>But we want to hear from you guys. Could you take a couple of minutes to answer a few questions? It would really help us out.</p>
             <strong><a href="https://docs.google.com/forms/d/1v8uusa7rlznemglna0MnwsJ2o_ps55POwaTQnUwgVwc/viewform?usp=send_form">Click here to have your say</a></strong>
             <p>If you have further ideas or feedback you can just reply to this email and I’ll get back to you directly. Thanks so much for your time!</p>
-            <p><%= Rails.application.secrets.public_person %><br><%= link_to Rails.application.secrets.domain, "http://#{Rails.application.secrets.domain}" %></p>
+            <p><%= Rails.application.secrets.public_person %><br><%= link_to domain, "http://#{domain}" %></p>
           </td>
           <td width="10%"></td>
       </tr>

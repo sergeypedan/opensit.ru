@@ -1,3 +1,5 @@
+<% domain = Rails.application.secrets.domain %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +10,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="10%"></td>
-				<td width="80%"><img src="http://#{Rails.application.secrets.domain}/images/email_header.png" alt="OpenSit"></td>
+				<td width="80%"><%= image_tag "http://#{domain}/images/email_header.png", alt: Rails.application.secrets.brand %></td>
 				<td width="10%"></td>
 			</tr>
 			<tr>
@@ -16,7 +18,7 @@
 				<td style="background: white; border: 1px solid #CCC; padding: 20px" align="left" width="80%">
 					<p>Hey,</p>
 					<p>Just a quick email to let you know that the OpenSit blog is live!</p>
-					<p><a style="font-weight:bold;" href="http://blog.#{Rails.application.secrets.domain}/opensit-is-your-community">Read the first post: OpenSit is your community</a>.
+					<p><a style="font-weight:bold;" href="http://blog.<%= domain %>/opensit-is-your-community">Read the first post: <%= Rails.application.secrets.brand %> is your community</a>.
 					<p>We have loads more planned for the blog:</p>
 					<ul style="color:#666">
 						<li>Tips and advice on meditation.</li>
@@ -24,10 +26,10 @@
 						<li>News and updates on contemplative research.</li>
 						<li>Interviews, videos, and lots more!</li>
 					</ul>
-					<p>The best way to keep up with the blog is to follow @<%= link_to Rails.application.secrets.twitter_id, "https://twitter.com/#{Rails.application.secrets.twitter_id}" %> or <a href="http://blog.#{Rails.application.secrets.domain}/rss/">subscribe by RSS</a>.</p>
+					<p>The best way to keep up with the blog is to follow @<%= link_to Rails.application.secrets.twitter_id, "https://twitter.com/#{Rails.application.secrets.twitter_id}" %> or <a href="http://blog.<%= domain %>/rss/">subscribe by RSS</a>.</p>
 					<p>Happy sitting!</p>
-					<p><%= Rails.application.secrets.public_person %><br><%= link_to Rails.application.secrets.domain, "http://#{Rails.application.secrets.domain}" %></p>
-					<p>P.S. Follow us on <a href="https://twitter.com/#{Rails.application.secrets.twitter_id}">Twitter</a>, <a href="https://www.facebook.com/#{Rails.application.secrets.facebook_id}">Facebook</a>, <a href="https://www.google.com/+#{Rails.application.secrets.google_plus_id}">Google+</a> and <a href="http://github.com/danbartlett/opensit">GitHub</a> (we're open source!)</p>
+					<p><%= Rails.application.secrets.public_person %><br><%= link_to domain, "http://#{domain}" %></p>
+					<p>P.S. Follow us on <%= link_to "Twitter", "https://twitter.com/#{Rails.application.secrets.twitter_id}" %>, <%= link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}" %>, <%= link_to "Google+", "https://www.google.com/+#{Rails.application.secrets.google_plus_id}" %> and <%= link_to "GitHub", "http://github.com/#{Rails.application.secrets.github_id}" %> (we're open source!)</p>
 				</td>
 				<td width="10%"></td>
 			</tr>

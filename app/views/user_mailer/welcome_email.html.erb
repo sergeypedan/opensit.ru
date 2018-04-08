@@ -1,3 +1,8 @@
+<%
+	domain = Rails.application.secrets.domain
+	twitter_id = Rails.application.secrets.twitter_id
+%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,19 +13,19 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="10%"></td>
-				<td width="80%"><img src="http://#{Rails.application.secrets.domain}/images/email_header.png" alt="OpenSit"></td>
+				<td width="80%"><%= image_tag "http://#{domain}/images/email_header.png", alt: Rails.application.secrets.brand %></td>
 				<td width="10%"></td>
 			</tr>
 			<tr>
 					<td width="10%"></td>
 					<td>
 						<p>Hey,</p>
-						<p>Thanks for joining OpenSit! We hope everything makes sense and you enjoy being part of our community.</p>
-						<p>To get the most out of the site try <a href="http://#{Rails.application.secrets.domain}/users/edit">filling out your profile</a>, <a href="http://#{Rails.application.secrets.domain}/explore/users/active">making some new friends</a>, and exploring our <a href="http://#{Rails.application.secrets.domain}/explore">Global SitStream</a>.
-						<p>If you have any questions, suggestions or issues you can just reply to this email or send a new one to <%= mail_to Rails.application.secrets.public_email %>. My name is Dan, and I'll get back to you quickly. You can also tweet us at @<a href="https://twitter.com/#{Rails.application.secrets.twitter_id}">opensit</a>.</p>
+						<p>Thanks for joining <%= Rails.application.secrets.brand %>! We hope everything makes sense and you enjoy being part of our community.</p>
+						<p>To get the most out of the site try <a href="http://<%= domain %>/users/edit">filling out your profile</a>, <a href="http://<%= domain %>/explore/users/active">making some new friends</a>, and exploring our <a href="http://<%= domain %>/explore">Global SitStream</a>.
+						<p>If you have any questions, suggestions or issues you can just reply to this email or send a new one to <%= mail_to Rails.application.secrets.public_email %>. My name is <%= Rails.application.secrets.public_person %>, and I'll get back to you quickly. You can also tweet us at @<%= link_to twitter_id, "https://twitter.com/#{twitter_id}" %>.</p>
 						<p>Happy sitting!</p>
-						<p><%= Rails.application.secrets.public_person %><br><%= link_to Rails.application.secrets.domain, "http://#{Rails.application.secrets.domain}" %></p>
-						<p>P.S. Follow us on <a href="https://twitter.com/#{Rails.application.secrets.twitter_id}">Twitter</a>, <a href="https://www.facebook.com/#{Rails.application.secrets.facebook_id}">Facebook</a>, <a href="https://www.google.com/+#{Rails.application.secrets.google_plus_id}">Google+</a> and <a href="http://github.com/#{Rails.application.secrets.github_id}">GitHub</a> (we're open source!)</p>
+						<p><%= Rails.application.secrets.public_person %><br><%= link_to domain, "http://{domain}" %></p>
+						<p>P.S. Follow us on <%= link_to "Twitter", "https://twitter.com/#{Rails.application.secrets.twitter_id}" %>, <%= link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}" %>, <%= link_to "Google+", "https://www.google.com/+#{Rails.application.secrets.google_plus_id}" %> and <%= link_to "GitHub", "http://github.com/#{Rails.application.secrets.github_id}" %> (we're open source!)</p>
 					</td>
 					<td width="10%"></td>
 			</tr>
