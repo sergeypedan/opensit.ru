@@ -14,3 +14,4 @@
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
+//= require likely-2.3.0/likely
