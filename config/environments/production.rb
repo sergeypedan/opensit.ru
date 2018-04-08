@@ -60,7 +60,7 @@ Opensit::Application.configure do
     address:              "smtp.mailgun.com",
     authentication:       :plain,
     domain:               Rails.application.secrets.domain,
-    enable_starttls_auto: true, # false, если возникает SSL-ошибка о сертификате
+    enable_starttls_auto: false, # false, если возникает SSL-ошибка о сертификате
     password:             Rails.application.secrets.mailgun_password,
     port:                 587,
     user_name:            Rails.application.secrets.mailgun_username
