@@ -112,3 +112,13 @@ en:
     about: About us
     about_journal: About meditation journal
     contacts: Contact us
+    messages: Messaging
+
+  messages:
+    new: New message
+    inbox: Inbox
+    sent: Sent messages
+    to: To
+    subject: Subject
+    body: Body
+    send: Send message

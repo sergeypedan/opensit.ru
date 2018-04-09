@@ -1,0 +1,18 @@
+.header-tile.tile.stamp.col-md-3
+	.content
+		h2 style="margin-bottom: 20px" = t("pages.messages")
+
+		ul class="nav nav-pills nav-stacked"
+			- href = new_message_path
+			= content_tag :li, class: ("active" if current_page?(href))
+				= link_to fa_icon("edit fw", text: t("messages.new")), href
+
+			- href = messages_path
+			= content_tag :li, class: ("active" if current_page?(href))
+				= link_to href
+					= fa_icon "envelope-o fw", text: t("messages.inbox")
+					span.badge = inbox_unread_count(@user)
+
+			- href = sent_messages_path
+			= content_tag :li, class: ("active" if current_page?(href))
+				= link_to fa_icon("share fw", text: t("messages.sent")), href

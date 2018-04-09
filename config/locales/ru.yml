@@ -101,3 +101,14 @@ ru:
     about: О проекте
     about_journal: О журнале медитаций
     contacts: Контакты
+    messages: Сообщения
+
+  messages:
+    new: Написать
+    inbox: Входящие
+    sent: Отправленные
+    to: Кому
+    subject: Тема
+    body: Текст
+    send: Отправить
+    choose_user: Выберите адресата

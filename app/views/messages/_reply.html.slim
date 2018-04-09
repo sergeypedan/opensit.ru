@@ -1,0 +1,9 @@
+= simple_form_for(@reply, html: { class: 'form-horizontal'}) do |f|
+
+  - if @reply.errors.any?
+    .alert.alert-danger Please complete the required fields
+
+  = f.input :to_user_id, as: "hidden", input_html: { value: @from_user.id }
+  = form_element(f, :subject, 'message', "Subject", 4, { label: false })
+  = form_element(f, :body, 'message', "", 9, { label: false, input_html: { class: 'rich-textarea', rows: 10 } })
+  = f.submit 'Reply', class: 'btn btn-lg btn-primary'
