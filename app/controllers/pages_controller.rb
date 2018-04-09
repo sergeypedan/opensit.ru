@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @title      = 'About'
+    @title      = t('pages.about')
     @page_class = 'about'
   end
 
@@ -26,7 +26,7 @@ class PagesController < ApplicationController
   end
 
   def contact
-    @title      = 'Contact'
+    @title      = t('pages.contacts')
     @page_class = 'contact'
   end
 
