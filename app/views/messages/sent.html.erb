@@ -5,8 +5,8 @@
 <div class="clearfix col-md-9">
   <% if @messages.empty? %>
     <div class="message-box">
-      <h2>You haven't sent any messages.</h2>
-      <p>Why don't you send someone a message?</p>
+      <h2><%= t("messages.sent_empty") %></h2>
+      <p><%= t("messages.send_something") %></p>
     </div>
   <% else %>
 

@@ -122,3 +122,11 @@ en:
     subject: Subject
     body: Body
     send: Send message
+    choose_user: Choose a user
+    inbox_empty: Your inbox is empty
+    thinking: I'm sure someone is thinking of you…
+    received: Received
+    confirm_delete: Delete this message?
+    says: "says:"
+    sent_empty: You haven't sent any messages
+    send_something: Why don't you send someone a message?

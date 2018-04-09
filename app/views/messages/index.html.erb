@@ -5,8 +5,8 @@
 <div class="clearfix col-md-9">
   <% if @messages.empty? %>
     <div class="message-box">
-      <h2>Your inbox is empty.</h2>
-      <p>I'm sure someone is thinking of you...</p>
+      <h2><%= t("messages.inbox_empty") %></h2>
+      <p><%= t("messages.thinking") %></p>
     </div>
   <% else %>
 
@@ -17,11 +17,11 @@
             <td class="unread"><%= unread_marker(msg) %></td>
             <td class="msg-avatar"><%= small_avatar_of(msg.from_user) %></td>
             <td class="msg-content">
-              <%= link_to 'X', message_path(msg), method: :delete, confirm: 'Delete this message?', class: 'msg-delete' %>
+              <%= link_to fa_icon("cross"), message_path(msg), method: :delete, confirm: t("messages.confirm_delete"), class: 'msg-delete' %>
               <a href="<%= message_path(msg) %>" class="clickable-row">
-              <div class="msg-username"><%= msg.from_user.username %> says:</div>
+              <div class="msg-username"><%= msg.from_user.username %> <%= t("messages.says") %></div>
               <div class="msg-content"><%= msg.subject.blank? ? truncate(msg.body, length: 20, omission: "...").html_safe : msg.subject %></div>
-              <div class="msg-received">Received <%= time_ago_in_words(msg.created_at) %> ago</div>
+              <div class="msg-received"><%= t("messages.received") %> <%= time_ago_in_words(msg.created_at) %> ago</div>
               </a>
             </td>
           </tr>
