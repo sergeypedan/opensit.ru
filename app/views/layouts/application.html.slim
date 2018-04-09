@@ -1,7 +1,7 @@
 doctype html
 html lang="ru"
   head = render "layouts/head"
-  body
+  = content_tag :body, class: "#{controller_name}-#{action_name}"
 
     / = render "plugins/user_voice"
 
