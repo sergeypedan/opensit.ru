@@ -20,8 +20,6 @@ body {
 }
 
 /* Sticky footer */
-$footer-height: 150px;
-
 .container-full-width {
   margin: 0 auto;
   width: 100%;
@@ -51,42 +49,6 @@ $footer-height: 150px;
   float: left;
   clear: both;
   height: 20px;
-}
-
-/* Footer */
-footer {
-  opacity: 0.8;
-  background: #fff;
-  border-top: 1px solid #ccc;
-  position: relative;
-  margin-top: -$footer-height; /* negative value of footer height */
-  height: $footer-height - 1;
-  clear: both;
-  .header {
-    margin: 1em 0 0.5em;
-  }
-  a {
-    color: $dark-grey;
-    font-size: 0.9em;
-    &:hover {
-      color: $dark-grey;
-    }
-  }
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  .copyright-holder {
-    text-align: center;
-    .footer-logo {
-      margin: 1em 0 0.5em;
-      width: 100px;
-    }
-    .copyright {
-      color: $dark-grey;
-      font-size: 0.7em;
-    }
-  }
 }
 
 /*
