@@ -215,25 +215,6 @@ $colHighlight   : whitesmoke;
             background-color: $bgHighlight; }}
 }
 
-// Guest nav bar - sign up or login
-.sign-up-nav {
-  background: $navbar;
-  height: 66px;
-  .nav-text {
-    img {
-      width: 80px;
-      margin-top: -10px;
-    }
-    .login-link {
-      text-decoration: underline;
-      color: white;
-    }
-    color: white;
-    float: none;
-    margin-top: 10px;
-  }
-}
-
 /*
  *    CORE ELEMENTS
  *******************************/
@@ -461,19 +442,6 @@ $colHighlight   : whitesmoke;
  *******************************/
 
 @media (max-width: 767px) {
-
-  // Sign up nav bar hint
-  .sign-up-nav {
-    .nav-text {
-      text-align: center;
-    }
-    .expanded {
-      display: none;
-    }
-    .btn-primary {
-      margin-left: 20px;
-    }
-  }
 
   // Sign up page
   .sign-up-box {

@@ -95,14 +95,5 @@
     </div> <!-- end .container -->
   </nav>
 <% elsif !controller_name.in? ['registrations', 'sessions'] %>
-  <nav class="navbar navbar-default navbar-fixed-top sign-up-nav" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <div class="nav-text">
-          <%= link_to image_tag('logos/logomark_trans.png', class: 'nav-logomark'), root_path %>
-          OpenSit <span class="expanded">is a place to share and develop your meditation practice &mdash;</span> <a href="<%=new_user_registration_path %>" class="btn btn-default btn-primary">Sign up</a> or <a href="<%=new_user_session_path%>" class="login-link">Login</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <%= render "layouts/header_visitor" %>
 <% end %>

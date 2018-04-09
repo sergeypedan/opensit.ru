@@ -11,6 +11,9 @@ en:
               too_short: Password is too short
               blank: Password cannot be blank
 
+  header:
+    unlogged: is a place to share and develop your meditation practice
+
   footer:
     community: Community
     about: About

@@ -1,0 +1,13 @@
+nav class="navbar navbar-default navbar-fixed-top sign-up-nav" role="navigation"
+  .container
+    .navbar-header
+      .nav-text
+        = link_to image_tag('logos/logo-1.svg', class: 'nav-logomark'), root_path, class: "logo-link"
+        = Rails.application.secrets.brand
+        span.expanded
+          | —
+          =<> t('header.unlogged')
+          | —
+        =<> link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-sm"
+        | or
+        =< link_to "Login", new_user_session_path, class: "login-link"
