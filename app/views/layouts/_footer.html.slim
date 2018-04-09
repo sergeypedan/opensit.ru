@@ -23,13 +23,15 @@ footer
 
     .col-md-3.copyright-holder
       = image_tag "logos/default_250.png", class: "footer-logo"
+
       p class="mobile-nav hidden"
         => link_to t("footer.about"), "/about"
         | —
         =<> link_to t("footer.contribute"), "/contribute"
         | —
         =< link_to t("footer.contacts"), "/contact"
+
       p.copyright
         | &copy; 2013–
         => Time.now.year
-        | OpenSit
+        = Rails.application.secrets.brand
