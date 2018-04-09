@@ -1,4 +1,4 @@
-<article class="sit-teaser-block tile <%= "col-md-#{width}" %>">
+<%= content_tag :article, class: ["sit-teaser-block", "tile", "col-md-#{width}"] %>
   <div class="block-content">
 
     <% if !sit.body.empty? %>
@@ -13,9 +13,7 @@
     <% end %>
 
     <div class="bottom-row">
-      <div class="avatar">
-        <%= small_avatar_of(sit.user) %>
-      </div>
+      <div class="avatar"><%= small_avatar_of(sit.user) %></div>
       <div class="details">
         <div class="author-title"><%= username(sit.user) %> <%= teaser_title(sit) %></div>
         <div class="meta">
@@ -26,14 +24,11 @@
               <%= time_ago_in_words(sit.created_at) %> ago
             <% end %>
           </span>
-          <% if sit.liked? %>
-            <i class="fa fa-heart"></i> <%= sit.likes.count %>
-          <% end %>
-          <% if sit.comments.count > 0 %>
-            <i class="fa fa-comment"></i> <%= sit.comments.count %>
-          <% end %>
+          <%= fa_icon "heart", text: sit.likes.count if sit.liked? %>
+          <%= fa_icon "comment", text: sit.comments.count if sit.comments.count > 0 %>
         </div>
       </div>
     </div>
+
   </div>
-</article>
+<% end %>
