@@ -1,10 +1,11 @@
 module ApplicationHelper
+
   # Returns the full title on a per-page basis
   def full_title(page_title)
     if page_title.nil?
-      "OpenSit | Free Online Meditation Journal and Community"
+      "#{Rails.application.secrets.brand} | #{t('home.banner.title')}"
     else
-      "#{page_title} | OpenSit, Free Online Meditation Journal and Community"
+      "#{page_title} | #{Rails.application.secrets.brand}, #{t('home.banner.title')}"
     end
   end
 
@@ -45,4 +46,5 @@ module ApplicationHelper
     form << '</div></div>'
     return form.html_safe
   end
+
 end
