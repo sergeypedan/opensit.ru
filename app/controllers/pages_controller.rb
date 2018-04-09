@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def about_journal
-    @title      = 'About journal'
+    @title      = t('pages.about_journal')
     @page_class = 'about-journal'
   end
 
