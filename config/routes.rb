@@ -15,7 +15,7 @@ Opensit::Application.routes.draw do
   end
 
   get 'about',         to: 'pages#about'
-  get 'about-journal', to: 'pages#journal', as: :about_journal
+  get 'about-journal', to: 'pages#about_journal', as: :about_journal
   get 'calendar',      to: 'pages#calendar', as: :calendar
   get 'contribute',    to: 'pages#contribute'
   get 'contact',       to: 'pages#contact'
