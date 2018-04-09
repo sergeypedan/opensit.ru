@@ -1,0 +1,17 @@
+- if @notifications.empty?
+  .message-box
+    h2 = t("notifications.empty")
+    p = t("notifications.subtitle")
+
+- else
+  table.table
+    - @notifications.each do |notification|
+      tr class=viewed_or_not(notification)
+        td.avatar = small_avatar_of(User.find(notification.initiator)) if User.exists?(notification.initiator)
+        td
+          = link_to notification.message, notification.link, class: "clickable-row"
+          .time-ago
+            => time_ago_in_words(notification.created_at)
+            | ago
+
+  .pagination-container = will_paginate @feed_items, renderer: BootstrapPagination::Rails

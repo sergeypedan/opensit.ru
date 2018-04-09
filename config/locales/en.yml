@@ -130,3 +130,7 @@ en:
     says: "says:"
     sent_empty: You haven't sent any messages
     send_something: Why don't you send someone a message?
+
+  notifications:
+    empty: No notifications
+    subtitle: When others interact with you you'll know about it here
