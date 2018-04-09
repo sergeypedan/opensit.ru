@@ -51,7 +51,6 @@ en:
       username: Choose a username
       email: Your email
       password: Your password
-      button: Sign up
     sign_in: Time to sign in!
     global_community: And become part of our awesome global community!
 
