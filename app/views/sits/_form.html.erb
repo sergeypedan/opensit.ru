@@ -1,42 +1,39 @@
 <%= simple_form_for(@sit, html: { class: 'form-horizontal'}) do |f| %>
+
   <% if @sit.errors.any? %>
-    <div class="alert alert-danger">
-      Please fill in the required fields.
-    </div>
+    <div class="alert alert-danger"><%= t("forms.fill_all_required") %></div>
   <% end %>
 
-  <%= if controller.action_name == 'edit'
-    link_to 'Delete', sit_path(@sit), method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger delete-entry pull-right'
-    end %>
+  <%= link_to t("forms.delete"), sit_path(@sit), method: :delete, confirm: t("forms.sure"), class: 'btn btn-danger delete-entry pull-right' if (controller.action_name == 'edit') %>
 
   <% if !current_user.private_stream %>
     <div class="dropdown privacy-options">
-      <button data-toggle="dropdown" href="#" type="button" class="btn btn-small privacy-button"><i class="fa fa-cog"></i> Privacy</button>
+      <button data-toggle="dropdown" href="#" type="button" class="btn btn-small privacy-button"><%= fa_icon "cog", text: t("new_sit.privacy") %></button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
         <li>
-          <div class="checkbox boolean optional sit_private">
-            <input name="sit[private]" type="hidden" value="0" />
-            <label class="checkbox">
-              <input class="boolean optional" id="sit_private" name="sit[private]" type="checkbox" <%= @sit.private ? 'checked' : '' %> value="1" />
-              Make this entry private
-            </label>
+          <div class="checkbox">
+            <%= f.label :private, t('new_sit.make_private') do %>
+              <%= f.check_box :private %>
+              <%= t('new_sit.make_private') %>
+            <% end %>
           </div>
         </li>
         <li>
-          <div class="checkbox boolean optional sit_disable_comments">
-            <input name="sit[disable_comments]" type="hidden" value="0" />
-            <label class="checkbox" for="sit_disable_comments">
-              <input class="boolean optional" id="sit_disable_comments" name="sit[disable_comments]" type="checkbox" <%= @sit.disable_comments ? 'checked' : '' %> value="1" />
-              Disable comments
-            </label>
+          <div class="checkbox">
+            <%= f.label :disable_comments, t('new_sit.make_private') do %>
+              <%= f.check_box :disable_comments %>
+              <%= t('new_sit.disable_comments') %>
+            <% end %>
           </div>
         </li>
       </ul>
     </div>
   <% else %>
-  <div class="pull-right">
-    <span class="label label-primary"><i class="fa fa-lock"></i> Your stream is private.</span>
-  </div>
+    <div class="pull-right">
+      <span class="label label-primary">
+        <%= fa_icon "lock", text: t('new_sit.is_private') %>
+      </span>
+    </div>
   <% end %>
 
 
@@ -45,34 +42,36 @@
       <div class="radio">
         <label>
           <input <%= @sit.s_type == 0 || @sit.s_type.nil? ? 'checked' : '' %> id="sit_s_type_0" name="sit[s_type]" type="radio" value="0" />
-          I just sat for <input class="optional form-control" id="sit_duration" name="sit[duration]" size="50" type="text" value="<%= controller.action_name == 'edit' ? @sit.duration : @user.default_sit_length %>"> minutes
+          <%= t("new_sit.sat_for") %>
+          <input class="optional form-control" id="sit_duration" name="sit[duration]" size="50" type="text" value="<%= controller.action_name == 'edit' ? @sit.duration : @user.default_sit_length %>">
+          <%= t("new_sit.minutes") %>
         </label>
       </div>
 
       <div class="radio">
         <label>
-          <input <%= @sit.s_type == 1 ? 'checked' : '' %> class="diary_type" id="sit_s_type_1" name="sit[s_type]" type="radio" value="1" />This is a diary entry.
+          <input <%= @sit.s_type == 1 ? 'checked' : '' %> class="diary_type" id="sit_s_type_1" name="sit[s_type]" type="radio" value="1" />
+          <%= t("new_sit.diary") %>
         </label>
       </div>
     </div>
   </div>
 
   <div class="new-sit-title">
-    <%= form_element(f, :title, 'sit', "Title", 4, { label: false }) %>
+    <%= form_element(f, :title, 'sit', t("new_sit.title"), 4, { label: false }) %>
   </div>
 
-  <%= form_element(f, :body, 'sit', "What happened?", 7, { label: false, hint: 'You don\'t have to write anything', input_html: { rows: 10, autofocus: true, class: "rich-textarea" }} ) %>
+  <%= form_element(f, :body, 'sit', t("new_sit.wat"), 7, { label: false, hint: t("new_sit.text_hint"), input_html: { rows: 10, class: "rich-textarea" }} ) %>
 
   <div class='form-group'>
-    <label class='col-lg-2 control-label' for='sit_created_at'>Date</label>
+    <%= f.label :created_at, t("forms.date"), class: "col-lg-2 control-label" %>
     <div class="col-lg-2">
       <div class="form-group string optional sit_created_at">
         <div class="col-lg-12">
           <div class="custom-date">
             <div class='input-group date' id='datetimepicker'>
-                <input type='text' placeholder="Just now" name="custom_date" class="form-control" value="<%= controller.action_name == 'edit' ? @sit.created_at.strftime('%m/%d/%Y %l:%M %p') : '' %>" />
-                <span class="input-group-addon"><span class="fa fa-calendar"></span>
-                </span>
+              <input type='text' placeholder="<%= t('new_sit.now') %>" name="custom_date" class="form-control" value="<%= controller.action_name == 'edit' ? @sit.created_at.strftime('%m/%d/%Y %l:%M %p') : '' %>" />
+              <span class="input-group-addon"><%= fa_icon "calendar" %></span>
             </div>
           </div>
         </div>
@@ -80,11 +79,11 @@
     </div>
   </div>
 
-  <%= form_element(f, :tag_list, 'sit', "Tags", 2, { hint: 'Separate by commas', label: false }) %>
+  <%= form_element(f, :tag_list, 'sit', t("tags"), 2, { hint: t('forms.comma_separated'), label: false }) %>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class: 'btn btn-lg btn-primary' %>
+      <%= f.submit t("new_sit.submit"), class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
 

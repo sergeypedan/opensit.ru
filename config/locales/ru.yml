@@ -1,4 +1,18 @@
 ru:
+
+  authorization:
+    email: Email
+    remember: Запомнить меня
+    already: Уже зарегистрированы?
+    not_yet: Ещё не зарегистрированы?
+    sign_in: Войти
+    sign_up: Зарегистрироваться
+    forgot_password: Забыли пароль?
+    miss_confirmation: Не получили ссылку для подтверждения регистрации?
+    miss_unlock: Не получили ссылку для разблокировки?
+    sign_in_with: Войти через
+    password: Пароль
+
   header:
     unlogged: современный онлайн-дневник медитации
 
@@ -44,19 +58,6 @@ ru:
 
   sign_in:
     welcome: Рады видеть вас снова!
-
-  authorization:
-    email: Email
-    remember: Запомнить меня
-    already: Уже зарегистрированы?
-    not_yet: Ещё не зарегистрированы?
-    sign_in: Войти
-    sign_up: Зарегистрироваться
-    forgot_password: Забыли пароль?
-    miss_confirmation: Не получили ссылку для подтверждения регистрации?
-    miss_unlock: Не получили ссылку для разблокировки?
-    sign_in_with: Войти через
-    password: Пароль
 
   me:
     empty_follow_list_header: Вы ни на кого не подписаны
@@ -123,3 +124,26 @@ ru:
   notifications:
     empty: Уведомлений нет
     subtitle: Тут будут отображаться уведомления о взаимодействиях с другими пользователями
+
+  new_sit:
+    privacy: Приватность
+    make_private: Сделать запись приватной
+    disable_comments: Отключить комментарии
+    is_private: У вас закрытый дневник
+    sat_for: Я практиковал/а
+    minutes: минут
+    diary: Это дневниковая запись
+    text_hint: Подсказка под полем, про что писать
+    now: Прямо сейчас
+    submit: Создать запись
+    title: Заголовок
+    wat: Как проходила ваша медитация?
+
+  forms:
+    sure: Вы уверены?
+    delete: Удалить
+    date: Дата
+    comma_separated: Через запятую
+    fill_all_required: Пожалуйста, заполните обязательные поля
+
+  tags: Теги

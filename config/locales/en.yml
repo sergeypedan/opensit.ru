@@ -1,15 +1,16 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            password:
-              too_short: Password is too short
-              blank: Password cannot be blank
+
+  authorization:
+    remember: Remember me
+    password: Password
+    email: Email
+    already: Already signed up?
+    sign_in: Log in
+    sign_up: Sign up
+    forgot_password: Forgot your password?
+    miss_confirmation: Didn't receive confirmation instructions?
+    miss_unlock: Didn't receive unlock instructions?
+    sign_in_with: Sign in with
 
   header:
     unlogged: is a place to share and develop your meditation practice
@@ -56,18 +57,6 @@ en:
 
   sign_in:
     welcome: Welcome back!
-
-  authorization:
-    remember: Remember me
-    password: Password
-    email: Email
-    already: Already signed up?
-    sign_in: Log in
-    sign_up: Sign up
-    forgot_password: Forgot your password?
-    miss_confirmation: Didn't receive confirmation instructions?
-    miss_unlock: Didn't receive unlock instructions?
-    sign_in_with: Sign in with
 
   me:
     empty_follow_list_header: You're not following anyone yet.
@@ -134,3 +123,26 @@ en:
   notifications:
     empty: No notifications
     subtitle: When others interact with you you'll know about it here
+
+  new_sit:
+    privacy: Privacy
+    make_private: Make this entry private
+    disable_comments: Disable comments
+    is_private: Your stream is private
+    sat_for: I just sat for
+    minutes: minutes
+    diary: This is a diary entry
+    text_hint: "You don't have to write anything"
+    now: Just now
+    submit: Submit a sit
+    title: Title
+    wat: What happened?
+
+  forms:
+    sure: Are you sure?
+    delete: Delete
+    date: Date
+    comma_separated: Separate by commas
+    fill_all_required: Please fill in the required fields
+
+  tags: Tags
