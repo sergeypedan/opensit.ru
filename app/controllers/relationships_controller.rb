@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+
   before_filter :authenticate_user!
 
   def create
@@ -18,4 +19,5 @@ class RelationshipsController < ApplicationController
       format.js
     end
   end
+
 end
