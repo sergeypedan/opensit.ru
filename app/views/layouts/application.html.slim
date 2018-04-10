@@ -3,15 +3,16 @@ html lang="ru"
   head = render "layouts/head"
   = content_tag :body, class: (@page_class || "#{controller_name}-#{action_name}")
 
-    / - if (controller_name.in? ["registrations", "sessions"]) && controller.action_name != "edit"
-    /   - @page_class = "sign-up-or-in"
-    /   = render "headers/brand"
-
     .container.base-container
-      = render "headers/base" unless current_page?(root_path)
+      - unless current_page?(root_path)
+        - if user_signed_in?
+          = render "headers/logged_base"
+        - elsif !controller_name.in? ['registrations', 'sessions']
+          = render "headers/visitor"
+
       = content_tag :div, class: ["page-content", @page_class]
         .row
-          - unless (controller_name.in? ["registrations", "sessions"])
+          - unless controller_name.in? ["registrations", "sessions"]
             = content_tag :div, flash[:notice], class: "alert alert-success" if flash[:notice]
             = content_tag :div, flash[:error],  class: "alert alert-danger"  if flash[:error]
           == yield

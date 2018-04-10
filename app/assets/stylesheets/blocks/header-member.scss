@@ -1,0 +1,153 @@
+$bgDefault: $navbar;
+$bgHighlight: #222;
+$colDefault: $green;
+$colHighlight: whitesmoke;
+
+.navbar-default {
+  background-color: $bgDefault;
+
+  .authentication {
+    img {
+      height: 20px;
+      vertical-align: bottom;
+    }
+  }
+
+  .nav-logo {
+    margin-right: 20px;
+    float: left;
+
+    .navbar-brand {
+      font-size: 1.6em;
+      padding: 16px 10px;
+      padding-left: 0;
+      height: 69px;
+    }
+    .nav-logomark {
+      float: left;
+      height: 35px;
+    }
+    .nav-logotype {
+      color: #fcf9f6;
+      float: left;
+      margin-top: 21px;
+      &:hover {
+        color: white;
+      }
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .navbar-brand {
+    color: $colDefault;
+    &:hover,
+    &:focus {
+      color: $colHighlight;
+    }
+  }
+  .navbar-nav {
+    font-size: 15px;
+
+    > li {
+      > a.nav-option {
+        // font-size: 1.4em;
+        // padding-top: 20px;
+        // padding-bottom: 23px;
+        color: $colDefault;
+        &:hover,
+        &:focus {
+          background-color: $bgHighlight;
+          color: whitesmoke;
+        }
+      }
+      // i {
+      //   font-size: 1em;
+      // }
+      .nav-button-text {
+        // font-size: 0.6em;
+        color: whitesmoke;
+      }
+    }
+    .active {
+      > a,
+      > a:hover,
+      > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+      .nav-option {
+        color: $colHighlight;
+      }
+    }
+    .open {
+      > a,
+      > a:hover,
+      > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+        .caret {
+          border-top-color: $colHighlight;
+          border-bottom-color: $colHighlight;
+        }
+      }
+    }
+    >.dropdown {
+      > a {
+        .caret {
+          border-top-color: $colDefault;
+          border-bottom-color: $colDefault;
+        }
+        &:hover,
+        &:focus {
+          .caret {
+            border-top-color: $colHighlight;
+            border-bottom-color: $colHighlight;
+          }
+        }
+      }
+    }
+  }
+  .dropdown-menu {
+    a {
+      font-size: 13px;
+      margin: 5px 0;
+      &:hover {
+        background: $green;
+      }
+    }
+    .divider {
+      background-color: $colDefault;
+    }
+  }
+  // .search-box {
+  //   margin-top: 10px;
+  // }
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    margin-top: 15px;
+    &:hover,
+    &:focus {
+      background-color: $bgHighlight;
+    }
+    .icon-bar {
+      background-color: $colDefault;
+    }
+  }
+}
+
+.navbar-collapse,
+.navbar-form {
+  border-color: $colDefault;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: $colDefault;
+    &:hover,
+    &:focus {
+      color: $colHighlight;
+      background-color: $bgHighlight;
+    }
+  }
+}

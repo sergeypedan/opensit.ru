@@ -1,5 +1,5 @@
-.navbar-header.navbar-right
-  - if user_signed_in?
+- if user_signed_in?
+  .navbar-header.navbar-right
     ul.nav.navbar-nav
       li
         form class="navbar-form navbar-right" role="search" action="/search"
@@ -7,12 +7,15 @@
             input type="text" class="form-control" name="q" placeholder="Search"
             input type="hidden" name="type" value="sits"
 
+      = content_tag :li, class: ('active' if current_page?(notifications_path))
+        = link_to new_notifications(current_user), notifications_path, title: 'Notifications', class: 'nav-option'
+
       = content_tag :li, class: ("active" if current_page?(messages_path))
         = link_to messages_path, class: "pull-left", title: 'Inbox', class: "nav-option"
           = fa_icon "envelope"
           span.unread-count = current_user.unread_count
 
-      li.dropdown
+      li.dropdown.authentication
         = link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown }
           => small_avatar_of(current_user, 'nav')
           b.caret
