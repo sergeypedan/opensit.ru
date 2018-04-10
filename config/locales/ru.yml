@@ -91,7 +91,7 @@ ru:
     empty:
       title: Ваш профиль пока пуст
       subtitle: Напишите пару строк о себе
-      button: Начать мой профиль
+      button: Заполнить профиль
     feed:
       empty: Пока тут пусто
       nothing_this_month:
