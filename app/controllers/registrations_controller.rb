@@ -22,7 +22,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @title = 'Sign up'
-    @users = User.all.where("avatar_file_name <> ''").where("sits_count > 1").sample(6)
+    @users = User.all.where.not(avatar_file_name: "").where("users.sits_count > 1").sample(6)
     super
   end
 
