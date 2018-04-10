@@ -1,0 +1,22 @@
+.navbar-header.navbar-right
+  - if user_signed_in?
+    ul.nav.navbar-nav
+      li
+        form class="navbar-form navbar-right" role="search" action="/search"
+          .form-group.search-box
+            input type="text" class="form-control" name="q" placeholder="Search"
+            input type="hidden" name="type" value="sits"
+
+      = content_tag :li, class: ("active" if current_page?(messages_path))
+        = link_to messages_path, class: "pull-left", title: 'Inbox', class: "nav-option"
+          = fa_icon "envelope"
+          span.unread-count = current_user.unread_count
+
+      li.dropdown
+        = link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown }
+          => small_avatar_of(current_user, 'nav')
+          b.caret
+
+        ul.dropdown-menu
+          li = link_to fa_icon("user", text: t("menu.profile")), edit_user_registration_path
+          li = link_to fa_icon("sign-out", text: t("menu.logout")), destroy_user_session_path, method: :delete

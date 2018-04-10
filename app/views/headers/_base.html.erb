@@ -10,8 +10,8 @@
         </button>
         <div class="nav-logo">
           <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag 'logos/logomark_trans.png', class: 'nav-logomark' %>
-            <span class="nav-logotype">opensit</span>
+            <%= image_tag 'logos/logo-6.png', alt: Rails.application.secrets.brand, class: 'nav-logomark' %>
+            <!-- <span class="nav-logotype"><%= Rails.application.secrets.brand %></span> -->
           <% end %>
         </div>
       </div>
@@ -58,42 +58,11 @@
           <%= fa_icon "spinner spin", class: "loading-indicator" %>
         </ul>
 
-        <div class="navbar-header navbar-right">
-          <% if user_signed_in? %>
-            <ul class="nav navbar-nav">
-              <li>
-                <form class="navbar-form navbar-right" role="search" action="/search">
-                  <div class="form-group search-box">
-                    <input type="text" class="form-control" name="q" placeholder="Search">
-                    <input type="hidden" name="type" value="sits">
-                  </div>
-                </form>
-              </li>
-
-              <%= content_tag :li, class: ("active" if current_page?(messages_path)) do %>
-                <%= link_to messages_path, class: "pull-left", title: 'Inbox', class: "nav-option" do %>
-                  <%= fa_icon "envelope" %>
-                  <span class="unread-count"><%= current_user.unread_count %></span>
-                <% end %>
-              <% end %>
-
-              <li class="dropdown">
-                <%= link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown } do %>
-                  <%= small_avatar_of(current_user, 'nav') %>
-                  <b class="caret"></b>
-                <% end %>
-                <ul class="dropdown-menu">
-                  <li><%= link_to fa_icon("user", text: t("menu.profile")), edit_user_registration_path %></li>
-                  <li><%= link_to fa_icon("sign-out", text: t("menu.logout")), destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </li>
-            </ul>
-          <% end %>
-        </div>
+        <%= render "headers/logged_right" %>
       </div>
 
-    </div> <!-- end .container -->
+    </div>
   </nav>
 <% elsif !controller_name.in? ['registrations', 'sessions'] %>
-  <%= render "layouts/header_visitor" %>
+  <%= render "headers/visitor" %>
 <% end %>

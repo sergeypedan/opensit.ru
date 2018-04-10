@@ -1,6 +1,6 @@
 <div class="page text-section">
   <h1><%= t('pages.contacts') %></h1>
-  <%= image_tag 'logos/logo-1.svg', width: 400, alt: Rails.application.secrets.brand %>
+  <%= image_tag 'logos/logo-2.png', width: 400, alt: Rails.application.secrets.brand %>
   <p>My name is <%= Rails.application.secrets.public_person %> and I am the founder and primary developer behind <%= Rails.application.secrets.brand %>. I'd love hear how you're finding the site. What works? What could be better? What should we build next? Let me know!</p>
   <div class="email"><%= mail_to Rails.application.secrets.public_email %></div>
   <p>We're still new, and there's lots to improve upon, and plenty of new features in the pipeline. Check out <%= link_to "GitHub", "https://github.com/#{Rails.application.secrets.github_id}" %> to see what we're up to!</p>

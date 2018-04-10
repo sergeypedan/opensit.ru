@@ -10,7 +10,7 @@ html lang="ru"
       = render "shared/brand_header"
 
     .container.base-container
-      = render "layouts/header" unless current_page?(root_path)
+      = render "headers/base" unless current_page?(root_path)
       = content_tag :div, class: ["page-content", @page_class]
         .row
           - unless (controller_name.in? ["registrations", "sessions"])

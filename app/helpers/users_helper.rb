@@ -11,7 +11,7 @@ module UsersHelper
 
   def large_avatar_of(user)
     if user.avatar.blank?
-      image_tag image_path('logos/default_250.png'), size: "250x170", alt: user.username, title: user.username, class: 'img-circle',  itemprop: 'image'
+      image_tag image_path('logos/logo-3.png'), size: "250x170", alt: user.username, title: user.username, class: 'img-circle',  itemprop: 'image'
     else
       link_to user_path(user) do
         image_tag user.avatar.url(:thumb), size: "250x250", alt: user.username, title: user.username, class: 'img-circle',  itemprop: 'image'
