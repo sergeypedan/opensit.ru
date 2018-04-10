@@ -28,7 +28,7 @@
 			<% if controller.action_name == 'me' %>
 				<%= render 'goals/goal_module' %>
 			<% else %>
-				<a class="full-journal-link" href="<%= user_path(@user) %>"><%= t "me.view_full_journal" %></a>
+				<a class="full-journal-link" href="<%= user_path(@user) %>"><%= fa_icon "long-arrow-right", right: true, text: t("me.view_full_journal") %></a>
 			<% end %>
 		</div>
 	</div>
