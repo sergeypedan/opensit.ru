@@ -70,12 +70,12 @@
                 </form>
               </li>
 
-              <%= content_tag :li, class: ("active" if current_page?(messages_path)) %>
+              <%= content_tag :li, class: ("active" if current_page?(messages_path)) do %>
                 <%= link_to messages_path, class: "pull-left", title: 'Inbox', class: "nav-option" do %>
                   <%= fa_icon "envelope" %>
                   <span class="unread-count"><%= current_user.unread_count %></span>
                 <% end %>
-              </li>
+              <% end %>
 
               <li class="dropdown">
                 <%= link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown } do %>
