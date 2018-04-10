@@ -1,7 +1,8 @@
 doctype html
 html lang="ru"
   head = render "layouts/head"
-  body class=@page_class
+  body class=(@page_class || "#{controller_name}-#{action_name}")
     == yield
+    = render 'layouts/footer'
     = stylesheet_link_tag "vendor"
     = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Comfortaa|Ubuntu:300,400,400i,500,500i,700&amp;subset=cyrillic"

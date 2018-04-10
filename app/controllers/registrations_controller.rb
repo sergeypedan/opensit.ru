@@ -22,7 +22,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @title = 'Sign up'
-    @page_class = 'sign-up-page'
     @users = User.all.where("avatar_file_name <> ''").where("sits_count > 1").sample(6)
     super
   end

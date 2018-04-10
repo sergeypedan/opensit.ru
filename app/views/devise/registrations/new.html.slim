@@ -1,8 +1,6 @@
 .sign-up-box
   .well
-    .brand-header
-      = image_tag 'logos/logo-2.png', class: 'main-logo'
-      p.opensit opensit
+    = image_tag 'logos/logo-2.png', class: 'main-logo', alt: Rails.application.secrets.brand
 
     - unless I18n.locale == :ru
       h1 = t "sign_up.h1"

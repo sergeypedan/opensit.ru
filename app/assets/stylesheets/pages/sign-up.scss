@@ -1,4 +1,16 @@
+.registrations-new {
+  .brand-header {
+    border-bottom: 0;
+  }
+}
+
 .sign-up-box {
+
+  .main-logo {
+    max-height: 100px;
+    margin: 0 auto 30px;
+    display: block;
+  }
 
   .alert { width: inherit; }
   .well {
