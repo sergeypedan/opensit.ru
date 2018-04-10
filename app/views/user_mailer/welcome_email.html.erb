@@ -1,34 +1,35 @@
 <%
-	domain = Rails.application.secrets.domain
-	twitter_id = Rails.application.secrets.twitter_id
+  domain = Rails.application.secrets.domain
+  brand  = Rails.application.secrets.brand
 %>
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-	</head>
-	<body style="font-family: Arial, sans serif; background: whitesmoke;">
-		<br>
-		<table width="100%" cellspacing="0" cellpadding="0">
-			<tr>
-				<td width="10%"></td>
-				<td width="80%"><%= image_tag "http://#{domain}/images/email_header.png", alt: Rails.application.secrets.brand %></td>
-				<td width="10%"></td>
-			</tr>
-			<tr>
-					<td width="10%"></td>
-					<td>
-						<p>Hey,</p>
-						<p>Thanks for joining <%= Rails.application.secrets.brand %>! We hope everything makes sense and you enjoy being part of our community.</p>
-						<p>To get the most out of the site try <a href="http://<%= domain %>/users/edit">filling out your profile</a>, <a href="http://<%= domain %>/explore/users/active">making some new friends</a>, and exploring our <a href="http://<%= domain %>/explore">Global SitStream</a>.
-						<p>If you have any questions, suggestions or issues you can just reply to this email or send a new one to <%= mail_to Rails.application.secrets.public_email %>. My name is <%= Rails.application.secrets.public_person %>, and I'll get back to you quickly. You can also tweet us at @<%= link_to twitter_id, "https://twitter.com/#{twitter_id}" %>.</p>
-						<p>Happy sitting!</p>
-						<%= render "user_mailer/signature" %>
-					</td>
-					<td width="10%"></td>
-			</tr>
-		</table>
-		<br>
-	</body>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="font-family: Arial, sans serif; background: whitesmoke;">
+    <br>
+    <table width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="10%"></td>
+        <td width="80%"><%= image_tag "http://#{domain}/images/email_header.png", alt: brand %></td>
+        <td width="10%"></td>
+      </tr>
+      <tr>
+          <td width="10%"></td>
+          <td>
+            <p>Добро пожаловать в сообщество <%= brand %>!</p>
+            <p>Привет, спасибо за то, что вы присоединились к <%= brand %>!</p>
+            <p>Надеемся, что вы скоро освоитесь на сайте и вам понравится быть с нами!</p>
+            <p>Чтобы получить от сообщества открытой практики максимум пользы, заполните свой профиль пользователя на сайте, добавляйте друзей, а также исследуйте основную ленту дневников — возможно, чьи-то отчёты о медитации будут содержать для вас ценные подсказки.</p>
+            <p>С любыми вопросами, комментариями и предложениями смело пишите нам на <%= mail_to Rails.application.secrets.public_email %>.</p>
+            <p>Успешной вам практики!</p>
+            <p><%= Rails.application.secrets.public_person %><br><%= domain %></p>
+          </td>
+          <td width="10%"></td>
+      </tr>
+    </table>
+    <br>
+  </body>
 </html>
