@@ -1,22 +1,22 @@
 footer.site-footer
   .container
 
-    .col-md-3
-      p.header = t "footer.about"
-      ul
+    .col-md-3.hidden-xs
+      h5 = t "footer.about"
+      ul style='margin-bottom: 0'
         li = link_to t("footer.journal"),  about_journal_path
         li = link_to t("footer.about"),    about_path
         li = link_to t("footer.contacts"), contact_path
 
-    .col-md-3
-      / p.header = t "footer.community"
+    .col-md-3.hidden-xs
+      / h5 = t "footer.community"
       / ul
       /   li = link_to "Twitter",  "https://twitter.com/#{Rails.application.secrets.twitter_id}"
       /   li = link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}"
       /   li = link_to "Google+",  "https://www.google.com/+#{Rails.application.secrets.google_plus_id}"
 
-    .col-md-3
-      / p.header = t "footer.contribute"
+    .col-md-3.hidden-xs
+      / h5 = t "footer.contribute"
       / ul
       /   li = link_to t("footer.how_to_contribute"), "/contribute"
       /   li = link_to t("footer.github"), "http://github.com/#{Rails.application.secrets.github_id}"
@@ -24,7 +24,7 @@ footer.site-footer
     .col-md-3.copyright-holder
       = image_tag "logos/logo-3.png", class: "footer-logo"
 
-      p class="mobile-nav hidden"
+      p.mobile-nav.hidden-sm-plus
         => link_to t("footer.about"), "/about"
         | •
         =<> link_to t("footer.contribute"), "/contribute"

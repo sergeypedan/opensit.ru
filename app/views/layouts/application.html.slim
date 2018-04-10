@@ -3,11 +3,9 @@ html lang="ru"
   head = render "layouts/head"
   = content_tag :body, class: (@page_class || "#{controller_name}-#{action_name}")
 
-    / = render "plugins/user_voice"
-
-    - if (controller_name.in? ["registrations", "sessions"]) && controller.action_name != "edit"
-      - @page_class = "sign-up-or-in"
-      = render "headers/brand"
+    / - if (controller_name.in? ["registrations", "sessions"]) && controller.action_name != "edit"
+    /   - @page_class = "sign-up-or-in"
+    /   = render "headers/brand"
 
     .container.base-container
       = render "headers/base" unless current_page?(root_path)

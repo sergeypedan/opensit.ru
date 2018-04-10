@@ -2,6 +2,7 @@ doctype html
 html lang="ru"
   head = render "layouts/head"
   body class=(@page_class || "#{controller_name}-#{action_name}")
+    = render 'headers/brand'
     == yield
     = render 'layouts/footer'
     = stylesheet_link_tag "vendor"

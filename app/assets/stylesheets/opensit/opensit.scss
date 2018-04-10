@@ -351,16 +351,6 @@ $colHighlight   : whitesmoke;
     }
   }
 
-  // Sign in
-  .sign-in {
-    h1 {
-      font-size: 25px;
-    }
-    .remember label {
-      margin-top: 7px;
-    }
-  }
-
   // Alerts
   .alert {
     width: 100%;
@@ -485,23 +475,6 @@ $colHighlight   : whitesmoke;
   .month-view {
     .entry .link {
       width: auto !important;
-    }
-  }
-
-  // Footer
-  footer {
-    ul, .header {
-      display: none;
-    }
-    .copyright-holder {
-      .footer-logo {
-        width: 75px;
-        margin: 0.5em 2em;
-      }
-    }
-    .mobile-nav {
-      display: block !important;
-      visibility: visible !important;
     }
   }
 

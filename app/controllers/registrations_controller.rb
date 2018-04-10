@@ -2,6 +2,8 @@
 
 class RegistrationsController < Devise::RegistrationsController
 
+  layout 'sign_up'
+
   def after_sign_up_path_for(resource)
     '/welcome'
   end
@@ -11,7 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
 	def edit
-		@title = 'Edit profile'
+		@title      = 'Edit profile'
 		@page_class = 'edit-profile'
 	end
 
@@ -40,4 +42,5 @@ class RegistrationsController < Devise::RegistrationsController
     @users = User.all.where("avatar_file_name <> ''").where("sits_count > 1").sample(6)
     super
   end
+
 end

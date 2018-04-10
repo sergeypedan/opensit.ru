@@ -1,12 +1,20 @@
 .site-footer
   background: #fff
   border-top: 1px solid #ccc
+  padding-top:    30px
+  padding-bottom: 25px
 
   .mobile-nav
     color: $dark-grey
 
-  .header
-    margin: 1em 0 0.5em
+    @media (max-width: 767px)
+      display: block !important
+      visibility: visible !important
+
+  h5
+    font-size: 16px
+    margin-top: 0
+    margin-bottom: .5em
 
   a
     color: $dark-grey
@@ -22,12 +30,19 @@
   .copyright-holder
     text-align: center
 
-    .footer-logo
-      margin: 1em 0 0.5em
-      width: 100px
+  .footer-logo
+    margin: 0 0 0.5em
+    height: 70px
 
-    .copyright
-      color: $dark-grey
-      font-size: 0.7em
+  .copyright
+    color: $dark-grey
+    font-size: 0.7em
+    margin-bottom: 0
 
+  .hidden-xs
+    @media (max-width: 767px)
+      display: none
 
+  .hidden-sm-plus
+    @media (min-width: 768px)
+      display: none
