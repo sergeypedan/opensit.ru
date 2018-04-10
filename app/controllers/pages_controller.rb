@@ -12,12 +12,12 @@ class PagesController < ApplicationController
 
   def about
     @title      = t('pages.about')
-    @page_class = 'about'
+    @page_class = 'pages-about'
   end
 
   def about_journal
     @title      = t('pages.about_journal')
-    @page_class = 'about-journal'
+    @page_class = 'pages-about_journal'
   end
 
   def contribute
