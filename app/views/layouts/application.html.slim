@@ -7,7 +7,7 @@ html lang="ru"
 
     - if (controller_name.in? ["registrations", "sessions"]) && controller.action_name != "edit"
       - @page_class = "sign-up-or-in"
-      = render "shared/brand_header"
+      = render "headers/brand"
 
     .container.base-container
       = render "headers/base" unless current_page?(root_path)
