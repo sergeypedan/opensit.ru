@@ -239,21 +239,6 @@ $colHighlight   : whitesmoke;
   margin-bottom: 20px;
 }
 
-/* Large white text section. e.g. viewing a sit */
-.text-section {
-  background: white;
-  padding: 20px;
-  border-top: 3px solid $green;
-  float: left;
-  width: 100%;
-  word-wrap: break-word;
-  @include rounded-bottom;
-  h1 {
-    margin-top: 0;
-    margin-bottom: 5px;
-  }
-}
-
 /* Message boxes */
 .message-box {
   @include rounded-bottom;

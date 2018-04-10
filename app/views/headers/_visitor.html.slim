@@ -2,12 +2,12 @@ nav class="navbar navbar-default navbar-fixed-top sign-up-nav" role="navigation"
   .container
     .navbar-header
       .nav-text
-        = link_to image_tag('logos/logo-2.png', class: 'nav-logomark'), root_path, class: "logo-link"
+        = link_to image_tag('logos/logo-6.png', alt: Rails.application.secrets.brand, class: 'nav-logomark'), root_path, class: "logo-link"
         = Rails.application.secrets.brand
         span.expanded
           | —
           =<> t('header.unlogged')
           | —
         =< link_to t("authorization.sign_up"), new_user_registration_path, class: "btn btn-primary btn-sm"
-        =< t("support.array.or")
+        span style='margin: 0 3px' = t("support.array.or")
         =< link_to t("authorization.sign_in"), new_user_session_path, class: "login-link"

@@ -1,7 +1,22 @@
+// Large white text section. e.g. viewing a sit
+
 .text-section
+  background: white
+  padding: 20px
+  border-top: 3px solid $green
+  float: left
+  width: 100%
+  word-wrap: break-word
+
+  @include rounded-bottom
+
   p
     max-width: 850px
 
   ul, ol
     max-width: 850px
     padding-left: 1.25em
+
+  h1
+    margin-top: 0
+    margin-bottom: 20px
