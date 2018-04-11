@@ -2,7 +2,7 @@
 
 class RegistrationsController < Devise::RegistrationsController
 
-  layout 'sign_up'
+  layout 'authentication'
 
   def after_sign_up_path_for(resource)
     '/welcome'

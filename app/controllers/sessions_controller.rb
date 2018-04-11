@@ -1,6 +1,6 @@
 class SessionsController < Devise::SessionsController
 
-  layout 'sign_up'
+  layout 'authentication'
 
   def new
     @title = 'Sign in'
