@@ -1,23 +1,21 @@
 doctype html
 html lang="ru"
   head = render "layouts/head"
-  = content_tag :body, class: (@page_class || "#{controller_name}-#{action_name}")
+  = content_tag :body, class: ["#{controller_name}-#{action_name}", "non-collapsing-vertically", @page_class, ("has-sticky-header" unless controller_name == 'sessions')]
 
-    .container.base-container
-      - unless current_page?(root_path)
-        - if user_signed_in?
-          = render "headers/logged_base"
-        - elsif !controller_name.in? ['registrations', 'sessions']
-          = render "headers/visitor"
+    - unless current_page?(root_path)
+      - if user_signed_in?
+        = render "headers/logged_base"
+      - elsif !controller_name.in? ['registrations', 'sessions']
+        = render "headers/visitor"
+      = render 'headers/brand' if current_page?("/users/sign_in")
 
-      = content_tag :div, class: ["page-content", @page_class]
-        .row
-          - unless controller_name.in? ["registrations", "sessions"]
-            = content_tag :div, flash[:notice], class: "alert alert-success" if flash[:notice]
-            = content_tag :div, flash[:error],  class: "alert alert-danger"  if flash[:error]
-          == yield
-      .spacer
+    - unless controller_name.in? ["registrations", "sessions"]
+      = content_tag :div, flash[:notice], class: "alert alert-success" if flash[:notice]
+      = content_tag :div, flash[:error],  class: "alert alert-danger"  if flash[:error]
+
+    = content_tag :main, class: ["container", "page-content", "non-collapsing-vertically", @page_class]
+      .row == yield
 
     = render "layouts/footer"
-    = stylesheet_link_tag "vendor"
-    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,500,500i,700&amp;subset=cyrillic"
+    = render "layouts/assets_footer"

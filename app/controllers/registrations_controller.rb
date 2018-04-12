@@ -2,8 +2,6 @@
 
 class RegistrationsController < Devise::RegistrationsController
 
-  layout 'authentication'
-
   def after_sign_up_path_for(resource)
     '/welcome'
   end
@@ -39,7 +37,7 @@ class RegistrationsController < Devise::RegistrationsController
         end
       end
     end
-    @users = User.all.where("avatar_file_name <> ''").where("sits_count > 1").sample(6)
+    @users = User.all.where.not(avatar_file_name: "").where("users.sits_count > 1").sample(6)
     super
   end
 
