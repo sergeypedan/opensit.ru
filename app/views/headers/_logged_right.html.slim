@@ -17,7 +17,7 @@
 
       li.dropdown.authentication
         = link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown }
-          => small_avatar_of(current_user, 'nav')
+          => avatar_image(user)
           b.caret
 
         ul.dropdown-menu

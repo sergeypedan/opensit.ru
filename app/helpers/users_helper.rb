@@ -1,42 +1,35 @@
 module UsersHelper
 
+  def avatar_image(user)
+    user.avatar.blank? ? image_path('placeholders/user-1.svg') : user.avatar.url(:small_thumb)
+  end
+
   def small_avatar_of(user, location = nil)
-    image_link = user.avatar.blank? ? image_path('placeholders/user-1.svg') : user.avatar.url(:small_thumb)
-    if location == 'nav'
-      image_tag image_link, alt: user.username
-    else
-      link_to image_tag(image_link, size: "50x50", alt: user.username, title: user.username, class: 'img-circle'), user_path(user)
-    end
+    image_path = avatar_image(user)
+    return image_tag image_path, alt: user.username if location == 'nav'
+    return link_to image_tag(image_path, alt: user.username, class: 'img-circle'), user_path(user)
   end
 
   def large_avatar_of(user)
-    if user.avatar.blank?
-      image_tag image_path('placeholders/user-1.svg'), alt: user.username, title: user.username, class: 'img-circle',  itemprop: 'image'
-    else
-      link_to user_path(user) do
-        image_tag user.avatar.url(:thumb), size: "250x250", alt: user.username, title: user.username, class: 'img-circle',  itemprop: 'image'
-      end
-    end
+    return image_tag image_path('placeholders/user-1.svg'), alt: user.username, class: 'img-circle', itemprop: 'image' if user.avatar.blank?
+    return link_to image_tag(user.avatar.url(:thumb), size: "250x250", alt: user.username, class: 'img-circle', itemprop: 'image'), user_path(user)
   end
 
   def sign_up_avatar(user)
-    image_tag user.avatar.url(:thumb), size: "70x70", alt: user.username, title: user.username, class: 'img-circle'
+    image_tag user.avatar.url(:thumb), size: "70x70", alt: user.username, class: 'img-circle'
   end
 
   # Return a hyperlinked username / name
   # Pass plain for an unlinked name
   def username(user, plain = false)
     return user.display_name if plain == true
-    link_to "#{user.display_name}", user_path(user.username)
+    return link_to user.display_name, user_path(user.username)
   end
 
   # Return link to website
   def website(user)
-    if user.website =~ /^(http|https):\/\//
-      link_to user.website, user.website, rel: 'nofollow'
-    else
-      link_to user.website, "http://#{user.website}", rel: 'nofollow'
-    end
+    return link_to user.website, user.website, rel: 'nofollow' if user.website =~ /^(http|https):\/\//
+    return link_to user.website, "http://#{user.website}", rel: 'nofollow'
   end
 
   def timeline(dates)
@@ -60,4 +53,5 @@ module UsersHelper
       "#{time_ago_in_words(user.created_at)} ago"
     end
   end
+
 end
