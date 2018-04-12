@@ -1,0 +1,30 @@
+.user-details
+  - if @user.streak > 1
+    .location.info-block
+      = fa_icon "bolt fw"
+      - title = (@user == current_user) ? 'You have' : "#{@user.display_name} has"
+      - title << "sat for #{@user.streak} days in a row!"
+      .value title=title
+        strong
+          => @user.streak
+          | day streak!
+
+  .info-block
+    = fa_icon "bar-chart fw"
+    => link_to "#{@user.followed_users.count} following", following_user_path(@user)
+    | /
+    =< link_to "#{@user.followers.count} followers", followers_user_path(@user)
+
+  - if @user.sits.count > 0
+    .info-block = fa_icon "book fw", text: "Recorded #{@user.sits_count} journal entries"
+
+  - if @user.total_hours_sat > 0
+    .info-block = fa_icon "dashboard fw", text: "Logged #{@user.total_hours_sat} hours practice"
+
+  - if @user.style.present?
+    .info-block = fa_icon "bars fw", text: @user.style
+
+  .info-block = fa_icon "calendar fw", text: "Joined #{time_ago_in_words(@user.created_at)} ago"
+
+  - if @user.website.present?
+    .info-block.user-website = fa_icon "home fw", text: website(@user)

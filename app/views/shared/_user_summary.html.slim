@@ -1,0 +1,27 @@
+.stamp.col-md-3.tile
+  .user-summary
+
+    .name-userpic
+      = link_to image_tag(avatar_image(@user)), user_path(@user), class: "avatar"
+
+      .name-location
+        = link_to @user.display_name, user_path(@user.username), class: "username"
+        - if !@user.city.blank? || !@user.country.blank?
+          .location = @user.location
+
+    = render 'shared/follow_button', user: @user
+
+    = render 'users/details'
+
+    - if @latest.empty? && (current_user&.id == @user.id)
+      .add-a-sit = link_to fa_icon("plus", text: t("me.add_first_sit")), new_sit_path, class: "btn btn-primary btn-lg"
+
+    - if @latest
+      .latest
+        h5 = t "me.latest"
+        = render 'shared/recent_activity'
+
+    - if controller.action_name == 'me'
+      = render 'goals/goal_module'
+    - else
+      = link_to fa_icon("long-arrow-right", right: true, text: t("me.view_full_journal")), user_path(@user), class: "full-journal-link"
