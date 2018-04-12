@@ -1,0 +1,16 @@
+.activity
+  .icon
+    - if sit.s_type == 0
+      = fa_icon "clock-o"
+    - else
+      = fa_icon "book"
+
+  .details
+    .title
+      = (sit.s_type == 0) ? "#{sit.duration} minutes" : sit.title
+      span.pull-right.date
+        = time_ago_in_words(sit.created_at)
+        | ago
+    .body = teaser(sit, 90)
+
+  = link_to "", sit_path(sit), class: "sit-link hidden"

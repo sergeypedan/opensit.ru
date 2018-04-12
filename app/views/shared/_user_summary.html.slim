@@ -14,12 +14,14 @@
     = render 'users/details'
 
     - if @latest.empty? && (current_user&.id == @user.id)
-      .add-a-sit = link_to fa_icon("plus", text: t("me.add_first_sit")), new_sit_path, class: "btn btn-primary btn-lg"
+      .add-a-sit = link_to fa_icon("plus", text: t("me.add_first_sit")), new_sit_path, class: "btn btn-primary"
 
-    - if @latest
+    - if @latest.any?
       .latest
         h5 = t "me.latest"
-        = render 'shared/recent_activity'
+        .recent-activity = render collection: @latest, partial: "sits/sit", as: :sit
+
+
 
     - if controller.action_name == 'me'
       = render 'goals/goal_module'
