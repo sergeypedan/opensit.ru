@@ -29,7 +29,7 @@ module ApplicationHelper
 
   def new_notifications(user)
     if user.notifications.unread.count.zero?
-      '<i class="fa fa-circle-o"></i>'.html_safe
+      fa_icon("circle-o")
     else
       count = '<i class="fa fa-circle"></i><span class="new-notifications">' + current_user.new_notifications.to_s + '</span>'
       count.html_safe
@@ -37,13 +37,14 @@ module ApplicationHelper
   end
 
   def form_element(f, field, model, label, input_width,  options = {})
-    form = "<div class='form-group'><label class='col-lg-2 control-label' for='#{model}_#{field}'>"
-    form << label
-    form << '</label>'
-    form << "<div class=\"col-lg-#{input_width}\">"
-    other = f.input field, options
-    form << other
-    form << '</div></div>'
+    form =  "<div class='form-group'>"
+    form <<   "<label class='col-lg-2 control-label' for='#{model}_#{field}'>"
+    form <<     label
+    form <<   "</label>"
+    form <<   "<div class='col-lg-#{input_width}'>"
+    form <<     f.input(field, options)
+    form <<   "</div>"
+    form << "</div>"
     return form.html_safe
   end
 

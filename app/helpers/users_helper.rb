@@ -28,8 +28,8 @@ module UsersHelper
 
   # Return link to website
   def website(user)
-    return link_to user.website, user.website, rel: 'nofollow' if user.website =~ /^(http|https):\/\//
-    return link_to user.website, "http://#{user.website}", rel: 'nofollow'
+    href = (user.website =~ /^(http|https):\/\//) ? user.website : "http://#{user.website}"
+    return link_to href, href, rel: :nofollow, target: "_blank"
   end
 
   def timeline(dates)

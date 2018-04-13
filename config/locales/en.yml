@@ -162,7 +162,8 @@ en:
     of_practice: of practice
     entries: entries
     following: Following
-    followers: Followers
+    followers: followers
+    joined: Joined
 
   comments:
     h1: Comments

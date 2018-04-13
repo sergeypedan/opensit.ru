@@ -161,7 +161,8 @@ ru:
     of_practice: практики
     entries: записей
     following: Следит за
-    followers: Подписчиков
+    followers: подписчиков
+    joined: Присоединился
 
   comments:
     h1: Комментарии
