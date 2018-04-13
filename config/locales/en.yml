@@ -142,7 +142,29 @@ en:
     sure: Are you sure?
     delete: Delete
     date: Date
+    edit: Edit
     comma_separated: Separate by commas
     fill_all_required: Please fill in the required fields
 
   tags: Tags
+
+  navigation:
+    back_to_new_users: Back to new users
+    previous: Previous
+    next: Next
+    report: Report something on this page
+
+  stats:
+    sat: Sat
+    this_month: this month
+    days: days
+    totalling: totalling
+    of_practice: of practice
+    entries: entries
+    following: Following
+    followers: Followers
+
+  comments:
+    h1: Comments
+    body: Have your say
+    submit: Post comment

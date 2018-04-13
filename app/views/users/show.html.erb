@@ -1,13 +1,12 @@
 <div itemscope itemtype="http://schema.org/Person">
+
   <div class="sidebar col-md-3">
     <%= render 'shared/full_user' %>
   </div>
 
   <div class="clearfix col-md-9">
 
-    <% if request.referrer =~ /explore\/users/ %>
-      <a href="<%=request.referrer%>" class="back-button btn btn-default">&larr; Back to new users</a>
-    <% end %>
+    <%= link_to fa_icon("long-arrow-left", text: t("navigation.back_to_new_users")), request.referrer, class: "back-button btn btn-default" if (request.referrer =~ /explore\/users/) %>
 
     <%# Is this someone elses private journal? %>
     <% if @user.private_stream && (current_user != @user) %>
@@ -16,6 +15,7 @@
         <p>This is a private journal.</p>
       </div>
     <% else %>
+
       <% if !params[:month] && !params[:year] %>
         <%# You've not filled out your profile %>
         <% if current_user == @user && @user.who.blank? && @user.why.blank? && @user.practice.blank? %>
@@ -28,48 +28,46 @@
           </div>
         <% else %>
 
-          <% if !@user.who.blank? %>
-            <div class="profile">
-              <p class="lead" itemprop="description"><%= @user.who.html_safe %>
+          <% if @user.who.present? %>
 
-              <% if (!@user.practice.blank? || !@user.why.blank?) %>
-                <a href="#" class="expand-profile">More</a>
-              <% end %>
+            <div class="profile">
+              <p class="lead" itemprop="description">
+                <%= @user.who.html_safe %>
+                <%= link_to "More", "#", class: "expand-profile" if (!@user.practice.blank? || !@user.why.blank?) %>
               </p>
 
               <%# Add edit profile link if it is your own profile %>
-              <% if @user == current_user %>
-                <%= link_to 'Edit profile', edit_user_registration_path, class: 'edit-profile' %>
-              <% end %>
+              <%= link_to 'Edit profile', edit_user_registration_path, class: 'edit-profile' if (@user == current_user) %>
 
               <div class="full-profile">
-                <% if !@user.why.blank? %>
+                <% if @user.why.present? %>
                   <div class="profile-field">
                     <div class="title">Why do you practice?</div>
                     <%= @user.why.html_safe %>
                   </div>
                 <% end %>
 
-                <% if !@user.practice.blank? %>
+                <% if @user.practice.present? %>
                   <div class="profile-field">
                     <div class="title">How do you practice?</div>
                     <%= @user.practice.html_safe %>
                   </div>
                 <% end %>
+
               </div>
             </div>
-            <% end %>
+          <% end %>
         <% end %>
       <% end %>
 
       <% if @sits %>
         <div class="month-view">
 
-        <% if !@stats[:days_sat_this_month].zero? %>
-          <select class="date_range_select">
-            <%= timeline(@by_month[:sitting_totals]) %>
-          </select>
-        <% end %>
+          <% if !@stats[:days_sat_this_month].zero? %>
+            <select class="date_range_select">
+              <%= timeline(@by_month[:sitting_totals]) %>
+            </select>
+          <% end %>
 
           <div class="month_stats_container">
             <p class="month_stats">
@@ -78,7 +76,14 @@
               <% elsif @stats[:days_sat_this_month].zero? %>
                 Zzzzz... Nothing logged this month. <%= link_to "Check out their latest journal entries.", "?year=#{@first_month[0]}&month=#{@first_month[1]}", class: "previous" %>
               <% else %>
-                Sat on <%= @stats[:days_sat_this_month] %> days this month, totalling <%= @stats[:time_sat_this_month] %> practice. (<%= @stats[:entries_this_month] %> entries total)
+                <%= t("stats.sat") %>
+                <%= @stats[:days_sat_this_month] %>
+                <%= t("stats.days") %>
+                <%= t("stats.this_month") %>,
+                <%= t("stats.totalling") %>
+                <%= @stats[:time_sat_this_month] %>
+                <%= t("stats.of_practice") %>.
+                (<%= @stats[:entries_this_month] %> <%= t("stats.entries") %>)
               <% end %>
             </p>
           </div>
@@ -86,14 +91,12 @@
           <div class="clearfix"></div>
 
           <% @listed = [] %>
-          <% @sits.each do |sit| %>
-            <%= render partial: 'sits/day_journal', locals: { sit: sit } %>
-          <% end %>
+          <%= render collection: @sits, partial: 'sits/day_journal', as: :sit %>
 
           <% if !@stats[:days_sat_this_month].zero? %>
             <div class="month_navigation col-md-12">
-              <%= link_to "&larr; Previous", "?year=#{@prev[0]}&month=#{@prev[1]}", class: "previous" if @prev %>
-              <%= link_to "Next &rarr;", "?year=#{@next[0]}&month=#{@next[1]}", class: "next" if @next %>
+              <%= link_to fa_icon("long-arrow-left",  text: t("navigation.previous")), "?year=#{@prev[0]}&month=#{@prev[1]}", class: "previous" if @prev %>
+              <%= link_to fa_icon("long-arrow-right", text: t("navigation.next")),     "?year=#{@next[0]}&month=#{@next[1]}", class: "next" if @next %>
             </div>
           <% end %>
 
@@ -105,6 +108,7 @@
           <%= link_to 'Delete this user?', user_path(@user), method: :delete, data: { confirm: 'Delete this user?' }, class: 'delete-user' %>
         </div>
       <% end %>
+
     <% end %>
   </div>
 </div>

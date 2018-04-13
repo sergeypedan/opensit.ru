@@ -48,9 +48,7 @@ $(document).ready(function(){
       e.stopPropagation();
   });
 
-  $('#datetimepicker').datetimepicker({
-    autoclose: true,
-  });
+  $('#datetimepicker').datetimepicker({ autoclose: true });
 
   $(".chzn-select").chosen({max_selected_options: 1});
 

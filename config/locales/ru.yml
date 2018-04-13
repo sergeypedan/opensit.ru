@@ -143,7 +143,27 @@ ru:
     sure: Вы уверены?
     delete: Удалить
     date: Дата
+    edit: Редактировать
     comma_separated: Через запятую
     fill_all_required: Пожалуйста, заполните обязательные поля
 
   tags: Теги
+
+  navigation:
+    back_to_new_users: К новым пользователям
+    report: Report something on this page
+
+  stats:
+    sat: Метитировал
+    this_month: в этом месяце
+    days: дней
+    totalling: в целом
+    of_practice: практики
+    entries: записей
+    following: Следит за
+    followers: Подписчиков
+
+  comments:
+    h1: Комментарии
+    body: Текст комментария
+    submit: Оставить комментарий
