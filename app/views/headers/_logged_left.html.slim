@@ -1,0 +1,30 @@
+- if user_signed_in?
+  ul.nav.navbar-nav
+
+    = content_tag :li, class: ('active' if current_page?(new_sit_path))
+      = link_to new_sit_path, title: t("menu.add_sit"), class: 'nav-option'
+        => fa_icon "plus"
+        span.nav-button-text = t "menu.add_sit"
+
+    = content_tag :li, class: ('active' if current_page?(user_path(current_user)))
+      = link_to user_path(current_user), title: t("menu.me"), class: 'nav-option'
+        => fa_icon "user"
+        span.nav-button-text = t "menu.me"
+
+    = content_tag :li, class: ('active' if current_page?(goals_path))
+      = link_to goals_path, title: t("menu.goals"), class: 'nav-option'
+        => fa_icon "bullseye"
+        span.nav-button-text = t "menu.goals"
+
+    = content_tag :li, class: ('active' if current_page?(explore_path))
+      = link_to explore_path, title: t("menu.explore"), class: 'nav-option'
+        => fa_icon "globe"
+        span.nav-button-text = t "menu.explore"
+
+- else
+  ul.nav.navbar-nav
+    - unless current_page?(new_user_session_path)
+      p.navbar-text = link_to t("authorization.sign_in"), "/users/sign_in", class: "btn btn-primary"
+
+
+  / = fa_icon "spinner spin", class: "loading-indicator"

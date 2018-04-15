@@ -27,15 +27,6 @@ module ApplicationHelper
     raw tags.map { |t| link_to t.name, tag_path(t.name), class: 'label label-default tag-label' }.join
   end
 
-  def new_notifications(user)
-    if user.notifications.unread.count.zero?
-      fa_icon("circle-o")
-    else
-      count = '<i class="fa fa-circle"></i><span class="new-notifications">' + current_user.new_notifications.to_s + '</span>'
-      count.html_safe
-    end
-  end
-
   def form_element(f, field, model, label, input_width,  options = {})
     form =  "<div class='form-group'>"
     form <<   "<label class='col-lg-2 control-label' for='#{model}_#{field}'>"

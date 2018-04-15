@@ -121,6 +121,7 @@ en:
     send_something: Why don't you send someone a message?
 
   notifications:
+    base: Notifications
     empty: No notifications
     subtitle: When others interact with you you'll know about it here
 

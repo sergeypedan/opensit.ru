@@ -1,25 +1,30 @@
-- if user_signed_in?
-  .navbar-header.navbar-right
-    ul.nav.navbar-nav
-      li
-        form class="navbar-form navbar-right" role="search" action="/search"
-          .form-group.search-box
-            input type="text" class="form-control" name="q" placeholder="Search"
-            input type="hidden" name="type" value="sits"
+ul.nav.navbar-nav.navbar-right
+  = content_tag :li, class: ('active' if current_page?(notifications_path))
+    = link_to notifications_path, title: t("notifications.base"), class: 'nav-option'
+      - if current_user.notifications.unread.count.zero?
+        = fa_icon "bell", style: "color: hsl(0, 5%, 40%)"
+      - else
+        = fa_icon "bell"
+        = content_tag :sup, current_user.new_notifications, class: "new-notifications", style: "margin-left: 0; color: crimson"
 
-      = content_tag :li, class: ('active' if current_page?(notifications_path))
-        = link_to new_notifications(current_user), notifications_path, title: 'Notifications', class: 'nav-option'
+  = content_tag :li, class: ("active" if current_page?(messages_path))
+    = link_to messages_path, class: "pull-left", title: 'Inbox', class: "nav-option"
+      - if current_user.unread_count
+        = fa_icon "envelope"
+        span.unread-count = current_user.unread_count
+      - else
+        = fa_icon "envelope", style: "color: hsl(0, 5%, 40%)"
 
-      = content_tag :li, class: ("active" if current_page?(messages_path))
-        = link_to messages_path, class: "pull-left", title: 'Inbox', class: "nav-option"
-          = fa_icon "envelope"
-          span.unread-count = current_user.unread_count
+  li.dropdown.authentication
+    = link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown }
+      => image_tag avatar_image(current_user)
+      b.caret
 
-      li.dropdown.authentication
-        = link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown }
-          => image_tag avatar_image(current_user)
-          b.caret
+    ul.dropdown-menu
+      li = link_to fa_icon("user", text: t("menu.profile")), edit_user_registration_path
+      li = link_to fa_icon("sign-out", text: t("menu.logout")), destroy_user_session_path, method: :delete
 
-        ul.dropdown-menu
-          li = link_to fa_icon("user", text: t("menu.profile")), edit_user_registration_path
-          li = link_to fa_icon("sign-out", text: t("menu.logout")), destroy_user_session_path, method: :delete
+= form_tag search_path, class: "navbar-form navbar-right", role: :search
+  .form-group.search-box
+    = search_field_tag :q, nil, placeholder: "Search", class: "form-control", id: nil
+    = hidden_field_tag :type, "sits", id: nil
