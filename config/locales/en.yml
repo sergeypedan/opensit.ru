@@ -175,3 +175,8 @@ en:
     h1: Comments
     body: Have your say
     submit: Post comment
+
+  search:
+    users: Users
+    tagged: Tagged
+    sits: Sits

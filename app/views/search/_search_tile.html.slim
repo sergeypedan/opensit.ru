@@ -1,0 +1,16 @@
+h2 Search
+
+.list-group
+  = link_to search_path(q: params[:q], type: "sits"), class: ["list-group-item", ("active" if %w[tagged users].include?(params[:type]))]
+    = fa_icon "clock-o", text: t("search.sits")
+    span.badge< = @sits.count
+
+  = link_to search_path(q: params[:q], type: "users"), class: ["list-group-item", ("active" if params[:type] == 'users')]
+    = fa_icon "user-o", text: t("search.users")
+    / span.badge< = @users.count # throws an error
+
+  - if @tagged
+    = link_to search_path(q: params[:q], type: "tagged"), class: ["list-group-item", ("active" if params[:type] == 'tagged')]
+      = fa_icon "tag", text: t("search.tagged")
+      span.badge< = @tagged.count
+
