@@ -10,11 +10,12 @@ html lang="ru"
         = render "headers/visitor"
       = render 'headers/brand' if current_page?("/users/sign_in")
 
-    - unless controller_name.in? ["registrations", "sessions"]
-      = content_tag :div, flash[:notice], class: "alert alert-success" if flash[:notice]
-      = content_tag :div, flash[:error],  class: "alert alert-danger"  if flash[:error]
-
     = content_tag :main, class: ["container", "page-content", "non-collapsing-vertically", @page_class]
+
+      - unless controller_name.in? ["registrations", "sessions"]
+        = content_tag :div, flash[:notice], class: "alert alert-success" if flash[:notice]
+        = content_tag :div, flash[:error],  class: "alert alert-danger"  if flash[:error]
+
       .row == yield
 
     = render "layouts/footer"
