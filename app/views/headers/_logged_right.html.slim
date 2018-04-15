@@ -17,7 +17,11 @@ ul.nav.navbar-nav.navbar-right
 
   li.dropdown.authentication
     = link_to "#", class: "dropdown-toggle", data: { toggle: :dropdown }
-      => image_tag avatar_image(current_user)
+      - if current_user.avatar.blank?
+        => fa_icon "user-circle", class: "text-primary"
+      - else
+        => current_user.avatar.url(:small_thumb)
+
       b.caret
 
     ul.dropdown-menu
