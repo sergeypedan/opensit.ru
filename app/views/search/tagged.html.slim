@@ -12,4 +12,4 @@
 		.pagination-container = will_paginate @tagged, renderer: BootstrapPagination::Rails
 
 	- else
-    .message-box = fa_icon "info-circle", text: t("search.no_results")
+    = render "message_empty"

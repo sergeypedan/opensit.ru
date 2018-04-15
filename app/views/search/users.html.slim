@@ -8,5 +8,4 @@
 
   = render collection: @users, partial: "shared/sit_teaser", as: :sit
 
-  - if @users.empty?
-		.message-box = fa_icon "info-circle", text: t("search.no_results")
+  = render "message_empty" if @users.empty?
