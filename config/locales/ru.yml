@@ -160,7 +160,11 @@ ru:
     totalling: в целом
     of_practice: практики
     entries: записей
-    following: Следит за
+    following:
+      zero: Ни на кого не подписан
+      one: Подписан на %{count}
+      few: Подписан на %{count}
+      many: Подписан на %{count}
     followers: подписчиков
     joined: Присоединился
 

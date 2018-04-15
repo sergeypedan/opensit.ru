@@ -162,6 +162,11 @@ en:
     of_practice: of practice
     entries: entries
     following: Following
+    following:
+      zero: Following nobody
+      one: Following %{count} users
+      few: Following %{count} users
+      many: Following %{count} users
     followers: followers
     joined: Joined
 

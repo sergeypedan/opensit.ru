@@ -10,10 +10,13 @@
           | day streak!
 
   .info-block
-    = fa_icon "bar-chart fw"
-    => link_to "#{@user.followers.count} #{t('stats.followers')}", followers_user_path(@user)
-    | /
-    =< link_to "#{t('stats.following')} #{@user.followed_users.count}", following_user_path(@user)
+    => fa_icon "bar-chart fw"
+    = link_to "#{@user.followers.count} #{t('stats.followers')}", followers_user_path(@user)
+
+  .info-block
+    - count = @user.followed_users.count
+    => fa_icon "bar-chart fw"
+    = link_to t("stats.following", count: count), following_user_path(@user)
 
   - if @user.sits.count > 0
     .info-block = fa_icon "book fw", text: "Recorded #{@user.sits_count} journal entries"
@@ -27,4 +30,4 @@
   .info-block = fa_icon "calendar fw", text: "#{t('stats.joined')} #{time_ago_in_words(@user.created_at)} #{t('ago')}"
 
   - if @user.website.present?
-    .info-block.user-website = fa_icon "home fw", text: website(@user)
+    .info-block.user-website = fa_icon "link fw", text: website(@user)
