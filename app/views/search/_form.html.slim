@@ -1,0 +1,7 @@
+= form_tag search_path(type: "users"), method: :get, class: "big-search", role: :search
+  = hidden_field_tag :type, params[:type]
+  .form-group.form-group-lg
+    = label_tag :q, t("search.form_title"), class: "control-label"
+    .input-group
+      .input-group-addon = fa_icon "search"
+      = search_field_tag :q, params[:q], placeholder: t("search.placeholder"), class: "form-control"

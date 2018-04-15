@@ -103,6 +103,7 @@ ru:
     about_journal: О журнале медитаций
     contacts: Контакты
     messages: Сообщения
+    search: Результаты поиска
 
   messages:
     new: Написать
@@ -175,6 +176,9 @@ ru:
     submit: Оставить комментарий
 
   search:
-    users: Пользователи
-    tagged: Теги
+    form_title: Вы искали
+    no_results: Ничего не найдено
+    placeholder: Поиск
     sits: Медитации
+    tagged: Теги
+    users: Пользователи

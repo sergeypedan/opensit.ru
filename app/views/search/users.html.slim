@@ -1,0 +1,12 @@
+.col-md-12.masthead
+  h1 = t("pages.search")
+
+.col-md-3.sidebar = render "search_tile"
+
+.col-md-9
+  = render "form"
+
+  = render collection: @users, partial: "shared/sit_teaser", as: :sit
+
+  - if @users.empty?
+		.message-box = fa_icon "info-circle", text: t("search.no_results")
