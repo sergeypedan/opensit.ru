@@ -1,0 +1,88 @@
+div itemscope="" itemtype="http://schema.org/Person"
+
+  .col-md-3.sidebar
+    = large_avatar_of @user
+
+    .sidebar-content
+      div.display_name itemprop="name" = username(@user, false)
+      div.username itemprop="alternateName" = @user.username
+      = render 'users/details'
+      = render 'shared/follow_button', user: @user
+
+  .col-md-9
+
+    = link_to fa_icon("long-arrow-left", text: t("navigation.back_to_new_users")), request.referrer, class: "back-button btn btn-default" if (request.referrer =~ /explore\/users/)
+
+    - if @user.private_stream && (current_user != @user)
+      // Is this someone elses private journal?
+      .message-box
+        h2 Private.
+        p This is a private journal
+
+    - else
+
+      - if !params[:month] && !params[:year]
+        // You've not filled out your profile
+        - if current_user == @user && @user.who.blank? && @user.why.blank? && @user.practice.blank?
+          .message-box.fill-out-your-profile
+            h3 = t("profile.empty.title")
+            p = t("profile.empty.subtitle")
+            .my-actions = link_to t("profile.empty.button"), edit_registration_path(@user), class: 'edit-profile-btn btn btn-primary btn-default'
+
+        - else
+
+          - if @user.who.present?
+
+            .profile
+              p.lead itemprop="description"
+                = @user.who.html_safe
+                = link_to "More", "#", class: "expand-profile" if (!@user.practice.blank? || !@user.why.blank?)
+
+              // Add edit profile link if it is your own profile
+              = link_to 'Edit profile', edit_user_registration_path, class: 'edit-profile' if (@user == current_user)
+
+              .full-profile
+                - if @user.why.present?
+                  .profile-field
+                    .title Why do you practice?
+                    = @user.why.html_safe
+
+                - if @user.practice.present?
+                  .profile-field
+                    .title How do you practice?
+                    = @user.practice.html_safe
+
+      - if @sits
+        .month-view
+
+          - if !@stats[:days_sat_this_month].zero?
+            select.date_range_select = timeline(@by_month[:sitting_totals])
+
+          .month_stats_container
+            p.month_stats
+              - if @user.sits.empty?
+                = t("profile.feed.empty")
+              - elsif @stats[:days_sat_this_month].zero?
+                | Zzzzz... Nothing logged this month.
+                =< link_to "Check out their latest journal entries.", "?year=#{@first_month[0]}&month=#{@first_month[1]}", class: "previous"
+              - else
+                = t("stats.sat")
+                =< t("datetime.distance_in_words.x_days", count: @stats[:days_sat_this_month])
+                =< t("stats.this_month")
+                | ,
+                =< t("stats.totalling")
+                = @stats[:time_sat_this_month]
+                =< t("stats.of_practice")
+                | .
+                =< t("stats.entries_count", count: @stats[:entries_this_month])
+
+          - @listed = []
+          = render collection: @sits, partial: 'sits/day_journal', as: :sit
+
+          - if !@stats[:days_sat_this_month].zero?
+            .month_navigation.col-md-12
+              = link_to fa_icon("long-arrow-left",  text: t("navigation.previous")), "?year=#{@prev[0]}&month=#{@prev[1]}", class: "previous" if @prev
+              = link_to fa_icon("long-arrow-right", text: t("navigation.next")),     "?year=#{@next[0]}&month=#{@next[1]}", class: "next" if @next
+
+      - if current_user && current_user.username.in?(User::MODERATOR_USERNAMES)
+        .mod-delete-user = link_to 'Delete this user?', user_path(@user), method: :delete, data: { confirm: 'Delete this user?' }, class: 'delete-user'

@@ -157,11 +157,7 @@ en:
     report: Report something on this page
 
   stats:
-    sat: Sat
-    this_month: this month
     days: days
-    totalling: totalling
-    of_practice: of practice
     entries: entries
     following: Following
     following:
@@ -171,6 +167,12 @@ en:
       many: Following %{count} users
     followers: followers
     joined: Joined
+    logged: Logged
+    of_practice: of practice
+    recorded: Recorded
+    sat: Sat
+    this_month: this month
+    totalling: totalling
 
   comments:
     h1: Comments

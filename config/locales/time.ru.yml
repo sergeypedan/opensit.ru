@@ -101,9 +101,9 @@ ru:
         other: больше %{count} лет
       x_days:
         one: "%{count} день"
-        few: "%{count} дней"
+        few: "%{count} дня"
         many: "%{count} дней"
-        other: "%{count} дня"
+        other: "%{count} дней"
       x_minutes:
         one: "%{count} минута"
         few: "%{count} минуты"
@@ -119,6 +119,7 @@ ru:
         few: "%{count} секунды"
         many: "%{count} секунд"
         other: "%{count} секунды"
+
     prompts:
       day: День
       hour: Часов

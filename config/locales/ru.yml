@@ -156,11 +156,7 @@ ru:
     report: Report something on this page
 
   stats:
-    sat: Метитировал
-    this_month: в этом месяце
     days: дней
-    totalling: в целом
-    of_practice: практики
     entries: записей
     following:
       zero: Ни на кого не подписан
@@ -169,6 +165,23 @@ ru:
       many: Подписан на %{count}
     followers: подписчиков
     joined: Присоединился
+    entries_count:
+      zero: 0 записей в журнале
+      one: "1 запись в журнале"
+      few: "%{count} записи в журнале"
+      many: "%{count} записей в журнале"
+      other: "%{count} записей в журнале"
+    hours_logged:
+      zero: "Нет практики"
+      one: "1 час практики"
+      few: "%{count} часа практики"
+      many: "%{count} часов практики"
+      other: "%{count} часов практики"
+    of_practice: практики
+    recorded: Записал
+    sat: Метитировал
+    this_month: в этом месяце
+    totalling: в целом
 
   comments:
     h1: Комментарии
