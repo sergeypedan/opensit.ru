@@ -38,5 +38,4 @@ section.copy
 
 section.padder
   .sit-container
-    / = render collection: @sits, partial: "shared/sit_teaser_block", as: :sit, width: 2
-    = render collection: Array.new(12) { @sits.first }, partial: "shared/sit_teaser_block", as: :sit, locals: { width: 2 }
+    = render collection: @sits, partial: "sits/sit_teaser", as: :sit, locals: { width: 2 }

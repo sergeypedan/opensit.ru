@@ -8,5 +8,4 @@
         =<> fa_icon "bookmark-o"
         | on any sit to save it to your favourites.
 
-	- @fav_sits.each do |f|
-	  = render partial: 'shared/sit_teaser_block', locals: { sit: f, width: 3 }
+	= render collection: @fav_sits, partial: "sits/sit_teaser", as: :sit, locals: { width: 3 }
