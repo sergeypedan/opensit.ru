@@ -6,6 +6,6 @@
 .col-md-9
   = render "form"
 
-  = render collection: @users, partial: "shared/sit_teaser", as: :sit
+  = render collection: @users, partial: "sits/sit_teaser", as: :sit
 
   = render "message_empty" if @users.empty?
