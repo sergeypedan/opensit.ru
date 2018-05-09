@@ -23,6 +23,7 @@
 .secret
 .yarn-integrity
 /.bundle
+/.vscode
 /config/application.yml
 /config/chef/.chef/syntaxcache
 /config/provision/configs/settings.yml
