@@ -2,11 +2,12 @@
 
   .jumbotron
     border-bottom: 3px solid $green
-    background: transparent url(image_path('women_sitting.jpg')) right center no-repeat
+    background-image: image_url('women_sitting.jpg')
+    background-position-x: right
+    background-position-y: center
+    background-repeat: no-repeat
     background-size: cover
     text-align: center
-    width: 100%
-    float: left
     padding: 70px 20px
     margin-bottom: 0
 
@@ -27,8 +28,6 @@
       padding: 15px 30px
 
   .three-panes
-    float: left
-    width: 100%
     border-bottom: 3px solid $green
     color: $dark-grey
     padding: 30px 0
@@ -58,12 +57,11 @@
     text-align: center
     background: $link-color
     border-bottom: 3px solid $green
-
-    float: left
-    width: 100%
+    padding-top: 40px
+    padding-bottom: 40px
 
     h2
-      margin: 10px 0 20px
+      margin: 0 0 20px
 
     p
       max-width: 900px
@@ -75,6 +73,4 @@
       text-decoration: underline
 
   .padder
-    float: left
-    width: 100%
     padding: 10px 0 0 10px
