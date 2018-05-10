@@ -7,38 +7,26 @@ class SitsController < ApplicationController
     @latest = @sit.user.latest_sit(current_user)
 
     # For completely private sits
-    if @sit.private == true
-      redirect_to me_path if current_user.nil? || (@sit.user_id != current_user.id)
-    end
+    return redirect_to me_path if (current_user.nil? || (@sit.user_id != current_user.id)) if @sit.private
 
-    # Views, not very accurate as any guest visit increments by one
-    if current_user
-      @sit.increment!(:views, by = 1) if current_user.id != @sit.user_id
-    else
-      @sit.increment!(:views, by = 1)
-    end
-
+    @sit.increment!(:views, by = 1) if current_user&.id != @sit.user_id
     @user = @sit.user
 
-    if @sit.is_sit?
-      @title = "#{@sit.duration} minute meditation journal by #{@user.display_name}"
-    else
-      @title = "#{@sit.title}, a meditation journal by #{@user.display_name}"
-    end
+    @title = if @sit.is_sit?
+                "#{@sit.duration} minute meditation journal by #{@user.display_name}"
+              else
+                "#{@sit.title}, a meditation journal by #{@user.display_name}"
+              end
 
     @previous = @sit.prev(current_user)
     @next = @sit.next(current_user)
-
-    @page_class = 'view-sit'
   end
 
   # GET /sits/new
   def new
     @sit ||= Sit.new
     @user = current_user
-
-    @title = 'New sit'
-    @page_class = 'new-sit'
+    @title = t("sit.new")
     render :edit
   end
 
@@ -48,9 +36,7 @@ class SitsController < ApplicationController
 
     if current_user == @sit.user
       @user = current_user
-
-      @title = 'Edit sit'
-      @page_class = 'edit-sit'
+      @title = t("edit.new")
     else
       redirect_to root_path, notice: "You can't edit this post"
     end
@@ -71,7 +57,7 @@ class SitsController < ApplicationController
         redirect_to user_path(@user, year: Date.today.year, month: Date.today.month), notice: 'Your entry was added. Good job!'
       end
     else
-      @page_class = 'new-sit'
+      @page_class = 'sits-new'
       render action: "new"
     end
   end
@@ -89,7 +75,7 @@ class SitsController < ApplicationController
         render action: "edit"
       end
     else
-      redirect_to root_path, notice: "You can't edit this post"
+      redirect_to root_path, status: :unauthorized, alert: "You can't edit this post"
     end
   end
 
@@ -101,7 +87,7 @@ class SitsController < ApplicationController
       @sit.destroy
       redirect_to me_path
     else
-      redirect_to root_path, notice: "You can't delete this post"
+      redirect_to root_path, status: :unauthorized, alert: "You can't delete this post"
     end
   end
 end

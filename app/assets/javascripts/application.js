@@ -41,10 +41,10 @@ $(document).ready(function(){
   };
 
   // Privacy dropdown
-  $('.new-sit .dropdown-menu').click(function(e) {
+  $('.sits-new .dropdown-menu').click(function(e) {
       e.stopPropagation();
   });
-  $('.edit-sit .dropdown-menu').click(function(e) {
+  $('.sits-edit .dropdown-menu').click(function(e) {
       e.stopPropagation();
   });
 
