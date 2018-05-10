@@ -1,0 +1,33 @@
+section.page.text-section
+
+	ol.breadcrumb
+		li = link_to t("menu.home"), root_path
+		li.active = t "goals.h1"
+
+	.row
+		- if !@has_current
+			.col-md-12
+				h1 = t "goals.h1"
+				p = t "goals.intro"
+
+			.col-md-12 = render 'new'
+
+		- else
+			.col-md-12
+				.current_goals
+					p
+						| Here are your current goals.
+						=< link_to "Add another one?", '#', class: "toggle-goal-form"
+
+					.new-goal-form = render 'new'
+
+					- @goals.each do |g|
+						- unless g.completed?
+							= render partial: "goal", locals: { goal: g, completed: false }
+
+	.row
+		- if @has_completed
+			= link_to "Show completed goals", "#", class: "show-completed"
+
+			.col-md-12.completed-goals
+				= render collection: @goals.select(&:completed?), partial: "goal", as: :goal, locals: { completed: true }

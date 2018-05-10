@@ -81,6 +81,7 @@ ru:
     button: Я понял!
 
   menu:
+    home: Главная
     profile: Профиль
     logout: Разлогиниться
     goals: Цели
@@ -179,7 +180,7 @@ ru:
       other: "%{count} часов практики"
     of_practice: практики
     recorded: Записал
-    sat: Метитировал
+    sat: Медитировал
     this_month: в этом месяце
     totalling: в целом
 
@@ -211,3 +212,7 @@ ru:
     following_users: Кто на меня подписан
     no_follwers: Никто не подписан
     following_nobody: Ни на кого не подписан
+
+  goals:
+    h1: Цели
+    intro: Goals are great way to stay motivated and strengthen your meditation practice. Once you set one up here, you'll get feedback on how well you're meeting your goal.

@@ -80,6 +80,7 @@ en:
     button: OK, got it!
 
   menu:
+    home: Home
     profile: My profile
     logout: Sign out
     goals: Goals
@@ -202,3 +203,7 @@ en:
     following_users: Who follows me
     no_follwers: No connections yet!
     following_nobody: No connections yet!
+
+  goals:
+    h1: Goals
+    intro: Goals are great way to stay motivated and strengthen your meditation practice. Once you set one up here, you'll get feedback on how well you're meeting your goal.
