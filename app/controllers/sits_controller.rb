@@ -61,7 +61,7 @@ class SitsController < ApplicationController
       end
     else
       @page_class = 'sits-new'
-      render action: "new"
+      render action: "edit"
     end
   end
 

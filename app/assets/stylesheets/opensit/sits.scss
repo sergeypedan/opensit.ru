@@ -100,47 +100,6 @@ article.sit-teaser-block {
   }
 }
 
-/* New sit */
-.sits-new,
-.sits-edit {
-  .sit_type {
-    margin-bottom: 2em;
-    label {
-      font-size: 18px;
-    }
-  }
-  .new-sit-title {
-    display: none;
-    clear: left;
-  }
-  #sit_duration {
-    display: inline;
-    width: 63px;
-    font-size: 30px;
-    height: 47px;
-  }
-  .privacy-options {
-    float: right;
-    .dropdown-menu {
-      padding: 5px 18px 18px 20px;
-      margin-left: -145px;
-      width: 235px;
-    }
-  }
-  .sit_body {
-    clear: left;
-  }
-  .custom-date {
-    width: 211px;
-  }
-  .delete-entry {
-    margin-left: 10px;
-  }
-  .help-block {
-    font-size: 0.8em;
-  }
-}
-
 // Sit Streak
 .streak {
   float: left;

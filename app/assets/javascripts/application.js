@@ -1,4 +1,16 @@
+function adjust_sit_title_to_diary_type() {
+  if ($('#sit_s_type_0').is(':checked')) {
+    $('.sit-title-form-group').hide();
+    document.getElementById('sit_title').required = false;
+  } else {
+    $('.sit-title-form-group').show();
+    document.getElementById('sit_title').required = true;
+  }
+}
+
+
 $(document).ready(function(){
+
   $.each($('.rich-textarea'), function(index, el){
     $(el).wysihtml5({
       toolbar: {
@@ -18,35 +30,27 @@ $(document).ready(function(){
   $('.sit-teaser-block .block-content').click( function() {
     Turbolinks.visit($(this).find('.sit-link').attr('href'));
   });
+
   // Search results
   $('.sit-teaser').click( function() {
     Turbolinks.visit($(this).find('.sit-link').attr('href'));
   });
+
   // Recent activity
   $('.recent-activity .activity').click( function() {
     Turbolinks.visit($(this).find('.sit-link').attr('href'));
   });
 
-  // NEW/EDIT SIT / title or duration
-  $('.sit_type input').click( function() {
-    if ($(this).attr('id') == 'sit_s_type_0') {
-      $('.new-sit-title').hide();
-    } else {
-      $('.new-sit-title').fadeIn();
-    }
-  });
 
-  if ($('.sit_type .diary_type').is(':checked')) {
-    $('.new-sit-title').show();
-  };
+  // NEW/EDIT SIT / title or duration
+
+  adjust_sit_title_to_diary_type();
+
+  $('.sit_type input').click( function() { adjust_sit_title_to_diary_type() });
 
   // Privacy dropdown
-  $('.sits-new .dropdown-menu').click(function(e) {
-      e.stopPropagation();
-  });
-  $('.sits-edit .dropdown-menu').click(function(e) {
-      e.stopPropagation();
-  });
+  $('.sits-new .dropdown-menu').click(function(e) { e.stopPropagation(); });
+  $('.sits-edit .dropdown-menu').click(function(e) { e.stopPropagation(); });
 
   $('#datetimepicker').datetimepicker({ autoclose: true });
 
@@ -175,22 +179,6 @@ $(document).ready(function(){
     }
   });
 
-  // Initialize Shareaholic
-
-  // (function() {
-  //   var shr = document.createElement('script');
-  //   shr.setAttribute('data-cfasync', 'false');
-  //   shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
-  //   shr.type = 'text/javascript'; shr.async = 'true';
-  //   shr.onload = shr.onreadystatechange = function() {
-  //     var rs = this.readyState;
-  //     if (rs && rs != 'complete' && rs != 'loaded') return;
-  //     var site_id = '3a20bcc88a931fb230f2bf39a6410dc6';
-  //     try { Shareaholic.init(site_id); } catch (e) {}
-  //   };
-  //   var s = document.getElementsByTagName('script')[0];
-  //   s.parentNode.insertBefore(shr, s);
-  // })();
 });
 
 // https://github.com/Nerian/bootstrap-wysihtml5-rails
