@@ -9,4 +9,8 @@
 				= link_to image_tag(avatar_image(user), alt: user.username, class: 'img-circle'), user_path(user)
 
 	- else
-		.message-box style="margin-top: 30px" No connections yet!
+		.message-box style="margin-top: 30px"
+			- if action_name == "following"
+				= t "following.following_nobody"
+			- else
+				= t "following.no_follwers"

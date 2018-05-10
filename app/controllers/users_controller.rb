@@ -82,7 +82,8 @@ class UsersController < ApplicationController
     @user   = User.where("lower(username) = lower(?)", params[:username]).first!
     @users  = @user.followed_users
     @latest = @user.latest_sit(current_user)
-    @title  = (@user == current_user) ? "People I follow" : "People who #{@user.display_name} follows"
+    # @title  = (@user == current_user) ? t("following.followed_users") : "People who #{@user.display_name} follows"
+    @title  = t("following.followed_users")
 
     @page_class = 'following'
     render :followers

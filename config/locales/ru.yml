@@ -205,3 +205,9 @@ ru:
     timeline: к таймлайну
     new: Новая запись
     edit: Редактировать запись
+
+  following:
+    followed_users: На кого я подписан
+    following_users: Кто на меня подписан
+    no_follwers: Никто не подписан
+    following_nobody: Ни на кого не подписан

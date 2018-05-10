@@ -196,3 +196,9 @@ en:
     timeline: to timeline
     new: New sit
     edit: Edit the sit
+
+  following:
+    followed_users: People I follow
+    following_users: Who follows me
+    no_follwers: No connections yet!
+    following_nobody: No connections yet!
