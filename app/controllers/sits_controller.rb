@@ -39,6 +39,7 @@ class SitsController < ApplicationController
 
     @title = 'New sit'
     @page_class = 'new-sit'
+    render :edit
   end
 
   # GET /sits/1/edit
