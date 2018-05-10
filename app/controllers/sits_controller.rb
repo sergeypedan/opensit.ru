@@ -1,13 +1,16 @@
 class SitsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+
+  before_action :authenticate_user!, except: :show
 
   # GET /sits/1
   def show
     @sit = Sit.find(params[:id])
     @latest = @sit.user.latest_sit(current_user)
 
-    # For completely private sits
-    return redirect_to me_path if (current_user.nil? || (@sit.user_id != current_user.id)) if @sit.private
+    if @sit.private
+      return redirect_to root_path, status: :unauthorized, alert: "This record is private" unless current_user
+      return redirect_to me_path if @sit.user_id != current_user.id
+    end
 
     @sit.increment!(:views, by = 1) if current_user&.id != @sit.user_id
     @user = @sit.user

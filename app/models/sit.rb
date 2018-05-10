@@ -42,12 +42,10 @@ class Sit < ActiveRecord::Base
 
   # For use on show sit pages
   def full_title
-    if s_type == 0
-      "#{self.duration} minute meditation journal"
-    elsif s_type == 1
-      self.title # Diary
-    else
-      "Article: #{self.title}" # Article
+    case s_type
+    when 0 then "#{self.duration} minute meditation journal"
+    when 1 then self.title # Diary
+    else "Article: #{self.title}" # Article
     end
   end
 
@@ -74,24 +72,21 @@ class Sit < ActiveRecord::Base
   end
 
   def next(current_user)
-    next_sit = user.sits.with_body.where("created_at > ?", self.created_at).order('created_at ASC')
+    next_sit = user.sits.with_body.where("created_at > ?", self.created_at).order(created_at: :asc)
     return next_sit.first if current_user && (self.user_id == current_user.id)
     return next_sit.communal.first
   end
 
   def prev(current_user)
-    prev_sit = user.sits.with_body.where("created_at < ?", self.created_at).order('created_at ASC')
+    prev_sit = user.sits.with_body.where("created_at < ?", self.created_at).order(created_at: :asc)
     return prev_sit.last if current_user && (self.user_id == current_user.id)
     return prev_sit.communal.last
   end
 
   # Returns sits from the users being followed by the given user.
   def self.from_users_followed_by(user)
-    followed_user_ids = "SELECT followed_id FROM relationships
-                         WHERE follower_id = :user_id"
-
-    where("(user_id IN (#{followed_user_ids}) AND private = false) OR user_id = :user_id",
-          user_id: user.id)
+    followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    where("(user_id IN (#{followed_user_ids}) AND private = false) OR user_id = :user_id", user_id: user.id)
   end
 
   def commenters
