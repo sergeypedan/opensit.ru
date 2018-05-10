@@ -186,3 +186,11 @@ en:
     sits: Sits
     tagged: Tagged
     users: Users
+
+  sit:
+    back_to: Back
+    favourites: to favourites
+    tag: to tags
+    search_results: to search results
+    explore: to explore
+    timeline: to timeline

@@ -1,14 +1,20 @@
-ruby:
-	text =  if request.referrer =~ /search/
-						"search results"
-					elsif request.referrer =~ /explore/
-						"explore"
-					elsif request.referrer =~ /tags/
-						"tag"
-					elsif request.referrer =~ /favs/
-						"favourites"
-					elsif request.referrer =~ /u/
-						"timeline"
-					end
+- if request.referrer
 
-= link_to "← Back to #{text}", request.referrer, class: "back-button btn btn-default"
+	ruby:
+		def back_button_translate_key
+			r = request.referrer
+			return "sit.search_results" if r =~ /search/
+			return "sit.explore"        if r =~ /explore/
+			return "sit.tag"            if r =~ /tags/
+			return "sit.favourites"     if r =~ /favs/
+			return "sit.timeline"       if r =~ /u/
+		end
+
+		button_text = "← #{t('sit.back_to')}"
+
+		if back_button_translate_key
+			button_text << " "
+			button_text << t(back_button_translate_key)
+		end
+
+	= link_to button_text, request.referrer, class: "back-button btn btn-default" if back_button_translate_key

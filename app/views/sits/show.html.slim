@@ -1,8 +1,8 @@
-= render 'shared/user_summary'
+= render "shared/user_summary"
 
 .col-md-9
   .text-section
-    = render 'back_button'
+    = render "sits/back_button"
 
     header
       .mobile-user-summary
@@ -48,12 +48,12 @@
             .sit_preview.previous
               = link_to sit_path(@previous)
                 .arrow = fa_icon "chevron-left"
-                = render 'sit_preview', sit: @previous
+                = render "sit_preview", sit: @previous
 
           - if @next
             .sit_preview.next
               = link_to sit_path(@next)
-                = render 'sit_preview', sit: @next
+                = render "sit_preview", sit: @next
                 .arrow = fa_icon "chevron-right"
 
   - if !@sit.disable_comments && !@sit.private
@@ -63,7 +63,7 @@
         .comments-list
           - @sit.comments.order(:created_at).each do |comment|
             - @comment = comment
-            = render 'comments/comment'
+            = render "comments/comment"
 
       - if user_signed_in?
         .new-comment
