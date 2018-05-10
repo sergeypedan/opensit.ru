@@ -42,19 +42,19 @@
           = fa_icon "flag-o", class: "report-flag", data: { container: 'body', toggle: :tooltip, placement: 'top', original_title: t("navigation.report") }
           = render 'reports/report_modal', reportable: @sit
 
-      - if [@previous, @next].map(&:present?).include?(true)
-        .prev-next-row
-          - if @previous
-            .sit_preview.previous
-              = link_to sit_path(@previous)
-                .arrow = fa_icon "chevron-left"
-                = render "sit_preview", sit: @previous
+      / - if [@previous, @next].map(&:present?).include?(true)
+      /   .prev-next-row
+      /     - if @previous
+      /       .sit_preview.previous
+      /         = link_to sit_path(@previous)
+      /           .arrow = fa_icon "chevron-left"
+      /           = render "sit_preview", sit: @previous
 
-          - if @next
-            .sit_preview.next
-              = link_to sit_path(@next)
-                = render "sit_preview", sit: @next
-                .arrow = fa_icon "chevron-right"
+      /     - if @next
+      /       .sit_preview.next
+      /         = link_to sit_path(@next)
+      /           = render "sit_preview", sit: @next
+      /           .arrow = fa_icon "chevron-right"
 
   - if !@sit.disable_comments && !@sit.private
     .comments

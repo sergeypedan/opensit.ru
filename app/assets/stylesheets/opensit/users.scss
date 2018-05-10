@@ -47,22 +47,18 @@
 
 /* Recent activity */
 .recent-activity {
-	clear: left;
-	float: left;
-	width: 100%;
+
 	.activity {
 		padding: 5px;
-		float: left;
-		width: 100%;
 		border: 0;
-		border-radius: 0;
 		font-size: 0.8em;
-		margin-bottom: 5px;
+		margin-top: 5px;
+
 		&:hover {
-			.icon {
-				color: darken($link-color, 20%);
-			}
 	    cursor: pointer;
+      .icon {
+        color: darken($link-color, 20%);
+      }
   	}
 		.icon {
 			float: left;
@@ -76,9 +72,11 @@
   		float: left;
   		width: 90%;
 			margin-top: 2px;
+
 			.title {
 				font-size: 14px;
 				margin-top: 2px;
+
 				.date {
 					float: right;
 					font-size: 0.8em;

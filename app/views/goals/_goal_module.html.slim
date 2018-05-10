@@ -1,6 +1,6 @@
 .current-goals
   - @goals.each do |g|
     - if !g.completed?
-    .goal-summary
-      = coloured_rating(g)
-      .text = link_to g.verbalise, "/goals"
+      .goal-summary
+        = coloured_rating(g)
+        .text = link_to g.verbalise, goals_path

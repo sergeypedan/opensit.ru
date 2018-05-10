@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   # GET /me page
   def me
     @feed_items = current_user.socialstream.paginate(page: params[:page])
-    @user = current_user
-    @latest = @user.latest_sit(current_user)
-    @goals = @user.goals
+    @user       = current_user
+    @latest     = @user.latest_sit(current_user)
+    @goals      = @user.goals
 
     @goals.each do |g|
       if g.completed?
@@ -54,20 +54,20 @@ class UsersController < ApplicationController
     else
       if @by_month
         # Haven't sat this month - when was the last time they sat?
-        @first_month =  @by_month[:list_of_months].first.split(' ')
+        @first_month = @by_month[:list_of_months].first.split(' ')
       end
       # Haven't sat at all
     end
 
     # Viewing your own profile
     if current_user == @user
-      @sits = @user.sits_by_month(month: month, year: year).newest_first
+      @sits  = @user.sits_by_month(month: month, year: year).newest_first
       @stats = @user.get_monthly_stats(month, year)
 
     # Viewing someone elses profile
     else
       if !@user.private_stream
-        @sits = @user.sits_by_month(month: month, year: year).communal.newest_first
+        @sits  = @user.sits_by_month(month: month, year: year).communal.newest_first
         @stats = @user.get_monthly_stats(month, year)
       end
     end
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
     @title  = (@user == current_user) ? "People I follow" : "People who #{@user.display_name} follows"
 
     @page_class = 'following'
-    render 'show_follow'
+    render :followers
   end
 
   # GET /u/buddha/followers
@@ -94,14 +94,10 @@ class UsersController < ApplicationController
     @users  = @user.followers
     @latest = @user.latest_sit(current_user)
 
-    if @user == current_user
-      @title = "People who follow me"
-    else
-      @title = "People who follow #{@user.display_name}"
-    end
+    @title  = "People who follow "
+    @title << (@user == current_user ? "me" : @user.display_name)
 
     @page_class = 'followers'
-    render 'show_follow'
   end
 
   # Generate atom feed for user or all public content (global)
@@ -149,14 +145,15 @@ class UsersController < ApplicationController
 
   private
 
-    # Validate year and month params on user page
-    def check_date
-      [:year, :month].each do |v|
-        if (params[v] && params[v].to_i.zero?) || params[v].to_i > (v == :year ? 3000 : 12)
-          unit = v == :year ? 'year' : 'month'
-          flash[:error] = "Invalid #{unit}!"
-          redirect_to user_path(params[:username])
-        end
+  # Validate year and month params on user page
+  def check_date
+    [:year, :month].each do |v|
+      if (params[v] && params[v].to_i.zero?) || params[v].to_i > (v == :year ? 3000 : 12)
+        unit = v == :year ? 'year' : 'month'
+        flash[:error] = "Invalid #{unit}!"
+        redirect_to user_path(params[:username])
       end
     end
+  end
+
 end

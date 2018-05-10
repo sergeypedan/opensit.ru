@@ -20,7 +20,7 @@
       h5 = t "me.latest"
       .recent-activity = render collection: @latest, partial: "sits/sit", as: :sit
 
-  - if controller.action_name == 'me'
+  - if action_name == 'me'
     = render 'goals/goal_module'
   - else
     = link_to fa_icon("long-arrow-right", right: true, text: t("me.view_full_journal")), user_path(@user), class: "full-journal-link"
