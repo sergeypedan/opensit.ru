@@ -1,11 +1,6 @@
 source 'https://rubygems.org'
-
 ruby '2.5.0'
-
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'airbrake'
 gem 'aws-sdk'
@@ -43,12 +38,12 @@ gem 'slim-rails'
 gem 'split', require: 'split/dashboard'
 gem 'textacular'
 gem 'therubyracer'
-# gem 'turbolinks'
 gem 'uglifier'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
 group :development do
+  gem 'annotate'
   gem 'binding_of_caller'
 end
 
@@ -56,6 +51,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'letter_opener'
   gem 'meta_request'
+  gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-coolline'
   gem 'rspec-collection_matchers'
