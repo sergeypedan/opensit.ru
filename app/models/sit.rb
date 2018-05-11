@@ -1,8 +1,8 @@
 require 'textacular/searchable'
 
 class Sit < ActiveRecord::Base
-  attr_accessible :private, :disable_comments, :tag_list, :duration, :s_type,
-                  :body, :title, :created_at, :user_id, :views
+
+  # attr_accessible :tag_list
 
   belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy
@@ -12,10 +12,9 @@ class Sit < ActiveRecord::Base
   has_many :likes, as: :likeable
   has_many :reports, as: :reportable
 
-  validates :s_type, presence: true
-  validates :title, presence: true, if: "s_type != 0"
-  validates :duration, presence: true, if: "s_type == 0"
-  validates_numericality_of :duration, greater_than: 0, only_integer: true
+  validates :s_type, presence: true, inclusion: { in: ["diary", "meditation"] }
+  validates :title, presence: true, if: "s_type == 'diary'"
+  validates :duration, presence: true, numericality: { greater_than: 0, only_integer: true }, if: "s_type == 'meditation'"
 
   # Scopes
   scope :communal, -> { where(private: false) }
@@ -23,17 +22,11 @@ class Sit < ActiveRecord::Base
   scope :today, -> { where("DATE(created_at) = ?", Date.today) }
   scope :yesterday, -> { where("DATE(created_at) = ?", Date.yesterday) }
   scope :with_body, -> { where.not(body: '')}
-  scope :without_diaries, -> { where.not(s_type: 1) }
+  scope :without_diaries, -> { where.not(s_type: "diary") }
 
-  # Pagination: sits per page
-  self.per_page = 20
+  self.per_page = 20 # Pagination: sits per page
 
-  # Textacular: search these columns only
-  extend Searchable(:title, :body)
-
-  ##
-  # VIRTUAL ATTRIBUTES
-  ##
+  extend Searchable(:title, :body) # Textacular: search these columns only
 
   # Nice date: 11 July 2012
   def date
@@ -43,8 +36,8 @@ class Sit < ActiveRecord::Base
   # For use on show sit pages
   def full_title
     case s_type
-    when 0 then "#{self.duration} minute meditation journal"
-    when 1 then self.title # Diary
+    when "meditation" then "#{self.duration} minute meditation journal"
+    when "diary" then self.title # Diary
     else "Article: #{self.title}" # Article
     end
   end
@@ -53,8 +46,8 @@ class Sit < ActiveRecord::Base
   # METHODS
   ##
 
-  def is_sit?
-    s_type == 0
+  def is_meditation?
+    s_type == "meditation"
   end
 
   def stub?
@@ -99,25 +92,21 @@ class Sit < ActiveRecord::Base
   # TAGS
   ##
 
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).sits.communal
+  class << self
+
+    def tagged_with(name)
+      Tag.find_by_name!(name).sits.communal
+    end
+
+    def tag_counts
+      Tag.select("tags.*, count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id, tags.id, tags.name, tags.created_at")
+    end
+
   end
 
-  def self.tag_counts
-    Tag.select("tags.*, count(taggings.tag_id) as count").
-      joins(:taggings).group("taggings.tag_id, tags.id, tags.name, tags.created_at")
-  end
 
   def tag_list
-    tags.map(&:name).join(', ')
-  end
-
-  def tag_list=(names)
-    elements = names.split(",")
-    elements.reject! { |c| c.blank? } # Prevent blank tags being added
-    self.tags = elements.map do |t|
-      Tag.where(name: t.strip).first_or_create!
-    end
+    tags.pluck(:name).join(', ')
   end
 
   ##
@@ -129,7 +118,7 @@ class Sit < ActiveRecord::Base
   end
 
   def liked?
-    !self.likes.empty?
+    self.likes.any?
   end
 
 end

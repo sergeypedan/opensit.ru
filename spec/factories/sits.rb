@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :sit do
     body "I done a meditate."
-    s_type 0
+    s_type "meditation"
     duration 30
 
     trait :journal do
-      s_type 1
+      s_type "diary"
       title "Making factories"
       duration nil
     end

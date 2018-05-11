@@ -128,6 +128,7 @@ en:
     subtitle: When others interact with you you'll know about it here
 
   new_sit:
+    created_notice: Your entry was added. Good job!
     diary: This is a diary entry
     disable_comments: Disable comments
     duration: Time
@@ -151,7 +152,9 @@ en:
     comma_separated: Separate by commas
     fill_all_required: Please fill in the required fields
 
-  tags: Tags
+  tags:
+    h1: Tags
+    comma_separated: Comma separated
 
   navigation:
     back_to_new_users: Back to new users

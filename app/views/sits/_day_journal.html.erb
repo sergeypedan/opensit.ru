@@ -6,7 +6,7 @@
 <% @listed.push(sit.created_at.to_date) %>
 
 <div class="entry">
-  <% if sit.is_sit? %>
+  <% if sit.is_meditation? %>
   	<% if sit.stub? %>
     	<div class="link"><i class='fa fa-clock-o'></i> <%=sit.duration%></div>
     <% else %>

@@ -15,7 +15,7 @@ class SitsController < ApplicationController
     @sit.increment!(:views, by = 1) if current_user&.id != @sit.user_id
     @user = @sit.user
 
-    @title = if @sit.is_sit?
+    @title = if @sit.is_meditation?
                 "#{@sit.duration} minute meditation journal by #{@user.display_name}"
               else
                 "#{@sit.title}, a meditation journal by #{@user.display_name}"
@@ -27,7 +27,7 @@ class SitsController < ApplicationController
 
   # GET /sits/new
   def new
-    @sit ||= Sit.new
+    @sit = Sit.new(s_type: "meditation", created_at: DateTime.now)
     @user = current_user
     @title = t("sit.new")
     render :edit
@@ -48,37 +48,33 @@ class SitsController < ApplicationController
   # POST /sits
   def create
     @user = current_user
-    @sit = @user.sits.new(params[:sit])
-
-    @sit.private = true if @user.private_stream
-    @sit.created_at = DateTime.strptime(params[:custom_date], "%m/%d/%Y %l:%M %p") if params[:custom_date] != ''
+    @sit = Sit.new filtered_params
+    @sit.user = @user
+    @sit.private = @user.private_stream
+    @sit.created_at = DateTime.strptime(params[:custom_date], "%m/%d/%Y %l:%M %p") if params[:custom_date].present?
+    @sit.tags = Tag.parse_CSV params[:tag_list]
 
     if @sit.save
-      if !@sit.body.empty?
-        redirect_to @sit, notice: 'Your entry was added. Good job!'
-      else
-        redirect_to user_path(@user, year: Date.today.year, month: Date.today.month), notice: 'Your entry was added. Good job!'
-      end
+      redirect_path = @sit.body.present? ? @sit : user_path(@user, year: Date.today.year, month: Date.today.month)
+      redirect_to redirect_path, notice: t("new_sit.created_notice")
     else
       @page_class = 'sits-new'
-      render action: "edit"
+      render :edit
     end
   end
 
   # PUT /sits/1
   def update
     @sit = Sit.find(params[:id])
+    return redirect_to root_path, status: :unauthorized, alert: "You can't edit this post" unless current_user == @sit.user
 
-    if current_user == @sit.user
-      @sit.created_at = DateTime.strptime(params[:custom_date], "%m/%d/%Y %l:%M %p") if params[:custom_date]
+    @sit.created_at = DateTime.strptime(params[:custom_date], "%m/%d/%Y %l:%M %p") if params[:custom_date]
+    @sit.tags = Tag.parse_CSV params[:tag_list]
 
-      if @sit.update_attributes(params[:sit])
-        redirect_to @sit, notice: 'Sit was successfully updated.'
-      else
-        render action: "edit"
-      end
+    if @sit.update_attributes(filtered_params)
+      redirect_to @sit, notice: 'Sit was successfully updated.'
     else
-      redirect_to root_path, status: :unauthorized, alert: "You can't edit this post"
+      render :edit
     end
   end
 
@@ -92,5 +88,21 @@ class SitsController < ApplicationController
     else
       redirect_to root_path, status: :unauthorized, alert: "You can't delete this post"
     end
+  end
+
+  private
+
+  def filtered_params
+    params.require(:sit).permit(
+      :body,
+      :created_at,
+      :disable_comments,
+      :duration,
+      :private,
+      :s_type,
+      :title,
+      :user_id,
+      :views
+    )
   end
 end

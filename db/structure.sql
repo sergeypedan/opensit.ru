@@ -2,14 +2,15 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.1
--- Dumped by pg_dump version 10.1
+-- Dumped from database version 10.3
+-- Dumped by pg_dump version 10.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
@@ -28,8 +29,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
-SET search_path = public, pg_catalog;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -38,7 +37,7 @@ SET default_with_oids = false;
 -- Name: comments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE comments (
+CREATE TABLE public.comments (
     id integer NOT NULL,
     body text,
     sit_id integer,
@@ -52,7 +51,7 @@ CREATE TABLE comments (
 -- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE comments_id_seq
+CREATE SEQUENCE public.comments_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -65,14 +64,14 @@ CREATE SEQUENCE comments_id_seq
 -- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
 
 
 --
 -- Name: favourites; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE favourites (
+CREATE TABLE public.favourites (
     id integer NOT NULL,
     favourable_id integer,
     favourable_type character varying,
@@ -86,7 +85,7 @@ CREATE TABLE favourites (
 -- Name: favourites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE favourites_id_seq
+CREATE SEQUENCE public.favourites_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -99,14 +98,14 @@ CREATE SEQUENCE favourites_id_seq
 -- Name: favourites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE favourites_id_seq OWNED BY favourites.id;
+ALTER SEQUENCE public.favourites_id_seq OWNED BY public.favourites.id;
 
 
 --
 -- Name: goals; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE goals (
+CREATE TABLE public.goals (
     id integer NOT NULL,
     user_id integer,
     goal_type integer,
@@ -122,7 +121,7 @@ CREATE TABLE goals (
 -- Name: goals_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE goals_id_seq
+CREATE SEQUENCE public.goals_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -135,14 +134,14 @@ CREATE SEQUENCE goals_id_seq
 -- Name: goals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE goals_id_seq OWNED BY goals.id;
+ALTER SEQUENCE public.goals_id_seq OWNED BY public.goals.id;
 
 
 --
 -- Name: likes; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE likes (
+CREATE TABLE public.likes (
     id integer NOT NULL,
     likeable_id integer,
     likeable_type character varying,
@@ -154,7 +153,7 @@ CREATE TABLE likes (
 -- Name: likes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE likes_id_seq
+CREATE SEQUENCE public.likes_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -167,14 +166,14 @@ CREATE SEQUENCE likes_id_seq
 -- Name: likes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE likes_id_seq OWNED BY likes.id;
+ALTER SEQUENCE public.likes_id_seq OWNED BY public.likes.id;
 
 
 --
 -- Name: messages; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE messages (
+CREATE TABLE public.messages (
     id integer NOT NULL,
     subject character varying,
     body text,
@@ -192,7 +191,7 @@ CREATE TABLE messages (
 -- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE messages_id_seq
+CREATE SEQUENCE public.messages_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -205,14 +204,14 @@ CREATE SEQUENCE messages_id_seq
 -- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
+ALTER SEQUENCE public.messages_id_seq OWNED BY public.messages.id;
 
 
 --
 -- Name: notifications; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE notifications (
+CREATE TABLE public.notifications (
     id integer NOT NULL,
     user_id integer,
     message character varying,
@@ -230,7 +229,7 @@ CREATE TABLE notifications (
 -- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE notifications_id_seq
+CREATE SEQUENCE public.notifications_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -243,14 +242,14 @@ CREATE SEQUENCE notifications_id_seq
 -- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
+ALTER SEQUENCE public.notifications_id_seq OWNED BY public.notifications.id;
 
 
 --
 -- Name: rails_admin_histories; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE rails_admin_histories (
+CREATE TABLE public.rails_admin_histories (
     id integer NOT NULL,
     message text,
     username character varying,
@@ -267,7 +266,7 @@ CREATE TABLE rails_admin_histories (
 -- Name: rails_admin_histories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE rails_admin_histories_id_seq
+CREATE SEQUENCE public.rails_admin_histories_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -280,14 +279,14 @@ CREATE SEQUENCE rails_admin_histories_id_seq
 -- Name: rails_admin_histories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE rails_admin_histories_id_seq OWNED BY rails_admin_histories.id;
+ALTER SEQUENCE public.rails_admin_histories_id_seq OWNED BY public.rails_admin_histories.id;
 
 
 --
 -- Name: relationships; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE relationships (
+CREATE TABLE public.relationships (
     id integer NOT NULL,
     follower_id integer,
     followed_id integer,
@@ -300,7 +299,7 @@ CREATE TABLE relationships (
 -- Name: relationships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE relationships_id_seq
+CREATE SEQUENCE public.relationships_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -313,14 +312,14 @@ CREATE SEQUENCE relationships_id_seq
 -- Name: relationships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE relationships_id_seq OWNED BY relationships.id;
+ALTER SEQUENCE public.relationships_id_seq OWNED BY public.relationships.id;
 
 
 --
 -- Name: reports; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE reports (
+CREATE TABLE public.reports (
     id integer NOT NULL,
     reportable_id integer,
     reportable_type character varying,
@@ -336,7 +335,7 @@ CREATE TABLE reports (
 -- Name: reports_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE reports_id_seq
+CREATE SEQUENCE public.reports_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -349,14 +348,14 @@ CREATE SEQUENCE reports_id_seq
 -- Name: reports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE reports_id_seq OWNED BY reports.id;
+ALTER SEQUENCE public.reports_id_seq OWNED BY public.reports.id;
 
 
 --
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE schema_migrations (
+CREATE TABLE public.schema_migrations (
     version character varying NOT NULL
 );
 
@@ -365,16 +364,16 @@ CREATE TABLE schema_migrations (
 -- Name: sits; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE sits (
+CREATE TABLE public.sits (
     id integer NOT NULL,
     title character varying,
     body text,
     user_id integer,
-    disable_comments boolean,
+    disable_comments boolean DEFAULT false NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     duration integer,
-    s_type integer,
+    s_type character varying DEFAULT 'meditation'::character varying NOT NULL,
     private boolean DEFAULT false,
     views integer DEFAULT 0
 );
@@ -384,7 +383,7 @@ CREATE TABLE sits (
 -- Name: sits_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE sits_id_seq
+CREATE SEQUENCE public.sits_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -397,14 +396,14 @@ CREATE SEQUENCE sits_id_seq
 -- Name: sits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE sits_id_seq OWNED BY sits.id;
+ALTER SEQUENCE public.sits_id_seq OWNED BY public.sits.id;
 
 
 --
 -- Name: taggings; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE taggings (
+CREATE TABLE public.taggings (
     id integer NOT NULL,
     tag_id integer,
     sit_id integer,
@@ -417,7 +416,7 @@ CREATE TABLE taggings (
 -- Name: taggings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE taggings_id_seq
+CREATE SEQUENCE public.taggings_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -430,14 +429,14 @@ CREATE SEQUENCE taggings_id_seq
 -- Name: taggings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
+ALTER SEQUENCE public.taggings_id_seq OWNED BY public.taggings.id;
 
 
 --
 -- Name: tags; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE tags (
+CREATE TABLE public.tags (
     id integer NOT NULL,
     name character varying,
     created_at timestamp without time zone,
@@ -449,7 +448,7 @@ CREATE TABLE tags (
 -- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE tags_id_seq
+CREATE SEQUENCE public.tags_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -462,14 +461,14 @@ CREATE SEQUENCE tags_id_seq
 -- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+ALTER SEQUENCE public.tags_id_seq OWNED BY public.tags.id;
 
 
 --
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE users (
+CREATE TABLE public.users (
     id integer NOT NULL,
     username character varying,
     email character varying,
@@ -521,7 +520,7 @@ CREATE TABLE users (
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE users_id_seq
+CREATE SEQUENCE public.users_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -534,105 +533,105 @@ CREATE SEQUENCE users_id_seq
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
 -- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
 
 
 --
 -- Name: favourites id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY favourites ALTER COLUMN id SET DEFAULT nextval('favourites_id_seq'::regclass);
+ALTER TABLE ONLY public.favourites ALTER COLUMN id SET DEFAULT nextval('public.favourites_id_seq'::regclass);
 
 
 --
 -- Name: goals id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY goals ALTER COLUMN id SET DEFAULT nextval('goals_id_seq'::regclass);
+ALTER TABLE ONLY public.goals ALTER COLUMN id SET DEFAULT nextval('public.goals_id_seq'::regclass);
 
 
 --
 -- Name: likes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY likes ALTER COLUMN id SET DEFAULT nextval('likes_id_seq'::regclass);
+ALTER TABLE ONLY public.likes ALTER COLUMN id SET DEFAULT nextval('public.likes_id_seq'::regclass);
 
 
 --
 -- Name: messages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+ALTER TABLE ONLY public.messages ALTER COLUMN id SET DEFAULT nextval('public.messages_id_seq'::regclass);
 
 
 --
 -- Name: notifications id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+ALTER TABLE ONLY public.notifications ALTER COLUMN id SET DEFAULT nextval('public.notifications_id_seq'::regclass);
 
 
 --
 -- Name: rails_admin_histories id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY rails_admin_histories ALTER COLUMN id SET DEFAULT nextval('rails_admin_histories_id_seq'::regclass);
+ALTER TABLE ONLY public.rails_admin_histories ALTER COLUMN id SET DEFAULT nextval('public.rails_admin_histories_id_seq'::regclass);
 
 
 --
 -- Name: relationships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationships_id_seq'::regclass);
+ALTER TABLE ONLY public.relationships ALTER COLUMN id SET DEFAULT nextval('public.relationships_id_seq'::regclass);
 
 
 --
 -- Name: reports id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY reports ALTER COLUMN id SET DEFAULT nextval('reports_id_seq'::regclass);
+ALTER TABLE ONLY public.reports ALTER COLUMN id SET DEFAULT nextval('public.reports_id_seq'::regclass);
 
 
 --
 -- Name: sits id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY sits ALTER COLUMN id SET DEFAULT nextval('sits_id_seq'::regclass);
+ALTER TABLE ONLY public.sits ALTER COLUMN id SET DEFAULT nextval('public.sits_id_seq'::regclass);
 
 
 --
 -- Name: taggings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq'::regclass);
+ALTER TABLE ONLY public.taggings ALTER COLUMN id SET DEFAULT nextval('public.taggings_id_seq'::regclass);
 
 
 --
 -- Name: tags id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+ALTER TABLE ONLY public.tags ALTER COLUMN id SET DEFAULT nextval('public.tags_id_seq'::regclass);
 
 
 --
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
 -- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY comments
+ALTER TABLE ONLY public.comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
 
 
@@ -640,7 +639,7 @@ ALTER TABLE ONLY comments
 -- Name: favourites favourites_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY favourites
+ALTER TABLE ONLY public.favourites
     ADD CONSTRAINT favourites_pkey PRIMARY KEY (id);
 
 
@@ -648,7 +647,7 @@ ALTER TABLE ONLY favourites
 -- Name: goals goals_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY goals
+ALTER TABLE ONLY public.goals
     ADD CONSTRAINT goals_pkey PRIMARY KEY (id);
 
 
@@ -656,7 +655,7 @@ ALTER TABLE ONLY goals
 -- Name: likes likes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY likes
+ALTER TABLE ONLY public.likes
     ADD CONSTRAINT likes_pkey PRIMARY KEY (id);
 
 
@@ -664,7 +663,7 @@ ALTER TABLE ONLY likes
 -- Name: messages messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY messages
+ALTER TABLE ONLY public.messages
     ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
 
 
@@ -672,7 +671,7 @@ ALTER TABLE ONLY messages
 -- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY notifications
+ALTER TABLE ONLY public.notifications
     ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
 
 
@@ -680,7 +679,7 @@ ALTER TABLE ONLY notifications
 -- Name: rails_admin_histories rails_admin_histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY rails_admin_histories
+ALTER TABLE ONLY public.rails_admin_histories
     ADD CONSTRAINT rails_admin_histories_pkey PRIMARY KEY (id);
 
 
@@ -688,7 +687,7 @@ ALTER TABLE ONLY rails_admin_histories
 -- Name: relationships relationships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY relationships
+ALTER TABLE ONLY public.relationships
     ADD CONSTRAINT relationships_pkey PRIMARY KEY (id);
 
 
@@ -696,7 +695,7 @@ ALTER TABLE ONLY relationships
 -- Name: reports reports_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY reports
+ALTER TABLE ONLY public.reports
     ADD CONSTRAINT reports_pkey PRIMARY KEY (id);
 
 
@@ -704,7 +703,7 @@ ALTER TABLE ONLY reports
 -- Name: sits sits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY sits
+ALTER TABLE ONLY public.sits
     ADD CONSTRAINT sits_pkey PRIMARY KEY (id);
 
 
@@ -712,7 +711,7 @@ ALTER TABLE ONLY sits
 -- Name: taggings taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY taggings
+ALTER TABLE ONLY public.taggings
     ADD CONSTRAINT taggings_pkey PRIMARY KEY (id);
 
 
@@ -720,7 +719,7 @@ ALTER TABLE ONLY taggings
 -- Name: tags tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY tags
+ALTER TABLE ONLY public.tags
     ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
 
 
@@ -728,7 +727,7 @@ ALTER TABLE ONLY tags
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users
+ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
@@ -736,112 +735,112 @@ ALTER TABLE ONLY users
 -- Name: index_favourites_on_favourable_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_favourites_on_favourable_id ON favourites USING btree (favourable_id);
+CREATE INDEX index_favourites_on_favourable_id ON public.favourites USING btree (favourable_id);
 
 
 --
 -- Name: index_favourites_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_favourites_on_user_id ON favourites USING btree (user_id);
+CREATE INDEX index_favourites_on_user_id ON public.favourites USING btree (user_id);
 
 
 --
 -- Name: index_likes_on_likeable_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_likes_on_likeable_id ON likes USING btree (likeable_id);
+CREATE INDEX index_likes_on_likeable_id ON public.likes USING btree (likeable_id);
 
 
 --
 -- Name: index_likes_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_likes_on_user_id ON likes USING btree (user_id);
+CREATE INDEX index_likes_on_user_id ON public.likes USING btree (user_id);
 
 
 --
 -- Name: index_rails_admin_histories; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_rails_admin_histories ON rails_admin_histories USING btree (item, "table", month, year);
+CREATE INDEX index_rails_admin_histories ON public.rails_admin_histories USING btree (item, "table", month, year);
 
 
 --
 -- Name: index_relationships_on_followed_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_relationships_on_followed_id ON relationships USING btree (followed_id);
+CREATE INDEX index_relationships_on_followed_id ON public.relationships USING btree (followed_id);
 
 
 --
 -- Name: index_relationships_on_follower_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_relationships_on_follower_id ON relationships USING btree (follower_id);
+CREATE INDEX index_relationships_on_follower_id ON public.relationships USING btree (follower_id);
 
 
 --
 -- Name: index_relationships_on_follower_id_and_followed_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON relationships USING btree (follower_id, followed_id);
+CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON public.relationships USING btree (follower_id, followed_id);
 
 
 --
 -- Name: index_reports_on_reportable_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_reports_on_reportable_id ON reports USING btree (reportable_id);
+CREATE INDEX index_reports_on_reportable_id ON public.reports USING btree (reportable_id);
 
 
 --
 -- Name: index_reports_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_reports_on_user_id ON reports USING btree (user_id);
+CREATE INDEX index_reports_on_user_id ON public.reports USING btree (user_id);
 
 
 --
 -- Name: index_taggings_on_sit_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_taggings_on_sit_id ON taggings USING btree (sit_id);
+CREATE INDEX index_taggings_on_sit_id ON public.taggings USING btree (sit_id);
 
 
 --
 -- Name: index_taggings_on_tag_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_taggings_on_tag_id ON taggings USING btree (tag_id);
+CREATE INDEX index_taggings_on_tag_id ON public.taggings USING btree (tag_id);
 
 
 --
 -- Name: sit_body; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX sit_body ON sits USING gin (to_tsvector('english'::regconfig, body));
+CREATE INDEX sit_body ON public.sits USING gin (to_tsvector('english'::regconfig, body));
 
 
 --
 -- Name: sit_title; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX sit_title ON sits USING gin (to_tsvector('english'::regconfig, (title)::text));
+CREATE INDEX sit_title ON public.sits USING gin (to_tsvector('english'::regconfig, (title)::text));
 
 
 --
 -- Name: tag_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX tag_name ON tags USING gin (to_tsvector('english'::regconfig, (name)::text));
+CREATE INDEX tag_name ON public.tags USING gin (to_tsvector('english'::regconfig, (name)::text));
 
 
 --
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING btree (version);
 
 
 --
@@ -919,4 +918,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140625193718');
 INSERT INTO schema_migrations (version) VALUES ('20141218153117');
 
 INSERT INTO schema_migrations (version) VALUES ('20141222165045');
+
+INSERT INTO schema_migrations (version) VALUES ('20180511211340');
+
+INSERT INTO schema_migrations (version) VALUES ('20180511213142');
 

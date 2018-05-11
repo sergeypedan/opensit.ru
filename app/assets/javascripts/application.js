@@ -1,7 +1,7 @@
 function adjust_sit_title_to_diary_type() {
   if ( !document.getElementById('sit_title') ) { return null }
 
-  if ($('#sit_s_type_0').is(':checked')) {
+  if ($('#sit_s_type_meditation').is(':checked')) {
     $('.duration-form-group').show();
     $('.sit-title-form-group').hide();
     document.getElementById('sit_title').required = false;

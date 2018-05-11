@@ -288,7 +288,7 @@ describe User do
       end
       it 'does not count diary entries' do
         create(:sit, created_at: Date.today, user: buddha, duration: 60)
-        create(:sit, created_at: Date.today, user: buddha, duration: 60, s_type: 1, title: Faker::Lorem.word)
+        create(:sit, created_at: Date.today, user: buddha, duration: 60, s_type: "diary", title: Faker::Lorem.word)
         expect(buddha.time_sat_on_date(Date.today)).to eq(60)
       end
     end
@@ -302,7 +302,7 @@ describe User do
       end
       it 'does not count diary entries' do
         create(:sit, created_at: Date.today, user: buddha, duration: 60)
-        create(:sit, created_at: Date.today, user: buddha, duration: 60, s_type: 1, title: Faker::Lorem.word)
+        create(:sit, created_at: Date.today, user: buddha, duration: 60, s_type: "diary", title: Faker::Lorem.word)
         expect(buddha.total_hours_sat).to eq(1)
       end
     end
@@ -341,7 +341,7 @@ describe User do
 
       it 'does not count diary entries' do
         create(:sit, created_at: Date.today, user: buddha, duration: 30)
-        create(:sit, created_at: Date.today - 1, user: buddha, duration: 30, s_type: 1, title: Faker::Lorem.word)
+        create(:sit, created_at: Date.today - 1, user: buddha, duration: 30, s_type: "diary", title: Faker::Lorem.word)
         expect(buddha.days_sat_for_min_x_minutes_in_date_range(30, Date.today - 2, Date.today)).to eq 1
       end
     end
@@ -528,7 +528,7 @@ describe User do
 
       ananda.follow!(user)
       anuruddha.follow!(user)
-      
+
       user.follow!(ananda)
       user.follow!(anuruddha)
 

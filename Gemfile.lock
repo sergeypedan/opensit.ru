@@ -579,10 +579,6 @@ GEM
     aws-sigv2 (1.0.1)
     aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
-    better_errors (2.4.0)
-      coderay (>= 1.0.0)
-      erubi (>= 1.0.0)
-      rack (>= 0.9.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.7)
@@ -656,7 +652,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.3)
     dry-initializer (2.3.0)
-    erubi (1.7.0)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_bot (4.8.2)
@@ -747,8 +742,6 @@ GEM
       coolline (~> 0.5)
     public_suffix (3.0.1)
     puma (3.11.2)
-    quiet_assets (1.1.0)
-      railties (>= 3.1, < 5.0)
     rack (1.6.9)
     rack-contrib (1.8.0)
       rack (~> 1.4)
@@ -884,7 +877,6 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   aws-sdk
-  better_errors
   binding_of_caller
   bootstrap-sass
   bootstrap-wysihtml5-rails
@@ -918,7 +910,6 @@ DEPENDENCIES
   pry-byebug
   pry-coolline
   puma
-  quiet_assets
   rack
   rails (= 4.2.8)
   rails_12factor

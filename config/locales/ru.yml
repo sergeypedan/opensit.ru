@@ -129,6 +129,7 @@ ru:
     subtitle: Тут будут отображаться уведомления о взаимодействиях с другими пользователями
 
   new_sit:
+    created_notice: Новая запись добавлена!
     diary: Заметка
     disable_comments: Отключить комментарии
     duration: Время медитации
@@ -152,7 +153,9 @@ ru:
     comma_separated: Через запятую
     fill_all_required: Пожалуйста, заполните обязательные поля
 
-  tags: Теги
+  tags:
+    h1: Теги
+    comma_separated: Через запятую
 
   navigation:
     back_to_new_users: К новым пользователям

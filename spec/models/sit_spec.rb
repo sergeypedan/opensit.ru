@@ -8,7 +8,7 @@ describe Sit do
     context 'without_diaries' do
       it 'does not return diaries' do
         create(:sit, user: buddha, created_at: Date.today)
-        create(:sit, user: buddha, created_at: Date.today, s_type: 1, title: Faker::Lorem.word)
+        create(:sit, user: buddha, created_at: Date.today, s_type: "diary", title: Faker::Lorem.word)
         expect(buddha.sits.without_diaries.count).to eq(1)
       end
     end
