@@ -1,0 +1,66 @@
+= form_for @sit, html: { class: "col-md-10 col-lg-offset-1" } do |f|
+
+  - if @sit.errors.any?
+    .alert.alert-danger
+      h4 Ошибки формы:
+      ul
+        - @sit.errors.full_messages.each do |message|
+          li = message
+
+  = link_to t("forms.delete"), sit_path(@sit), method: :delete, confirm: t("forms.sure"), class: 'btn btn-danger delete-entry pull-right' if (controller.action_name == 'edit')
+
+  .sit_type
+    .btn-group data-toggle="buttons"
+      = label_tag nil, for: "sit_s_type_meditation", class: ["btn", "btn-primary", ("active" if @sit.is_meditation?)]
+        = f.radio_button :s_type, "meditation"
+        = t "new_sit.meditation"
+
+      = label_tag nil, for: "sit_s_type_diary", class: ["btn", "btn-primary", ("active" unless @sit.is_meditation?)]
+        = f.radio_button :s_type, "diary", class: "diary_type"
+        = t "new_sit.diary"
+
+  .form-group.duration-form-group
+    = f.label :title, t("new_sit.duration"), class: "control-label required"
+    br
+    = t "new_sit.sat_for"
+    =<> f.number_field :duration, class: "form-control", min: 0, value: (action_name == 'edit' ? @sit.duration : current_user.default_sit_length)
+    = t "new_sit.minutes"
+
+  .form-group.sit-title-form-group
+    = f.label :title, t("new_sit.title"), class: "control-label required"
+    = f.text_field :title, class: "form-control", style: "max-width: 600px"
+
+  .form-group
+    = f.label :body, t("new_sit.wat"), class: "control-label required"
+    = f.text_area :body, rows: 10, required: true, class: "form-control", style: "max-width: 600px"
+    .help-block = t("new_sit.text_hint")
+
+  .row
+    .form-group.col-md-3
+      = f.label :created_at, t("forms.date"), class: "control-label"
+      .custom-date.sit_created_at
+        .input-group.date#datetimepicker
+          = text_field_tag :custom_date, (@sit.created_at.strftime("%m/%d/%Y %l:%M %p") if action_name == 'edit'), class: "form-control", placeholder: t("new_sit.now"), id: "sit_created_at"
+          span.input-group-addon = fa_icon "calendar"
+
+    .form-group.col-md-6
+      = label_tag :tag_list, t("tags.h1"), class: "control-label"
+      = text_field_tag :tag_list, @sit.tag_list, class: "form-control"
+      .help-block = t "tags.comma_separated"
+
+  .privacy-settings
+    - if current_user.private_stream
+      span.label.label-primary = fa_icon "lock", text: t("new_sit.is_private")
+
+    - else
+      .checkbox
+        = f.label :private, t("new_sit.make_private")
+          = f.check_box :private
+          = t "new_sit.make_private"
+
+      .checkbox
+        = f.label :disable_comments, t('new_sit.make_private')
+          = f.check_box :disable_comments
+          = t "new_sit.disable_comments"
+
+  = f.submit t("new_sit.submit"), class: "btn btn-lg btn-primary"
