@@ -1,4 +1,4 @@
-<%= form_for(@sit, html: { class: 'col-md-10 col-lg-offset-1'}) do |f| %>
+<%= form_for @sit, html: { class: 'col-md-10 col-lg-offset-1'} do |f| %>
 
   <% if @sit.errors.any? %>
     <div class="alert alert-danger"><%= t("forms.fill_all_required") %></div>
@@ -6,21 +6,54 @@
 
   <%= link_to t("forms.delete"), sit_path(@sit), method: :delete, confirm: t("forms.sure"), class: 'btn btn-danger delete-entry pull-right' if (controller.action_name == 'edit') %>
 
+  <% is_meditation = @sit.s_type == (0 || nil)  %>
   <div class="sit_type">
-    <div class="radio">
-      <label>
-        <input <%= @sit.s_type == 0 || @sit.s_type.nil? ? 'checked' : '' %> id="sit_s_type_0" name="sit[s_type]" type="radio" value="0" />
-        <%= t("new_sit.sat_for") %>
-        <input class="optional form-control" id="sit_duration" name="sit[duration]" size="50" type="number" min="0" value="<%= controller.action_name == 'edit' ? @sit.duration : current_user.default_sit_length %>">
-        <%= t("new_sit.minutes") %>
-      </label>
+    <div class="btn-group" data-toggle="buttons">
+      <%= label_tag nil, class: ["btn", "btn-primary", ("active" if is_meditation)] do %>
+        <%= f.radio_button :s_type, 0, autocomplete: "off", checked: is_meditation %>
+        <%= t("new_sit.meditation") %>
+      <% end %>
+      <%= label_tag nil, class: ["btn", "btn-primary", ("active" unless is_meditation)] do %>
+        <%= f.radio_button :s_type, 1, class: "diary_type", autocomplete: "off" %>
+        <%= t("new_sit.diary") %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group duration-form-group">
+    <%= f.label :title, t("new_sit.duration"), class: "control-label required" %>
+    <br>
+    <%= t("new_sit.sat_for") %>
+    <%= f.number_field :duration, class: "form-control", size: 50, min: 0, value: (action_name == 'edit' ? @sit.duration : current_user.default_sit_length) %>
+    <%= t("new_sit.minutes") %>
+  </div>
+
+  <div class="form-group sit-title-form-group">
+    <%= f.label :title, t("new_sit.title"), class: "control-label required" %>
+    <%= f.text_field :title, class: "form-control", style: "max-width: 600px" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, t("new_sit.wat"), class: "control-label required" %>
+    <%= f.text_area :body, rows: 10, required: true, class: "form-control", style: "max-width: 600px" %>
+    <div class="help-block"><%= t("new_sit.text_hint") %></div>
+  </div>
+
+  <div class="row">
+    <div class='form-group col-md-3'>
+      <%= f.label :created_at, t("forms.date"), class: "control-label" %>
+      <div class="custom-date sit_created_at">
+        <div class='input-group date' id='datetimepicker'>
+          <%= text_field_tag :custom_date, (@sit.created_at.strftime('%m/%d/%Y %l:%M %p') if action_name == 'edit'), class: "form-control", placeholder: t('new_sit.now'), id: "sit_created_at" %>
+          <span class="input-group-addon"><%= fa_icon "calendar" %></span>
+        </div>
+      </div>
     </div>
 
-    <div class="radio">
-      <label>
-        <%= f.radio_button :s_type, 1, class: "diary_type" %>
-        <%= t("new_sit.diary") %>
-      </label>
+    <div class="form-group col-md-6">
+      <%= f.label :tag_list, t("tags"), class: "control-label" %>
+      <%= f.text_field :tag_list, class: "form-control" %>
+      <p class="help-block">Через запятую</p>
     </div>
   </div>
 
@@ -43,35 +76,6 @@
         <% end %>
       </div>
     <% end %>
-  </div>
-
-  <div class="form-group sit-title-form-group">
-    <%= f.label :title, t("new_sit.title"), class: "control-label required" %>
-    <%= f.text_field :title, class: "form-control", style: "max-width: 600px" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :body, t("new_sit.wat"), class: "control-label required" %>
-    <%= f.text_area :body, rows: 10, required: true, class: "form-control", style: "max-width: 600px" %>
-    <div class="help-block"><%= t("new_sit.text_hint") %></div>
-  </div>
-
-  <div class="row">
-    <div class='form-group col-md-3'>
-      <%= f.label :created_at, t("forms.date"), class: "control-label" %>
-      <div class="custom-date sit_created_at">
-        <div class='input-group date' id='datetimepicker'>
-          <input type='text' placeholder="<%= t('new_sit.now') %>" name="custom_date" class="form-control" value="<%= controller.action_name == 'edit' ? @sit.created_at.strftime('%m/%d/%Y %l:%M %p') : '' %>" />
-          <span class="input-group-addon"><%= fa_icon "calendar" %></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group col-md-6">
-      <%= f.label :tag_list, t("tags"), class: "control-label" %>
-      <%= f.text_field :tag_list, class: "form-control" %>
-      <p class="help-block">Через запятую</p>
-    </div>
   </div>
 
   <%= f.submit t("new_sit.submit"), class: 'btn btn-lg btn-primary' %>

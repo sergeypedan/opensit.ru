@@ -16,7 +16,7 @@ div itemscope="" itemtype="http://schema.org/Person"
     - if @user.private_stream && (current_user != @user)
       // Is this someone elses private journal?
       .message-box
-        h2 Private.
+        h2 Private
         p This is a private journal
 
     - else
@@ -62,9 +62,11 @@ div itemscope="" itemtype="http://schema.org/Person"
             p.month_stats
               - if @user.sits.empty?
                 = t("profile.feed.empty")
+
               - elsif @stats[:days_sat_this_month].zero?
                 | Zzzzz... Nothing logged this month.
                 =< link_to "Check out their latest journal entries.", "?year=#{@first_month[0]}&month=#{@first_month[1]}", class: "previous"
+
               - else
                 = t("stats.sat")
                 =< t("datetime.distance_in_words.x_days", count: @stats[:days_sat_this_month])
@@ -82,7 +84,7 @@ div itemscope="" itemtype="http://schema.org/Person"
           - if !@stats[:days_sat_this_month].zero?
             .month_navigation.col-md-12
               = link_to fa_icon("long-arrow-left",  text: t("navigation.previous")), "?year=#{@prev[0]}&month=#{@prev[1]}", class: "previous" if @prev
-              = link_to fa_icon("long-arrow-right", text: t("navigation.next")),     "?year=#{@next[0]}&month=#{@next[1]}", class: "next" if @next
+              = link_to fa_icon("long-arrow-right", text: t("navigation.next")),     "?year=#{@next[0]}&month=#{@next[1]}", class: "next"     if @next
 
       - if current_user && current_user.username.in?(User::MODERATOR_USERNAMES)
         .mod-delete-user = link_to 'Delete this user?', user_path(@user), method: :delete, data: { confirm: 'Delete this user?' }, class: 'delete-user'

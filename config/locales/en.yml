@@ -128,16 +128,18 @@ en:
     subtitle: When others interact with you you'll know about it here
 
   new_sit:
-    privacy: Privacy
-    make_private: Make this entry private
-    disable_comments: Disable comments
-    is_private: Your stream is private
-    sat_for: I just sat for
-    minutes: minutes
     diary: This is a diary entry
-    text_hint: "You don't have to write anything"
+    disable_comments: Disable comments
+    duration: Time
+    is_private: Your stream is private
+    make_private: Make this entry private
+    meditation: Meditation
+    minutes: minutes
     now: Just now
+    privacy: Privacy
+    sat_for: I just sat for
     submit: Submit a sit
+    text_hint: "You don't have to write anything"
     title: Title
     wat: What happened?
 

@@ -1,10 +1,18 @@
 function adjust_sit_title_to_diary_type() {
+  if ( !document.getElementById('sit_title') ) { return null }
+
   if ($('#sit_s_type_0').is(':checked')) {
+    $('.duration-form-group').show();
     $('.sit-title-form-group').hide();
     document.getElementById('sit_title').required = false;
+    document.getElementById('sit_duration').disabled = false;
+    document.getElementById('sit_duration').required = true;
   } else {
+    $('.duration-form-group').hide();
     $('.sit-title-form-group').show();
     document.getElementById('sit_title').required = true;
+    document.getElementById('sit_duration').disabled = true;
+    document.getElementById('sit_duration').required = false;
   }
 }
 
@@ -26,27 +34,11 @@ $(document).ready(function(){
     });
   });
 
-  // SIT TEASER / Click through
-  $('.sit-teaser-block .block-content').click( function() {
-    Turbolinks.visit($(this).find('.sit-link').attr('href'));
-  });
-
-  // Search results
-  $('.sit-teaser').click( function() {
-    Turbolinks.visit($(this).find('.sit-link').attr('href'));
-  });
-
-  // Recent activity
-  $('.recent-activity .activity').click( function() {
-    Turbolinks.visit($(this).find('.sit-link').attr('href'));
-  });
-
-
   // NEW/EDIT SIT / title or duration
 
   adjust_sit_title_to_diary_type();
 
-  $('.sit_type input').click( function() { adjust_sit_title_to_diary_type() });
+  $('[name="sit[s_type]"]').change( function() { adjust_sit_title_to_diary_type() });
 
   // Privacy dropdown
   $('.sits-new .dropdown-menu').click(function(e) { e.stopPropagation(); });
@@ -70,7 +62,7 @@ $(document).ready(function(){
 
   // VIEW PROFILE / Date select
   $('.date_range_select').change( function() {
-    Turbolinks.visit($(this).val());
+    console.log("Will navigate to", $(this).val());
   });
 
   // VIEW PROFILE / Full profile

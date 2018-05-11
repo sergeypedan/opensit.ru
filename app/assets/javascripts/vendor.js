@@ -1,17 +1,17 @@
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
-//= require chosen-1.8.3/chosen.jquery
-//= require bootstrap-wysihtml5
-//= require bootstrap/dropdown
-//= require bootstrap/tooltip
-//= require bootstrap/popover
-//= require bootstrap/modal
-//= require bootstrap/collapse
+
+//= require bootstrap
+//  require bootstrap/dropdown
+//  require bootstrap/tooltip
+//  require bootstrap/popover
+//  require bootstrap/modal
+//  require bootstrap/collapse
+
 //= require moment
-//= require masonry-packaged-4.2.1
+//= require chosen-1.8.3/chosen.jquery
 //= require bootstrap-datetimepicker
-//= require turbolinks
+//= require bootstrap-wysihtml5
+//= require masonry-packaged-4.2.1
 //= require nprogress
-//= require nprogress-turbolinks
 //= require likely-2.3.0/likely
