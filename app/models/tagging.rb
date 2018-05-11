@@ -8,14 +8,9 @@ end
 #
 # Table name: taggings
 #
-#  created_at :datetime         not null
 #  id         :integer          not null, primary key
-#  sit_id     :integer
 #  tag_id     :integer
-#  updated_at :datetime         not null
-#
-# Indexes
-#
-#  index_taggings_on_sit_id  (sit_id)
-#  index_taggings_on_tag_id  (tag_id)
+#  sit_id     :integer
+#  created_at :datetime
+#  updated_at :datetime
 #

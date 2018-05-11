@@ -127,15 +127,15 @@ end
 #
 # Table name: sits
 #
-#  body             :text
-#  created_at       :datetime         not null
-#  disable_comments :boolean
-#  duration         :integer
 #  id               :integer          not null, primary key
-#  private          :boolean          default(FALSE)
-#  s_type           :integer
-#  title            :string(255)
-#  updated_at       :datetime         not null
+#  title            :string
+#  body             :text
 #  user_id          :integer
+#  disable_comments :boolean          default(FALSE), not null
+#  created_at       :datetime
+#  updated_at       :datetime
+#  duration         :integer
+#  s_type           :string           default("meditation"), not null
+#  private          :boolean          default(FALSE)
 #  views            :integer          default(0)
 #

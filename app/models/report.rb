@@ -12,9 +12,9 @@ end
 #
 #  id              :integer          not null, primary key
 #  reportable_id   :integer
-#  reportable_type :string(255)
+#  reportable_type :string
 #  user_id         :integer
-#  reason          :string(255)
+#  reason          :string
 #  body            :text
 #  created_at      :datetime
 #  updated_at      :datetime

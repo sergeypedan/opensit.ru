@@ -41,10 +41,10 @@ end
 #
 # Table name: comments
 #
-#  body       :text
-#  created_at :datetime         not null
 #  id         :integer          not null, primary key
+#  body       :text
 #  sit_id     :integer
-#  updated_at :datetime         not null
+#  created_at :datetime
+#  updated_at :datetime
 #  user_id    :integer
 #
