@@ -28,7 +28,7 @@
       .private-warning
         span.label.label-primary = fa_icon "lock", text: private_notice
 
-    .body = @sit.body.html_safe
+    .body = markdown @sit.body
 
     - if current_user
       .row
