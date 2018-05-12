@@ -37,69 +37,6 @@ article.sit-teaser {
   }
 }
 
-/* Sit teaser block */
-article.sit-teaser-block {
-  float: left;
-  padding: 0 10px 10px 0;
-  .block-content {
-    @include rounded-bottom;
-    border-radius: 5px;
-    float: left;
-    background: #fff;
-    margin: 0 0 10px 0;
-    width: 100%;
-    &:hover {
-      cursor: pointer;
-      background: #eee;
-    }
-  }
-  .body {
-    margin: 10px;
-    padding: 5px;
-    width: 92%;
-    font-size: 0.8em;
-    word-wrap: break-word;
-  }
-  .bottom-row {
-    font-size: 0.7em;
-    float: left;
-    width: 100%;
-    border-top: $green 3px solid;
-    background: #fff;
-    border-radius: 0 0 5px 5px;
-    .avatar {
-      float: left;
-      width: 50px;
-      margin: 10px;
-    }
-    .details {
-      float: left;
-      margin-top: 7px;
-      width: calc(100% - 70px);
-      padding-right: 1em;
-      .author-title {
-        height: 34px;
-      }
-      .meta {
-        font-size: 0.9em;
-        text-align: right;
-        width: 100%;
-        margin: 3px 5px 0 0;
-        color: $dark-grey;
-        opacity: 0.5;
-        .fa-heart,
-        .fa-comment {
-          padding-left: 5px;
-        }
-      }
-    }
-  }
-  /* Lock icon for private events */
-  .private-event {
-    margin-top: -15px;
-  }
-}
-
 // Sit Streak
 .streak {
   float: left;
