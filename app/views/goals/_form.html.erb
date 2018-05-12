@@ -1,0 +1,42 @@
+<%= form_for Goal.new(duration: 30, mins_per_day: 30), html: { id: 'new_goal_form' } do |f| %>
+
+	<div class="goal-type">
+		<div class="radio">
+			<label>
+				<input type="radio" value="ongoing" name="goal[goal_type]" checked>
+				<%= t "goals.ongoing" %>
+			</label>
+		</div>
+
+		<div class="radio">
+			<label>
+				<input type="radio" value="fixed" name="goal[goal_type]">
+				<%= t "goals.fixed" %>
+			</label>
+		</div>
+	</div>
+
+	<div class="ongoing_toggle">
+		<div class="i-will form-group">
+			<%= f.label :mins_per_day, t("goals.i_will_sit"), class: "control-label" %>
+			<%= f.number_field :mins_per_day, class: "form-control" %>
+			<%= t "goals.min_per_day" %>
+		</div>
+	</div>
+
+	<div class="fixed_toggle">
+		<div class="i-will form-group">
+			<%= f.label :duration, t("goals.i_will_sit"), class: "control-label" %>
+			<%= f.number_field :duration, class: "form-control" %>
+			<%= t "goals.days" %>
+		</div>
+		<div class="mins-per-day form-group">
+			<%= f.label :mins_per_day_optional, t("goals.minimum"), class: "control-label" %>
+			<%= f.number_field :mins_per_day_optional, value: 30, class: "form-control toggle-option" %>
+			<%= t "goals.min_per_day" %>
+			<p class="help-block">(<%= t "goals.optional" %>)</p>
+		</div>
+	</div>
+
+	<%= f.submit t("forms.save"), class: "btn btn-lg btn-primary" %>
+<% end %>

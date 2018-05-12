@@ -1,0 +1,10 @@
+---
+ru:
+  forms:
+    comma_separated: Через запятую
+    date: Дата
+    delete: Удалить
+    edit: Редактировать
+    fill_all_required: Пожалуйста, заполните обязательные поля
+    save: Сохранить
+    sure: Вы уверены?

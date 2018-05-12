@@ -139,7 +139,7 @@ $(document).ready(function(){
   }
 
   // GOALS
-  $('#goal_type').click( function() {
+  $('[name="goal[goal_type]"]').change(function() {
     if ($(this).val() == 'ongoing') {
       $('.fixed_toggle').hide();
       $('.ongoing_toggle').fadeIn();

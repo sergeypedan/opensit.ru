@@ -1,0 +1,14 @@
+---
+ru:
+  authorization:
+    already: Уже зарегистрированы?
+    email: Email
+    forgot_password: Забыли пароль?
+    miss_confirmation: Не получили ссылку для подтверждения регистрации?
+    miss_unlock: Не получили ссылку для разблокировки?
+    not_yet: Ещё не зарегистрированы?
+    password: Пароль
+    remember: Запомнить меня
+    sign_in: Войти
+    sign_in_with: Войти через
+    sign_up: Зарегистрироваться

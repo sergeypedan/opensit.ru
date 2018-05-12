@@ -1,0 +1,10 @@
+---
+en:
+  forms:
+    comma_separated: Separate by commas
+    date: Date
+    delete: Delete
+    edit: Edit
+    fill_all_required: Please fill in the required fields
+    save: Save
+    sure: Are you sure?

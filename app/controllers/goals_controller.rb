@@ -27,22 +27,17 @@ class GoalsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @goal = @user.goals.new
-    goal = params[:goal]
-    if goal[:type] == 'ongoing'
-      @goal.goal_type = 0
-      @goal.mins_per_day = goal[:minutes]
-    else
-      @goal.goal_type = 1
-      @goal.duration = goal[:duration]
-      @goal.mins_per_day = goal[:mins_per_day] if goal[:mins_per_day]
-    end
+    @user              = current_user
+    @goal              = @user.goals.new
+    @goal.goal_type    = params.dig(:goal, :type) == "ongoing" ? 0 : 1
+    @goal.duration     = params.dig(:goal, :duration) if @goal.fixed?
+    @goal.mins_per_day = params.dig(:goal, :mins_per_day) if @goal.ongoing?
+    @goal.mins_per_day = params.dig(:goal, :mins_per_day_optional) if @goal.fixed?
 
     if @goal.save
-      redirect_to goals_path, notice: '"A journey of a thousand miles begins with a single sit" - You can do it!'
+      redirect_to goals_path, notice: t("goals.quotation")
     else
-      render action: "index"
+      render :index
     end
   end
 

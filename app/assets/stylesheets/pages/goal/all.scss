@@ -29,42 +29,7 @@
 	.new-goal {
 		text-align: center;
 	}
-	#new_goal_form {
-		text-align: center;
-		margin: 2em 0;
-		#goal_duration {
-		  display: inline;
-		  width: 63px;
-		  font-size: 30px;
-		  height: 47px;
-		}
-		#goal_type {
-			display: inline;
-		  width: 200px;
-		}
-		.toggle-option {
-		  width: 50px;
-		  display: inline;
-		}
-		.ongoing_toggle,
-		.fixed_toggle {
-			color: $dark-grey;
-			font-size: 0.8em;
-			margin-left: 20px;
-		}
-		.fixed_toggle {
-			display: none;
-		}
-		.i-will {
-			font-size: 1.4em;
-		}
-		.mins-per-day {
-			font-size: 1em;
-		}
-	}
-	.new-goal-form {
-		display: none;
-	}
+
 	.finish-goal {
 		font-size: 0.8em;
 		display: none;

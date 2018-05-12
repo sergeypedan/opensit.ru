@@ -1,16 +1,5 @@
+---
 en:
-
-  authorization:
-    remember: Remember me
-    password: Password
-    email: Email
-    already: Already signed up?
-    sign_in: Log in
-    sign_up: Sign up
-    forgot_password: Forgot your password?
-    miss_confirmation: Didn't receive confirmation instructions?
-    miss_unlock: Didn't receive unlock instructions?
-    sign_in_with: Sign in with
 
   header:
     unlogged: is a place to share and develop your meditation practice
@@ -144,14 +133,6 @@ en:
     title: Title
     wat: What happened?
 
-  forms:
-    sure: Are you sure?
-    delete: Delete
-    date: Date
-    edit: Edit
-    comma_separated: Separate by commas
-    fill_all_required: Please fill in the required fields
-
   tags:
     h1: Tags
     comma_separated: Comma separated
@@ -213,6 +194,16 @@ en:
   goals:
     h1: Goals
     intro: Goals are great way to stay motivated and strengthen your meditation practice. Once you set one up here, you'll get feedback on how well you're meeting your goal.
+    show_completed: Show completed goals
+    add_another: Add another one?
+    here_current: Here are your current goals.
+    ongoing: Ongoing
+    fixed: Time limited
+    i_will_sit: I will sit for
+    days: days in a row
+    min_per_day: minutes per day
+    minimum: minimum
+    optional: optional
 
   stream:
     your_stream_private: Your stream is private

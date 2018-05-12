@@ -1,0 +1,13 @@
+---
+en:
+  authorization:
+    already: Already signed up?
+    email: Email
+    forgot_password: Forgot your password?
+    miss_confirmation: Didn't receive confirmation instructions?
+    miss_unlock: Didn't receive unlock instructions?
+    password: Password
+    remember: Remember me
+    sign_in: Log in
+    sign_in_with: Sign in with
+    sign_up: Sign up
