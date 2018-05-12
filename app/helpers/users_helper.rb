@@ -35,22 +35,50 @@ module UsersHelper
   def timeline(dates)
     current_year = Time.now.year
 
-    dates.map do |l|
-      type, count = l
-      if type.to_s.size == 4
-        current_year = type
-        "<optgroup label='#{type} (#{count})'>"
+    dates.map do |year_or_month, count|
+      if year_or_month.to_s.size == 4
+        current_year = year_or_month
+        # content_tag :optgroup, label: "#{year_or_month} (#{count})"
+        "<optgroup label='#{year_or_month} (#{count})'>"
       else
-        "<option " + (current_year == params[:year].to_i && type == params[:month].to_i ? 'selected ' : '') + "value='" + "#{user_path(params[:username])}/#{params[:id]}?year=#{current_year}&month=#{type.to_s.rjust(2, '0')}" + "'>" + "#{Date::MONTHNAMES[type]}, #{current_year}</option>"
+        selected = (current_year == params[:year].to_i && year_or_month == params[:month].to_i)
+        # value    = "#{user_path(params[:username])}/#{params[:id]}?year=#{current_year}&month=#{year_or_month.to_s.rjust(2, '0')}"
+        value = user_path(params[:username], year: current_year, month: year_or_month.to_s.rjust(2, '0'))
+        content  = "#{Date::MONTHNAMES[year_or_month]}, #{current_year}"
+        content_tag :option, content, value: value, selected: selected
       end
-    end.join(' ').html_safe
+    end.join(' ')
   end
+
+  # def select_options_from_sitting_totals(stats)
+  #   current_year = Time.now.year
+
+  #   html = ""
+
+  #   stats.each do |year_or_month, count|
+  #     if year_or_month.to_s.size == 4
+  #       current_year = year_or_month
+  #       # content_tag :optgroup, label: "#{year_or_month} (#{count})"
+  #       html << "<optgroup label='#{year_or_month} (#{count})'>"
+  #     else
+  #       selected = (current_year == params[:year].to_i && year_or_month == params[:month].to_i)
+  #       # value    = "#{user_path(params[:username])}/#{params[:id]}?year=#{current_year}&month=#{year_or_month.to_s.rjust(2, '0')}"
+  #       value = user_path(params[:username], year: current_year, month: year_or_month.to_s.rjust(2, '0'))
+  #       content  = "#{Date::MONTHNAMES[year_or_month]}, #{current_year}"
+  #       content_tag :option, content, value: value, selected: selected
+  #     end
+  #   end
+
+  #   html << "</optgroup>"
+
+  #   html.html_safe
+  # end
 
   def joined_date(user)
     if Date.today.month == user.created_at.month
       user.created_at.strftime("%d %b")
     else
-      "#{time_ago_in_words(user.created_at)} ago"
+      "#{time_ago_in_words(user.created_at)} #{t('ago')}"
     end
   end
 

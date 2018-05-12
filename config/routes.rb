@@ -6,7 +6,7 @@ Opensit::Application.routes.draw do
 
   get '/me', to: 'users#me'
 
-  constraints(:username => /[^\/]+/) do
+  constraints(username: /[^\/]+/) do
     get    '/u/:username',           to: 'users#show',      as: :user
     get    '/u/:username/following', to: 'users#following', as: :following_user
     get    '/u/:username/followers', to: 'users#followers', as: :followers_user

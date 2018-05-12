@@ -194,7 +194,7 @@ class User < ActiveRecord::Base
 
   # Returns list of months a user has sat, and sitting totals for each month
   def journal_range
-    return false if self.sits.empty?
+    return false if sits.empty?
 
     first_sit = Sit.where("user_id = ?", self.id).order(:created_at).first.created_at.strftime("%Y %m").split(' ')
     year, month = Time.now.strftime("%Y %m").split(' ')
@@ -217,13 +217,13 @@ class User < ActiveRecord::Base
     dates << [first_sit[0].to_i, first_sit[1].to_i]
 
     # Object to return, containing two arrays
-    @obj = {}
+    @result = {}
 
     # Used to list number of sits per month
-    @obj[:sitting_totals] = []
+    @result[:sitting_totals] = []
 
     # Used to provide a simple list of available months for dropdown select navigation
-    @obj[:list_of_months] = []
+    @result[:list_of_months] = []
 
     # Filter out any months with no activity
     pointer = 2000
@@ -235,18 +235,18 @@ class User < ActiveRecord::Base
 
       if pointer != year
         year_total = self.sits_by_year(year).count
-        @obj[:sitting_totals] << [year, year_total] if !year_total.zero?
+        @result[:sitting_totals] << [year, year_total] if !year_total.zero?
       end
 
       if month_total != 0
-        @obj[:sitting_totals] << [month, month_total]
-        @obj[:list_of_months] << "#{year} #{month.to_s.rjust(2, '0')}"
+        @result[:sitting_totals] << [month, month_total]
+        @result[:list_of_months] << "#{year} #{month.to_s.rjust(2, '0')}"
       end
 
       pointer = year
     end
 
-    return @obj
+    return @result
   end
 
   def socialstream

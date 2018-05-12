@@ -55,7 +55,10 @@ div itemscope="" itemtype="http://schema.org/Person"
       - if @sits
         .month-view
 
-          = select_tag :timeline, timeline(@by_month[:sitting_totals]), { class: "date_range_select", id: "js-stream-date-navigation" } unless @stats[:days_sat_this_month].zero?
+          - unless @stats[:days_sat_this_month].zero?
+            = select_tag :timeline, \
+                          timeline(@by_month[:sitting_totals]), \
+                          { class: "date_range_select", id: "js-stream-date-navigation" }
 
           .month_stats_container
             p.month_stats
