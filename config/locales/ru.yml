@@ -69,7 +69,7 @@ ru:
     button: Я понял!
 
   menu:
-    home: Главная
+    home: Моя лента
     profile: Профиль
     logout: Разлогиниться
     goals: Цели
@@ -205,8 +205,8 @@ ru:
     show_completed: Показать выполненные цели
     add_another: Добавить цель?
     here_current: Вот ваши текущие цели
-    ongoing: Бессрочно
-    fixed: Некоторое время
+    ongoing: Постоянно
+    fixed: Ограниченный период
     i_will_sit: Я буду выполнять формальную практику
     days: дней подряд
     min_per_day: минут в день
