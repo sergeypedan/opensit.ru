@@ -1,0 +1,21 @@
+.user-teaser
+	.avatar = small_avatar_of(u)
+	.details
+		.name
+			= link_to(user_path(u))
+				= u.username
+				= "(#{u.display_name})" if u.first_name.present?
+
+		- if u.sits_count.nonzero?
+			.sit-count
+				| —
+				=< pluralize(u.sits.count, "sit")
+
+		.location
+			=> content_tag :span, u.location, class: "city" if u.location
+
+			span.joined
+				= t "stats.joined"
+				=< joined_date(u)
+
+		= render "shared/follow_button", user: u

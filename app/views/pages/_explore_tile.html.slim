@@ -1,0 +1,16 @@
+.tile.stamp.col-md-3.header-tile
+  .content
+    h1 = t("explore.h1")
+
+    ul.nav.nav-pills.nav-stacked
+      li.list-title = t("explore.sits")
+      li class=("active" if current_page?(explore_path) )          = link_to fa_icon("globe",    text: t("explore.global_stream")), "/explore",          class: "item"
+      li class=("active" if current_page?(explore_comments_path) ) = link_to fa_icon("comments", text: t("explore.discussions")  ), "/explore/comments", class: "item"
+      li class=("active" if current_page?(explore_tags_path) )     = link_to fa_icon("tags",     text: t("explore.tags")         ), "/explore/tags",     class: "item"
+
+      li.list-title = t("explore.users")
+      li class=("active" if current_page?(explore_active_users_path) ) = link_to fa_icon("user", text: t("explore.users_active")), "/explore/users/active",      class: "item"
+      li class=("active" if current_page?(explore_new_users_path) )    = link_to fa_icon("user", text: t("explore.users_new")   ), "/explore/users/new",         class: "item"
+      li class=("active" if current_page?(explore_new_sitters_path) )  = link_to fa_icon("user", text: t("explore.new_sitters") ), "/explore/users/new/sitters", class: "item", title: "New users who have started adding sits"
+
+    = render 'shared/suggested_users_block', users: @suggested_users if user_signed_in? && @suggested_users&.any?

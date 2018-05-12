@@ -1,0 +1,10 @@
+.sidebar.col-md-3 = render "pages/explore_tile"
+
+.col-md-9.clearfix
+	= render collection: @users, partial: "users/user", as: :u
+
+	- if @users.empty?
+		.message-box
+			h2 No matches
+
+	.pagination-container = will_paginate @users, renderer: BootstrapPagination::Rails

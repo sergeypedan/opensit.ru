@@ -1,5 +1,5 @@
 .sit-container
-  = render 'explore_tile'
+  = render "pages/explore_tile"
   = render collection: @sits, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 3 }
-  
+
 .pagination-container = will_paginate @sits, renderer: BootstrapPagination::Rails

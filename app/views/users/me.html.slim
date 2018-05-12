@@ -1,5 +1,5 @@
 - if !@user.following_anyone?
-	= render "shared/user_summary"
+	= render "users/user_summary"
 	.col-lg-9
 		.message-box.no-follow
 			h2 = t "me.empty_follow_list_header"
@@ -8,7 +8,7 @@
 
 - else
 	.sit-container
-		= render "shared/user_summary"
+		= render "users/user_summary"
 		= render collection: @feed_items, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 3 }
 
 	.pagination-container = will_paginate @feed_items, renderer: BootstrapPagination::Rails
