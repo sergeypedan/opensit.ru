@@ -61,8 +61,8 @@ $(document).ready(function(){
   $('.report-flag').tooltip();
 
   // VIEW PROFILE / Date select
-  $('.date_range_select').change( function() {
-    console.log("Will navigate to", $(this).val());
+  $('#js-stream-date-navigation').change( function() {
+    window.location.href = $(this).val();
   });
 
   // VIEW PROFILE / Full profile

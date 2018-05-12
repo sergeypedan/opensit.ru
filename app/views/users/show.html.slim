@@ -55,8 +55,7 @@ div itemscope="" itemtype="http://schema.org/Person"
       - if @sits
         .month-view
 
-          - if !@stats[:days_sat_this_month].zero?
-            select.date_range_select = timeline(@by_month[:sitting_totals])
+          = select_tag :timeline, timeline(@by_month[:sitting_totals]), { class: "date_range_select", id: "js-stream-date-navigation" } unless @stats[:days_sat_this_month].zero?
 
           .month_stats_container
             p.month_stats
@@ -72,7 +71,7 @@ div itemscope="" itemtype="http://schema.org/Person"
                 =< t("datetime.distance_in_words.x_days", count: @stats[:days_sat_this_month])
                 =< t("stats.this_month")
                 | ,
-                =< t("stats.totalling")
+                =<> t("stats.totalling")
                 = @stats[:time_sat_this_month]
                 =< t("stats.of_practice")
                 | .
