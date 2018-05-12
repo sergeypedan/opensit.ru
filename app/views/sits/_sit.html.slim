@@ -1,7 +1,8 @@
 article.activity
-  = fa_icon (sit.is_meditation? ? "clock-o" : "book")
-  = link_to sit_path(sit), class: "date"
-    = time_ago_in_words(sit.created_at)
-    =< t "ago"
-  .title = (sit.is_meditation?) ? "#{sit.duration} minutes" : sit.title
+  = link_to sit_path(sit), class: "title"
+    => fa_icon (sit.is_meditation? ? "clock-o" : "book")
+    = (sit.is_meditation? ? "#{sit.duration} minutes" : sit.title)
+
+  = date_tag(sit.created_at)
+
   .body = teaser(sit, 90)

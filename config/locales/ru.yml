@@ -211,6 +211,7 @@ ru:
     timeline: к таймлайну
     new: Новая запись
     edit: Редактировать запись
+    this_is_private: This is a private entry
 
   following:
     followed_users: На кого я подписан
@@ -221,3 +222,7 @@ ru:
   goals:
     h1: Цели
     intro: Goals are great way to stay motivated and strengthen your meditation practice. Once you set one up here, you'll get feedback on how well you're meeting your goal.
+
+  stream:
+    your_stream_private: Your stream is private
+    this_stream_private: This stream is private

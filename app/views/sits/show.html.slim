@@ -21,8 +21,8 @@
 
     ruby:
       private_notice = nil
-      private_notice = "Your stream is private."  if @sit.user.private_stream
-      private_notice = "This is a private entry." if @sit.private
+      private_notice = t("stream.your_stream_private") if @sit.user.private_stream
+      private_notice = t("stream.this_stream_private") if @sit.private
 
     - if private_notice
       .private-warning
