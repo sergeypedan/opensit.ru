@@ -11,22 +11,20 @@
 
 			h1.sit-title = @sit.full_title
 
+			ruby:
+				private_notice = nil
+				private_notice = t("stream.your_stream_private") if @sit.user.private_stream
+				private_notice = t("stream.this_sit_private") if @sit.private
+
 			.sit-stats
-				= content_tag :div, link_to(fa_icon("cog", text: t("forms.edit")), edit_sit_path(@sit)),      class: "stat" if current_user and @sit.mine?(current_user)
+				= content_tag :div, link_to(fa_icon("cog", text: t("forms.edit")), edit_sit_path(@sit)), class: "stat" if current_user and @sit.mine?(current_user)
 				= content_tag :div, fa_icon("clock-o", text: l(@sit.created_at, format: "%-d %B %Y, %H:%M")), class: "stat"
-				= content_tag :div, fa_icon("heart",   text: @sit.likes.count),                               class: "stat" if @sit.liked?
-				= content_tag :div, fa_icon("comment", text: @sit.comments.count),                            class: "stat" if @sit.comments.present?
+				= content_tag :div, fa_icon("heart", text: @sit.likes.count), class: "stat" if @sit.liked?
+				= content_tag :div, fa_icon("comment", text: @sit.comments.count), class: "stat" if @sit.comments.present?
+				= content_tag :div, fa_icon("lock", text: private_notice, class: "text-primary"), class: "stat" if private_notice
 
-			.tags-container = fa_icon "tags", text: tag_labels(@sit.tags) if @sit.tags.any?
-
-		ruby:
-			private_notice = nil
-			private_notice = t("stream.your_stream_private") if @sit.user.private_stream
-			private_notice = t("stream.this_stream_private") if @sit.private
-
-		- if private_notice
-			.private-warning
-				span.label.label-primary = fa_icon "lock", text: private_notice
+			- if @sit.tags.any?
+				.tags-container = tag_labels(@sit.tags)
 
 		.body = markdown @sit.body
 
