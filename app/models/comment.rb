@@ -23,19 +23,20 @@ class Comment < ActiveRecord::Base
   end
 
   private
-    def create_notification
-      commenters = self.sit.commenters
 
-      # Notify the owner of the sit
-      Notification.send_new_comment_notification(self.sit.user.id, self, true)
+  def create_notification
+    commenters = self.sit.commenters
 
-      # And any other commenters
-      if !commenters.empty?
-        commenters.each do |c|
-          Notification.send_new_comment_notification(c, self, false)
-        end
+    # Notify the owner of the sit
+    Notification.send_new_comment_notification(self.sit.user.id, self, true)
+
+    # And any other commenters
+    if !commenters.empty?
+      commenters.each do |c|
+        Notification.send_new_comment_notification(c, self, false)
       end
     end
+  end
 end
 
 # == Schema Information
