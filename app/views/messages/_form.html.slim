@@ -1,0 +1,12 @@
+= simple_form_for @message, html: { class: 'form-horizontal'} do |f|
+
+  = render "shared/form_errors", record: @message
+
+  - html    = { multiple: false, data: { placeholder: t("messages.choose_user")}, class: 'chosen-select' }
+  - options = { label: false, collection: @current_user.followed_users, label_method: 'username', input_html: html }
+	= form_element(f, :to_user_id, 'message', t("messages.to"), 4, options)
+
+	= form_element(f, :subject,    'message', t("messages.subject"), 4, { label: false })
+	= form_element(f, :body,       'message', t("messages.body"),    9, { label: false, input_html: { class: 'rich-textarea', rows: 10 } })
+
+  = f.submit t("messages.send"), class: 'btn btn-lg btn-primary'

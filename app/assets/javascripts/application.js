@@ -66,7 +66,8 @@ $(document).ready(function(){
     }
   });
 
-  $(".chzn-select").chosen({max_selected_options: 1});
+  // https://github.com/tsechingho/chosen-rails
+  $(".chosen-select").chosen({ max_selected_options: 1 });
 
   // FAVOURITES / add and remove
   $('#favourite_button').on('click', '.toggle-favourite', function(e) {
