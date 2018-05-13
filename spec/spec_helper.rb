@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/poltergeist'
 Capybara.default_driver = :poltergeist
-Capybara.default_wait_time = 10
+# Capybara.default_wait_time = 10
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -47,24 +47,15 @@ RSpec.configure do |config|
   # Render views in controller tests otherwise you get a blank response.body
   config.render_views = true
 
-  # Database Cleaner
-  # Note that transactions cause the seed data to not be seen by capybara. Thus the use of
-  # truncation instead.
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with :truncation
+    Rails.application.load_tasks
+    Rake::Task["db:purge"].invoke
+    Rake::Task["db:schema:load"].invoke
+    load "#{Rails.root}/db/seeds.rb"
   end
 
-  config.before(:each) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
+  config.before(:all, type: :request) do
+    host! "localhost" # "jaimini.ru"
   end
 
   config.include FactoryBot::Syntax::Methods
