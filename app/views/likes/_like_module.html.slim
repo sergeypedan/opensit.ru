@@ -1,0 +1,10 @@
+- if @sit.likes.any?
+
+	#who_likes
+		= button_tag like_text, \
+								type: :button, \
+								id: "likers-list", \
+								data: { container: "body",
+												toggle: :tooltip,
+												placement: :top,
+												original_title: liked_names(@sit) }
