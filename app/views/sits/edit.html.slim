@@ -1,11 +1,6 @@
 = form_for @sit, html: { class: "col-md-10 col-lg-offset-1" } do |f|
 
-  - if @sit.errors.any?
-    .alert.alert-danger
-      h4 = t "form_has_errors"
-      ul
-        - @sit.errors.full_messages.each do |message|
-          li = message
+  = render "shared/form_errors", record: @sit
 
   = link_to t("forms.delete"), sit_path(@sit), method: :delete, confirm: t("forms.sure"), class: 'btn btn-danger delete-entry pull-right' if (controller.action_name == 'edit')
 
