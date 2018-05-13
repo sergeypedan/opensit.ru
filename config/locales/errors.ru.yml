@@ -1,5 +1,6 @@
 ---
 ru:
+  form_has_errors: Ошибки формы
   errors:
     format: "%{attribute} %{message}"
 

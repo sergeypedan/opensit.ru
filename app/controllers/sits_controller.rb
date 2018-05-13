@@ -51,7 +51,7 @@ class SitsController < ApplicationController
     @sit = Sit.new filtered_params
     @sit.user = @user
     @sit.private = @user.private_stream
-    @sit.created_at = parse_datetime_input params[:custom_date]
+    @sit.created_at = ::InputParsers::Datetime.call params[:custom_date]
     @sit.tags = Tag.parse_CSV params[:tag_list]
 
     if @sit.save
@@ -68,7 +68,7 @@ class SitsController < ApplicationController
     @sit = Sit.find(params[:id])
     return redirect_to root_path, status: :unauthorized, alert: "You can't edit this post" unless current_user == @sit.user
 
-    @sit.created_at = parse_datetime_input params[:custom_date]
+    @sit.created_at = ::InputParsers::Datetime.call params[:custom_date]
     @sit.tags = Tag.parse_CSV params[:tag_list]
 
     if @sit.update_attributes(filtered_params)
@@ -104,17 +104,6 @@ class SitsController < ApplicationController
       :user_id,
       :views
     )
-  end
-
-  def parse_datetime_input(value)
-    return nil if value.blank?
-    ru_format = "%d.%m.%Y %H:%M"
-    us_format = "%m/%d/%Y %l:%M %p"
-    begin
-      DateTime.strptime(value, us_format)
-    rescue ArgumentError
-      DateTime.strptime(value, ru_format)
-    end
   end
 
 end

@@ -1,5 +1,6 @@
 ---
 en:
+  form_has_errors: Form errors
   activerecord:
     errors:
       models:

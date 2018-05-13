@@ -2,7 +2,7 @@
 
   - if @sit.errors.any?
     .alert.alert-danger
-      h4 Ошибки формы:
+      h4 = t "form_has_errors"
       ul
         - @sit.errors.full_messages.each do |message|
           li = message
