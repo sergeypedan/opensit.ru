@@ -32,7 +32,7 @@ module UsersHelper
     return link_to href, href, rel: :nofollow, target: "_blank"
   end
 
-  def timeline(dates)
+  def timeline_select_options(dates)
     current_year = Time.now.year
 
     dates.map do |year_or_month, count|
@@ -47,7 +47,7 @@ module UsersHelper
         content  = "#{Date::MONTHNAMES[year_or_month]}, #{current_year}"
         content_tag :option, content, value: value, selected: selected
       end
-    end.join(' ')
+    end.join(' ').html_safe
   end
 
   # def select_options_from_sitting_totals(stats)
