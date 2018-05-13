@@ -1,8 +1,8 @@
 require 'textacular/searchable'
 
 class User < ActiveRecord::Base
-  # Spam
-  include Rakismet::Model
+
+  include Rakismet::Model # Spam
 
   rakismet_attrs author: :username,
                  author_email: :email,
@@ -161,6 +161,7 @@ class User < ActiveRecord::Base
 
   # Returns the number of days, in a date range, where user sat for a minimum x minutes that day
   def days_sat_for_min_x_minutes_in_date_range(duration, start_date, end_date)
+    return 0 unless duration
     range = start_date.beginning_of_day..end_date.end_of_day
     all_sits = sits.without_diaries.where(created_at: range).order(created_at: :desc)
     all_datetimes = all_sits.pluck(:created_at)

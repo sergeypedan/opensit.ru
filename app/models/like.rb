@@ -11,15 +11,23 @@ class Like < ActiveRecord::Base
 
   after_save :create_notification
 
-  def self.likers_for(obj)
-    obj.likes.order(id: :asc).map { |u| User.find(u.user_id) }
+  class << self
+
+    def likers_for(record)
+      # user_ids = record.likes.map(&:user_id).order
+      # User.find(user_ids)
+      record.likes.order(id: :asc).map { |like| User.find(like.user_id) }
+    end
+
   end
 
   private
-    def create_notification
-      @obj = self.likeable_type.constantize.find(self.likeable_id)
-      Notification.send_new_sit_like_notification(@obj.user.id, self)
-    end
+
+  def create_notification
+    @obj = self.likeable_type.constantize.find(self.likeable_id)
+    Notification.send_new_sit_like_notification(@obj.user.id, self)
+  end
+
 end
 
 # == Schema Information
