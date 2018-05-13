@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :access_message?, :only => [:show, :destroy]
+  before_action :authenticate_user!
+  before_action :access_message?, :only => [:show, :destroy]
 
   # GET /messages
   # Inbox

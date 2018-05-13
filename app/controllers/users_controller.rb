@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!, only: [:welcome, :me, :export]
-  before_filter :check_date, only: :show
+  before_action :authenticate_user!, only: [:welcome, :me, :export]
+  before_action :check_date, only: :show
 
   # GET /welcome
   def welcome
