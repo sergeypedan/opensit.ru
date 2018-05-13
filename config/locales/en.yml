@@ -133,6 +133,7 @@ en:
     title: Title
     wat: What happened?
 
+  tag: Tag
   tags:
     h1: Tags
     comma_separated: Comma separated

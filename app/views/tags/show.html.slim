@@ -1,3 +1,13 @@
 .sit-container
-  = render "tag_tile"
+
+	.tile.stamp.col-md-3.header-tile
+		.content
+			h1
+				= t "tag"
+				| :
+				span.tag_name< = params[:id]
+
+			.options-group
+				= link_to t("explore.tags"), explore_tags_path, class: ("active" if current_page?(explore_tags_path))
+
 	= render collection: @sits, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 3 }

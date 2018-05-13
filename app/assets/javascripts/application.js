@@ -129,7 +129,7 @@ $(document).ready(function(){
   //   });
   // }
 
-  if ($('.view-tag').length) {
+  if ($('.tags-show').length) {
     var container = document.querySelector('.sit-container');
     var msnry = new Masonry( container, {
       columnWidth: '.col-md-3',
