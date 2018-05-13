@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
                  content: :who,
                  user_ip: :current_sign_in_ip
 
-  attr_accessible :city, :country, :website, :default_sit_length, :dob,
-                  :password, :email, :first_name, :gender, :last_name,
-                  :practice, :private_diary, :style, :user_type, :username,
-                  :who, :why, :password_confirmation, :remember_me, :avatar,
-                  :private_stream
+  attr_accessor :avatar, :password, :password_confirmation, :remember_me
+
+  # attr_accessor :city, :country, :website, :default_sit_length, :dob,
+  #                 :password, :email, :first_name, :gender, :last_name,
+  #                 :practice, :private_diary, :style, :user_type, :username,
+  #                 :who, :why, :password_confirmation, :remember_me, :avatar,
+  #                 :private_stream
 
   has_many :sits, dependent: :destroy
   has_many :messages_received, -> { where receiver_deleted: false }, class_name: 'Message', foreign_key: 'to_user_id'

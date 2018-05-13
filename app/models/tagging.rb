@@ -1,7 +1,10 @@
 class Tagging < ActiveRecord::Base
+
   belongs_to :tag
   belongs_to :sit
-  # attr_accessible :title, :body
+
+  attr_accessor :title, :body
+
 end
 
 # == Schema Information

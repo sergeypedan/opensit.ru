@@ -3,11 +3,11 @@ class Like < ActiveRecord::Base
   belongs_to :likeable
   belongs_to :user
 
-  attr_accessible :user_id, :likeable_type, :likeable_id
   validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :likeable_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :likeable_type, presence: true
 
+  # attr_accessor :user_id, :likeable_type, :likeable_id
 
   after_save :create_notification
 
