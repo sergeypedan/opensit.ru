@@ -2,7 +2,7 @@ require 'textacular/searchable'
 
 class Sit < ActiveRecord::Base
 
-  # attr_accessible :tag_list
+  attr_accessor :tag_list
 
   belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy

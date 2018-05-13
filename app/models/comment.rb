@@ -1,9 +1,10 @@
 class Comment < ActiveRecord::Base
+
   belongs_to :user
   belongs_to :sit
   has_many :likes, as: :likeable
 
-  attr_accessible :body, :sit_id, :user_id
+  # attr_accessor :body, :sit_id, :user_id
 
   validates :body, presence: true
 

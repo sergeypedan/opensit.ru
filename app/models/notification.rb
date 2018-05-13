@@ -1,5 +1,4 @@
 class Notification < ActiveRecord::Base
-  attr_accessible :user_id, :message, :viewed, :link, :initiator, :object_type, :object_id
 
   belongs_to :user
 
