@@ -23,7 +23,8 @@
     = f.label :title, t("new_sit.duration"), class: "control-label required"
     br
     = t "new_sit.sat_for"
-    =<> f.number_field :duration, class: "form-control", min: 0, value: (action_name == 'edit' ? @sit.duration : current_user.default_sit_length)
+    - value = (action_name == 'edit' ? @sit.duration : current_user.default_sit_length)
+    =<> f.number_field :duration, class: "form-control", min: 0, value: value
     = t "new_sit.minutes"
 
   .form-group.sit-title-form-group
@@ -31,22 +32,24 @@
     = f.text_field :title, class: "form-control", style: "max-width: 600px"
 
   .form-group
-    = f.label :body, t("new_sit.wat"), class: "control-label required"
-    = f.text_area :body, rows: 10, required: true, class: "form-control", style: "max-width: 600px"
+    = f.label :body, t("new_sit.wat_meditation"), class: "control-label required", id: "js-wat-meditation"
+    = f.label :body, t("new_sit.wat_journal"),    class: "control-label required", id: "js-wat-journal"
     .help-block = t("new_sit.text_hint")
+    = f.text_area :body, rows: 20, required: true, class: "form-control", style: "max-width: 600px"
 
-  .row
-    .form-group.col-md-3
-      = f.label :created_at, t("forms.date"), class: "control-label"
-      .custom-date.sit_created_at
-        .input-group.date#datetimepicker
-          = text_field_tag :custom_date, (@sit.created_at.strftime("%m/%d/%Y %l:%M %p") if action_name == 'edit'), class: "form-control", placeholder: t("new_sit.now"), id: "sit_created_at"
-          span.input-group-addon = fa_icon "calendar"
+  .form-group
+    = label_tag :tag_list, t("tags.h1"), class: "control-label"
+    .help-block = t "tags.comma_separated"
+    = text_field_tag :tag_list, @sit.tag_list, class: "form-control", style: "max-width: 600px"
 
-    .form-group.col-md-6
-      = label_tag :tag_list, t("tags.h1"), class: "control-label"
-      = text_field_tag :tag_list, @sit.tag_list, class: "form-control"
-      .help-block = t "tags.comma_separated"
+  .form-group
+    = f.label :created_at, t("forms.date"), class: "control-label"
+    .custom-date.sit_created_at
+      .input-group
+        - time = action_name == 'edit' ? @sit.created_at : Time.now
+        - value = l(time, format: :input_datetime)
+        = text_field_tag :custom_date, value, class: "form-control", id: "sit_created_at", data: { plugin: :datetimepicker }
+        span.input-group-addon = fa_icon "calendar"
 
   .privacy-settings
     - if current_user.private_stream

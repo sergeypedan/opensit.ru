@@ -9,6 +9,7 @@
 //  require bootstrap/collapse
 
 //= require moment
+//= require moment/ru
 //= require chosen-1.8.3/chosen.jquery
 //= require bootstrap-datetimepicker
 //= require bootstrap-wysihtml5

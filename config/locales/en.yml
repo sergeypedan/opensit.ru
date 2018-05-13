@@ -131,7 +131,8 @@ en:
     submit: Submit a sit
     text_hint: "You don't have to write anything"
     title: Title
-    wat: What happened?
+    wat_meditation: What happened?
+    wat_journal: What happened?
 
   tag: Tag
   tags:

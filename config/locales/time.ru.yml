@@ -2,6 +2,7 @@
 ru:
 
   ago: назад
+
   date:
     abbr_day_names:
     - Вс
@@ -11,6 +12,7 @@ ru:
     - Чт
     - Пт
     - Сб
+
     abbr_month_names:
     -
     - янв.
@@ -25,6 +27,7 @@ ru:
     - окт.
     - нояб.
     - дек.
+
     day_names:
     - воскресенье
     - понедельник
@@ -33,10 +36,14 @@ ru:
     - четверг
     - пятница
     - суббота
+
     formats:
       default: "%e %B"
       long: "%d %B %Y"
       short: "%-d %b"
+      input_date: "%d.%m.%Y"
+      input_datetime: "%d.%m.%Y %H:%M"
+
     month_names:
     -
     - января
@@ -51,6 +58,7 @@ ru:
     - октября
     - ноября
     - декабря
+
     order:
     - :day
     - :month
@@ -130,8 +138,10 @@ ru:
 
   time:
     am: утра
-    formats:
-      default: "%a, %d %b %Y, %H:%M:%S %z"
-      long: "%d %B %Y, %H:%M"
-      short: "%d %b, %H:%M"
     pm: вечера
+    formats:
+      default: "%d %B %Y, %H:%M"
+      long: "%a, %d %b %Y, %H:%M:%S %z"
+      short: "%d %b, %H:%M"
+      input_date: "%d.%m.%Y"
+      input_datetime: "%d.%m.%Y %H:%M"

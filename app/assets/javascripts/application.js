@@ -7,12 +7,18 @@ function adjust_sit_title_to_diary_type() {
     document.getElementById('sit_title').required = false;
     document.getElementById('sit_duration').disabled = false;
     document.getElementById('sit_duration').required = true;
-  } else {
+    $('#js-wat-meditation').show();
+    $('#js-wat-journal').hide();
+  }
+
+  else {
     $('.duration-form-group').hide();
     $('.sit-title-form-group').show();
     document.getElementById('sit_title').required = true;
     document.getElementById('sit_duration').disabled = true;
     document.getElementById('sit_duration').required = false;
+    $('#js-wat-meditation').hide();
+    $('#js-wat-journal').show();
   }
 }
 
@@ -34,8 +40,6 @@ $(document).ready(function(){
     });
   });
 
-  // NEW/EDIT SIT / title or duration
-
   adjust_sit_title_to_diary_type();
 
   $('[name="sit[s_type]"]').change( function() { adjust_sit_title_to_diary_type() });
@@ -44,7 +48,23 @@ $(document).ready(function(){
   $('.sits-new .dropdown-menu').click(function(e) { e.stopPropagation(); });
   $('.sits-edit .dropdown-menu').click(function(e) { e.stopPropagation(); });
 
-  $('#datetimepicker').datetimepicker({ autoclose: true });
+  // http://eonasdan.github.io/bootstrap-datetimepicker/Options/
+  $('[data-plugin="datetimepicker"]').datetimepicker({
+    // locale: "ru",
+    useCurrent: true,
+    showTodayButton: true,
+    icons: {
+      clear:    'fa fa-trash',
+      close:    'fa fa-remove',
+      date:     'fa fa-calendar',
+      down:     'fa fa-chevron-down',
+      next:     'fa fa-chevron-right',
+      previous: 'fa fa-chevron-left',
+      time:     'fa fa-clock-o',
+      today:    'fa fa-dot-circle-o',
+      up:       'fa fa-chevron-up'
+    }
+  });
 
   $(".chzn-select").chosen({max_selected_options: 1});
 
@@ -174,6 +194,6 @@ $(document).ready(function(){
 });
 
 // https://github.com/Nerian/bootstrap-wysihtml5-rails
-$(document).on('page:load', function(){
-  window['rangy'].initialized = false
-})
+// $(document).on('page:load', function(){
+//   window['rangy'].initialized = false
+// })
