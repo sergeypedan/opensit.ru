@@ -1,9 +1,14 @@
 class Report < ActiveRecord::Base
+
   belongs_to :reportable
   belongs_to :user
 
-  validates_presence_of :user_id, :reportable_id, :reportable_type, :reason, :body
-  attr_accessible :reportable_id, :reportable_type, :reason, :body
+  validates :body, presence: true
+  validates :reason, presence: true
+  validates :reportable_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :reportable_type, presence: true
+  validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
 end
 
 # == Schema Information

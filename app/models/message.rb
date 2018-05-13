@@ -5,7 +5,9 @@ class Message < ActiveRecord::Base
 
   # attr_accessor :body, :subject, :from_user_id, :to_user_id, :read
 
-  validates :body, :from_user_id, :to_user_id, presence: true
+  validates :body, presence: true
+  validates :from_user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :to_user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   scope :unread, -> { where(read: false) }
   scope :newest_first, -> { order(created_at: :desc) }

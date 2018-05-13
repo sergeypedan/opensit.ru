@@ -5,7 +5,10 @@ class Favourite < ActiveRecord::Base
   belongs_to :user
   belongs_to :favourable, polymorphic: true
 
-  validates_presence_of :user_id, :favourable_id, :favourable_type
+  validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :favourable_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :favourable_type, presence: true
+
 end
 
 # == Schema Information

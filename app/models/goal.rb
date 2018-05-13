@@ -2,10 +2,10 @@ class Goal < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :goal_type, presence: true
-  validates :user_id, presence: true, numericality: { only_integer: true }
-  validates :duration, presence: true, if: "goal_type == 1"
-  validates :mins_per_day, presence: true, if: "goal_type == 0"
+	validates :goal_type, presence: true
+	validates :user_id, presence: true, numericality: { only_integer: true }
+	validates :duration, presence: true, if: Proc.new { |record| record.goal_type == 1 }
+	validates :mins_per_day, presence: true, if: Proc.new { |record| record.goal_type == 0 }
 
 	# attr_accessor :user_id, :duration, :goal_type, :mins_per_day
 	# attr_accessor :mins_per_day_optional

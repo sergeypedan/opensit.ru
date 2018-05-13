@@ -2,9 +2,11 @@ class Notification < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :user_id, :message
+  validates :message, presence: true
+  validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
-  default_scope { order('created_at DESC') }
+  default_scope { order(created_at: :desc) }
+
   scope :unread, -> { where(viewed: false) }
 
   self.per_page = 10

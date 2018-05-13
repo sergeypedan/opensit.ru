@@ -4,6 +4,8 @@ class Sit < ActiveRecord::Base
 
   attr_accessor :tag_list
 
+  TYPES = %w[diary meditation].freeze
+
   belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy
   has_many :taggings
@@ -12,9 +14,10 @@ class Sit < ActiveRecord::Base
   has_many :likes, as: :likeable
   has_many :reports, as: :reportable
 
-  validates :s_type, presence: true, inclusion: { in: ["diary", "meditation"] }
-  validates :title, presence: true, if: "s_type == 'diary'"
-  validates :duration, presence: true, numericality: { greater_than: 0, only_integer: true }, if: "s_type == 'meditation'"
+  validates :duration, presence: true, numericality: { greater_than: 0, only_integer: true }, if: Proc.new { |record| record.is_meditation? }
+  validates :s_type, presence: true, inclusion: { in: TYPES }
+  validates :title, presence: true, unless: Proc.new { |record| record.is_meditation? }
+  validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   # Scopes
   scope :communal, -> { where(private: false) }
