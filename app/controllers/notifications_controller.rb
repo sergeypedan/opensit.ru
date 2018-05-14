@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 
 	before_action :authenticate_user!
-	after_filter :mark_as_read, only: :index
+	after_action :mark_as_read, only: :index
 
 	def index
 		@user          = current_user
