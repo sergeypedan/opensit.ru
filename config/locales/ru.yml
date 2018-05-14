@@ -93,8 +93,8 @@ ru:
     stream_is_private: У вас сейчас приватный журнал — виден только вам.
     make_it_private: Сделать журнал приватным
     make_it_public: Сделать журнал публичным
-    make_private_warning: This will make your journal private, meaning only you can see it. You can change this back to public at any time, but when you do <b>all</b> of your content will be marked as public.
-    make_public_warning: This will make <b>all</b> of your journal public! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
+    make_private_warning: Это сделает ваш журнал приватным, его сможете видеть только вы. В любой момент вы сможете сделать его вновь публичным. Имейте в виду, что в этом случае все ваши записи снова будут видны.
+    make_public_warning: Это сделает <b>все</b> записи вашего журнала общедоступными! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
     unhappy: Вам с нами неуютно?
     update_details: Update details
     update_userpic: Update profile picture
