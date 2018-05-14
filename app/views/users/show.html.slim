@@ -38,19 +38,17 @@ div itemscope="" itemtype="http://schema.org/Person"
                 = @user.who.html_safe
                 = link_to "More", "#", class: "expand-profile" if (!@user.practice.blank? || !@user.why.blank?)
 
-              // Add edit profile link if it is your own profile
-              = link_to 'Edit profile', edit_user_registration_path, class: 'edit-profile' if (@user == current_user)
+              - if [@user.why, @user.practice].map(&:present?).include?(true)
+                .full-profile
+                  - if @user.why.present?
+                    .profile-field
+                      .title Why do you practice?
+                      = @user.why.html_safe
 
-              .full-profile
-                - if @user.why.present?
-                  .profile-field
-                    .title Why do you practice?
-                    = @user.why.html_safe
-
-                - if @user.practice.present?
-                  .profile-field
-                    .title How do you practice?
-                    = @user.practice.html_safe
+                  - if @user.practice.present?
+                    .profile-field
+                      .title How do you practice?
+                      = @user.practice.html_safe
 
       - if @sits
         .month-view

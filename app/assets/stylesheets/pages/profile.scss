@@ -11,7 +11,7 @@
     background: white;
     border-top: 3px solid $green;
     margin-bottom: 20px;
-    padding: 20px 40px 0 40px;
+    padding: 20px 40px;
     @include rounded-bottom;
     .lead {
       clear: both;
@@ -30,8 +30,6 @@
       margin-bottom: 10px;
     }
     .edit-profile {
-      margin-top: -14px;
-      display: block;
       font-weight: bold;
       font-size: 12px;
     }

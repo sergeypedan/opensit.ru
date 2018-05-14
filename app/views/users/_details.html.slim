@@ -31,3 +31,8 @@
 
   - if @user.website.present?
     .info-block.user-website = fa_icon "link fw", text: website(@user)
+
+  - if (@user == current_user)
+    .info-block
+      => fa_icon "cog fw"
+      = link_to "Edit profile", edit_user_registration_path
