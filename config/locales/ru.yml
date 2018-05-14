@@ -80,12 +80,22 @@ ru:
   profile:
     account: Account
     basics: Основная информация
+    change_email: Изменить электронный адрес
     contemplative_profile: Созерцательный профиль
+    danger_zone: Нажимайте сознательно, делайте этот выбор осознанно.
+    delete_account: Удалите свой профиль.
     edit: Редактировать профиль
-    export: Экспортировать
+    export: Экспорт
     export_in: Скачать всю мои информацию в формате
     h1: Мой профиль
     privacy: Приватность
+    stream_is_public: У вас сейчас публичный журнал — его видят другие члены сообщества.
+    stream_is_private: У вас сейчас приватный журнал — виден только вам.
+    make_it_private: Сделать журнал приватным
+    make_it_public: Сделать журнал публичным
+    make_private_warning: This will make your journal private, meaning only you can see it. You can change this back to public at any time, but when you do <b>all</b> of your content will be marked as public.
+    make_public_warning: This will make <b>all</b> of your journal public! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
+    unhappy: Вам с нами неуютно?
     update_details: Update details
     update_userpic: Update profile picture
     userpic: Фотография или аватар

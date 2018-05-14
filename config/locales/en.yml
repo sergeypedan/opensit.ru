@@ -80,13 +80,22 @@ en:
   profile:
     account: Account
     basics: The basics
+    change_email: Change my email address
     contemplative_profile: Contemplative profile
+    danger_zone: "Warning: danger zone"
     delete_account: Cancel my account
     edit: Edit profile
     export: Export
+    stream_is_public: Your journal is public
+    stream_is_private: Your journal is private
+    make_it_private: Make journal private
+    make_it_public: Make journal public
+    make_private_warning: This will make your journal private, meaning only you can see it. You can change this back to public at any time, but when you do <b>all</b> of your content will be marked as public.
+    make_public_warning: This will make <b>all</b> of your journal public! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
     export_in: Download all my sits as
     h1: My profile
     privacy: Privacy
+    unhappy: Unhappy?
     update_details: Update details
     update_userpic: Update profile picture
     userpic: Profile picture
