@@ -15,7 +15,7 @@ module Blacklist
     /domain-hosting/,
     /e90\.biz$/,
     /esseriod\.com/,
-    /feamail\.com/
+    /feamail\.com/,
     /fetish\.be/,
     /gmail4u/,
     /hairloss/,
