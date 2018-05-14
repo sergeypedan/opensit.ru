@@ -49,6 +49,7 @@
   .privacy-settings
     - if current_user.private_stream
       span.label.label-primary = fa_icon "lock", text: t("new_sit.is_private")
+      = link_to fa_icon("cog", data: { toggle: :tooltip, original_title: t("stream.change_privacy") }), edit_registration_path(@user, anchor: "privacy"), style: "margin-left: 10px"
 
     - else
       .checkbox

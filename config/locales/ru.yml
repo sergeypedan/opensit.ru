@@ -219,6 +219,7 @@ ru:
   stream:
     your_stream_private: Ваш журнал полностью приватный
     this_sit_private: Приватная запись
+    change_privacy: Изменить приватность журнала
 
   explore:
     h1: Лента сообщества

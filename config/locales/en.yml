@@ -210,6 +210,7 @@ en:
   stream:
     your_stream_private: Your stream is private
     this_sit_private: This sit is private
+    change_privacy: Change stream privacy
 
   explore:
     h1: Explore!
