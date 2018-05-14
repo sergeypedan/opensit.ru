@@ -2,21 +2,10 @@
  *    CORE ELEMENTS
  *******************************/
 
-/* Sidebar */
-.sidebar {
-  float: left;
-  img.polaroid {
-    padding: 3px;
-    border: 1px solid #CCC;
-    -moz-box-shadow: 5px 5px 3px #888;
-    -webkit-box-shadow: 5px 5px 3px #888;
-    box-shadow: 5px 5px 3px #888;
-  }
-}
-
 /* Header tiles */
 .header-tile {
   padding: 0 10px 10px 0;
+
   .content {
     @include rounded-bottom;
     box-shadow: none;
@@ -60,25 +49,6 @@
     }
   }
 }
-.sidebar .header-tile {
-  width: 100%;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-/* Message boxes */
-.message-box {
-  @include rounded-bottom;
-  border-top: $green 3px solid;
-  background: white;
-  float: left;
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 20px;
-  h2 {
-    margin: 7px 0 15px;
-  }
-}
 
 /* Sidebar modules */
 .nav-module {
@@ -98,14 +68,6 @@
   font-size: 1.5em;
 }
 
-/* Tag cloud */
-#tag_cloud {
-  line-height: 1.6em;
-  .s { font-size: 1em; }
-  .m { font-size: 1.4em; }
-  .l { font-size: 2em; }
-}
-
 /* Follow button */
 .follow_form {
   margin-top: 10px;
@@ -119,53 +81,14 @@
   }
 }
 
-/* Bootstrap alignment fixes */
-.radio input[type="radio"] {
-  position: relative;
-  float: none !important;
-  margin: 0 5px 4px -18px;
-}
-
-/* will_paginate Bootstrap pagination */
-.pagination > .active > a,
-.pagination > .active > a:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span,
-.pagination > .active > span:hover,
-.pagination > .active > span:focus {
-  background: whitesmoke;
-  border-color: #ddd;
-  color: #999;
-}
-
 .label-primary {
   background: $link-color;
-}
-
-/* Date time picker */
-.sit_created_at > div { padding-left: 0; }
-.datepicker table tr td.active:active,
-.datepicker table tr td.active:hover:active,
-.datepicker table tr td.active.disabled:active,
-.datepicker table tr td.active.disabled:hover:active,
-.datepicker table tr td.active.active,
-.datepicker table tr td.active:hover.active,
-.datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active.disabled:hover.active,
-.bootstrap-datetimepicker-widget td span.active {
-  background: $link-color !important;
-}
-
-/* Bootstrap wysihtml button hiding */
-[data-wysihtml5-command="Indent"],
-[data-wysihtml5-command="Outdent"],
-{
-  display: none;
 }
 
 /* Bullet points with icons (sign up, welcome) */
 .points {
   padding: 1em 4em;
+
   .point {
     font-size: 1.4em;
     margin: 17px 0;
@@ -212,11 +135,6 @@
     .text {
       font-size: 14px;
     }
-  }
-
-  // Alerts
-  .alert {
-    width: 100%;
   }
 
   // Front page
