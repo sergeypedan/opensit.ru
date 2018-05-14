@@ -6,17 +6,21 @@ section.sign-in-box
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
 
         .form-group.form-group-lg
-          = f.email_field :email, required: true, placeholder: t("authorization.email"), autofocus: true, autocomplete: "email", class: 'form-control'
+          .input-group
+            .input-group-addon = fa_icon "fw envelope-o"
+            = f.email_field :email, required: true, placeholder: t("authorization.email"), autofocus: true, autocomplete: "email", class: 'form-control'
 
         .form-group.form-group-lg
-          = f.password_field :password, required: true, placeholder: t("authorization.password"), autocomplete: "password", class: 'form-control'
+          .input-group
+            .input-group-addon = fa_icon "fw asterisk"
+            = f.password_field :password, required: true, placeholder: t("authorization.password"), autocomplete: "password", class: 'form-control'
           - if devise_mapping.recoverable? && (controller_name != 'passwords')
             .help-block = link_to t("authorization.forgot_password"), new_password_path(resource_name)
 
         - if devise_mapping.rememberable?
           .checkbox
             = f.label :remember_me
-              = f.check_box :remember_me
+              = f.check_box :remember_me, checked: true
               = t('authorization.remember')
 
         - if flash[:alert].present?
