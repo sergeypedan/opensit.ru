@@ -4,6 +4,7 @@ ru:
     already: Уже зарегистрированы?
     email: Email
     forgot_password: Забыли пароль?
+    recover_password: Восстановить пароль
     miss_confirmation: Не получили ссылку для подтверждения регистрации?
     miss_unlock: Не получили ссылку для разблокировки?
     not_yet: Ещё не зарегистрированы?

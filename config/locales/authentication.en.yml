@@ -4,6 +4,7 @@ en:
     already: Already signed up?
     email: Email
     forgot_password: Forgot your password?
+    recover_password: Send me reset password instructions
     miss_confirmation: Didn't receive confirmation instructions?
     miss_unlock: Didn't receive unlock instructions?
     password: Password
