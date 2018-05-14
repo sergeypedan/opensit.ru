@@ -61,9 +61,9 @@ Opensit::Application.configure do
     authentication:       :plain,
     domain:               Rails.application.secrets.domain,
     enable_starttls_auto: false, # false, если возникает SSL-ошибка о сертификате
-    password:             Rails.application.secrets.mailgun_password,
+    password:             Rails.application.secrets.mailgun_smtp_password,
     port:                 587,
-    user_name:            Rails.application.secrets.mailgun_username
+    user_name:            Rails.application.secrets.mailgun_smtp_username
   }
 
   # Enable threaded mode
