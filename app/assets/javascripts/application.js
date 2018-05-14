@@ -81,6 +81,9 @@ $(document).ready(function(){
   // VIEW SIT / Report
   $('.report-flag').tooltip();
 
+  $('[data-toggle="tooltip"]').tooltip();
+
+
   // VIEW PROFILE / Date select
   $('#js-stream-date-navigation').change( function() {
     window.location.href = $(this).val();
