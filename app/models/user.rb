@@ -385,7 +385,7 @@ class User < ActiveRecord::Base
   end
 
   def self.active_users
-    User.all.where(private_stream: false).order('sits_count DESC')
+    User.all.where(private_stream: false).order(sits_count: :desc)
   end
 
   ##

@@ -7,8 +7,7 @@ class Goal < ActiveRecord::Base
 	validates :duration, presence: true, if: Proc.new { |record| record.goal_type == 1 }
 	validates :mins_per_day, presence: true, if: Proc.new { |record| record.goal_type == 0 }
 
-	# attr_accessor :user_id, :duration, :goal_type, :mins_per_day
-	# attr_accessor :mins_per_day_optional
+	attr_accessor :mins_per_day_optional
 
 	def verbalise
 		text = 'Sit for '
