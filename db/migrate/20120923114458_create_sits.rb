@@ -1,4 +1,4 @@
-class CreateSits < ActiveRecord::Migration
+class CreateSits < ActiveRecord::Migration[4.2]
   def change
     create_table :sits do |t|
       t.string :title

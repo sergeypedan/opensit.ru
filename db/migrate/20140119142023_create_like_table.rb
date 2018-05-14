@@ -1,8 +1,8 @@
-class CreateLikeTable < ActiveRecord::Migration
+class CreateLikeTable < ActiveRecord::Migration[4.2]
+
   create_table :likes do |t|
-    t.references :likeable, :polymorphic => true
+    t.references :likeable, polymorphic: true
     t.references :user
   end
-  add_index :likes, :likeable_id
-  add_index :likes, :user_id
+
 end

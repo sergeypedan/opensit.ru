@@ -1,4 +1,4 @@
-class AddSearchIndexesForTextacular < ActiveRecord::Migration
+class AddSearchIndexesForTextacular < ActiveRecord::Migration[4.2]
   execute "
     create index sit_title on sits using gin(to_tsvector('english', title));
     create index sit_body on sits using gin(to_tsvector('english', body));

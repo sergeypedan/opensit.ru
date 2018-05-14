@@ -1,4 +1,4 @@
-class AddDevise < ActiveRecord::Migration
+class AddDevise < ActiveRecord::Migration[4.2]
   def self.up
     null    = false
     default = ""

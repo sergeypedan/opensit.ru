@@ -1,10 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 10.3
--- Dumped by pg_dump version 10.3
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -32,6 +25,18 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET default_tablespace = '';
 
 SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
 
 --
 -- Name: comments; Type: TABLE; Schema: public; Owner: -
@@ -73,8 +78,8 @@ ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
 
 CREATE TABLE public.favourites (
     id integer NOT NULL,
-    favourable_id integer,
     favourable_type character varying,
+    favourable_id integer,
     user_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -142,10 +147,10 @@ ALTER SEQUENCE public.goals_id_seq OWNED BY public.goals.id;
 --
 
 CREATE TABLE public.likes (
-    id integer NOT NULL,
-    likeable_id integer,
+    id bigint NOT NULL,
     likeable_type character varying,
-    user_id integer
+    likeable_id bigint,
+    user_id bigint
 );
 
 
@@ -154,7 +159,6 @@ CREATE TABLE public.likes (
 --
 
 CREATE SEQUENCE public.likes_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -320,14 +324,14 @@ ALTER SEQUENCE public.relationships_id_seq OWNED BY public.relationships.id;
 --
 
 CREATE TABLE public.reports (
-    id integer NOT NULL,
-    reportable_id integer,
+    id bigint NOT NULL,
     reportable_type character varying,
-    user_id integer,
+    reportable_id bigint,
+    user_id bigint,
     reason character varying,
     body text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -336,7 +340,6 @@ CREATE TABLE public.reports (
 --
 
 CREATE SEQUENCE public.reports_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -628,6 +631,14 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
 -- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -700,6 +711,14 @@ ALTER TABLE ONLY public.reports
 
 
 --
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
 -- Name: sits sits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -746,10 +765,10 @@ CREATE INDEX index_favourites_on_user_id ON public.favourites USING btree (user_
 
 
 --
--- Name: index_likes_on_likeable_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_likes_on_likeable_type_and_likeable_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_likes_on_likeable_id ON public.likes USING btree (likeable_id);
+CREATE INDEX index_likes_on_likeable_type_and_likeable_id ON public.likes USING btree (likeable_type, likeable_id);
 
 
 --
@@ -788,10 +807,10 @@ CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON public
 
 
 --
--- Name: index_reports_on_reportable_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_reports_on_reportable_type_and_reportable_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_reports_on_reportable_id ON public.reports USING btree (reportable_id);
+CREATE INDEX index_reports_on_reportable_type_and_reportable_id ON public.reports USING btree (reportable_type, reportable_id);
 
 
 --
@@ -837,89 +856,48 @@ CREATE INDEX tag_name ON public.tags USING gin (to_tsvector('english'::regconfig
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING btree (version);
-
-
---
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20120923114458');
+INSERT INTO "schema_migrations" (version) VALUES
+('20120923114458'),
+('20120923123448'),
+('20120923184902'),
+('20120925203159'),
+('20120926175537'),
+('20121002200033'),
+('20121002201840'),
+('20121007070830'),
+('20121007125446'),
+('20121007161453'),
+('20121007162523'),
+('20121007162915'),
+('20121031090234'),
+('20121102101533'),
+('20121103125501'),
+('20130116222449'),
+('20130119174521'),
+('20130205093737'),
+('20130209135140'),
+('20130209135229'),
+('20130216111857'),
+('20130622221352'),
+('20130622222420'),
+('20131101162208'),
+('20131123090109'),
+('20131123135133'),
+('20131128172220'),
+('20131205215618'),
+('20131205221003'),
+('20140119142023'),
+('20140218235031'),
+('20140328194519'),
+('20140625193718'),
+('20141218153117'),
+('20141222165045'),
+('20180511211340'),
+('20180511213142');
 
-INSERT INTO schema_migrations (version) VALUES ('20120923123448');
-
-INSERT INTO schema_migrations (version) VALUES ('20120923184902');
-
-INSERT INTO schema_migrations (version) VALUES ('20120925203159');
-
-INSERT INTO schema_migrations (version) VALUES ('20120926175537');
-
-INSERT INTO schema_migrations (version) VALUES ('20121002200033');
-
-INSERT INTO schema_migrations (version) VALUES ('20121002201840');
-
-INSERT INTO schema_migrations (version) VALUES ('20121007070830');
-
-INSERT INTO schema_migrations (version) VALUES ('20121007125446');
-
-INSERT INTO schema_migrations (version) VALUES ('20121007161453');
-
-INSERT INTO schema_migrations (version) VALUES ('20121007162523');
-
-INSERT INTO schema_migrations (version) VALUES ('20121007162915');
-
-INSERT INTO schema_migrations (version) VALUES ('20121031090234');
-
-INSERT INTO schema_migrations (version) VALUES ('20121102101533');
-
-INSERT INTO schema_migrations (version) VALUES ('20121103125501');
-
-INSERT INTO schema_migrations (version) VALUES ('20130116222449');
-
-INSERT INTO schema_migrations (version) VALUES ('20130119174521');
-
-INSERT INTO schema_migrations (version) VALUES ('20130205093737');
-
-INSERT INTO schema_migrations (version) VALUES ('20130209135140');
-
-INSERT INTO schema_migrations (version) VALUES ('20130209135229');
-
-INSERT INTO schema_migrations (version) VALUES ('20130216111857');
-
-INSERT INTO schema_migrations (version) VALUES ('20130622221352');
-
-INSERT INTO schema_migrations (version) VALUES ('20130622222420');
-
-INSERT INTO schema_migrations (version) VALUES ('20131101162208');
-
-INSERT INTO schema_migrations (version) VALUES ('20131123090109');
-
-INSERT INTO schema_migrations (version) VALUES ('20131123135133');
-
-INSERT INTO schema_migrations (version) VALUES ('20131128172220');
-
-INSERT INTO schema_migrations (version) VALUES ('20131205215618');
-
-INSERT INTO schema_migrations (version) VALUES ('20131205221003');
-
-INSERT INTO schema_migrations (version) VALUES ('20140119142023');
-
-INSERT INTO schema_migrations (version) VALUES ('20140218235031');
-
-INSERT INTO schema_migrations (version) VALUES ('20140328194519');
-
-INSERT INTO schema_migrations (version) VALUES ('20140625193718');
-
-INSERT INTO schema_migrations (version) VALUES ('20141218153117');
-
-INSERT INTO schema_migrations (version) VALUES ('20141222165045');
-
-INSERT INTO schema_migrations (version) VALUES ('20180511211340');
-
-INSERT INTO schema_migrations (version) VALUES ('20180511213142');
 

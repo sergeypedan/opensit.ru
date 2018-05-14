@@ -1,4 +1,4 @@
-class ConvertSitTypeIntoString < ActiveRecord::Migration
+class ConvertSitTypeIntoString < ActiveRecord::Migration[4.2]
 
   def self.up
     Sit.update_all(s_type: nil)

@@ -1,7 +1,8 @@
-class AddGoalsTable < ActiveRecord::Migration
+class AddGoalsTable < ActiveRecord::Migration[4.2]
+
   def change
   	create_table(:goals) do |t|
-	    t.integer :user_id
+	    t.references :user
 	    t.integer :goal_type
 			t.integer :duration
 			t.integer :mins_per_day
@@ -9,4 +10,5 @@ class AddGoalsTable < ActiveRecord::Migration
 			t.timestamps
 	  end
   end
+
 end

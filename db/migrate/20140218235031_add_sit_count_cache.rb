@@ -1,10 +1,10 @@
-class AddSitCountCache < ActiveRecord::Migration
-  def change
-  	add_column :users, :sits_count, :integer, default: '0'
+class AddSitCountCache < ActiveRecord::Migration[4.2]
 
-  	User.reset_column_information
-  	User.all.each do |u|
-  		User.reset_counters u.id, :sits
-  	end
+  def change
+    add_column :users, :sits_count, :integer, default: 0
+
+    User.reset_column_information
+    User.all.each { |user| User.reset_counters user.id, :sits }
   end
+
 end

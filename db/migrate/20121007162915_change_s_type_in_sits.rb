@@ -1,4 +1,4 @@
-class ChangeSTypeInSits < ActiveRecord::Migration
+class ChangeSTypeInSits < ActiveRecord::Migration[4.2]
   def change
     remove_column :sits, :s_type
     add_column :sits, :s_type, :integer
