@@ -33,14 +33,5 @@ Opensit::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_credentials: {
-      bucket: 'opensit',
-      access_key_id:     Rails.application.secrets.aws_id,
-      secret_access_key: Rails.application.secrets.aws_key
-    }
-  }
-
   config.eager_load = false
 end

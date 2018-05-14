@@ -1,3 +1,9 @@
-# config/initializers/paperclip.rb 
-Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
-Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
+# frozen_string_literal: true
+
+# https://github.com/thoughtbot/paperclip/blob/master/lib/paperclip/attachment.rb#L13
+
+options = Paperclip::Attachment.default_options
+
+options[:storage] = :filesystem
+options[:url] = "uploads/:class/:id/:style.:extension"
+options[:path] = ":rails_root/public/images:url"
