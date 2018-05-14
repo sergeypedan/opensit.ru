@@ -78,16 +78,17 @@ ru:
     explore: Исследовать
 
   profile:
-    h1: Профиль
-    edit: Редактировать профиль
-    userpic: Profile picture
-    update_userpic: Update profile picture
-    update_details: Update details
-    contemplative_profile: Contemplative profile
-    export: Export
-    export_in: Download all my sits
     account: Account
-    privacy: Privacy
+    basics: Основная информация
+    contemplative_profile: Созерцательный профиль
+    edit: Редактировать профиль
+    export: Экспортировать
+    export_in: Скачать всю мои информацию в формате
+    h1: Мой профиль
+    privacy: Приватность
+    update_details: Update details
+    update_userpic: Update profile picture
+    userpic: Фотография или аватар
     empty:
       title: Ваш профиль пока пуст
       subtitle: Напишите пару строк о себе
