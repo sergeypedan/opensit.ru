@@ -78,6 +78,17 @@ en:
     explore: Explore
 
   profile:
+    h1: My profile
+    edit: Edit profile
+    userpic: Profile picture
+    update_userpic: Update profile picture
+    update_details: Update details
+    contemplative_profile: Contemplative profile
+    export: Export
+    export_in: Download all my sits
+    account: Account
+    privacy: Privacy
+    delete_account: Cancel my account
     empty:
       title: Your profile is empty!
       subtitle: Tell us a bit more about yourself.
