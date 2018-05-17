@@ -259,3 +259,8 @@ ru:
     users_active: Активные пользователи
     users_new: Новые пользователи
     new_sitters: Новые медитаторы
+
+  gender:
+    male: Мужчина
+    female: Женщина
+    other: Другое

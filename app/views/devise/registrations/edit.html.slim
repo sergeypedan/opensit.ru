@@ -39,7 +39,15 @@
         = f.label :dob, t("profile.date_of_birth"), class: "col-lg-2 control-label"
         .col-lg-10.date.optional.user_dob = f.date_select :dob, { start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], include_blank: true }
 
-      = form_element(f, :gender,  'user', t("profile.gender"),  3, { label: false, collection: User::GENDERS.each_with_index.to_a, as: :radio_buttons, item_wrapper_class: 'inline' })
+      .form-group
+        = f.label :gender, t("profile.gender"), class: "col-lg-2 control-label"
+        .col-lg-10
+          - genres_array = User::GENDERS.map { |genre| [genre, t("gender.#{genre}")] }
+          = f.collection_radio_buttons :gender, genres_array, :first, :last do |b|
+            = b.label(class: "radio bs_radio")
+              = b.radio_button(class: "")
+              = b.text
+
 
       .form-group
         = f.label :city, t("profile.city"), class: "col-lg-2 control-label"
