@@ -478,7 +478,7 @@ CREATE TABLE public.users (
     first_name character varying,
     last_name character varying,
     dob date,
-    gender integer,
+    gender character varying,
     city character varying,
     country character varying,
     who text,
@@ -898,6 +898,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20141218153117'),
 ('20141222165045'),
 ('20180511211340'),
-('20180511213142');
+('20180511213142'),
+('20180517165150');
 
 

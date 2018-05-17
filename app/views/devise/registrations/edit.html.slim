@@ -13,12 +13,11 @@
       .form-group
         = f.label :avatar, t("profile.userpic"), class: "control-label col-lg-2"
         .col-lg-10
-          = large_avatar_of(@user)
+          = f.label :avatar, image_tag(avatar_image(@user), alt: t("profile.userpic"))
           = f.file_field :avatar
 
       .row
-        .col-lg-offset-2.col-lg-10
-          = f.submit t("forms.save"), class: "btn btn-primary"
+        .col-lg-offset-2.col-lg-10 = f.submit t("forms.save"), class: "btn btn-primary"
 
     fieldset
       legend = t "profile.basics"
@@ -56,6 +55,16 @@
           = f.text_area :who, rows: 4, class: "form-control"
           .help-block Tell us a little about yourself in one paragraph
 
+      .form-group
+        = f.label :website, t("forms.website"), class: "col-lg-2 control-label"
+        .col-lg-3
+          .input-group
+            .input-group-addon = fa_icon "fw link"
+            = f.url_field :website, class: "form-control"
+
+      .row
+        .col-lg-offset-2.col-lg-10 = f.submit t("forms.save"), class: "btn btn-primary"
+
       fieldset
         legend Location
         .form-group
@@ -67,22 +76,14 @@
 
         / = form_element(f, :country, 'user', t("profile.country"), 3, { label: false })
         .form-group
-          = f.label :country, t("forms.city"), class: "col-lg-2 control-label"
+          = f.label :country, t("forms.country"), class: "col-lg-2 control-label"
           .col-lg-3
             .input-group
-              .input-group-addon = fa_icon "fw map-marker"
+              .input-group-addon = fa_icon "fw map-signs"
               = f.text_field :country, autocomplete: "city", class: "form-control"
 
-      .form-group
-        = f.label :website, t("forms.website"), class: "col-lg-2 control-label"
-        .col-lg-3
-          .input-group
-            .input-group-addon = fa_icon "fw link"
-            = f.url_field :website, class: "form-control"
-
       .row
-        .col-lg-offset-2.col-lg-10
-          = f.submit t("forms.save"), class: "btn btn-primary"
+        .col-lg-offset-2.col-lg-10 = f.submit t("forms.save"), class: "btn btn-primary"
 
     fieldset style="margin-top: 40px; padding-bottom: 40px"
       legend = t("profile.contemplative_profile")
@@ -103,18 +104,17 @@
       .form-group
         = f.label :why, "Why do you practice?", class: "col-lg-2 control-label"
         .col-lg-8
-          = f.text_area :why, rows: 8, class: "form-control rich-textarea"
+          = f.text_area :why, rows: 8, class: "form-control"
           .help-block What inspires you to meditate?
 
       .form-group
         = f.label :practice, "How do you practice?", class: "col-lg-2 control-label"
         .col-lg-8
-          = f.text_area :practice, rows: 8, class: "form-control rich-textarea"
+          = f.text_area :practice, rows: 8, class: "form-control"
           .help-block What's your routine in an average sit?
 
       .row
-        .col-lg-offset-2.col-lg-10
-          = f.submit t("forms.save"), class: "btn btn-primary"
+        .col-lg-offset-2.col-lg-10 = f.submit t("forms.save"), class: "btn btn-primary"
 
   hr.no-margins
 

@@ -418,7 +418,7 @@ end
 #  first_name             :string
 #  last_name              :string
 #  dob                    :date
-#  gender                 :integer
+#  gender                 :string
 #  city                   :string
 #  country                :string
 #  who                    :text
