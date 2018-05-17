@@ -21,19 +21,41 @@
     section
       h2 = t "profile.basics"
       hr
-      = form_element(f, :first_name, 'user', t("profile.first_name"),    3, { label: false })
-      = form_element(f, :last_name,  'user', t("profile.last_name"),     3, { label: false })
-      = form_element(f, :dob,        'user', t("profile.date_of_birth"), 3, { label: false, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], include_blank: true, input_html: { class: 'col-lg-1' }} )
-      .row
-        = f.label :dob, t("profile.date_of_birth"), class: "col-lg-2 control-label"
+      .form-group
+        = f.label :first_name, t("profile.first_name"), class: "col-lg-2 control-label"
         .col-lg-3
-          .form-group.date.optional.user_dob
-            = f.date_select :dob
+          .input-group
+            .input-group-addon = fa_icon "fw user"
+            = f.text_field :first_name, autocomplete: "first_name", class: "form-control"
+
+      .form-group
+        = f.label :last_name, t("profile.last_name"), class: "col-lg-2 control-label"
+        .col-lg-3
+          .input-group
+            .input-group-addon = fa_icon "fw user"
+            = f.text_field :last_name, autocomplete: "last_name", class: "form-control"
+
+      .form-group
+        = f.label :dob, t("profile.date_of_birth"), class: "col-lg-2 control-label"
+        .col-lg-10.date.optional.user_dob = f.date_select :dob, { start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], include_blank: true }
 
       = form_element(f, :gender,  'user', t("profile.gender"),  3, { label: false, collection: User::GENDERS.each_with_index.to_a, as: :radio_buttons, item_wrapper_class: 'inline' })
-      = form_element(f, :city,    'user', t("profile.city"),    3, { label: false })
+
+      .form-group
+        = f.label :city, t("profile.city"), class: "col-lg-2 control-label"
+        .col-lg-3
+          .input-group
+            .input-group-addon = fa_icon "fw map-marker"
+            = f.text_field :city, autocomplete: "city", class: "form-control"
+
       = form_element(f, :country, 'user', t("profile.country"), 3, { label: false })
-      = form_element(f, :website, 'user', t("profile.website"), 3, { label: false })
+
+      .form-group
+        = f.label :website, t("profile.website"), class: "col-lg-2 control-label"
+        .col-lg-3
+          .input-group
+            .input-group-addon = fa_icon "fw link"
+            = f.url_field :website, class: "form-control"
 
       .row
         .col-lg-offset-2.col-lg-10
@@ -42,11 +64,37 @@
     section.contemplative-profile
       h2 = t("profile.contemplative_profile")
       hr
-      = form_element(f, :who, 'user', "Who are you?", 8, { input_html: { rows: 3 }, hint: 'Tell us a little about yourself in one paragraph.', label: false })
-      = form_element(f, :style, 'user', "Meditation style", 3, { hint: 'Zen, TM, Vipassana etc.', label: false })
-      = form_element(f, :why, 'user', "Why do you practice?", 8, { input_html: { rows: 7, class: 'rich-textarea' }, hint: 'What inspires you to meditate?', label: false })
-      = form_element(f, :practice, 'user', "How do you practice?", 8, { input_html: { rows: 7, class: 'rich-textarea' }, hint: 'What\'s your routine in an average sit?', label: false })
-      = form_element(f, :default_sit_length, 'user', "Default sit length", 1, { label: false })
+
+      .form-group
+        = f.label :who, "Who are you?", class: "col-lg-2 control-label"
+        .col-lg-8
+          = f.text_area :who, rows: 4, class: "form-control"
+          .help-block Tell us a little about yourself in one paragraph
+
+      .form-group
+        = f.label :style, "Meditation style", class: "col-lg-2 control-label"
+        .col-lg-8
+          = f.text_field :style, class: "form-control"
+          .help-block Zen, TM, Vipassana etc.
+
+      .form-group
+        = f.label :why, "Why do you practice?", class: "col-lg-2 control-label"
+        .col-lg-8
+          = f.text_area :why, rows: 8, class: "form-control rich-textarea"
+          .help-block What inspires you to meditate?
+
+      .form-group
+        = f.label :practice, "How do you practice?", class: "col-lg-2 control-label"
+        .col-lg-8
+          = f.text_area :practice, rows: 8, class: "form-control rich-textarea"
+          .help-block What's your routine in an average sit?
+
+      .form-group
+        = f.label :default_sit_length, "Default sit length", class: "col-lg-2 control-label"
+        .col-lg-8
+          .input-group style="max-width: 140px"
+            = f.number_field :default_sit_length, class: "form-control"
+            .input-group-addon min
 
       .row
         .col-lg-offset-2.col-lg-10
