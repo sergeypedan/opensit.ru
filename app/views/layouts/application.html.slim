@@ -1,7 +1,7 @@
 doctype html
 html lang="ru"
   head = render "layouts/head"
-  = content_tag :body, class: ["#{controller_name}-#{action_name}", "non-collapsing-vertically", @page_class, ("has-sticky-header" unless controller_name == 'sessions')]
+  = content_tag :body, class: ["#{controller_name}-#{action_name}", "non-collapsing-vertically", @page_class, ("has-sticky-header" unless controller_name == 'sessions')], data: { layout: "application" }
 
     - unless current_page?(root_path)
       - if user_signed_in?

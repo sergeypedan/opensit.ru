@@ -79,7 +79,7 @@ module Opensit
     I18n.enforce_available_locales = false
 
     config.to_prepare do
-      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "sign_up" }
+      Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "sign_up" }
     end
 
     config.rakismet.key = Rails.application.secrets.rakismet_key

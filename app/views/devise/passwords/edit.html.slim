@@ -2,7 +2,7 @@ section.sign-up-box
   .panel.panel-default
     .panel-body
 
-      h1 Change your password
+      h1 = t("devise.passwords.change_h1")
 
       = form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |f|
 
@@ -11,13 +11,16 @@ section.sign-up-box
         = f.hidden_field :reset_password_token
 
         .form-group
-          = f.label :password, "New password", class: "control-label required"
+          = f.label :password, t("devise.passwords.new"), class: "control-label required"
           = f.password_field :password, class: "form-control"
 
         .form-group
-          = f.label :password_confirmation, "Confirm new password", class: "control-label required"
+          = f.label :password_confirmation, t("devise.passwords.confirm_new"), class: "control-label required"
           = f.password_field :password_confirmation, class: "form-control"
 
-        = f.submit "Change my password", class: 'btn btn-primary btn-lg'
+        = f.submit t("devise.passwords.change_button"), class: 'btn btn-primary btn-lg'
 
-      .actions = render "devise/shared/links"
+      .actions
+        => link_to t("authorization.sign_in"), new_session_path(resource_name)
+        = " • "
+        =< link_to t("authorization.sign_up"), new_registration_path(resource_name)

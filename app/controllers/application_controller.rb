@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up,        keys: [:username, :email, :password, :password_confirmation])
     devise_parameter_sanitizer.permit(:account_update, keys: ['first_name', 'last_name', 'avatar', 'dob(3i)', 'dob(2i)', 'dob(1i)', 'gender', 'city', 'country', 'website', 'who', 'style', 'why', 'practice', 'default_sit_length', 'private_stream'])
   end
 

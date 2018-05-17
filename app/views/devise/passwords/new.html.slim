@@ -10,8 +10,13 @@ section.sign-up-box
 
         .form-group
           = f.label :email, t("sign_up.form.email"), class: "control-label required"
-          = f.email_field :email, required: true, class: "form-control"
+          .input-group
+            .input-group-addon = fa_icon "envelope-o"
+            = f.email_field :email, required: true, class: "form-control"
 
         = f.submit t("authorization.recover_password"), class: 'btn btn-primary btn-lg'
 
-      .actions = render "devise/shared/links"
+      .actions
+        => link_to t("authorization.sign_in"), new_session_path(resource_name)
+        = " • "
+        =< link_to t("authorization.sign_up"), new_registration_path(resource_name)

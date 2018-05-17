@@ -78,6 +78,13 @@ ru:
     explore: Исследовать
 
   profile:
+    first_name: Имя
+    last_name: Фамилия
+    date_of_birth: Дата рождения
+    gender: Пол
+    city: Город
+    country: Страна
+    website: Веб-сайт
     account: Account
     basics: Основная информация
     change_email: Изменить электронный адрес

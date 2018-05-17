@@ -1,7 +1,7 @@
 doctype html
 html lang="ru"
   head = render "layouts/head"
-  = content_tag :body, class: ["#{controller_name}-#{action_name}", "non-collapsing-vertically", @page_class], data: { layout: "sign_up" }
+  = content_tag :body, class: ["#{controller_name}-#{action_name}", "non-collapsing-vertically", @page_class], data: { layout: "devise" }
     = render 'headers/brand'
     main.non-collapsing-vertically == yield
     = render 'layouts/footer'

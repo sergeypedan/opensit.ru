@@ -2,6 +2,8 @@ require 'textacular/searchable'
 
 class User < ActiveRecord::Base
 
+  GENDERS = %w[Male Female Other].freeze
+
   include Rakismet::Model # Spam
 
   rakismet_attrs author: :username,
