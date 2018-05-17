@@ -78,7 +78,8 @@ ru:
     explore: Исследовать
 
   profile:
-    account: Account
+    account: Профиль
+    location: Откуда вы
     basics: Основная информация
     change_email: Изменить электронный адрес
     contemplative_profile: Созерцательный профиль
@@ -99,6 +100,16 @@ ru:
     update_details: Обновить информацию
     update_userpic: Обновить аватар
     userpic: Фотография или аватар
+    who: Кто вы?
+    who_hint: Расскажите коротко о себе в одном абзаце
+    website_hint: Если есть
+    meditation_style: Стиль медитации
+    why: Для чего вы медитируете?
+    why_hint: Что вдохновляет вас к практике?
+    how: Как вы медитируете?
+    how_hint: Опишите свою технику, что вы обычно делаете в своей медитации?
+    default_sit_length: Стандартная продолжительность вашей практики
+    meditation_style_hint: осознанность, дзэн, випассана и т. д.
     empty:
       title: Ваш профиль пока пуст
       subtitle: Напишите пару строк о себе

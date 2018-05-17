@@ -50,10 +50,10 @@
               = b.text
 
       .form-group
-        = f.label :who, "Who are you?", class: "col-lg-2 control-label"
+        = f.label :who, t("profile.who"), class: "col-lg-2 control-label"
         .col-lg-8
           = f.text_area :who, rows: 4, class: "form-control"
-          .help-block Tell us a little about yourself in one paragraph
+          .help-block = t("profile.who_hint")
 
       .form-group
         = f.label :website, t("forms.website"), class: "col-lg-2 control-label"
@@ -61,12 +61,13 @@
           .input-group
             .input-group-addon = fa_icon "fw link"
             = f.url_field :website, class: "form-control"
+          .help-block = t "profile.website_hint"
 
       .row
         .col-lg-offset-2.col-lg-10 = f.submit t("forms.save"), class: "btn btn-primary"
 
       fieldset
-        legend Location
+        legend = t "profile.location"
         .form-group
           = f.label :city, t("forms.city"), class: "col-lg-2 control-label"
           .col-lg-3
@@ -89,29 +90,29 @@
       legend = t("profile.contemplative_profile")
 
       .form-group
-        = f.label :style, "Meditation style", class: "col-lg-2 control-label"
+        = f.label :style, t("profile.meditation_style"), class: "col-lg-2 control-label"
         .col-lg-8
           = f.text_field :style, class: "form-control"
-          .help-block Zen, TM, Vipassana etc.
+          .help-block = t "profile.meditation_style_hint"
 
       .form-group
-        = f.label :default_sit_length, "Default sit length", class: "col-lg-2 control-label"
+        = f.label :default_sit_length, t("profile.default_sit_length"), class: "col-lg-2 control-label"
         .col-lg-8
           .input-group style="max-width: 140px"
             = f.number_field :default_sit_length, class: "form-control"
             .input-group-addon min
 
       .form-group
-        = f.label :why, "Why do you practice?", class: "col-lg-2 control-label"
+        = f.label :why, t("profile.why"), class: "col-lg-2 control-label"
         .col-lg-8
           = f.text_area :why, rows: 8, class: "form-control"
-          .help-block What inspires you to meditate?
+          .help-block = t "profile.why_hint"
 
       .form-group
-        = f.label :practice, "How do you practice?", class: "col-lg-2 control-label"
+        = f.label :practice, t("profile.how"), class: "col-lg-2 control-label"
         .col-lg-8
           = f.text_area :practice, rows: 8, class: "form-control"
-          .help-block What's your routine in an average sit?
+          .help-block = t "profile.how"
 
       .row
         .col-lg-offset-2.col-lg-10 = f.submit t("forms.save"), class: "btn btn-primary"

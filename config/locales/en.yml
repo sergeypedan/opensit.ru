@@ -79,6 +79,7 @@ en:
 
   profile:
     account: Account
+    location: Location
     basics: The basics
     change_email: Change my email address
     contemplative_profile: Contemplative profile
@@ -99,6 +100,16 @@ en:
     update_details: Update details
     update_userpic: Update profile picture
     userpic: Profile picture
+    who: Who are you?
+    who_hint: Tell us a little about yourself in one paragraph
+    why: Why do you practice?
+    how: How do you practice?
+    how_hint: What's your routine in an average sit?
+    default_sit_length: Default sit length
+    why_hint: What inspires you to meditate?
+    website_hint: If any
+    meditation_style: Meditation style
+    meditation_style_hint: Zen, TM, Vipassana etc.
     empty:
       title: Your profile is empty!
       subtitle: Tell us a bit more about yourself.
