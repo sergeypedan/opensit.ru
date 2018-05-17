@@ -1,9 +1,11 @@
+- @profile_facade = ProfileFacade.new(@user)
+
 .col-xs-12
   h1 = t "profile.h1"
 
   hr
 
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: :true, method: :put , class: 'form-horizontal'}) do |f|
+  = form_for(resource, url: registration_path(resource), html: { multipart: :true, class: "form-horizontal", id: nil }) do |f|
 
     = devise_error_messages!
 
@@ -16,62 +18,37 @@
 
       .row
         .col-lg-offset-2.col-lg-10
-          = f.submit t("profile.update_userpic"), class: "btn btn-primary"
+          = f.submit t("forms.save"), class: "btn btn-primary"
 
-    section
-      h2 = t "profile.basics"
-      hr
+    fieldset
+      legend = t "profile.basics"
+
       .form-group
-        = f.label :first_name, t("profile.first_name"), class: "col-lg-2 control-label"
+        = f.label :first_name, t("forms.first_name"), class: "col-lg-2 control-label"
         .col-lg-3
           .input-group
             .input-group-addon = fa_icon "fw user"
             = f.text_field :first_name, autocomplete: "first_name", class: "form-control"
 
       .form-group
-        = f.label :last_name, t("profile.last_name"), class: "col-lg-2 control-label"
+        = f.label :last_name, t("forms.last_name"), class: "col-lg-2 control-label"
         .col-lg-3
           .input-group
             .input-group-addon = fa_icon "fw user"
             = f.text_field :last_name, autocomplete: "last_name", class: "form-control"
 
       .form-group
-        = f.label :dob, t("profile.date_of_birth"), class: "col-lg-2 control-label"
-        .col-lg-10.date.optional.user_dob = f.date_select :dob, { start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:day, :month, :year], include_blank: true }
+        = f.label :dob, t("forms.date_of_birth"), class: "col-lg-2 control-label"
+        - builder_options = { start_year: (Date.today.year - 90), end_year: (Date.today.year - 12), order: [:day, :month, :year], include_blank: true }
+        .col-lg-10 style="padding-top: 6px" = f.date_select :dob, builder_options
 
       .form-group
-        = f.label :gender, t("profile.gender"), class: "col-lg-2 control-label"
+        = f.label :gender, t("forms.gender"), class: "col-lg-2 control-label"
         .col-lg-10
-          - genres_array = User::GENDERS.map { |genre| [genre, t("gender.#{genre}")] }
-          = f.collection_radio_buttons :gender, genres_array, :first, :last do |b|
-            = b.label(class: "radio bs_radio")
-              = b.radio_button(class: "")
+          = f.collection_radio_buttons :gender, @profile_facade.genres_human_hash, :first, :last do |b|
+            = b.label(class: "radio bs-radio-inline")
+              = b.radio_button(class: "rbcl")
               = b.text
-
-
-      .form-group
-        = f.label :city, t("profile.city"), class: "col-lg-2 control-label"
-        .col-lg-3
-          .input-group
-            .input-group-addon = fa_icon "fw map-marker"
-            = f.text_field :city, autocomplete: "city", class: "form-control"
-
-      = form_element(f, :country, 'user', t("profile.country"), 3, { label: false })
-
-      .form-group
-        = f.label :website, t("profile.website"), class: "col-lg-2 control-label"
-        .col-lg-3
-          .input-group
-            .input-group-addon = fa_icon "fw link"
-            = f.url_field :website, class: "form-control"
-
-      .row
-        .col-lg-offset-2.col-lg-10
-          = f.submit t("profile.update_details"), class: "btn btn-primary"
-
-    section.contemplative-profile
-      h2 = t("profile.contemplative_profile")
-      hr
 
       .form-group
         = f.label :who, "Who are you?", class: "col-lg-2 control-label"
@@ -79,11 +56,49 @@
           = f.text_area :who, rows: 4, class: "form-control"
           .help-block Tell us a little about yourself in one paragraph
 
+      fieldset
+        legend Location
+        .form-group
+          = f.label :city, t("forms.city"), class: "col-lg-2 control-label"
+          .col-lg-3
+            .input-group
+              .input-group-addon = fa_icon "fw map-marker"
+              = f.text_field :city, autocomplete: "city", class: "form-control"
+
+        / = form_element(f, :country, 'user', t("profile.country"), 3, { label: false })
+        .form-group
+          = f.label :country, t("forms.city"), class: "col-lg-2 control-label"
+          .col-lg-3
+            .input-group
+              .input-group-addon = fa_icon "fw map-marker"
+              = f.text_field :country, autocomplete: "city", class: "form-control"
+
+      .form-group
+        = f.label :website, t("forms.website"), class: "col-lg-2 control-label"
+        .col-lg-3
+          .input-group
+            .input-group-addon = fa_icon "fw link"
+            = f.url_field :website, class: "form-control"
+
+      .row
+        .col-lg-offset-2.col-lg-10
+          = f.submit t("forms.save"), class: "btn btn-primary"
+
+    fieldset style="margin-top: 40px; padding-bottom: 40px"
+      legend = t("profile.contemplative_profile")
+
       .form-group
         = f.label :style, "Meditation style", class: "col-lg-2 control-label"
         .col-lg-8
           = f.text_field :style, class: "form-control"
           .help-block Zen, TM, Vipassana etc.
+
+      .form-group
+        = f.label :default_sit_length, "Default sit length", class: "col-lg-2 control-label"
+        .col-lg-8
+          .input-group style="max-width: 140px"
+            = f.number_field :default_sit_length, class: "form-control"
+            .input-group-addon min
 
       .form-group
         = f.label :why, "Why do you practice?", class: "col-lg-2 control-label"
@@ -97,45 +112,54 @@
           = f.text_area :practice, rows: 8, class: "form-control rich-textarea"
           .help-block What's your routine in an average sit?
 
-      .form-group
-        = f.label :default_sit_length, "Default sit length", class: "col-lg-2 control-label"
-        .col-lg-8
-          .input-group style="max-width: 140px"
-            = f.number_field :default_sit_length, class: "form-control"
-            .input-group-addon min
-
       .row
         .col-lg-offset-2.col-lg-10
-          = f.submit "Update details", class: "btn btn-primary"
+          = f.submit t("forms.save"), class: "btn btn-primary"
 
-  hr
+  hr.no-margins
+
   .row.account-misc
 
     section.col-md-3.export-data
-      h2#export = t "profile.export"
+      h3#export = t "profile.export"
       p = t "profile.export_in"
       ul
         li = link_to "XML", "/u/#{current_user.username}/export.xml"
         li = link_to "JSON", "/u/#{current_user.username}/export.json"
 
     section.col-md-4.delete-account
-      h2 = t "profile.account"
+      h3 = t "profile.account"
       p = t "profile.danger_zone"
       ul
         li = link_to t("profile.change_email"), "#"
         li
           = t "profile.unhappy"
-          =< link_to t("profile.delete_account"), registration_path(resource_name), data: { confirm: t("forms.sure") }, method: :delete
+          =< link_to t("forms.save"), registration_path(resource), data: { confirm: t("forms.sure") }, method: :delete
 
     section.col-md-5.privacy-setting
-      h#privacy = t "profile.privacy"
+      h3#privacy = t "profile.privacy"
       ruby:
         publicity   = @user.private_stream ? "private" : "public"
         impublicity = @user.private_stream ? "public" : "private"
 
       p = t "profile.stream_is_#{publicity}"
 
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put , class: 'form-horizontal'}) do |f|
+      = simple_form_for(resource, as: resource, url: registration_path(resource), html: { method: :put , class: 'form-horizontal'}) do |f|
         = f.input :private_stream, as: :hidden, input_html: { value: !@user.private_stream }
-        = f.submit t("profile.make_it_#{impublicity}"), class: 'btn btn-primary btn-lg'
+
+        .btn-group.btn-group-lg
+          span.btn.btn-default
+
+            - if !@user.private_stream
+              = fa_icon "unlock-alt", class: "text-success"
+              =<> fa_icon "long-arrow-right", style: "color: hsl(0, %0, 90%)"
+              = fa_icon "lock", class: "text-danger"
+            - if @user.private_stream
+              = fa_icon "lock", class: "text-danger"
+              =<> fa_icon "long-arrow-right", style: "color: hsl(0, %0, 90%)"
+              = fa_icon "unlock-alt", class: "text-success"
+
+          = button_tag name: nil, class: "btn btn-primary"
+            =< t("profile.make_it_#{impublicity}")
+
         p.warning = t("profile.make_#{impublicity}_warning").html_safe

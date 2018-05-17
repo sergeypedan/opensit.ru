@@ -78,13 +78,6 @@ ru:
     explore: Исследовать
 
   profile:
-    first_name: Имя
-    last_name: Фамилия
-    date_of_birth: Дата рождения
-    gender: Пол
-    city: Город
-    country: Страна
-    website: Веб-сайт
     account: Account
     basics: Основная информация
     change_email: Изменить электронный адрес
@@ -100,20 +93,20 @@ ru:
     stream_is_private: У вас сейчас приватный журнал — виден только вам.
     make_it_private: Сделать журнал приватным
     make_it_public: Сделать журнал публичным
-    make_private_warning: Это сделает ваш журнал приватным, его сможете видеть только вы. В любой момент вы сможете сделать его вновь публичным. Имейте в виду, что в этом случае все ваши записи снова будут видны.
+    make_private_warning: Это сделает ваш журнал приватным, его сможете видеть только вы. В любой момент вы сможете сделать его вновь публичным. Имейте в виду, что в этом случае все ваши записи снова будут видны.
     make_public_warning: Это сделает <b>все</b> записи вашего журнала общедоступными! If there are any entries you wish to remain private, you will have to manually change their privacy settings afterwards.
     unhappy: Вам с нами неуютно?
-    update_details: Update details
-    update_userpic: Update profile picture
-    userpic: Фотография или аватар
+    update_details: Обновить информацию
+    update_userpic: Обновить аватар
+    userpic: Фотография или аватар
     empty:
       title: Ваш профиль пока пуст
       subtitle: Напишите пару строк о себе
       button: Заполнить профиль
     feed:
       empty: Пока тут пусто
-      nothing_this_month:
-      sat:
+      nothing_this_month: Не медитировал в этом месяце
+      sat: Медитировал
 
   pages:
     about: О проекте
@@ -196,7 +189,7 @@ ru:
     of_practice: практики
     recorded: Записал
     sat: Медитировал
-    this_month: в этом месяце
+    this_month: в этом месяце
     totalling: в целом
 
   comments:

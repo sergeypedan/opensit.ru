@@ -78,13 +78,6 @@ en:
     explore: Explore
 
   profile:
-    first_name: First name
-    last_name: Last name
-    date_of_birth: Date of birth
-    gender: Gender
-    city: City
-    country: Country
-    website: Website
     account: Account
     basics: The basics
     change_email: Change my email address

@@ -1,10 +1,17 @@
 ---
 en:
   forms:
+    city: City
     comma_separated: Separate by commas
+    country: Country
     date: Date
+    date_of_birth: Date of birth
     delete: Delete
     edit: Edit
     fill_all_required: Please fill in the required fields
+    first_name: First name
+    gender: Gender
+    last_name: Last name
     save: Save
     sure: Are you sure?
+    website: Website

@@ -1,10 +1,17 @@
 ---
 ru:
   forms:
+    city: Город
     comma_separated: Через запятую
+    country: Страна
     date: Дата
+    date_of_birth: Дата рождения
     delete: Удалить
     edit: Редактировать
     fill_all_required: Пожалуйста, заполните обязательные поля
+    first_name: Имя
+    gender: Пол
+    last_name: Фамилия
     save: Сохранить
     sure: Вы уверены?
+    website: Веб-сайт
