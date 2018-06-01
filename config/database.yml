@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: opensit_ru_development
+  database: opensit_development
   password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
   pool: 5
   timeout: 5000
@@ -8,7 +8,7 @@ development:
 
 test:
   adapter: postgresql
-  database: opensit_ru_test
+  database: opensit_test
   password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
   pool: 5
   timeout: 5000
