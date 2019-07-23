@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe User, type: :model do
   it "has a valid factory" do
     expect(build(:user)).to be_valid
   end
@@ -72,14 +72,14 @@ describe User do
   end
 
   describe "validations" do
-    it { should ensure_length_of(:username).is_at_least(3).is_at_most(20) }
+    it { should validate_length_of(:username).is_at_least(3).is_at_most(20) }
     it { should validate_uniqueness_of(:username) }
 
     it "should not allow spaces in the username" do
       expect { create :user, username: 'dan bartlett', email: 'dan@dan.com' }
         .to raise_error(
           ActiveRecord::RecordInvalid,
-          "Validation failed: Username cannot contain spaces"
+          "Возникли ошибки: Имя пользователя не должно содержать пробелы"
         )
     end
 
@@ -379,7 +379,10 @@ describe User do
     end
 
     describe "#private_stream=" do
+      let(:user) { create :user }
+
       context "when the argument is 'true'" do
+
         it "updates all of a user's sits to be private" do
           sit = create(:sit, :public, user: user)
 
@@ -477,15 +480,15 @@ describe User do
   end
 
   describe "#following_anyone?" do
-    it 'checks if user is following any other users besides OpenSit' do
-      opensit = create :user, id: 97
-      buddha = create(:user)
-      ananda = create(:user)
+    let!(:opensit) { create :user, id: User::OPENSIT_FOLLOWER_ID }
+    let!(:buddha)  { create :user }
+    let!(:ananda)  { create :user }
 
+    it 'checks if user is following any other users besides OpenSit' do
       expect(buddha.following?(opensit)).to be(true)
       expect(buddha.following_anyone?).to be(false)
       buddha.follow!(ananda)
-      expect(buddha.following_anyone?).to be(true)
+      expect(buddha.reload.following_anyone?).to be(true)
     end
   end
 

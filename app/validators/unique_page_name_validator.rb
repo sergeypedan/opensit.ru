@@ -3,7 +3,7 @@ class UniquePageNameValidator < ActiveModel::EachValidator
     unless value.match(/\s+/)
       route = Rails.application.routes.recognize_path("/#{value}")
       if route[:controller] != "user" && route[:action] != "show"
-        record.errors.add(attribute, "'#{value}' is reserved")
+        record.errors.add(attribute, I18n.t('errors.messages.unique_page_name', value))
       end
     end
   end

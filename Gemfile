@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.0'
+ruby '2.5.5'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'airbrake'
@@ -63,4 +63,5 @@ group :test do
   gem 'poltergeist'
   gem 'shoulda-matchers'
   gem 'timecop'
+  gem 'rails-controller-testing'
 end

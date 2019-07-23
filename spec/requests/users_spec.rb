@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe 'Users' do
+  let!(:buddha) { create :user, username: 'buddha' }
 
   subject { page }
-  before do
-    @buddha = create :user, username: "buddha"
-  end
 
   it 'should register a new user' do
     visit new_user_registration_path
@@ -14,11 +12,11 @@ describe 'Users' do
     fill_in "user_password", with: "gunsbitchesbling"
 
     within(".new_user") do
-      find_button("Sign up").trigger('click')
+      find_button(I18n.t('authorization.sign_up')).click
     end
 
-    should have_content "Registration complete! Happy sitting."
-    should have_content "Welcome to our community!"
+    should have_content I18n.t('devise.registrations.signed_up')
+    should have_content I18n.t('welcome_screen.title')
   end
 
   it 'blocks blacklisted emails' do
@@ -28,7 +26,7 @@ describe 'Users' do
     fill_in "user_password", with: "gunsbitchesbling"
 
     within(".new_user") do
-      find_button("Sign up").trigger('click')
+      find_button(I18n.t('authorization.sign_up')).trigger('click')
     end
 
     sleep(1)
@@ -43,26 +41,25 @@ describe 'Users' do
     fill_in "user_password", with: "gunsbitchesbling"
 
     within(".new_user") do
-      find_button("Sign up").trigger('click')
+      find_button(I18n.t('authorization.sign_up')).trigger('click')
     end
 
-    should have_content "Registration complete! Happy sitting."
-    should have_content "Welcome to our community!"
+    should have_content I18n.t('devise.registrations.signed_up')
+    should have_content I18n.t('welcome_screen.title')
     expect(page.body).to_not include("Registration blocked")
   end
 
   describe 'registered users' do
-
     it 'should be able to log in' do
       visit user_session_path
-      fill_in "user_email", with: "#{@buddha.email}"
-      fill_in "user_password", with: "#{@buddha.password}"
+      fill_in "user_email", with: "#{buddha.email}"
+      fill_in "user_password", with: "#{buddha.password}"
 
       within(".new_user") do
-        click_on "Login"
+        click_on I18n.t('authorization.sign_in')
       end
 
-      should have_content "Welcome back!"
+      should have_content I18n.t('devise.sessions.signed_in')
     end
 
   end

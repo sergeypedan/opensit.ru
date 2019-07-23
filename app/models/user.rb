@@ -2,6 +2,7 @@ require 'textacular/searchable'
 
 class User < ActiveRecord::Base
 
+  OPENSIT_FOLLOWER_ID = 97
   GENDERS = %w[male female other].freeze
 
   include Rakismet::Model # Spam
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
                  content: :who,
                  user_ip: :current_sign_in_ip
 
-  attr_accessor :avatar, :password, :password_confirmation, :remember_me
+  attr_accessor :avatar
 
   # attr_accessor :city, :country, :website, :default_sit_length, :dob,
   #                 :password, :email, :first_name, :gender, :last_name,
@@ -286,7 +287,7 @@ class User < ActiveRecord::Base
   # Is the user following anyone, besides OpenSit?
   def following_anyone?
     follows = followed_user_ids
-    follows.delete(97)
+    follows.delete(OPENSIT_FOLLOWER_ID)
     return false if follows.empty?
     return true
   end
@@ -310,13 +311,13 @@ class User < ActiveRecord::Base
 
   # Overwrite Devise function to allow profile update with password requirement
   # http://stackoverflow.com/questions/4101220/rails-3-devise-how-to-skip-the-current-password-when-editing-a-registratio?rq=1
-  def update_with_password(params={})
-    if params[:password].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation) if params[:password_confirmation].blank?
-    end
-    update_attributes(params)
-  end
+  # def update_with_password(params={})
+  #   if params[:password].blank?
+  #     params.delete(:password)
+  #     params.delete(:password_confirmation) if params[:password_confirmation].blank?
+  #   end
+  #   update_attributes(params)
+  # end
 
   # LIKES
 
@@ -403,7 +404,7 @@ class User < ActiveRecord::Base
     end
 
     def follow_opensit
-      relationships.create!(followed_id: 97)
+      relationships.create!(followed_id: OPENSIT_FOLLOWER_ID)
     end
 
 end
@@ -450,7 +451,7 @@ end
 #  website                :string(100)
 #  avatar_file_name       :string
 #  avatar_content_type    :string
-#  avatar_file_size       :integer
+#  avatar_file_size       :bigint(8)
 #  avatar_updated_at      :datetime
 #  private_stream         :boolean          default(FALSE)
 #  reset_password_sent_at :datetime

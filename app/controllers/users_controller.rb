@@ -95,8 +95,8 @@ class UsersController < ApplicationController
     @users  = @user.followers
     @latest = @user.latest_sit(current_user)
 
-    @title  = "People who follow "
-    @title << (@user == current_user ? "me" : @user.display_name)
+    @title  = t('following.following_users')
+    @title << (@user == current_user ? t('following.me') : @user.display_name)
 
     @page_class = 'followers'
   end

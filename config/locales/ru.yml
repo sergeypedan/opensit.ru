@@ -56,7 +56,7 @@ ru:
     view_full_journal: "Все сессии"
 
   welcome_screen:
-    title: Добро пожаловать в братство!
+    title: "Добро пожаловать в братство!"
     subtitle: Вот пара подсказок
     li1:
       start: Попробуйте
@@ -229,7 +229,8 @@ ru:
 
   following:
     followed_users: На кого я подписан
-    following_users: Кто на меня подписан
+    following_users: "Кто подписан на "
+    me: меня
     no_follwers: Никто не подписан
     following_nobody: Ни на кого не подписан
 

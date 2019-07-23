@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController, :type => :controller do
+describe UsersController, type: :controller do
   before do
     @buddha = create(:user, username: 'buddha')
   end
@@ -26,7 +26,7 @@ describe UsersController, :type => :controller do
   describe 'GET /u/:username' do
     context 'no date range' do
       it 'displays user page' do
-        get :show, username: 'buddha'
+        get :show, params: { username: 'buddha' }
         expect(assigns(:user)).to eq(@buddha)
         expect(response).to render_template("users/show")
       end
@@ -35,7 +35,7 @@ describe UsersController, :type => :controller do
     context 'username has period' do
       it 'displays user page' do
         @buddha.update!(username: 'buddha.monk')
-        get :show, username: 'buddha.monk'
+        get :show, params: { username: 'buddha.monk' }
         expect(assigns(:user)).to eq(@buddha)
         expect(response).to render_template("users/show")
       end
@@ -48,7 +48,7 @@ describe UsersController, :type => :controller do
       #     create :sit, user: @buddha, created_at: Date.today - 365
       #     expect(@buddha.sits.count).to eq 2
 
-      #     get :show, username: 'buddha', year: Date.today.year
+      #     get :show, params: { username: 'buddha', year: Date.today.year }
       #     expect(assigns(:sits)).to have(1).items
       #     expect(assigns(:sits)).to eq(@buddha.sits_by_year(Date.today.year).communal.newest_first)
       #     expect(response).to render_template("users/show")
@@ -56,13 +56,13 @@ describe UsersController, :type => :controller do
 
       #   context 'invalid year' do
       #     it 'over 3000' do
-      #       get :show, username: 'buddha', year: '3001'
+      #       get :show, params: { username: 'buddha', year: '3001' }
       #       expect(response).to redirect_to("/u/buddha")
       #       expect(flash[:error]).to eq('Invalid year!')
       #     end
 
       #     it 'non-numerical' do
-      #       get :show, username: 'buddha', year: 'non-numerical'
+      #       get :show, params: { username: 'buddha', year: 'non-numerical' }
       #       expect(response).to redirect_to("/u/buddha")
       #       expect(flash[:error]).to eq('Invalid year!')
       #     end
@@ -75,7 +75,7 @@ describe UsersController, :type => :controller do
           create :sit, user: @buddha, created_at: Date.today - 35
           expect(@buddha.sits.count).to eq 2
 
-          get :show, username: 'buddha', year: Date.today.year, month: Date.today.month
+          get :show, params: { username: 'buddha', year: Date.today.year, month: Date.today.month }
           expect(assigns(:sits)).to have(1).items
           expect(assigns(:sits)).to eq(@buddha.sits_by_month(year: Date.today.year, month: Date.today.month).communal.newest_first)
           expect(response).to render_template("users/show")
@@ -83,13 +83,13 @@ describe UsersController, :type => :controller do
 
         context 'invalid month' do
           it 'over 12' do
-            get :show, username: 'buddha', year: Date.today.year, month: '13'
+            get :show, params: { username: 'buddha', year: Date.today.year, month: '13' }
             expect(response).to redirect_to("/u/buddha")
             expect(flash[:error]).to eq('Invalid month!')
           end
 
           it 'non-numerical' do
-            get :show, username: 'buddha', year: Date.today.year, month: 'non-numerical'
+            get :show, params: { username: 'buddha', year: Date.today.year, month: 'non-numerical' }
             expect(response).to redirect_to("/u/buddha")
             expect(flash[:error]).to eq('Invalid month!')
           end
@@ -104,7 +104,7 @@ describe UsersController, :type => :controller do
       it 'load profile' do
         @ananda = create :user, username: 'ananda', who: 'to get sat0ri'
         sign_in @buddha
-        get :show, username: 'ananda'
+        get :show, params: { username: 'ananda' }
         expect(assigns(:user)).to eq(@ananda)
         expect(response.body).to include('to get sat0ri')
       end
@@ -113,7 +113,7 @@ describe UsersController, :type => :controller do
       it 'load profile with edit button' do
         @deva = create :user, username: 'deva', who: 'seduce lustful practitioners'
         sign_in @deva
-        get :show, username: 'deva'
+        get :show, params: { username: 'deva' }
         expect(assigns(:user)).to eq(@deva)
         expect(response.body).to include('seduce lustful practitioners')
       end
@@ -123,36 +123,39 @@ describe UsersController, :type => :controller do
   describe 'GET /u/:username/following' do
     it 'loads following page' do
       sign_in @buddha
-      get :following, username: 'buddha'
+      get :following, params: { username: 'buddha' }
       expect(assigns(:user)).to eq(@buddha)
       expect(response).to be_success
-      expect(response).to render_template("users/show_follow")
-      expect(response.body).to have_selector('h3', text: 'People I follow')
+      expect(response).to render_template("users/followers")
+      expect(response.body).to have_selector('h1', text: I18n.t("following.followed_users"))
     end
   end
 
   describe 'GET /u/:username/followers' do
     it 'loads followers page' do
       sign_in @buddha
-      get :followers, username: 'buddha'
+      get :followers, params: { username: 'buddha' }
       expect(assigns(:user)).to eq(@buddha)
       expect(response).to be_success
-      expect(response).to render_template("users/show_follow")
-      expect(response.body).to have_selector('h3', text: 'People who follow me')
+      expect(response).to render_template("users/followers")
+      expect(response.body).to have_selector(
+                                 'h1',
+                                 text: "#{I18n.t('following.following_users')}#{I18n.t('following.me')}"
+                               )
     end
   end
 
   describe 'GET /u/:username/export' do
     it 'returns XML' do
       sign_in @buddha
-      get :export, username: 'buddha', format: 'xml'
+      get :export, params: { username: 'buddha', format: 'xml' }
       expect(response).to be_success
       expect(response.content_type).to eq("application/xml")
     end
 
     it 'returns JSON' do
       sign_in @buddha
-      get :export, username: 'buddha', format: 'json'
+      get :export, params: { username: 'buddha', format: 'json' }
       expect(response).to be_success
       expect(response.content_type).to eq("application/json")
     end
@@ -172,7 +175,7 @@ describe UsersController, :type => :controller do
 
     context 'user feed' do
       it 'should generate an Atom feed' do
-        get :feed, username: 'buddha', format: 'atom'
+        get :feed, params: { username: 'buddha', format: 'atom' }
 
         expect(response).to be_success
         expect(response).to render_template("users/feed")
@@ -180,7 +183,7 @@ describe UsersController, :type => :controller do
       end
 
       it 'shows only posts from that user' do
-        get :feed, username: 'sariputta', format: 'atom'
+        get :feed, params: { username: 'sariputta', format: 'atom' }
 
         expect(response.body).to include('deux')
         expect(response.body).to include('erpderp')
@@ -188,7 +191,7 @@ describe UsersController, :type => :controller do
       end
 
       it 'should not include private posts' do
-        get :feed, username: 'buddha', format: 'atom'
+        get :feed, params: { username: 'buddha', format: 'atom' }
 
         expect(response.body).to include('trois')
         expect(response.body).to_not include('private!!!')
@@ -197,7 +200,7 @@ describe UsersController, :type => :controller do
 
     context 'global feed' do
       before do
-        get :feed, format: 'atom', scope: 'global'
+        get :feed, params: { format: 'atom', scope: 'global' }
       end
 
       it 'should generate an Atom feed' do

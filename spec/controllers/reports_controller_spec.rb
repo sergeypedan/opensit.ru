@@ -11,9 +11,13 @@ RSpec.describe ReportsController, :type => :controller do
   end
 
   describe "POST create" do
+    let(:params) do
+      { report: @report.as_json(only: [:reportable_id, :reportable_type, :user_id, :reason, :body]) }
+    end
+
     it "creates a report" do
       expect(Report.count).to eq 0
-      post :create, report: @report.as_json(only: [:reportable_id, :reportable_type, :user_id, :reason, :body])
+      post :create, params: params
       expect(response).to have_http_status(:redirect)
       expect(Report.count).to eq 1
       expect(@buddha.reports.count).to eq 0

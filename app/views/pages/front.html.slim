@@ -1,7 +1,7 @@
 = render 'headers/brand'
 
-- if flash && flash[:error]
-  .alert.alert-danger = flash[:error]
+- if flash && (flash[:error] || flash[:alert])
+  .alert.alert-danger = flash[:error] || flash[:alert]
 
 
 section.jumbotron

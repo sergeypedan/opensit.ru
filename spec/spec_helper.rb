@@ -1,12 +1,12 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] = 'test'
 
-abort("The Rails environment is running in #{Rails.env} mode!") unless Rails.env.test?
-
 require File.expand_path("../../config/environment", __FILE__)
 
 require 'rspec/rails'
 require 'capybara/poltergeist'
+
+abort("The Rails environment is running in #{Rails.env} mode!") unless Rails.env.test?
 
 Capybara.default_driver = :poltergeist
 # Capybara.default_wait_time = 10
@@ -52,16 +52,28 @@ RSpec.configure do |config|
   # Render views in controller tests otherwise you get a blank response.body
   config.render_views = true
 
+  # Database Cleaner
+  # Note that transactions cause the seed data to not be seen by capybara. Thus the use of
+  # truncation instead.
   config.before(:suite) do
-    Rails.application.load_tasks
-    Rake::Task["db:purge"].invoke
-    Rake::Task["db:schema:load"].invoke
-    load "#{Rails.root}/db/seeds.rb"
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with :truncation
   end
 
-  config.before(:all, type: :request) do
-    host! "localhost" # "jaimini.ru"
+  config.before(:each) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
   config.include FactoryBot::Syntax::Methods
+
+  config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
 end

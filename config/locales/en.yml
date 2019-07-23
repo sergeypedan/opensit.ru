@@ -56,7 +56,7 @@ en:
     view_full_journal: "View full meditation journal"
 
   welcome_screen:
-    title: Welcome to our community!
+    title: "Welcome to our community!"
     subtitle: Here's a few things you should know.
     li1:
       start: Try
@@ -221,7 +221,8 @@ en:
 
   following:
     followed_users: People I follow
-    following_users: Who follows me
+    following_users: "Who follows "
+    me: me
     no_follwers: No connections yet!
     following_nobody: No connections yet!
 

@@ -9,3 +9,6 @@ en:
             password:
               too_short: Password is too short
               blank: Password cannot be blank
+      messages:
+        no_empty_spaces: cannot contain spaces
+        unique_page_name: "'%{value}' is reserved"

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sit do
+describe Sit, type: :model do
   let(:buddha) { create(:buddha) }
   let(:ananda) { create(:ananda) }
 
@@ -23,22 +23,22 @@ describe Sit do
 
 	describe "streaks" do
   	context "sat yesterday" do
-	  	it "increments streak by 1" do
+	  	it "increments streak by 2" do
 	  		expect(buddha.streak).to eq 0
-	  		create(:sit, user: buddha, created_at: Date.yesterday)
-	  		create(:sit, user: buddha, created_at: Date.current)
+	  		create(:sit, user: buddha, created_at: Time.current - 1.day)
+	  		create(:sit, user: buddha, created_at: Time.current)
 	  		expect(buddha.reload.streak).to eq 2
 	  	end
 
 	  	it "doesn't increment if already sat today" do
-        2.times do |i|
-          create(:sit, user: buddha, created_at: Date.yesterday - i)
+        1.upto(2) do |i|
+          create(:sit, user: buddha, created_at: Time.current - i.days)
         end
         # Morning sit
-        create(:sit, user: buddha, created_at: Date.current + 9.hours)
+        create(:sit, user: buddha)
         expect(buddha.reload.streak).to eq 3
         # Evening sit
-	  	  create(:sit, user: buddha, created_at: Date.current + 19.hours)
+	  	  create(:sit, user: buddha, created_at: Time.current + 1.second)
 	  		expect(buddha.reload.streak).to eq 3
 	  	end
 	  end
