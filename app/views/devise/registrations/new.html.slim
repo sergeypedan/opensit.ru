@@ -14,14 +14,3 @@ section.sign-up-box
       .actions
         = t "authorization.already"
         =< link_to t("authorization.sign_in"), new_user_session_path
-
-      - if @users.any?
-        .our-community
-          h2 = t "sign_up.global_community"
-          - @users.each do |u|
-            .user-snippet
-              = sign_up_avatar(u)
-              .details = u.display_name
-              br
-              = u.location
-

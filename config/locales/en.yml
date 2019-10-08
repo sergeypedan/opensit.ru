@@ -42,7 +42,6 @@ en:
       email: Your email
       password: Your password
     sign_in: Time to sign in!
-    global_community: And become part of our awesome global community!
 
   sign_in:
     welcome: Welcome back!
