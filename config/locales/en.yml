@@ -36,12 +36,15 @@ en:
       incentive: Like what you see? Tell others about it!
 
   sign_up:
+    title: Sign up
     h1: Namaste! Get your beautiful, free meditation journal today.
     form:
       username: Choose a username
       email: Your email
       password: Your password
     sign_in: Time to sign in!
+    messages:
+      registration_blocked: Registration blocked, abuse reported! If you think this is in error, please contact %{public_email}
 
   sign_in:
     welcome: Welcome back!
@@ -117,6 +120,8 @@ en:
       empty: Nothing to see here, yet
       nothing_this_month:
       sat:
+    messages:
+      profile_updated: Your profile has been updated.
 
   pages:
     about: About us

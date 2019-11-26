@@ -11,17 +11,17 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
 	def edit
-		@title      = 'Edit profile'
+		@title      = t('profile.edit')
 		@page_class = 'edit-profile'
 	end
 
   def update
     super
-    flash[:notice] = 'Your profile has been updated.'
+    flash[:notice] = t('profile.messages.profile_updated')
   end
 
   def new
-    @title = 'Sign up'
+    @title = t('sign_up.title')
     @users = User.all.where.not(avatar_file_name: "").where("users.sits_count > 1").sample(6)
     super
   end
@@ -32,7 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
       Blacklist::EMAIL_PATTERNS.each do |pattern|
         if email =~ pattern
           Rails.logger.error("Registration blocked via blacklist! #{email}")
-          return redirect_to root_path, alert: "Registration blocked, abuse reported! If you think this is in error, please contact #{Rails.application.secrets.public_email}"
+          return redirect_to root_path, alert: t('sign_up.messages.registration_blocked', public_email: Rails.application.secrets.public_email)
         end
       end
     end

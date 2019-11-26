@@ -36,12 +36,15 @@ ru:
       incentive: "Рассказывайте о нём другим:"
 
   sign_up:
+    title: Зарегестрироваться
     h1: Namaste! Заведите бесплатно красивый дневник медитаций…
     form:
       username: Придумайте имя пользователя
       email: Ваш email
       password: Придумайте пароль
       button: Зарегистрироваться
+    messages:
+      registration_blocked: Регистрация заблокирована! Если Вы считаете, что это ошибка, пожалуйста, свяжитесь с %{public_email}
 
   sign_in:
     welcome: Рады видеть вас снова!
@@ -117,6 +120,8 @@ ru:
       empty: Пока тут пусто
       nothing_this_month: Не медитировал в этом месяце
       sat: Медитировал
+    messages:
+      profile_updated: Ваш профиль обновлён
 
   pages:
     about: О проекте
