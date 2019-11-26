@@ -6,4 +6,4 @@ options = Paperclip::Attachment.default_options
 
 options[:storage] = :filesystem
 options[:url] = "uploads/:class/:id/:style.:extension"
-options[:path] = ":rails_root/public/images:url"
+options[:path] = ":rails_root/public/images/:url"
