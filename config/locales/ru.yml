@@ -230,6 +230,9 @@ ru:
     new: Новая запись
     edit: Редактировать запись
     this_is_private: This is a private entry
+    meditation: "%{duration}-минутная медитация"
+    meditation_by_duration: "%{duration}-минутная медитация, проведённая %{name}"
+    meditation_by_title: "%{title}, медитация, проведённая %{name}"
 
   following:
     followed_users: На кого я подписан

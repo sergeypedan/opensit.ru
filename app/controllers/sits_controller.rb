@@ -16,9 +16,9 @@ class SitsController < ApplicationController
     @user = @sit.user
 
     @title = if @sit.is_meditation?
-                "#{@sit.duration} minute meditation journal by #{@user.display_name}"
+                t('sit.meditation_by_duration', duration: @sit.duration, name: @user.display_name)
               else
-                "#{@sit.title}, a meditation journal by #{@user.display_name}"
+                t('sit.meditation_by_title', duration: @sit.duration, name: @user.display_name)
               end
 
     @previous = @sit.prev(current_user)
