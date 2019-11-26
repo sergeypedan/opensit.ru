@@ -119,8 +119,8 @@ class User < ActiveRecord::Base
   def time_sat_this_month(month: self.month, year: self.year)
     minutes = sits.where("EXTRACT(year FROM created_at) = ? AND EXTRACT(month FROM created_at) = ?", year.to_s, month.to_s.rjust(2, '0')).sum(:duration)
     total_time = minutes.divmod(60)
-    text = "#{total_time[0]} hours"
-    text << " #{total_time[1]} minutes" if !total_time[1].zero?
+    text = I18n.t('units_of_time.hours', count: total_time[0])
+    text << " #{I18n.t('units_of_time.minutes', count: total_time[1])}" if !total_time[1].zero?
     text
   end
 

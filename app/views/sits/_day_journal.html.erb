@@ -1,6 +1,6 @@
 <% if @listed.last != sit.created_at.to_date %>
   <hr>
-  <div class="day-of-the-month"><div class="weekday"><%=sit.created_at.strftime("%a")%></div><div class="date"><%=sit.created_at.strftime("%d")%></div></div>
+  <div class="day-of-the-month"><div class="weekday"><%= l(sit.created_at, format: '%a') %></div><div class="date"><%=sit.created_at.strftime("%d")%></div></div>
 <% end %>
 
 <% @listed.push(sit.created_at.to_date) %>

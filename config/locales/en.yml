@@ -262,3 +262,31 @@ en:
     users_active: Active users
     users_new: New users
     new_sitters: New sitters
+
+  month:
+    january: January
+    february: February
+    march: March
+    april: April
+    may: May
+    june: June
+    july: July
+    august: August
+    september: September
+    october: October
+    november: November
+    december: December
+
+  units_of_time:
+    minutes:
+      zero: 0 minute
+      one: 1 minute
+      few: "%{count} minutes"
+      many: "%{count} minutes"
+      other: "%{count} minutes"
+    hours:
+      zero: 0 hour
+      one: 1 hour
+      few: "%{count} hours"
+      many: "%{count} hours"
+      other: "%{count} hours"

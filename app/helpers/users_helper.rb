@@ -1,5 +1,22 @@
 module UsersHelper
 
+  Date::MONTHNAMES =
+    [
+      nil,
+      I18n.t('month.january'),
+      I18n.t('month.february'),
+      I18n.t('month.march'),
+      I18n.t('month.april'),
+      I18n.t('month.may'),
+      I18n.t('month.june'),
+      I18n.t('month.july'),
+      I18n.t('month.august'),
+      I18n.t('month.september'),
+      I18n.t('month.october'),
+      I18n.t('month.november'),
+      I18n.t('month.december')
+  ]
+
   def avatar_image(user)
     user.avatar.blank? ? image_path('placeholders/user-1.svg') : user.avatar.url(:small_thumb)
   end
