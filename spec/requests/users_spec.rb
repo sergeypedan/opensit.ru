@@ -31,7 +31,10 @@ describe 'Users' do
 
     sleep(1)
 
-    expect(page.body).to include("Registration blocked")
+    expect(page.body).to include(I18n.t(
+      'sign_up.messages.registration_blocked',
+      public_email: Rails.application.secrets.public_email
+    ))
   end
 
   it 'does not block similar patterns' do

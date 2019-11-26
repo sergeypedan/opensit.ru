@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   has_many :reports, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
   # Devise :validatable (above) covers validation of email and password
   validates :username, length: { minimum: 3, maximum: 20 }
@@ -311,13 +311,13 @@ class User < ActiveRecord::Base
 
   # Overwrite Devise function to allow profile update with password requirement
   # http://stackoverflow.com/questions/4101220/rails-3-devise-how-to-skip-the-current-password-when-editing-a-registratio?rq=1
-  # def update_with_password(params={})
-  #   if params[:password].blank?
-  #     params.delete(:password)
-  #     params.delete(:password_confirmation) if params[:password_confirmation].blank?
-  #   end
-  #   update_attributes(params)
-  # end
+  def update_with_password(params={})
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+    update_attributes(params)
+  end
 
   # LIKES
 
