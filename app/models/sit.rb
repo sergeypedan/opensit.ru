@@ -39,7 +39,7 @@ class Sit < ActiveRecord::Base
   # For use on show sit pages
   def full_title
     case s_type
-    when "meditation" then I18n.t('sit.meditation', duration: self.duration)
+    when "meditation" then I18n.t('sit.meditation', count: self.duration)
     when "diary" then self.title # Diary
     else "Article: #{self.title}" # Article
     end

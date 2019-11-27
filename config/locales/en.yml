@@ -222,7 +222,12 @@ en:
     timeline: to timeline
     new: New sit
     edit: Edit the sit
-    meditation: "%{duration} minute meditation journal"
+    meditation:
+      zero: 0 minute meditation journal
+      one: 1 minute meditation journal
+      few: "%{count} minutes meditation journal"
+      many: "%{count} minutes meditation journal"
+      other: "З%{count} minutes meditation journal"
     meditation_by_duration: "%{duration} minute meditation journal by %{name}"
     meditation_by_title: "%{title}, a meditation journal by %{name}"
 

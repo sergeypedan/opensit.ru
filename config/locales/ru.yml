@@ -229,7 +229,12 @@ ru:
     new: Новая запись
     edit: Редактировать запись
     this_is_private: This is a private entry
-    meditation: "%{duration}-минутная медитация"
+    meditation:
+      zero: Запись о практике на 0 минут
+      one: Запись о практике на 1 минуту
+      few: Запись о практике на %{count} минуты
+      many: Запись о практике на %{count} минут
+      other: Запись о практике на %{count} минут
     meditation_by_duration: "%{duration}-минутная медитация, проведённая %{name}"
     meditation_by_title: "%{title}, медитация, проведённая %{name}"
 
