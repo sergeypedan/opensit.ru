@@ -14,8 +14,16 @@ module GoalsHelper
 
   def days_ago_in_words(from)
   	days = (Date.today - from.to_date).to_i
-  	return 'today' if days == 0
-  	return 'yesterday' if days == 1
-  	return "#{days + 1} days ago"
+  	return t('goals.today') if days == 0
+  	return t('goals.yesterday') if days == 1
+  	return t('goals.days_ago', count: days + 1)
+  end
+
+  def start_day_by(goal)
+    I18n.l(goal.created_at, format: :goal_date_format)
+  end
+
+  def end_day_by(goal)
+    I18n.l(goal.completed_date ? goal.completed_date : goal.last_day_of_goal, format: :goal_date_format)
   end
 end

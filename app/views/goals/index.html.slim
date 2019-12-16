@@ -17,10 +17,11 @@ section.page.text-section
 
 			.new-goal-form = render "goals/form"
 
-			= render collection: @goals.select(&:completed?), partial: "goals/goal", as: :goal, locals: { completed: false }
+			= render collection: @goals.select { |goal| !goal.completed? }, partial: "goals/goal", as: :goal, locals: { completed: false }
 
 	- if @has_completed
 		= link_to t("goals.show_completed"), "#", class: "show-completed"
+		= link_to t("goals.hide_completed"), "#", class: "hide-completed"
 
 		.completed-goals
 			= render collection: @goals.select(&:completed?), partial: "goals/goal", as: :goal, locals: { completed: true }

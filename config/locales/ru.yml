@@ -249,6 +249,7 @@ ru:
     h1: Цели
     intro: Цели — это отличный способ поддерживать мотивацию и усиливать вашу практику медитации. Установите цель и получайте обратную связь о том, насколько хорошо у вас получается ей следовать.
     show_completed: Показать выполненные цели
+    hide_completed: Скрыть выполненные цели
     add_another: Добавить цель?
     here_current: Вот ваши текущие цели
     ongoing: Постоянно
@@ -256,9 +257,32 @@ ru:
     i_will_sit: Я буду выполнять формальную практику
     days: дней подряд
     min_per_day: минут в день
+    min_per_days: "%{min_per_days} в день %{duration}"
+    days_in_row: "%{duration} подряд"
     minimum: Минимум
     optional: необязательно
-    quotation: “A journey of a thousand miles begins with a single sit” - You can do it!
+    quotation: “Путешествие в тысячу километров начинается с первой практики” - Вы справитесь!
+    done_goal: Я выполнил эту цель
+    delete: Удалить
+    are_you_sure: Вы уверены?
+    are_you_sure_delete_all: Вы уверены? Вы удалите все записи для этой цели.
+    today: сегодня
+    yesterday: вчера
+    days_ago:
+      zero: 0 дней назад
+      one: 1 день назад
+      few: "%{count} дня назад"
+      many: "%{count} дней назад"
+      other: "%{count} дней назад"
+    started_days_ago: Начали %{days_ago}. Вы достигнете цели в течение %{days_where_goal_met} дня/дней из %{days_into_goal}
+    days_period: С %{start_date} по %{end_date}. Вы достигнете цели в течение %{days_where_goal_met} дня/дней из %{days_into_goal}
+    sit_start: Буду практиковать
+    ongoing_minutes_per_day:
+      zero: 0 минут
+      one: 1 минуту
+      few: "%{count} минуты"
+      many: "%{count} минут"
+      other: "%{count} минут"
 
   stream:
     your_stream_private: Ваш журнал полностью приватный
@@ -289,7 +313,7 @@ ru:
     may: Май
     june: Июнь
     july: Июль
-    august: Авгусе
+    august: Август
     september: Сентябрь
     october: Октябрь
     november: Ноябрь
@@ -308,3 +332,13 @@ ru:
       few: "%{count} часа"
       many: "%{count} часов"
       other: "%{count} часов"
+    days:
+      zero: 0 дней
+      one: 1 день
+      few: "%{count} дня"
+      many: "%{count} дней"
+      other: "%{count} дней"
+
+  time:
+    formats:
+      goal_date_format: "%e %B, %Y"

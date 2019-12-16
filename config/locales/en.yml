@@ -242,6 +242,7 @@ en:
     h1: Goals
     intro: Goals are great way to stay motivated and strengthen your meditation practice. Once you set one up here, you'll get feedback on how well you're meeting your goal.
     show_completed: Show completed goals
+    hide_completed: Hide completed goals
     add_another: Add another one?
     here_current: Here are your current goals.
     ongoing: Ongoing
@@ -249,8 +250,32 @@ en:
     i_will_sit: I will sit for
     days: days in a row
     min_per_day: minutes per day
+    min_per_days: "%{min_per_days} a day, for %{duration}"
+    days_in_row: "%{duration} in a row"
     minimum: minimum
     optional: optional
+    quotation: “A journey of a thousand miles begins with a single sit” - You can do it!
+    done_goal: I'm done with this goal
+    delete: Delete
+    are_you_sure: Are you sure?
+    are_you_sure_delete_all: Are you sure? This will delete all record of this goal
+    today: today
+    yesterday: yesterday
+    days_ago:
+      zero: 0 day
+      one: 1 day
+      few: "%{count} days"
+      many: "%{count} days"
+      other: "%{count} days"
+    started_days_ago: Started %{days_ago}. You've achieved your goal on %{days_where_goal_met} out of %{days_into_goal} days
+    days_period: From %{start_date} to %{end_date}. You achieved your goal on %{days_where_goal_met} out of %{days_into_goal} days
+    sit_start: Sit for
+    ongoing_minutes_per_day:
+      zero: 0 minute
+      one: 1 minute
+      few: "%{count} minutes"
+      many: "%{count} minutes"
+      other: "%{count} minutes"
 
   stream:
     your_stream_private: Your stream is private
@@ -295,3 +320,13 @@ en:
       few: "%{count} hours"
       many: "%{count} hours"
       other: "%{count} hours"
+    days:
+      zero: 0 day
+      one: 1 day
+      few: "%{count} days"
+      many: "%{count} days"
+      other: "%{count} days"
+
+  time:
+    formats:
+      goal_date_format: "%e %B, %Y"

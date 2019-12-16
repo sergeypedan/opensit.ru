@@ -188,11 +188,16 @@ $(document).ready(function(){
   $('.show-completed').click( function(e) {
     e.stopPropagation();
     $('.completed-goals').toggle();
-    if ($('.show-completed').text() == 'Show completed goals') {
-      $('.show-completed').text('Hide completed goals');
-    } else {
-      $('.show-completed').text('Show completed goals');
-    }
+    $('.show-completed').hide();
+    $('.hide-completed').show();
+  });
+
+  // Hide completed
+  $('.hide-completed').click( function(e) {
+    e.stopPropagation();
+    $('.completed-goals').toggle();
+    $('.show-completed').show();
+    $('.hide-completed').hide();
   });
 
 });

@@ -10,15 +10,20 @@ class Goal < ActiveRecord::Base
 	attr_accessor :mins_per_day_optional
 
 	def verbalise
-		text = 'Sit for '
+		text = "#{I18n.t('goals.sit_start')} "
 		if ongoing?
-			text << "#{mins_per_day} minutes a day"
+			text << I18n.t('goals.ongoing_minutes_per_day', count: mins_per_day)
 		else
 			if fixed?
+				duration_str = I18n.t('units_of_time.days', count: duration)
 				if mins_per_day
-					text << "#{mins_per_day} minutes a day, for #{duration} days"
+					text << I18n.t(
+						'goals.min_per_days',
+						min_per_days: I18n.t('units_of_time.minutes', count: mins_per_day),
+						duration: duration_str
+					)
 				else
-					text << "#{duration} days in a row"
+					text << I18n.t('goals.days_in_row', duration: duration_str)
 				end
 			end
 		end

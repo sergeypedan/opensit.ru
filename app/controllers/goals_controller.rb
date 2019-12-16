@@ -14,13 +14,8 @@ class GoalsController < ApplicationController
     # completed when they reach their day is the better solution. This current solution
     # does give goals a nice self-oragnising quality that requires no pruning or checking up.
 
-    @goals.each do |g|
-      if g.completed?
-        @has_completed = true
-      else
-        @has_current = true
-      end
-    end
+    @has_completed = @goals.any? { |g| g.completed? }
+    @has_current   = @goals.any? { |g| !g.completed? }
 
     @title = 'My goals'
     @page_class = 'goals'
