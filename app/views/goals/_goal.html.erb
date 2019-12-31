@@ -1,5 +1,5 @@
 <div class="goal row <%= goal.fixed? ? 'fixed' : 'ongoing' %>">
-	<div class="rating"><%= coloured_rating(goal) %></div>
+	<div class="rating"><%= coloured_rating(goal.rating) %></div>
 	<div class="content">
 		<div class="goal-desc <%= 'completed' if completed %>"><%= goal.verbalise %></div>
 		<div class="goal-stats">

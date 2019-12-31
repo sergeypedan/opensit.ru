@@ -20,7 +20,7 @@ class Goal < ActiveRecord::Base
 					text << I18n.t(
 						'goals.min_per_days',
 						min_per_days: I18n.t('units_of_time.minutes', count: mins_per_day),
-						duration: duration_str
+						duration: I18n.t('goals.days_in_row', duration: duration_str)
 					)
 				else
 					text << I18n.t('goals.days_in_row', duration: duration_str)

@@ -1,15 +1,6 @@
 module GoalsHelper
-  def coloured_rating(goal)
-    case goal.rating_colour
-    when 'red'
-      "<div class='rating rating-red'>#{goal.rating}%</div>".html_safe
-    when 'amber'
-      "<div class='rating rating-amber'>#{goal.rating}%</div>".html_safe
-    when 'green'
-      "<div class='rating rating-green'>#{goal.rating}%</div>".html_safe
-    when 'gold'
-      "<div class='rating rating-gold'>#{goal.rating}%</div>".html_safe
-    end
+  def coloured_rating(rating)
+    "<div class='rating rating-#{rating_colour(rating)}'>#{rating}%</div>".html_safe
   end
 
   def days_ago_in_words(from)
@@ -17,6 +8,16 @@ module GoalsHelper
   	return t('goals.today') if days == 0
   	return t('goals.yesterday') if days == 1
   	return t('goals.days_ago', count: days + 1)
+  end
+
+  # Gold for 100%, Green for 80% and above, Amber for 50% and above, Red for anything below
+  def rating_colour(rating)
+    case rating
+    when 0..49  then 'red'
+    when 50..79 then 'amber'
+    when 80..99 then 'green'
+    when 100    then 'gold'
+    end
   end
 
   def start_day_by(goal)

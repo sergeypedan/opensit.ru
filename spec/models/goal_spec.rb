@@ -85,30 +85,6 @@ describe Goal, type: :model do
 		end
 	end
 
-	describe '#rating_colour' do
-		let(:goal) { create(:goal, :sit_for_30_days, user: buddha) }
-
-		it 'under 50%' do
-                        allow(goal).to receive_messages(:rating => 45)
-			expect(goal.rating_colour).to eq 'red'
-		end
-
-		it 'under 70%' do
-                        allow(goal).to receive_messages(:rating => 64)
-			expect(goal.rating_colour).to eq 'amber'
-		end
-
-		it 'under 99%' do
-                        allow(goal).to receive_messages(:rating => 91)
-			expect(goal.rating_colour).to eq 'green'
-		end
-
-		it '100%' do
-                        allow(goal).to receive_messages(:rating => 100)
-			expect(goal.rating_colour).to eq 'gold'
-		end
-	end
-
 	describe '#last_day_of_goal' do
 		let(:goal) { create(:goal, :sit_for_30_days, user: buddha, created_at: Date.today) }
 		it 'should return correct day' do

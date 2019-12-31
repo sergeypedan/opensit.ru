@@ -1,7 +1,7 @@
 article.activity
   = link_to sit_path(sit), class: "title"
     => fa_icon (sit.is_meditation? ? "clock-o" : "book")
-    = (sit.is_meditation? ? "#{sit.duration} minutes" : sit.title)
+    = (sit.is_meditation? ? t('units_of_time.minutes', count: sit.duration) : sit.title)
 
   = date_tag(sit.created_at)
 
