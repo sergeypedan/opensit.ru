@@ -75,6 +75,7 @@ ru:
       link: настройках профиля
     li3: ' '
     button: Я понял!
+    follow_twitter: "Подписаться @%{twitter_id}"
 
   menu:
     home: Моя лента

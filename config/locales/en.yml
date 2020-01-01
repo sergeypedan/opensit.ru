@@ -76,6 +76,7 @@ en:
       link: My profile
     li3: Keep up to date with us!
     button: OK, got it!
+    follow_twitter: "Follow @%{twitter_id}"
 
   menu:
     home: Home

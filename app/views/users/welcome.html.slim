@@ -38,7 +38,7 @@
 
             - if Rails.application.secrets.twitter_id.present?
               .twitter-follow-container
-                = link_to "Follow @#{Rails.application.secrets.twitter_id}", "https://twitter.com/#{Rails.application.secrets.twitter_id}", class: "twitter-follow-button", data: { dnt: true, show_count: false }
+                = link_to t('welcome_screen.follow_twitter', twitter_id: Rails.application.secrets.twitter_id), "https://twitter.com/#{Rails.application.secrets.twitter_id}", class: "twitter-follow-button", data: { dnt: true, show_count: false }
                 javascript:
                   !function(d, s, id) {
                     var js,
