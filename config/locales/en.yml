@@ -220,6 +220,9 @@ en:
     users: Users
 
   sit:
+    updated: Sit was successfully updated
+    cant_edit: You can't edit this post
+    cant_destroy: You can't delete this post
     this_is_private: This is a private entry
     back_to: Back
     favourites: to favourites

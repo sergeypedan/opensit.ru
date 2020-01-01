@@ -229,6 +229,9 @@ ru:
     users: Пользователи
 
   sit:
+    updated: Запись успешно обновлена
+    cant_edit: Нельзя редактировать запись
+    cant_destroy: Нельзя удалить запись
     back_to: Назад
     favourites: к избранному
     tag: к тегам
@@ -237,7 +240,7 @@ ru:
     timeline: к таймлайну
     new: Новая запись
     edit: Редактировать запись
-    this_is_private: This is a private entry
+    this_is_private: Эта запись для личного просмотра
     meditation:
       zero: Запись о практике на 0 минут
       one: Запись о практике на 1 минуту

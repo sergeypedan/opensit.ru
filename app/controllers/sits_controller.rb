@@ -8,7 +8,7 @@ class SitsController < ApplicationController
     @latest = @sit.user.latest_sit(current_user)
 
     if @sit.private
-      return redirect_to root_path, status: :unauthorized, alert: "This record is private" unless current_user
+      return redirect_to root_path, status: :unauthorized, alert: t('sit.this_is_private') unless current_user
       return redirect_to me_path if @sit.user_id != current_user.id
     end
 
@@ -41,7 +41,7 @@ class SitsController < ApplicationController
       @user = current_user
       @title = t("edit.new")
     else
-      redirect_to root_path, notice: "You can't edit this post"
+      redirect_to root_path, notice: t('sit.cant_edit')
     end
   end
 
@@ -72,7 +72,7 @@ class SitsController < ApplicationController
     @sit.tags = Tag.parse_CSV params[:tag_list]
 
     if @sit.update_attributes(filtered_params)
-      redirect_to @sit, notice: 'Sit was successfully updated.'
+      redirect_to @sit, notice: t('sit.updated')
     else
       render :edit
     end
@@ -86,7 +86,7 @@ class SitsController < ApplicationController
       @sit.destroy
       redirect_to me_path
     else
-      redirect_to root_path, status: :unauthorized, alert: "You can't delete this post"
+      redirect_to root_path, status: :unauthorized, alert: t('sit.cant_destroy')
     end
   end
 
