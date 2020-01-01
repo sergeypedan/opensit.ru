@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   def create
     @user = current_user
     @obj = params[:report][:reportable_type].constantize.find(params[:report][:reportable_id])
-    confirmation = 'Your report has been sent. Thanks for letting us know!'
+    confirmation = t('report.thank_you')
     respond_to do |format|
       if @user.reports.create(report_params)
         format.html { redirect_to @obj, notice: confirmation }

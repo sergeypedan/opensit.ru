@@ -185,7 +185,7 @@ ru:
     back_to_new_users: К новым пользователям
     previous: Назад
     next: Вперёд
-    report: Report something on this page
+    report: Выслать отчёт об этой странице
 
   stats:
     days: дней
@@ -363,3 +363,18 @@ ru:
       goals_are_live: Определите цели вашей медитации
       calendar_intro_email: Медитируйте с другими людьми во всём мире
       opensit_survey: OpenSit изменился... Нам важно ваше мнение
+
+  report:
+    title: Сообщить о неприемлемом содержании страницы
+    reason: Причина
+    body: Сообщение
+    options:
+      offensive_post: Запись оскорбительна
+      personal_details: Запись содержит персональные данные
+      offensive_comments: Оскорбительные комментарии
+      other: Другое
+    button:
+      close: Закрыть
+      report: Сообщить
+      cancel: Отмена
+    thank_you: Спасибо, что отправили отчёт!

@@ -200,6 +200,26 @@ $(document).ready(function(){
     $('.hide-completed').hide();
   });
 
+  // Report
+  $('#new_report .submit-report').click(function(e) {
+    e.stopPropagation();
+    $('.report-modal .form-group.select.report_reason').removeClass('has-error');
+    $('.report-modal .form-group.text.report_body').removeClass('has-error');
+
+    if (!$('#report_reason').val()) {
+      $('.report-modal .form-group.select.report_reason').addClass('has-error');
+      $('#report_reason').focus();
+      return;
+    }
+
+    if (!$('#report_body').val()) {
+      $('.report-modal .form-group.text.report_body').addClass('has-error');
+      $('#report_body').focus();
+      return;
+    }
+
+    $('.simple_form.new_report').submit();
+  });
 });
 
 // https://github.com/Nerian/bootstrap-wysihtml5-rails

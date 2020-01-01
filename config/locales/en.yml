@@ -349,3 +349,18 @@ en:
       goals_are_live: Set goals for your meditation
       calendar_intro_email: Meditate with people from around the globe!
       opensit_survey: OpenSit is changing... what do you think?
+
+  report:
+    title: Flag inappropriate content
+    reason: Reason
+    body: Body
+    options:
+      offensive_post: This post is offensive
+      personal_details: This post contains personal details
+      offensive_comments: The comments are offensive
+      other: Other
+    button:
+      close: Close
+      report: Report
+      cancel: Cancel
+    thank_you: Your report has been sent. Thanks for letting us know!
