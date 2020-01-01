@@ -183,6 +183,8 @@ ru:
 
   navigation:
     back_to_new_users: К новым пользователям
+    previous: Назад
+    next: Вперёд
     report: Report something on this page
 
   stats:
