@@ -50,7 +50,7 @@ class SitsController < ApplicationController
     @user = current_user
     @sit = Sit.new filtered_params
     @sit.user = @user
-    @sit.private = @user.private_stream
+    @sit.private = params[:sit][:private] || @user.private_stream
     @sit.created_at = ::InputParsers::Datetime.call params[:custom_date]
     @sit.tags = Tag.parse_CSV params[:tag_list]
 
