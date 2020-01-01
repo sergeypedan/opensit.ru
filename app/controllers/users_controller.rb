@@ -44,17 +44,15 @@ class UsersController < ApplicationController
     # Generate prev/next links
     # .. for someone who's sat this month
     if index
-      if @by_month[:list_of_months][index + 1]
-        @prev = @by_month[:list_of_months][index + 1].split(' ')
-      end
+      @prev = @by_month[:list_of_months][index + 1]&.split(' ')
 
       if !index.zero?
-        @next = @by_month[:list_of_months][index - 1].split(' ')
+        @next = @by_month[:list_of_months][index - 1]&.split(' ')
       end
     else
       if @by_month
         # Haven't sat this month - when was the last time they sat?
-        @first_month = @by_month[:list_of_months].first.split(' ')
+        @first_month = @by_month[:list_of_months].first&.split(' ')
       end
       # Haven't sat at all
     end
