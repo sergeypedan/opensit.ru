@@ -55,7 +55,12 @@ en:
     wall_help: When you start following people their updates will appear here.
     add_first_sit: Add your first sit
     latest: LATEST
-    view_full_journal: "View full meditation journal"
+    view_full_journal: View full meditation journal
+
+  user:
+    more: More
+    no_stats: Zzzzz... Nothing logged this month.
+    latest_entries: Check out their latest journal entries
 
   welcome_screen:
     title: "Welcome to our community!"

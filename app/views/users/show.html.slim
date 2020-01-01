@@ -36,18 +36,18 @@ div itemscope="" itemtype="http://schema.org/Person"
             .profile
               p.lead itemprop="description"
                 = @user.who.html_safe
-                = link_to "More", "#", class: "expand-profile" if (!@user.practice.blank? || !@user.why.blank?)
+                = link_to t('user.more'), "#", class: "expand-profile" unless @user.practice.blank? && @user.why.blank?
 
               - if [@user.why, @user.practice].map(&:present?).include?(true)
                 .full-profile
                   - if @user.why.present?
                     .profile-field
-                      .title Why do you practice?
+                      .title = t('profile.why')
                       = @user.why.html_safe
 
                   - if @user.practice.present?
                     .profile-field
-                      .title How do you practice?
+                      .title = t('profile.how')
                       = @user.practice.html_safe
 
       - if @sits
@@ -64,8 +64,8 @@ div itemscope="" itemtype="http://schema.org/Person"
                 = t("profile.feed.empty")
 
               - elsif @stats[:days_sat_this_month].zero?
-                | Zzzzz... Nothing logged this month.
-                =< link_to "Check out their latest journal entries.", "?year=#{@first_month[0]}&month=#{@first_month[1]}", class: "previous"
+                = t('user.no_stats')
+                =< link_to t('user.latest_entries'), "?year=#{@first_month[0]}&month=#{@first_month[1]}", class: "previous"
 
               - else
                 = t("stats.sat")
