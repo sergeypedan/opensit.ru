@@ -337,3 +337,12 @@ en:
   time:
     formats:
       goal_date_format: "%e %B, %Y"
+
+  email:
+    subject:
+      welcome_email: Welcome to the community!
+      new_design: Psst.. OpenSit has changed!
+      blog_is_live: The OpenSit Blog is Live!
+      goals_are_live: Set goals for your meditation
+      calendar_intro_email: Meditate with people from around the globe!
+      opensit_survey: OpenSit is changing... what do you think?

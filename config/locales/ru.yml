@@ -351,3 +351,12 @@ ru:
   time:
     formats:
       goal_date_format: "%e %B, %Y"
+
+  email:
+    subject:
+      welcome_email: Добро пожаловать!
+      new_design: OpenSit изменился!
+      blog_is_live: OpenSit запущен!
+      goals_are_live: Определите цели вашей медитации
+      calendar_intro_email: Медитируйте с другими людьми во всём мире
+      opensit_survey: OpenSit изменился... Нам важно ваше мнение
