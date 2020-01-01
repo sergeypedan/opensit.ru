@@ -61,6 +61,8 @@ en:
     more: More
     no_stats: Zzzzz... Nothing logged this month.
     latest_entries: Check out their latest journal entries
+    follow: Follow
+    unfollow: Unfollow
 
   welcome_screen:
     title: "Welcome to our community!"

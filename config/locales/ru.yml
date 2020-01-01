@@ -61,6 +61,8 @@ ru:
     more: Развернуть
     no_stats: Нет записей в этом месяце
     latest_entries: Просмотреть последние записи журнала
+    follow: Подписаться
+    unfollow: Отписаться
 
   welcome_screen:
     title: Добро пожаловать в наше сообщество!
@@ -125,7 +127,7 @@ ru:
       nothing_this_month: Не медитировал в этом месяце
       sat: Медитировал
     messages:
-      profile_updated: Ваш профиль обновлён
+      profile_updated: Спасибо! Мы обновили вашу информацию
 
   pages:
     about: О проекте
