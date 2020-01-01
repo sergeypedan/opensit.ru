@@ -132,7 +132,6 @@
       h3 = t "profile.account"
       p = t "profile.danger_zone"
       ul
-        li = link_to t("profile.change_email"), "#"
         li
           = t "profile.unhappy"
           =< link_to t("forms.save"), registration_path(resource), data: { confirm: t("forms.sure") }, method: :delete
