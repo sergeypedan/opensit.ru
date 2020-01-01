@@ -7,7 +7,7 @@
         span.nav-button-text = t "menu.add_sit"
 
     = content_tag :li, class: ('active' if current_page?(user_path(current_user)))
-      = link_to user_path(current_user), title: t("menu.me"), class: 'nav-option'
+      = link_to me_path, title: t("menu.me"), class: 'nav-option'
         => fa_icon "user"
         span.nav-button-text = t "menu.me"
 
