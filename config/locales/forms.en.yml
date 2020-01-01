@@ -6,7 +6,7 @@ en:
     country: Country
     date: Date
     date_of_birth: Date of birth
-    delete: Delete
+    delete: Delete account
     edit: Edit
     fill_all_required: Please fill in the required fields
     first_name: First name

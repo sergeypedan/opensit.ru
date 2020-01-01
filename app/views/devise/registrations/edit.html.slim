@@ -134,7 +134,7 @@
       ul
         li
           = t "profile.unhappy"
-          =< link_to t("forms.save"), registration_path(resource), data: { confirm: t("forms.sure") }, method: :delete
+          =< link_to t("forms.delete"), registration_path(resource), data: { confirm: t("forms.sure") }, method: :delete
 
     section.col-md-5.privacy-setting
       h3#privacy = t "profile.privacy"
