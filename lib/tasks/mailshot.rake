@@ -19,8 +19,8 @@ task :mailshot => :environment do
   ActionMailer::Base.default_url_options = { host: ENV.fetch("DOMAIN") }
 
   ActionMailer::Base.smtp_settings = {
-    :address        => "smtp.mailgun.com",
-    :port           => '587',
+    :address        => ENV.fetch("MAILGUN_SMTP_SERVER"),
+    :port           => ENV.fetch("MAILGUN_SMTP_PORT"),
     :authentication => :plain,
     :user_name      => ENV.fetch("MAILGUN_SMTP_USERNAME"),
     :password       => ENV.fetch("MAILGUN_SMTP_PASSWORD"),

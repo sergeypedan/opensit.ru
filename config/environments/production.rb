@@ -58,12 +58,12 @@ Opensit::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:              "smtp.mailgun.com",
+    address:              ENV.fetch("MAILGUN_SMTP_SERVER"),
     authentication:       :plain,
     domain:               ENV.fetch("DOMAIN"),
     enable_starttls_auto: false, # false, если возникает SSL-ошибка о сертификате
     password:             ENV.fetch("MAILGUN_SMTP_PASSWORD"),
-    port:                 587,
+    port:                 ENV.fetch("MAILGUN_SMTP_PORT"),
     user_name:            ENV.fetch("MAILGUN_SMTP_USERNAME")
   }
 
