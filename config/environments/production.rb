@@ -64,7 +64,7 @@ Opensit::Application.configure do
     enable_starttls_auto: false, # false, если возникает SSL-ошибка о сертификате
     password:             ENV.fetch("MAILGUN_SMTP_PASSWORD"),
     port:                 ENV.fetch("MAILGUN_SMTP_PORT"),
-    user_name:            ENV.fetch("MAILGUN_SMTP_USERNAME")
+    user_name:            ENV.fetch("MAILGUN_SMTP_LOGIN")
   }
 
   # Enable threaded mode
