@@ -6,7 +6,7 @@ FactoryBot.define do
     sequence :favourable_id do |n|
       n
     end
-    favourable_type "Sit"
+    favourable_type { "Sit" }
 
   end
 end

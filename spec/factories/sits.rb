@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :sit do
-    body "I done a meditate."
-    s_type "meditation"
-    duration 30
+    body { "I done a meditate." }
+    s_type { "meditation" }
+    duration { 30 }
 
     trait :journal do
-      s_type "diary"
-      title "Making factories"
-      duration nil
+      s_type { "diary" }
+      title { "Making factories" }
+      duration { nil }
     end
 
     trait :belongs_to_user do
@@ -15,11 +15,11 @@ FactoryBot.define do
     end
 
     trait :private do
-      private true
+      private { true }
     end
 
     trait :public do
-      private false
+      private { false }
     end
 
     trait :one_hour_ago do

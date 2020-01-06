@@ -7,11 +7,11 @@ FactoryBot.define do
     password { Faker::Lorem.characters(12) }
 
     factory :buddha do
-      username "buddha"
+      username { "buddha" }
     end
 
     factory :ananda do
-      username "ananda"
+      username { "ananda" }
     end
 
     trait :has_first_name do
@@ -19,7 +19,7 @@ FactoryBot.define do
     end
 
     trait :no_first_name do
-      first_name nil
+      first_name { nil }
     end
 
     trait :has_last_name do
@@ -27,7 +27,7 @@ FactoryBot.define do
     end
 
     trait :no_last_name do
-      last_name nil
+      last_name { nil }
     end
   end
 end

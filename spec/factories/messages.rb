@@ -9,7 +9,7 @@ FactoryBot.define do
     end
 
     trait :read do
-      read true
+      read { true }
     end
   end
 end
