@@ -6,7 +6,7 @@ environment "production"
 
 port ENV.fetch("PORT") { 3000 }
 
-preload_app!
+# preload_app!
 
 rackup DefaultRackup
 
