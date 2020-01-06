@@ -26,7 +26,7 @@ describe 'Users' do
     fill_in "user_password", with: "gunsbitchesbling"
 
     within(".new_user") do
-      find_button(I18n.t('authorization.sign_up')).trigger('click')
+      find_button(I18n.t('authorization.sign_up')).click
     end
 
     sleep(1)
@@ -44,7 +44,7 @@ describe 'Users' do
     fill_in "user_password", with: "gunsbitchesbling"
 
     within(".new_user") do
-      find_button(I18n.t('authorization.sign_up')).trigger('click')
+      find_button(I18n.t('authorization.sign_up')).click
     end
 
     should have_content I18n.t('devise.registrations.signed_up')
