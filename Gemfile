@@ -27,7 +27,6 @@ gem 'premailer-rails'
 gem 'puma'
 gem 'rack'
 gem 'rails', '5.2.0'
-gem 'rails_12factor', group: :production
 gem 'rakismet'
 gem 'sass-rails'
 gem 'simple_form'
