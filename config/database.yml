@@ -17,7 +17,6 @@ test:
 production:
   adapter: postgresql
   database: opensit_production
-  # password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
   pool: 5
   timeout: 5000
-  username: postgres
+  url: <%= ENV["DATABASE_URL"] %>
