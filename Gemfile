@@ -34,7 +34,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'split', require: 'split/dashboard'
 gem 'textacular'
-gem 'therubyracer'
+gem 'therubyracer' # do we need it?
 gem 'uglifier'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
