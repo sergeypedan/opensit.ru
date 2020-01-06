@@ -7,7 +7,7 @@ describe PagesController, :type => :controller do
     it 'loads the global sit stream' do
       sign_in buddha
       get :explore
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

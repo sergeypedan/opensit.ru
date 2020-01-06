@@ -8,7 +8,7 @@ describe UsersController, type: :controller do
       it 'should display the /me page' do
         sign_in buddha
         get :me
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response).to render_template("users/me")
       end
     end
@@ -96,7 +96,7 @@ describe UsersController, type: :controller do
       sign_in buddha
       get :following, params: { username: 'buddha' }
       expect(assigns(:user)).to eq(buddha)
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response).to render_template("users/followers")
       expect(response.body).to have_selector('h1', text: I18n.t("following.followed_users"))
     end
@@ -107,7 +107,7 @@ describe UsersController, type: :controller do
       sign_in buddha
       get :followers, params: { username: 'buddha' }
       expect(assigns(:user)).to eq(buddha)
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response).to render_template("users/followers")
       expect(response.body).to have_selector(
                                  'h1',
@@ -120,14 +120,14 @@ describe UsersController, type: :controller do
     it 'returns XML' do
       sign_in buddha
       get :export, params: { username: 'buddha', format: 'xml' }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.content_type).to eq("application/xml")
     end
 
     it 'returns JSON' do
       sign_in buddha
       get :export, params: { username: 'buddha', format: 'json' }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.content_type).to eq("application/json")
     end
   end
@@ -148,7 +148,7 @@ describe UsersController, type: :controller do
       it 'should generate an Atom feed' do
         get :feed, params: { username: 'buddha', format: 'atom' }
 
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response).to render_template("users/feed")
         expect(response.content_type).to eq("application/atom+xml")
       end
@@ -175,7 +175,7 @@ describe UsersController, type: :controller do
       end
 
       it 'should generate an Atom feed' do
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(response).to render_template("users/feed")
         expect(response.content_type).to eq("application/atom+xml")
       end
