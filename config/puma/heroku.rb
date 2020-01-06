@@ -1,20 +1,21 @@
 # This is for Heroku
 
 # Example: https://github.com/puma/puma/blob/master/examples/config.rb
+# https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#config
 
 environment "production"
 
-port ENV.fetch("PORT") { 3000 }
+port ENV['PORT'] || 3000
 
-# preload_app!
+preload_app!
 
 rackup DefaultRackup
 
-threads 1, Integer(ENV.fetch("MAX_THREADS") { 2 })
-# Min and Max threads per worker
+# # Min and Max threads per worker
+threads 1, Integer(ENV['MAX_THREADS'] || 5)
 
-workers Integer(ENV.fetch("WEB_CONCURRENCY") { 1 })
-# Change to match your CPU core count
+# # Change to match your CPU core count
+workers Integer(ENV['WEB_CONCURRENCY'] || 1)
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection
