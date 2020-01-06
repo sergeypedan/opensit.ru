@@ -53,18 +53,18 @@ Opensit::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options = { host: Rails.application.secrets.domain }
+  config.action_mailer.default_url_options = { host: ENV.fetch("DOMAIN") }
 
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
     address:              "smtp.mailgun.com",
     authentication:       :plain,
-    domain:               Rails.application.secrets.domain,
+    domain:               ENV.fetch("DOMAIN"),
     enable_starttls_auto: false, # false, если возникает SSL-ошибка о сертификате
-    password:             Rails.application.secrets.mailgun_smtp_password,
+    password:             ENV.fetch("MAILGUN_SMTP_PASSWORD"),
     port:                 587,
-    user_name:            Rails.application.secrets.mailgun_smtp_username
+    user_name:            ENV.fetch("MAILGUN_SMTP_USERNAME")
   }
 
   # Enable threaded mode

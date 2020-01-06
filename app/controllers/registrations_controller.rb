@@ -32,7 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
       Blacklist::EMAIL_PATTERNS.each do |pattern|
         if email =~ pattern
           Rails.logger.error("Registration blocked via blacklist! #{email}")
-          return redirect_to root_path, alert: t('sign_up.messages.registration_blocked', public_email: Rails.application.secrets.public_email)
+          return redirect_to root_path, alert: t('sign_up.messages.registration_blocked', public_email: ENV.fetch("PUBLIC_EMAIL"))
         end
       end
     end

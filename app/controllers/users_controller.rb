@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     end
 
     @title = "#{@user.display_name}\'s meditation journal"
-    @desc  = "#{@user.display_name}\'s meditation journal has #{@user.sits_count} entries on #{Rails.application.secrets.brand}, a free online meditation community."
+    @desc  = "#{@user.display_name}\'s meditation journal has #{@user.sits_count} entries on #{ENV.fetch("BRAND")}, a free online meditation community."
     @page_class = 'view-user'
   end
 

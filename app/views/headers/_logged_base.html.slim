@@ -3,7 +3,7 @@ nav class="navbar navbar-default navbar-fixed-top" role="navigation"
 
     .navbar-header
       = button_tag fa_icon("bars", style: "color: white"), type: :button, class: "navbar-toggle", data: { toggle: :collapse, target: ".navbar-collapse" }
-      / .nav-logo = link_to image_tag('logos/logo-6.png', alt: Rails.application.secrets.brand, class: 'nav-logomark'), root_path, class: "navbar-brand"
+      / .nav-logo = link_to image_tag('logos/logo-6.png', alt: ENV.fetch("BRAND"), class: 'nav-logomark'), root_path, class: "navbar-brand"
 
     .collapse.navbar-collapse
       = render "headers/logged_left"

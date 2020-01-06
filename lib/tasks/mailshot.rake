@@ -16,15 +16,15 @@ task :mailshot => :environment do
     skip = 0
   end
 
-  ActionMailer::Base.default_url_options = { host: Rails.application.secrets.domain }
+  ActionMailer::Base.default_url_options = { host: ENV.fetch("DOMAIN") }
 
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => "smtp.mailgun.com",
     :port           => '587',
     :authentication => :plain,
-    :user_name      => Rails.application.secrets.sendgrid_username,
-    :password       => Rails.application.secrets.sendgrid_password,
-    :domain         => 'heroku.com',
+    :user_name      => ENV.fetch("MAILGUN_SMTP_USERNAME"),
+    :password       => ENV.fetch("MAILGUN_SMTP_PASSWORD"),
+    :domain         => ENV.fetch("DOMAIN"),
     :enable_starttls_auto => true
   }
   ActionMailer::Base.delivery_method = :smtp

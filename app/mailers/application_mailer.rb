@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
 
-  default from: "OpenSit <#{Rails.application.secrets.public_email}>"
+  default from: "OpenSit <#{ENV.fetch("PUBLIC_EMAIL")}>"
 
 end

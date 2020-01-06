@@ -1,4 +1,4 @@
-<% domain = Rails.application.secrets.domain %>
+<% domain = ENV.fetch("DOMAIN") %>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
     <table width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td width="10%"></td>
-        <td width="80%"><%= image_tag "https://#{domain}/images/email_header.png", alt: Rails.application.secrets.brand %></td>
+        <td width="80%"><%= image_tag "https://#{domain}/images/email_header.png", alt: ENV.fetch("BRAND") %></td>
         <td width="10%"></td>
       </tr>
       <tr>
@@ -18,7 +18,7 @@
           <td style="background: white; border: 1px solid #CCC; padding: 20px" align="left" width="80%">
             <p>Hi all,</p>
             <p>Imagine a situation where you could enhance your practice by meditating with people from anywhere in the world. We want to make this happen! But we need your help.</p>
-            <p>OpenSit has a <a href="https://#{Rails.application.secrets.domain}/calendar">new calendar page</a> with listings for shared online meditation sessions, powered by Google Hangouts. We already have our first member hosting a daily 30 minute session. We are looking for more people who are also interested in hosting meditation sessions.</p>
+            <p>OpenSit has a <a href="https://#{ENV.fetch("DOMAIN")}/calendar">new calendar page</a> with listings for shared online meditation sessions, powered by Google Hangouts. We already have our first member hosting a daily 30 minute session. We are looking for more people who are also interested in hosting meditation sessions.</p>
             <p>Please let us know (by replying to this email) if you would be interested in hosting a regular time slot. It's a pretty simple process:</p>
             <ol>
               <li>We create a Google Hangout link for you and add it to the group calendar</li>

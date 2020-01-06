@@ -33,7 +33,7 @@ describe 'Users' do
 
     expect(page.body).to include(I18n.t(
       'sign_up.messages.registration_blocked',
-      public_email: Rails.application.secrets.public_email
+      public_email: ENV.fetch("PUBLIC_EMAIL")
     ))
   end
 

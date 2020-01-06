@@ -11,15 +11,14 @@ footer.site-footer
     .col-md-3.hidden-xs
       / h5 = t "footer.community"
       / ul
-      /   li = link_to "Twitter",  "https://twitter.com/#{Rails.application.secrets.twitter_id}"
-      /   li = link_to "Facebook", "https://www.facebook.com/#{Rails.application.secrets.facebook_id}"
-      /   li = link_to "Google+",  "https://www.google.com/+#{Rails.application.secrets.google_plus_id}"
+      /   li = link_to "Twitter",  "https://twitter.com/#{ENV["TWITTER_ID"]}"
+      /   li = link_to "Facebook", "https://www.facebook.com/#{ENV["FACEBOOK_ID"]}"
 
     .col-md-3.hidden-xs
       / h5 = t "footer.contribute"
       / ul
       /   li = link_to t("footer.how_to_contribute"), "/contribute"
-      /   li = link_to t("footer.github"), "http://github.com/#{Rails.application.secrets.github_id}"
+      /   li = link_to t("footer.github"), "http://github.com/#{ENV.fetch("GITHUB_ID")}"
 
     .col-md-3.copyright-holder
       = image_tag "logos/logo-3.png", class: "footer-logo"
@@ -34,4 +33,4 @@ footer.site-footer
       p.copyright
         | &copy; 2013–
         => Time.now.year
-        = Rails.application.secrets.brand
+        = ENV.fetch("BRAND")

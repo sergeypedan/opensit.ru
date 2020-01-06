@@ -1,4 +1,4 @@
-<% domain = Rails.application.secrets.domain %>
+<% domain = ENV.fetch("DOMAIN") %>
 
 <!DOCTYPE html>
 <html>
@@ -12,12 +12,12 @@
 					<td width="10%"></td>
 					<td style="background: white; border: 1px solid #CCC; padding: 20px" align="center" width="80%">
 						<h1 style="color: #333">We've been busy...</h1>
-						<%= image_tag 'logos/logomark_trans_lg.png', width: 300, alt: Rails.application.secrets.brand %>
+						<%= image_tag 'logos/logomark_trans_lg.png', width: 300, alt: ENV.fetch("BRAND") %>
 						<p>Check out our <b>new design</b>! OpenSit is now fully responsive which means you can now browse and share your practice from your mobile or tablet.</p>
 						<br>
 						<a style="margin:20px; background:#51924f; text-decoration:none; padding:15px; color: white; border-radius:5px; font-size: 2em;" href="http://<%= domain %>/front">Take a look!</a>
 						<br><br>
-						<p>We hope you like it. If you have any thoughts we'd love to hear from you! <%= Rails.application.secrets.public_email %></p>
+						<p>We hope you like it. If you have any thoughts we'd love to hear from you! <%= ENV.fetch("PUBLIC_EMAIL") %></p>
 						<p>Thanks,</p>
 						<%= render "user_mailer/signature" %>
 					</td>

@@ -24,21 +24,21 @@
           .text
             = t("welcome_screen.li3")
 
-            - if Rails.application.secrets.facebook_app_id.present?
+            - if ENV["FACEBOOK_APP_ID"].present?
               #fb-root
               javascript:
                 (function(d, s, id) {
                   var js, fjs = d.getElementsByTagName(s)[0];
                   if (d.getElementById(id)) return;
                   js = d.createElement(s); js.id = id;
-                  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=#{Rails.application.secrets.facebook_app_id}&version=v2.0";
+                  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=#{ENV["FACEBOOK_APP_ID"]}&version=v2.0";
                   fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
-              = content_tag :div, nil, class: "fb-like", data: { href: Rails.application.secrets.domain, layout: "button_count", action: "like", show_faces: true, share: false }
+              = content_tag :div, nil, class: "fb-like", data: { href: ENV.fetch("DOMAIN"), layout: "button_count", action: "like", show_faces: true, share: false }
 
-            - if Rails.application.secrets.twitter_id.present?
+            - if ENV["TWITTER_ID"].present?
               .twitter-follow-container
-                = link_to t('welcome_screen.follow_twitter', twitter_id: Rails.application.secrets.twitter_id), "https://twitter.com/#{Rails.application.secrets.twitter_id}", class: "twitter-follow-button", data: { dnt: true, show_count: false }
+                = link_to t('welcome_screen.follow_twitter', twitter_id: ENV["TWITTER_ID"]), "https://twitter.com/#{ENV["TWITTER_ID"]}", class: "twitter-follow-button", data: { dnt: true, show_count: false }
                 javascript:
                   !function(d, s, id) {
                     var js,

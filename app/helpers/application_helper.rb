@@ -3,9 +3,9 @@ module ApplicationHelper
   # Returns the full title on a per-page basis
   def full_title(page_title)
     if page_title.nil?
-      "#{Rails.application.secrets.brand} | #{t('home.banner.title')}"
+      "#{ENV.fetch("BRAND")} | #{t('home.banner.title')}"
     else
-      "#{page_title} | #{Rails.application.secrets.brand}, #{t('home.banner.title')}"
+      "#{page_title} | #{ENV.fetch("BRAND")}, #{t('home.banner.title')}"
     end
   end
 

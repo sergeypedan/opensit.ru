@@ -1,4 +1,4 @@
-<% domain = Rails.application.secrets.domain %>
+<% domain = ENV.fetch("DOMAIN") %>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 	    <tr>
     		<td width="10%"></td>
         <td style="background: white; border: 1px solid #CCC; padding: 20px" align="center" width="80%">
-          <%= image_tag 'logos/logomark_trans_lg.png', width: 200, alt: Rails.application.secrets.brand %>
+          <%= image_tag 'logos/logomark_trans_lg.png', width: 200, alt: ENV.fetch("BRAND") %>
           <p>You can now <strong>set goals</strong> and <strong>get feedback</strong> on your meditation practice!</p>
           <p style="font-size: 1.3em; color: #666; margin-bottom: 1em;">Goals are a great way to strengthen your practice, and maintain accountability</p>
           <img style="margin-bottom: 2em;" src="http://<%= domain %>/images/goal.png">

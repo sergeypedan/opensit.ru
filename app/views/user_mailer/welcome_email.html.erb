@@ -1,6 +1,6 @@
 <%
-  domain = Rails.application.secrets.domain
-  brand  = Rails.application.secrets.brand
+  domain = ENV.fetch("DOMAIN")
+  brand  = ENV.fetch("BRAND")
 %>
 
 <!DOCTYPE html>
@@ -23,9 +23,9 @@
             <p>Привет, спасибо за то, что вы присоединились к <%= brand %>!</p>
             <p>Надеемся, что вы скоро освоитесь на сайте, и вам понравится быть с нами!</p>
             <p>Чтобы получить от сообщества открытой практики максимум пользы, заполните свой профиль пользователя на сайте, добавляйте друзей, а также исследуйте основную ленту дневников — возможно, чьи-то отчёты о медитации будут содержать для вас ценные подсказки.</p>
-            <p>С любыми вопросами, комментариями и предложениями смело пишите нам на <%= mail_to Rails.application.secrets.public_email %>.</p>
+            <p>С любыми вопросами, комментариями и предложениями смело пишите нам на <%= mail_to ENV.fetch("PUBLIC_EMAIL") %>.</p>
             <p>Успешной вам практики!</p>
-            <p><%= Rails.application.secrets.public_person %><br><%= domain %></p>
+            <p><%= ENV.fetch("PUBLIC_PERSON") %><br><%= domain %></p>
           </td>
           <td width="10%"></td>
       </tr>

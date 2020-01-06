@@ -3,8 +3,8 @@ header.brand-header
   .left-column = link_to t("footer.journal"), about_journal_path
 
   = link_to root_path, class: "logo-column"
-    = image_tag 'logos/logo-2.png', class: 'main-logo', alt: Rails.application.secrets.brand
-    / p.opensit = Rails.application.secrets.brand
+    = image_tag 'logos/logo-2.png', class: 'main-logo', alt: ENV.fetch("BRAND")
+    / p.opensit = ENV.fetch("BRAND")
 
   .right-column
     - if controller_name == "sessions" && devise_mapping.registerable?
