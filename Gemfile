@@ -48,20 +48,21 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'letter_opener'
   gem 'meta_request'
-  gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-coolline'
+  gem 'pry-rails'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
 end
 
 group :test do
   gem 'capybara'
+  gem 'capybara-screenshot'
   gem 'database_cleaner'
   gem 'faker' # Generates names, emails and other placeholders for factories
   gem 'launchy'
-  gem 'poltergeist'
+  gem 'rails-controller-testing'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'timecop'
-  gem 'rails-controller-testing'
 end
