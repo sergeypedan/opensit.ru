@@ -788,7 +788,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (0.18.0)
+    pg (1.2.1)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -984,7 +984,7 @@ DEPENDENCIES
   nokogiri
   nprogress-rails
   paperclip
-  pg (= 0.18)
+  pg
   poltergeist
   premailer-rails
   pry-byebug
