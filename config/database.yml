@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   database: opensit_development
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
   pool: 5
   timeout: 5000
   username: <%= `whoami`.chomp %>
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   database: opensit_test
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
   pool: 5
   timeout: 5000
   username: <%= `whoami`.chomp %>
