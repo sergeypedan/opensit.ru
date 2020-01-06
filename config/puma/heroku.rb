@@ -16,6 +16,6 @@ threads 1, Integer(ENV.fetch("MAX_THREADS") { 2 })
 workers Integer(ENV.fetch("WEB_CONCURRENCY") { 1 })
 # Change to match your CPU core count
 
-# on_worker_boot do
-#   ActiveRecord::Base.establish_connection
-# end
+on_worker_boot do
+  ActiveRecord::Base.establish_connection
+end
