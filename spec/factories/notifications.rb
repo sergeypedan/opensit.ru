@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :notification do
-    message { Faker::Lorem.sentence(10) }
+    message { Faker::Lorem.sentence(word_count: 10) }
     sequence :user_id do |n|
       n
     end

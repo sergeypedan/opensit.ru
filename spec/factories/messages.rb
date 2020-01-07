@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :message do
-    body { Faker::Lorem.paragraph(1) }
+    body { Faker::Lorem.paragraph(sentence_count: 1) }
     sequence :from_user_id do |n|
       1 + n
     end
