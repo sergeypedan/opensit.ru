@@ -88,15 +88,11 @@ class User < ActiveRecord::Base
 
   # Location based on whether/if city and country have been entered
   def location
-    return "#{city}, #{country}" if city? && country?
-    return city if city?
-    return country if country?
+    [first_name, last_name].join(" ")
   end
 
   def display_name
-    return username if first_name.blank?
-    return first_name if last_name.blank?
-    "#{first_name} #{last_name}"
+    [first_name, last_name].join(" ")
   end
 
   ##
