@@ -778,7 +778,7 @@ GEM
       railties (>= 3.1)
     money (6.13.7)
       i18n (>= 0.6.4, <= 2)
-    multi_json (1.13.1)
+    multi_json (1.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     newrelic_rpm (5.4.0.347)
