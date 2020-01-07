@@ -84,7 +84,5 @@ module Opensit
       Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "sign_up" }
     end
 
-    config.rakismet.key = Rails.application.secrets.rakismet_key
-    config.rakismet.url = Rails.application.secrets.rakismet_url
   end
 end
