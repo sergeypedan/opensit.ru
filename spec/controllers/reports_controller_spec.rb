@@ -7,7 +7,7 @@ RSpec.describe ReportsController, :type => :controller do
     @ananda = create :user, username: 'ananda'
     @sit = create :sit, user: @buddha
     @report = build :report, user: @ananda, reportable_id: @sit.id, reportable_type: @sit.class.to_s
-    sign_in :user, @ananda
+    sign_in @ananda, scope: :user
   end
 
   describe "POST create" do
