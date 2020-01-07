@@ -12,7 +12,6 @@ gem 'colorize'
 gem 'compass-rails'
 gem 'country_select'
 gem 'devise'
-gem 'figaro'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'kramdown'
@@ -46,6 +45,7 @@ end
 
 group :development, :test do
   gem 'factory_bot_rails'
+  gem 'figaro'
   gem 'letter_opener'
   gem 'meta_request'
   gem 'pry-byebug'
