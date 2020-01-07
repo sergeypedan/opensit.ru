@@ -928,8 +928,8 @@ GEM
     temple (0.8.2)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    textacular (5.1.0)
-      activerecord (>= 5.0, < 6.0)
+    textacular (5.2.0)
+      activerecord (>= 5.0, < 6.1)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
