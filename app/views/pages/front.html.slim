@@ -30,8 +30,8 @@ section.three-panes
 
 section.copy
   h2 = t 'home.join.title'
-  p = t 'home.join.text'
-  p = link_to t('home.join.link'), new_user_registration_path
+  p style="margin-bottom: 20px" = t 'home.join.text'
+  = link_to t('home.join.link'), new_user_registration_path, class: "btn btn-default"
   p style="margin: 20px auto -10px" = t 'home.join.incentive'
   = render "plugins/likely"
 
