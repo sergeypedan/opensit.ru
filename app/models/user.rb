@@ -103,11 +103,14 @@ class User < ActiveRecord::Base
   end
 
   def location
-    [first_name, last_name].join(" ")
+    return [city, country].join(", ").strip.squish if [city, country].all?(&:present?)
+    city.presence || country.presence
   end
 
   def display_name
-    [first_name, last_name].join(" ")
+    return username   if first_name.blank?
+    return first_name if last_name.blank?
+    [first_name, last_name].join(" ").strip.squish
   end
 
   def latest_sit(current_user)
