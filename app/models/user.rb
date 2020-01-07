@@ -2,16 +2,29 @@ require 'textacular/searchable'
 
 class User < ActiveRecord::Base
 
-  OPENSIT_FOLLOWER_ID = 97
   GENDERS = %w[male female other].freeze
+  MODERATOR_USERNAMES = []
+  OPENSIT_FOLLOWER_ID = 97
 
-  include Rakismet::Model # Spam
+  # Textacular: search these columns only
 
+  extend Searchable(:username, :first_name, :last_name, :city, :country)
+
+
+  # Rakismet SPAM filtering
+
+  include Rakismet::Model
   rakismet_attrs author: :username,
                  author_email: :email,
                  author_url: :website,
                  content: :who,
                  user_ip: :current_sign_in_ip
+
+
+  # Devise
+
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable
+
 
   attr_accessor :avatar
 
@@ -20,6 +33,9 @@ class User < ActiveRecord::Base
   #                 :practice, :private_diary, :style, :user_type, :username,
   #                 :who, :why, :password_confirmation, :remember_me, :avatar,
   #                 :private_stream
+
+
+  # Associations
 
   has_many :sits, dependent: :destroy
   has_many :messages_received, -> { where receiver_deleted: false }, class_name: 'Message', foreign_key: 'to_user_id'
@@ -41,8 +57,14 @@ class User < ActiveRecord::Base
 
   has_many :reports, dependent: :destroy
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable
+
+  # Paperclip
+
+  has_attached_file :avatar, styles: { small_thumb: '50x50#', thumb: '250x250#' }
+  validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
+
+  # Validations
 
   # Devise :validatable (above) covers validation of email and password
   validates :username, length: { minimum: 3, maximum: 20 }
@@ -50,24 +72,22 @@ class User < ActiveRecord::Base
   validates :username, no_empty_spaces: true
   # validates :username, unique_page_name: true
 
-  # Textacular: search these columns only
-  extend Searchable(:username, :first_name, :last_name, :city, :country)
-
   # Pagination: sits per page
   self.per_page = 10
 
-  # Paperclip
-  has_attached_file :avatar, styles: {
-    small_thumb: '50x50#',
-    thumb: '250x250#',
-  }
-  validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
   # Scopes
+
   scope :newest_first, -> { order(created_at: :desc) }
   scope :communal, -> { where(private: false) }
 
-  MODERATOR_USERNAMES = ['danbartlett', 'Bluemoon', 'WhipWhompnWhoopWhoop']
+
+  # Callbacks
+
+  after_create :welcome_email, :follow_opensit
+
+
+  # Methods
 
   # Used by url_helper to determine user path, eg; /buddha and /user/buddha
   def to_param
@@ -82,11 +102,6 @@ class User < ActiveRecord::Base
     !country.blank?
   end
 
-  ##
-  # VIRTUAL ATTRIBUTES
-  ##
-
-  # Location based on whether/if city and country have been entered
   def location
     [first_name, last_name].join(" ")
   end
@@ -94,10 +109,6 @@ class User < ActiveRecord::Base
   def display_name
     [first_name, last_name].join(" ")
   end
-
-  ##
-  # METHODS
-  ##
 
   def latest_sit(current_user)
     return sits.newest_first.limit(1) if self == current_user
@@ -387,21 +398,16 @@ class User < ActiveRecord::Base
     User.all.where(private_stream: false).order(sits_count: :desc)
   end
 
-  ##
-  # CALLBACKS
-  ##
-
-  after_create :welcome_email, :follow_opensit
 
   private
 
-    def welcome_email
-      UserMailer.welcome_email(self).deliver_now
-    end
+  def welcome_email
+    UserMailer.welcome_email(self).deliver_now
+  end
 
-    def follow_opensit
-      relationships.create!(followed_id: OPENSIT_FOLLOWER_ID)
-    end
+  def follow_opensit
+    relationships.create!(followed_id: OPENSIT_FOLLOWER_ID)
+  end
 
 end
 
