@@ -36,12 +36,10 @@ end
 #
 # Table name: goals
 #
+#  id             :integer          not null, primary key
 #  completed_date :datetime
-#  created_at     :datetime
 #  duration       :integer
 #  goal_type      :integer
-#  id             :integer          not null, primary key
 #  mins_per_day   :integer
-#  updated_at     :datetime
 #  user_id        :integer
 #

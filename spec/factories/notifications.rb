@@ -12,14 +12,12 @@ end
 #
 # Table name: notifications
 #
-#  created_at :datetime
-#  id         :integer          not null, primary key
-#  initiator  :integer
-#  link       :string(255)
-#  message    :string(255)
-#  updated_at :datetime
-#  user_id    :integer
-#  viewed     :boolean          default(FALSE)
-#  object_type :string(255)
-#  object_id  :integer
+#  id          :integer          not null, primary key
+#  initiator   :integer
+#  link        :string
+#  message     :string
+#  object_type :string
+#  viewed      :boolean          default(FALSE)
+#  object_id   :integer
+#  user_id     :integer
 #

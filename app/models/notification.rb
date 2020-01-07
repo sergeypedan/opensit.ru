@@ -110,13 +110,11 @@ end
 # Table name: notifications
 #
 #  id          :integer          not null, primary key
-#  user_id     :integer
-#  message     :string
-#  link        :string
 #  initiator   :integer
-#  viewed      :boolean          default(FALSE)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  link        :string
+#  message     :string
 #  object_type :string
+#  viewed      :boolean          default(FALSE)
 #  object_id   :integer
+#  user_id     :integer
 #

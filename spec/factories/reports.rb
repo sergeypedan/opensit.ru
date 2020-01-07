@@ -10,12 +10,10 @@ end
 #
 # Table name: reports
 #
-#  id              :integer          not null, primary key
-#  reportable_id   :integer
-#  reportable_type :string(255)
-#  user_id         :integer
-#  reason          :string(255)
+#  id              :bigint           not null, primary key
 #  body            :text
-#  created_at      :datetime
-#  updated_at      :datetime
+#  reason          :string
+#  reportable_type :string
+#  reportable_id   :bigint
+#  user_id         :bigint
 #

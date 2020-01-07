@@ -12,8 +12,6 @@ end
 # Table name: taggings
 #
 #  id         :integer          not null, primary key
-#  tag_id     :integer
 #  sit_id     :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  tag_id     :integer
 #

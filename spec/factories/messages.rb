@@ -18,14 +18,12 @@ end
 #
 # Table name: messages
 #
-#  body             :text
-#  created_at       :datetime         not null
-#  from_user_id     :integer
 #  id               :integer          not null, primary key
+#  body             :text
 #  read             :boolean          default(FALSE)
 #  receiver_deleted :boolean          default(FALSE)
 #  sender_deleted   :boolean          default(FALSE)
-#  subject          :string(255)
+#  subject          :string
+#  from_user_id     :integer
 #  to_user_id       :integer
-#  updated_at       :datetime         not null
 #

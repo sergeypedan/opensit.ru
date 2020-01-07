@@ -15,12 +15,10 @@ end
 #
 # Table name: reports
 #
-#  id              :bigint(8)        not null, primary key
-#  reportable_type :string
-#  reportable_id   :bigint(8)
-#  user_id         :bigint(8)
-#  reason          :string
+#  id              :bigint           not null, primary key
 #  body            :text
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  reason          :string
+#  reportable_type :string
+#  reportable_id   :bigint
+#  user_id         :bigint
 #

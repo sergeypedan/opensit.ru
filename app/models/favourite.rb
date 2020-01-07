@@ -16,9 +16,7 @@ end
 # Table name: favourites
 #
 #  id              :integer          not null, primary key
-#  favourable_id   :integer
 #  favourable_type :string
+#  favourable_id   :integer
 #  user_id         :integer
-#  created_at      :datetime
-#  updated_at      :datetime
 #

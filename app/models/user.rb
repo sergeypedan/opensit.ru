@@ -419,47 +419,43 @@ end
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  username               :string
-#  email                  :string
-#  first_name             :string
-#  last_name              :string
-#  dob                    :date
-#  gender                 :string
-#  city                   :string
-#  country                :string
-#  who                    :text
-#  why                    :text
-#  style                  :string(100)
-#  practice               :text
-#  private_diary          :boolean
-#  default_sit_length     :integer          default(30)
-#  user_type              :integer
-#  created_at             :datetime
-#  updated_at             :datetime
-#  encrypted_password     :string(128)      default(""), not null
-#  password_salt          :string
 #  authentication_token   :string
+#  avatar_content_type    :string
+#  avatar_file_name       :string
+#  avatar_file_size       :bigint
+#  city                   :string
+#  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  reset_password_token   :string
-#  remember_token         :string
-#  remember_created_at    :datetime
-#  sign_in_count          :integer          default(0)
+#  country                :string
 #  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string
-#  last_sign_in_ip        :string
+#  default_sit_length     :integer          default(30)
+#  dob                    :date
+#  email                  :string
+#  encrypted_password     :string(128)      default(""), not null
 #  failed_attempts        :integer          default(0)
-#  unlock_token           :string
+#  first_name             :string
+#  gender                 :string
+#  last_name              :string
+#  last_sign_in_at        :datetime
+#  last_sign_in_ip        :string
 #  locked_at              :datetime
-#  website                :string(100)
-#  avatar_file_name       :string
-#  avatar_content_type    :string
-#  avatar_file_size       :bigint(8)
-#  avatar_updated_at      :datetime
+#  password_salt          :string
+#  practice               :text
+#  private_diary          :boolean
 #  private_stream         :boolean          default(FALSE)
+#  remember_token         :string
 #  reset_password_sent_at :datetime
+#  reset_password_token   :string
+#  sign_in_count          :integer          default(0)
 #  sits_count             :integer          default(0)
 #  streak                 :integer          default(0)
+#  style                  :string(100)
+#  unlock_token           :string
+#  user_type              :integer
+#  username               :string
+#  website                :string(100)
+#  who                    :text
+#  why                    :text
 #

@@ -46,7 +46,5 @@ end
 #  id         :integer          not null, primary key
 #  body       :text
 #  sit_id     :integer
-#  created_at :datetime
-#  updated_at :datetime
 #  user_id    :integer
 #

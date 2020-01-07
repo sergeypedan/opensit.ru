@@ -34,8 +34,8 @@ end
 #
 # Table name: likes
 #
-#  id            :bigint(8)        not null, primary key
+#  id            :bigint           not null, primary key
 #  likeable_type :string
-#  likeable_id   :bigint(8)
-#  user_id       :bigint(8)
+#  likeable_id   :bigint
+#  user_id       :bigint
 #
