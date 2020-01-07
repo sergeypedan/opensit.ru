@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :report do
-    reason { Faker::Lorem.characters(20) }
-    body { Faker::Lorem.characters(50) }
+    reason { Faker::Lorem.characters(number: 20) }
+    body { Faker::Lorem.characters(number: 50) }
   end
 
 end

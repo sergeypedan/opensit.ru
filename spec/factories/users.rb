@@ -4,7 +4,7 @@ FactoryBot.define do
       "#{Faker::Name.first_name}#{n}"
     end
     email { Faker::Internet.email }
-    password { Faker::Lorem.characters(12) }
+    password { Faker::Lorem.characters(number: 12) }
 
     factory :buddha do
       username { "buddha" }
