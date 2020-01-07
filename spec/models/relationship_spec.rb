@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Relationship, type: :model do
   it { should belong_to(:follower) }
   it { should belong_to(:followed) }

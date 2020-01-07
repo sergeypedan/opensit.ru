@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'Users' do
   let!(:buddha) { create :user, username: 'buddha' }
 

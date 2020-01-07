@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe UsersController, type: :controller do
   let!(:buddha) { create(:user, username: 'buddha') }
 

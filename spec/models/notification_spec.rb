@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Notification do
   it "has a valid factory" do
     expect(build(:notification)).to be_valid

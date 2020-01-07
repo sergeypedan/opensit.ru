@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Sit, type: :model do
   let(:buddha) { create(:buddha) }
   let(:ananda) { create(:ananda) }

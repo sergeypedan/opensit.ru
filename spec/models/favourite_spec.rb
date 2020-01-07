@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Favourite, type: :model do
   it "has a valid factory" do
     expect(build(:favourite)).to be_valid

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Goal, type: :model do
 	it 'has valid factory' do
     expect(build(:goal)).to be_valid

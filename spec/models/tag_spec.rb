@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Tag, type: :model do
   it { should have_many(:taggings) }
   it { should have_many(:sits).through(:taggings) }

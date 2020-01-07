@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 class ValidatableSpaces
   include ActiveModel::Validations
   attr_accessor :string

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Like do
 	before :each do
     @buddha = create :user

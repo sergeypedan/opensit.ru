@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe GoalsHelper, type: :helper do
   describe '#rating_colour' do
     it 'under 50%' do

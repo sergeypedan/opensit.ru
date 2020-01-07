@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 class ValidatablePages
   include ActiveModel::Validations
   attr_accessor :name
