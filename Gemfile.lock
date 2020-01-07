@@ -751,7 +751,6 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    libv8 (3.16.14.19)
     localer (0.1.1)
       dry-initializer (~> 2.3.0)
       thor (~> 0.20.0)
@@ -855,7 +854,6 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (4.1.3)
-    ref (2.0.0)
     regexp_parser (1.6.0)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -930,9 +928,6 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     textacular (5.2.0)
       activerecord (>= 5.0, < 6.1)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -1006,7 +1001,6 @@ DEPENDENCIES
   slim-rails
   split
   textacular
-  therubyracer
   timecop
   uglifier
   will_paginate
