@@ -200,7 +200,6 @@ GEM
     multi_json (1.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    newrelic_rpm (5.4.0.347)
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
@@ -404,7 +403,6 @@ DEPENDENCIES
   meta_request
   mini_magick
   momentjs-rails
-  newrelic_rpm
   nokogiri
   nprogress-rails
   paperclip
