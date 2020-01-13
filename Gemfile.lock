@@ -77,6 +77,9 @@ GEM
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     capybara (3.30.0)
       addressable
@@ -355,6 +358,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-wysihtml5-rails
   bootstrap3-datetimepicker-rails
+  bullet
   capybara
   capybara-screenshot
   coffee-rails
