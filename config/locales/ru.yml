@@ -195,6 +195,7 @@ ru:
       one: Подписан на %{count}
       few: Подписан на %{count}
       many: Подписан на %{count}
+      other: Подписан на %{count}
     followers: подписчиков
     joined: Присоединился
     entries_count:
