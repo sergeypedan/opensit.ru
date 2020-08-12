@@ -6,7 +6,7 @@
 - else
   table.table
     - @notifications.each do |notification|
-      tr class=viewed_or_not(notification)
+      tr class=unviewed_class_of(notification)
       = content_tag :tr, class: ("new-notification" unless notification.viewed)
         td.avatar = small_avatar_of(User.find(notification.initiator)) if User.exists?(notification.initiator)
         td
