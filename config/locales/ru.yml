@@ -352,6 +352,10 @@ ru:
       many: "%{count} дней"
       other: "%{count} дней"
 
+  date:
+    formats:
+      goal_date_format: "%e %B, %Y"
+
   time:
     formats:
       goal_date_format: "%e %B, %Y"

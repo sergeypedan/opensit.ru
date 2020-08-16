@@ -337,6 +337,10 @@ en:
       many: "%{count} days"
       other: "%{count} days"
 
+  date:
+    formats:
+      goal_date_format: "%e %B, %Y"
+
   time:
     formats:
       goal_date_format: "%e %B, %Y"
