@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @sit = Sit.find(params[:sit_id])
-    @comment = @sit.comments.build(params[:comment])
+    @comment = @sit.comments.build(body: params[:comment][:body])
     @comment.user_id = current_user.id
 
     respond_to do |format|
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
-    if @comment.update_attributes(params[:comment])
+    if @comment.update_attributes(body: params[:comment])
       redirect_to @comment, notice: 'Your comment has been updated.'
     else
       render action: "edit"

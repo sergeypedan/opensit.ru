@@ -1,70 +1,69 @@
 = render "users/user_summary"
 
 .col-md-9
-	.text-section
-		= render "sits/back_button"
+  .text-section
+    = render "sits/back_button"
 
-		header
-			.mobile-user-summary
-				= small_avatar_of(@user)
-				= username(@user)
+    header
+      .mobile-user-summary
+        = small_avatar_of(@user)
+        = username(@user)
 
-			h1.sit-title = @sit.full_title
+      h1.sit-title = @sit.full_title
 
-			ruby:
-				private_notice = nil
-				private_notice = t("stream.your_stream_private") if @sit.user.private_stream
-				private_notice = t("stream.this_sit_private") if @sit.private
+      ruby:
+        private_notice = nil
+        private_notice = t("stream.your_stream_private") if @sit.user.private_stream
+        private_notice = t("stream.this_sit_private") if @sit.private
 
-			.sit-stats
-				= content_tag :div, link_to(fa_icon("cog", text: t("forms.edit")), edit_sit_path(@sit)), class: "stat" if current_user and @sit.mine?(current_user)
-				= content_tag :div, fa_icon("clock-o", text: l(@sit.created_at, format: "%-d %B %Y, %H:%M")), class: "stat"
-				= content_tag :div, fa_icon("heart", text: @sit.likes.count), class: "stat" if @sit.liked?
-				= content_tag :div, fa_icon("comment", text: @sit.comments.count), class: "stat" if @sit.comments.present?
-				= content_tag :div, fa_icon("lock", text: private_notice, class: "text-primary"), class: "stat" if private_notice
+      .sit-stats
+        = content_tag :div, link_to(fa_icon("cog", text: t("forms.edit")), edit_sit_path(@sit)), class: "stat" if current_user and @sit.mine?(current_user)
+        = content_tag :div, fa_icon("clock-o", text: l(@sit.created_at, format: "%-d %B %Y, %H:%M")), class: "stat"
+        = content_tag :div, fa_icon("heart", text: @sit.likes.count), class: "stat" if @sit.liked?
+        = content_tag :div, fa_icon("comment", text: @sit.comments.count), class: "stat" if @sit.comments.present?
+        = content_tag :div, fa_icon("lock", text: private_notice, class: "text-primary"), class: "stat" if private_notice
 
-			- if @sit.tags.any?
-				.tags-container = tag_labels(@sit.tags)
+      - if @sit.tags.any?
+        .tags-container = tag_labels(@sit.tags)
 
-		.body = markdown @sit.body
+    .body = markdown @sit.body
 
-		- if current_user
-			.row
-				= content_tag :div, class: ["like-row", ('my-sit' if current_user == @user)]
-					.col-md-12.like-it
-						#who_likes = render "likes/like_module"
-						= render "shared/like_button"
+    - if current_user
+      .row
+        = content_tag :div, class: ["like-row", ('my-sit' if current_user == @user)]
+          .col-md-12.like-it
+            #who_likes = render "likes/like_module"
+            = render "shared/like_button"
 
-			.row
-				.col-md-12
-					= fa_icon "flag-o", class: "report-flag", data: { container: 'body', toggle: :tooltip, placement: 'top', original_title: t("navigation.report") }
-					= render 'reports/report_modal', reportable: @sit
+      .row
+        .col-md-12
+          = fa_icon "flag-o", class: "report-flag", data: { container: 'body', toggle: :tooltip, placement: 'top', original_title: t("navigation.report") }
+          = render 'reports/report_modal', reportable: @sit
 
-			/ - if [@previous, @next].map(&:present?).include?(true)
-			/   .prev-next-row
-			/     - if @previous
-			/       .sit_preview.previous
-			/         = link_to sit_path(@previous)
-			/           .arrow = fa_icon "chevron-left"
-			/           = render "sit_preview", sit: @previous
+      / - if [@previous, @next].map(&:present?).include?(true)
+      /   .prev-next-row
+      /     - if @previous
+      /       .sit_preview.previous
+      /         = link_to sit_path(@previous)
+      /           .arrow = fa_icon "chevron-left"
+      /           = render "sit_preview", sit: @previous
 
-			/     - if @next
-			/       .sit_preview.next
-			/         = link_to sit_path(@next)
-			/           = render "sit_preview", sit: @next
-			/           .arrow = fa_icon "chevron-right"
+      /     - if @next
+      /       .sit_preview.next
+      /         = link_to sit_path(@next)
+      /           = render "sit_preview", sit: @next
+      /           .arrow = fa_icon "chevron-right"
 
-	- if !@sit.disable_comments && !@sit.private
-		.comments
-			- if @sit.comments.any?
-				h2 = t("comments.h1")
-				.comments-list
-					- @sit.comments.order(:created_at).each do |comment|
-						- @comment = comment
-						= render "comments/comment"
+  - if !@sit.disable_comments && !@sit.private
+    .comments
+      h2 = t("comments.h1")
+      .comments-list
+        - @sit.comments.order(:created_at).each do |comment|
+          - @comment = comment
+          = render "comments/comment"
 
-			- if user_signed_in?
-				.new-comment
-					= simple_form_for [@sit, @sit.comments.build], remote: true do |f|
-						= f.input :body, label: false, input_html: { rows: 8, class: 'rich-textarea col-md-12', placeholder: t("comments.body") }
-						= f.submit t("comments.submit"), class: 'post-comment-btn btn btn-primary btn-lg pull-right'
+      - if user_signed_in?
+        .new-comment
+          = simple_form_for [@sit, @sit.comments.build], remote: true do |f|
+            = f.input :body, label: false, input_html: { rows: 8, class: 'rich-textarea col-md-12', placeholder: t("comments.body") }
+            = f.submit t("comments.submit"), class: 'post-comment-btn btn btn-primary btn-lg pull-right'
