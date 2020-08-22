@@ -1,6 +1,6 @@
 describe Goal, type: :model do
 	it 'has valid factory' do
-    expect(build(:goal)).to be_valid
+    expect(build(:goal, user: create(:user))).to be_valid
   end
 
   let(:buddha) { create(:buddha) }
@@ -111,11 +111,7 @@ describe Goal, type: :model do
 
 	describe '#days_into_goal' do
 		context 'fixed' do
-			after :each do
-				Timecop.return
-			end
-
-			let(:goal) { create(:goal, :sit_20_minutes_for_3_days, user: buddha) }
+			let!(:goal) { create(:goal, :sit_20_minutes_for_3_days, user: buddha) }
 
 			it 'first day' do
 				expect(goal.completed?).to eq false
@@ -123,23 +119,21 @@ describe Goal, type: :model do
 			end
 
 			it 'third day' do
-				Timecop.freeze((Date.today + 2).to_time)
-				expect(goal.completed?).to eq false
-				expect(goal.days_into_goal).to eq 3
+				Timecop.freeze(Date.today + 2.days) do
+					expect(goal.completed?).to eq false
+					expect(goal.days_into_goal).to eq 3
+				end
 			end
 
 			it 'fourth day (goal ended)' do
-				Timecop.freeze((Date.today + 3).to_time)
-				expect(goal.completed?).to eq true
-				expect(goal.days_into_goal).to eq 3 # shouldn't increment any further
+				Timecop.freeze(Date.today + 3.days) do
+					expect(goal.completed?).to eq true
+					expect(goal.days_into_goal).to eq 3 # shouldn't increment any further
+				end
 			end
 		end
 
 		context 'ongoing' do
-			after :each do
-				Timecop.return
-			end
-
 			let(:goal) { create(:goal, :sit_for_30_minutes_a_day, user: buddha, created_at: Date.today) }
 
 			it 'first day' do
@@ -149,9 +143,10 @@ describe Goal, type: :model do
 
 			it 'second day' do
 				goal
-				Timecop.freeze((Date.today + 1).to_time)
-				expect(goal.completed?).to eq false
-				expect(goal.days_into_goal).to eq 2
+				Timecop.freeze((Date.today + 1.day)) do
+					expect(goal.completed?).to eq false
+					expect(goal.days_into_goal).to eq 2
+				end
 			end
 		end
 	end
