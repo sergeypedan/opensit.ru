@@ -32,6 +32,7 @@ gem 'textacular'
 gem 'uglifier'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'fog-aws'
 
 group :development do
   gem 'annotate'
