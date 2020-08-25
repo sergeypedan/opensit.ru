@@ -7,7 +7,7 @@ class SitsController < ApplicationController
     @sit = Sit.find(params[:id])
     @latest = @sit.user.latest_sit(current_user)
 
-    if @sit.private
+    unless @sit.public_visibility?
       return redirect_to root_path, status: :unauthorized, alert: t('sit.this_is_private') unless current_user
       return redirect_to me_path if @sit.user_id != current_user.id
     end
@@ -27,7 +27,7 @@ class SitsController < ApplicationController
 
   # GET /sits/new
   def new
-    @sit = Sit.new(s_type: "meditation", created_at: DateTime.now)
+    @sit = Sit.new(s_type: "meditation", visibility: 'public', created_at: DateTime.now)
     @user = current_user
     @title = t("sit.new")
     render :edit
@@ -50,7 +50,6 @@ class SitsController < ApplicationController
     @user = current_user
     @sit = Sit.new filtered_params
     @sit.user = @user
-    @sit.private = params[:sit][:private] || @user.private_stream
     @sit.created_at = ::InputParsers::Datetime.call params[:custom_date]
     @sit.tags = Tag.parse_CSV params[:tag_list]
 
@@ -98,7 +97,7 @@ class SitsController < ApplicationController
       :created_at,
       :disable_comments,
       :duration,
-      :private,
+      :visibility,
       :s_type,
       :title,
       :user_id,

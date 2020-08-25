@@ -17,7 +17,7 @@ module SitsHelper
 	end
 
 	def display_lock_if_private(sit)
-		return unless sit.private
+		return unless sit.private_visibility?
 		'<div class="private-event pull-right" title="This is a private entry. Only you can see it."><i class="fa fa-lock"></i></div>'.html_safe
 	end
 

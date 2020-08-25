@@ -385,7 +385,7 @@ describe User, type: :model do
           sit = create(:sit, :public, user: user)
 
           expect { user.private_stream=('true') }
-            .to change { user.sits.where(private: true).count }.from(0).to(1)
+            .to change { user.sits.where(visibility: 'private').count }.from(0).to(1)
         end
 
         it "sets the user's private stream to true" do
@@ -399,7 +399,7 @@ describe User, type: :model do
           sit = create(:sit, :private, user: user)
 
           expect { user.private_stream=('false') }
-            .to change { user.sits.where(private: false).count }.from(0).to(1)
+            .to change { user.sits.where.not(visibility: 'private').count }.from(0).to(1)
         end
 
         it "sets the user's private stream to false" do

@@ -15,11 +15,11 @@ FactoryBot.define do
     end
 
     trait :private do
-      private { true }
+      visibility { 'private' }
     end
 
     trait :public do
-      private { false }
+      visibility { 'public' }
     end
 
     trait :one_hour_ago do
@@ -49,9 +49,9 @@ end
 #  body             :text
 #  disable_comments :boolean          default(FALSE), not null
 #  duration         :integer
-#  private          :boolean          default(FALSE)
 #  s_type           :string           default("meditation"), not null
 #  title            :string
 #  views            :integer          default(0)
+#  visibility       :enum             default("public")
 #  user_id          :integer
 #

@@ -9,9 +9,21 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: sit_visibility; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.sit_visibility AS ENUM (
+    'private',
+    'followers',
+    'groups',
+    'public'
+);
+
+
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
@@ -364,8 +376,8 @@ CREATE TABLE public.sits (
     updated_at timestamp without time zone,
     duration integer,
     s_type character varying DEFAULT 'meditation'::character varying NOT NULL,
-    private boolean DEFAULT false,
-    views integer DEFAULT 0
+    views integer DEFAULT 0,
+    visibility public.sit_visibility DEFAULT 'public'::public.sit_visibility
 );
 
 
@@ -808,6 +820,13 @@ CREATE INDEX index_reports_on_user_id ON public.reports USING btree (user_id);
 
 
 --
+-- Name: index_sits_on_visibility; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sits_on_visibility ON public.sits USING btree (visibility);
+
+
+--
 -- Name: index_taggings_on_sit_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -886,6 +905,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20141222165045'),
 ('20180511211340'),
 ('20180511213142'),
-('20180517165150');
+('20180517165150'),
+('20200824212844');
 
 

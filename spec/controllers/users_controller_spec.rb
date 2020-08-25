@@ -90,13 +90,27 @@ describe UsersController, type: :controller do
   end
 
   describe 'GET /u/:username/following' do
+    let(:selector_text) { I18n.t("following.followed_users") }
+
     it 'loads following page' do
       sign_in buddha
       get :following, params: { username: 'buddha' }
       expect(assigns(:user)).to eq(buddha)
       expect(response).to be_successful
       expect(response).to render_template("users/followers")
-      expect(response.body).to have_selector('h1', text: I18n.t("following.followed_users"))
+      expect(response.body).to have_selector('h1', text: selector_text)
+    end
+
+    context 'if user is not signed in' do
+      let(:selector_text) { I18n.t("following.followed_users_for_user", user: buddha.display_name) }
+
+      before do
+        get :following, params: { username: 'buddha' }
+      end
+
+      it 'shows the display name for user' do
+        expect(response.body).to have_selector('h1', text: selector_text)
+      end
     end
   end
 
@@ -139,7 +153,7 @@ describe UsersController, type: :controller do
       create :sit, user: @sariputta, body: 'deux'
       create :sit, user: @sariputta, body: 'erpderp'
       create :sit, user: buddha, body: 'trois'
-      create :sit, user: buddha, body: 'private!!!', private: true
+      create :sit, user: buddha, body: 'private!!!', visibility: 'private'
     end
 
     context 'user feed' do

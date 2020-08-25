@@ -14,7 +14,7 @@
       ruby:
         private_notice = nil
         private_notice = t("stream.your_stream_private") if @sit.user.private_stream
-        private_notice = t("stream.this_sit_private") if @sit.private
+        private_notice = t("stream.this_sit_private") unless @sit.public_visibility?
 
       .sit-stats
         = content_tag :div, link_to(fa_icon("cog", text: t("forms.edit")), edit_sit_path(@sit)), class: "stat" if current_user and @sit.mine?(current_user)
@@ -54,7 +54,7 @@
       /           = render "sit_preview", sit: @next
       /           .arrow = fa_icon "chevron-right"
 
-  - if !@sit.disable_comments && !@sit.private
+  - if !@sit.disable_comments && @sit.public_visibility?
     .comments
       h2 = t("comments.h1")
       .comments-list

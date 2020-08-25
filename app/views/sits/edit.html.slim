@@ -52,13 +52,14 @@
       = link_to fa_icon("cog", data: { toggle: :tooltip, original_title: t("stream.change_privacy") }), edit_registration_path(@user, anchor: "privacy"), style: "margin-left: 10px"
 
     - else
-      .checkbox
-        = f.label :private, t("new_sit.make_private")
-          = f.check_box :private
-          = t "new_sit.make_private"
+      .form-group
+        = f.label :visibility, t("new_sit.visibility.title"), class: "control-label"
+        .visibility-select
+          .input-group
+            = f.select :visibility, Sit.visibilities.map { |key, value| [t("new_sit.visibility.#{value}"), key] }, class: "form-control"
 
       .checkbox
-        = f.label :disable_comments, t('new_sit.make_private')
+        = f.label :disable_comments
           = f.check_box :disable_comments
           = t "new_sit.disable_comments"
 

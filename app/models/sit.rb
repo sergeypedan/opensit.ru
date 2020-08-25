@@ -6,6 +6,13 @@ class Sit < ActiveRecord::Base
 
   TYPES = %w[diary meditation].freeze
 
+  enum visibility: {
+    private: 'private',
+    followers: 'followers',
+    # groups: 'groups',   # TODO: make it available when groups will be implemented
+    public: 'public'
+  }, _suffix: :visibility
+
   belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy
   has_many :taggings
@@ -20,7 +27,11 @@ class Sit < ActiveRecord::Base
   validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   # Scopes
-  scope :communal, -> { where(private: false) }
+  scope :communal, -> { where(visibility: 'public') }
+  scope :viewable_for, -> (user) do
+    where(user_id: user.id).or(where(visibility: 'public'))
+      .or(where("visibility = 'followers' AND user_id IN (?)", user.followed_user_ids))
+  end
   scope :newest_first, -> { order(created_at: :desc) }
   scope :today, -> { where("DATE(created_at) = ?", Date.today) }
   scope :yesterday, -> { where("DATE(created_at) = ?", Date.yesterday) }
@@ -81,8 +92,9 @@ class Sit < ActiveRecord::Base
 
   # Returns sits from the users being followed by the given user.
   def self.from_users_followed_by(user)
-    followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    where("(user_id IN (#{followed_user_ids}) AND private = false) OR user_id = :user_id", user_id: user.id)
+    followed_user_ids = 'SELECT followed_id FROM relationships WHERE follower_id = :user_id'
+    public_visibility = "visibility IN ('public', 'followers')"
+    where("(user_id IN (#{followed_user_ids}) AND #{public_visibility}) OR user_id = :user_id", user_id: user.id)
   end
 
   def commenters
@@ -134,9 +146,9 @@ end
 #  body             :text
 #  disable_comments :boolean          default(FALSE), not null
 #  duration         :integer
-#  private          :boolean          default(FALSE)
 #  s_type           :string           default("meditation"), not null
 #  title            :string
 #  views            :integer          default(0)
+#  visibility       :enum             default("public")
 #  user_id          :integer
 #

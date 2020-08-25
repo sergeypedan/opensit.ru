@@ -165,7 +165,6 @@ en:
     disable_comments: Disable comments
     duration: Time
     is_private: Your stream is private
-    make_private: Make this entry private
     meditation: Meditation
     minutes: minutes
     now: Just now
@@ -176,6 +175,13 @@ en:
     title: Title
     wat_meditation: What happened?
     wat_journal: What happened?
+    visibility:
+      title: Visibility
+      public: Public
+      groups: Only for groups
+      followers: For followers/friends
+      private: Only for me
+
 
   tag: Tag
   tags:
@@ -243,6 +249,7 @@ en:
 
   following:
     followed_users: People I follow
+    followed_users_for_user: "People %{user} follows"
     following_users: "Who follows "
     me: me
     no_follwers: No connections yet!

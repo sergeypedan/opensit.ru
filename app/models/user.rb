@@ -270,10 +270,10 @@ class User < ActiveRecord::Base
   end
 
   def private_stream=(value)
-    unless value.downcase == 'true' || value.downcase == 'false'
+    unless %w[true false].include? value.downcase
       raise ArgumentError, "Argument must be either 'true' or 'false'"
     end
-    sits.update_all(private: value)
+    sits.update_all(visibility: value == 'true' ? 'private' : 'public')
     write_attribute(:private_stream, value)
   end
 
@@ -364,12 +364,8 @@ class User < ActiveRecord::Base
         if sit.created_at.to_date != next_newest.created_at.to_date
           # Only increment if the distance between the sits is exactly a day
           distance = (next_newest.created_at.to_date - sit.created_at.to_date).to_i
-          if distance == 1
-            streak_count += 1
-          else
-            # End of sit streak :(
-            break
-          end
+          break if distance != 1 # End of sit streak :(
+          streak_count += 1
         end
         next_newest = sit
       end

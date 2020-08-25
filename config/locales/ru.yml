@@ -164,7 +164,6 @@ ru:
     disable_comments: Отключить комментарии
     duration: Время медитации
     is_private: У вас закрытый дневник
-    make_private: Запись видна только мне
     meditation: Медитация
     minutes: минут
     now: Прямо сейчас
@@ -175,6 +174,12 @@ ru:
     title: Заголовок
     wat_meditation: Как проходила ваша медитация?
     wat_journal: Текст зметки
+    visibility:
+      title: Видимость
+      public: Видно всем
+      groups: Видно группам, в которых я состою
+      followers: Видно моим подписчикам/друзьям
+      private: Видно только мне
 
   tag: Тег
   tags:
@@ -253,6 +258,7 @@ ru:
 
   following:
     followed_users: На кого я подписан
+    followed_users_for_user: "На кого подписан %{user}"
     following_users: "Кто подписан на "
     me: меня
     no_follwers: Никто не подписан
