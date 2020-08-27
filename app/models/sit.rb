@@ -30,7 +30,20 @@ class Sit < ActiveRecord::Base
   scope :communal, -> { where(visibility: 'public') }
   scope :viewable_for, -> (user) do
     where(user_id: user.id).or(where(visibility: 'public'))
-      .or(where("visibility = 'followers' AND user_id IN (?)", user.followed_user_ids))
+      .or(followed_for(user))
+  end
+  scope :followed_for, -> (user) do
+    where("visibility IN ('public', 'followers') AND user_id IN (?)", user.followed_user_ids)
+  end
+  scope :private_for, -> (user) { where(user_id: user.id) }
+  scope :most_popular_for, -> (user) do
+    select('sits.*, COUNT(comments.id) AS comments_count').joins('LEFT JOIN comments ON comments.sit_id = sits.id')
+      .where(
+        "sits.user_id = ? OR sits.visibility = 'public' OR (sits.visibility IN ('public', 'followers') AND sits.user_id IN (?))",
+        user.id,
+        user.followed_user_ids
+      )
+      .group('sits.id').order('comments_count DESC').limit(10)
   end
   scope :newest_first, -> { order(created_at: :desc) }
   scope :today, -> { where("DATE(created_at) = ?", Date.today) }

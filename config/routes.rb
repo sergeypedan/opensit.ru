@@ -25,8 +25,8 @@ Opensit::Application.routes.draw do
   get '/explore/tags',              to: 'pages#tag_cloud',    as: :explore_tags
   get '/explore/comments',          to: 'pages#new_comments', as: :explore_comments
   get '/explore/users/online',      to: 'pages#online_users', as: :explore_online_users
+  get '/explore/users',             to: 'pages#users',        as: :explore_users
   get '/explore/users/new',         to: 'pages#new_users',    as: :explore_new_users
-  get '/explore/users/active',      to: 'pages#active_users', as: :explore_active_users
   get '/explore/users/new/sitters', to: 'pages#new_sitters',  as: :explore_new_sitters
 
   get '/global-feed',   to: 'users#feed', defaults: { format: 'atom', scope: 'global' }

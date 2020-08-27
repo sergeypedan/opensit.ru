@@ -310,12 +310,17 @@ ru:
 
   explore:
     h1: Лента сообщества
-    sits: Практика
+    sits:
+      title: Практика
+      all: Все
+      popular: Популярные
+      followed: На кого подписан
+      mine: Только мои
     users: Пользователи
     global_stream: Общая лента дневников
     discussions: Новые обсуждения
     tags: Популярные теги
-    users_active: Активные пользователи
+    users_all: Все пользователи
     users_new: Новые пользователи
     new_sitters: Новые медитаторы
 

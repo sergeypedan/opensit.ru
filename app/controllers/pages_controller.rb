@@ -29,7 +29,7 @@ class PagesController < ApplicationController
 
   def explore
     @user = current_user
-    @sits = Sit.viewable_for(@user).newest_first.with_body.limit(20).paginate(page: params[:page])
+    @sits = explore_scope_for(@user).newest_first.with_body.limit(20).paginate(page: params[:page])
     @suggested_users = @user.users_to_follow if @user
 
     @title      = 'Explore'
@@ -58,9 +58,9 @@ class PagesController < ApplicationController
     @title    = 'New comments'
   end
 
-  def active_users
+  def users
     @users = User.active_users.limit(10).paginate(page: params[:page])
-    @title = "Active Users"
+    @title = "Users"
     render "users/user_results"
   end
 
@@ -76,4 +76,18 @@ class PagesController < ApplicationController
     render text: robots, layout: false, content_type: "text/plain"
   end
 
+  private
+
+  def explore_scope_for(user)
+    case params[:visibility]
+    when 'mine'
+      Sit.private_for(@user)
+    when 'followed'
+      Sit.followed_for(@user)
+    when 'popular'
+      Sit.most_popular_for(@user)
+    else
+      Sit.viewable_for(@user)
+    end
+  end
 end

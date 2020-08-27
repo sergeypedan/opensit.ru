@@ -1,5 +1,10 @@
 .sit-container
   = render "pages/explore_tile"
-  = render collection: @sits, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 3 }
+
+  .form-group
+    .input-group.col-md-9.offset-md-3
+      = select_tag 'sits-select', options_for_select([[t('explore.sits.all'), 'all'], [t('explore.sits.popular'), 'popular'], [t('explore.sits.followed'), 'followed'], [t('explore.sits.mine'), 'mine']], posts_visibility)
+  .col-md-12.sits-items-container
+    = render collection: @sits, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 3 }
 
 .pagination-container = will_paginate @sits, renderer: BootstrapPagination::Rails

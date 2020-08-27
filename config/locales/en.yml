@@ -301,12 +301,17 @@ en:
 
   explore:
     h1: Explore!
-    sits: Sits
+    sits:
+      title: Sits
+      all: All
+      popular: Popular
+      followed: Followed
+      mine: Only mine
     users: Users
     global_stream: Global SitStream
     discussions: Latest discussions
     tags: Popular tags
-    users_active: Active users
+    users_all: All users
     users_new: New users
     new_sitters: New sitters
 

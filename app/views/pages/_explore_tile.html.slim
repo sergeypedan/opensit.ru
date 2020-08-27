@@ -1,16 +1,14 @@
-.tile.stamp.col-md-3.header-tile
+.tile.stamp.col-md-3.header-tile.explore-menu
   .content
     h1 = t("explore.h1")
 
     ul.nav.nav-pills.nav-stacked
-      li.list-title = t("explore.sits")
-      li class=("active" if current_page?(explore_path) )          = link_to fa_icon("globe",    text: t("explore.global_stream")), explore_path,          class: "item"
-      li class=("active" if current_page?(explore_comments_path) ) = link_to fa_icon("comments", text: t("explore.discussions")  ), explore_comments_path, class: "item"
-      li class=("active" if current_page?(explore_tags_path) )     = link_to fa_icon("tags",     text: t("explore.tags")         ), explore_tags_path,     class: "item"
+      li.list-title = t("explore.sits.title")
+      li class=("active" if current_page?(explore_path) )          = link_to fa_icon("globe",    text: t("explore.global_stream")),  explore_path,          class: "item"
+      li class=("active" if current_page?(explore_comments_path) ) = link_to fa_icon("comments", text: t("explore.discussions")), explore_comments_path, class: "item"
+      li class=("active" if current_page?(explore_tags_path) )     = link_to fa_icon("tags",     text: t("explore.tags")),        explore_tags_path,     class: "item"
 
       li.list-title = t("explore.users")
-      li class=("active" if current_page?(explore_active_users_path) ) = link_to fa_icon("user", text: t("explore.users_active")), explore_active_users_path, class: "item"
-      li class=("active" if current_page?(explore_new_users_path) )    = link_to fa_icon("user", text: t("explore.users_new")   ), explore_new_users_path,    class: "item"
-      li class=("active" if current_page?(explore_new_sitters_path) )  = link_to fa_icon("user", text: t("explore.new_sitters") ), explore_new_sitters_path,  class: "item", title: "New users who have started adding sits"
+      li class=("active" if current_explore_users_page?) = link_to fa_icon("user", text: t('explore.users')), explore_users_path, class: "item"
 
     = render 'shared/suggested_users_block', users: @suggested_users if user_signed_in? && @suggested_users&.any?

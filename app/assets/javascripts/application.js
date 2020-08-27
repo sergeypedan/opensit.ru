@@ -220,6 +220,14 @@ $(document).ready(function(){
 
     $('.simple_form.new_report').submit();
   });
+
+  $('#users-select').change(function (e) {
+    window.location.href = $(this).val();
+  });
+
+  $('#sits-select').change(function (e) {
+    window.location.href = '/explore?visibility=' + $(this).val();
+  });
 });
 
 // https://github.com/Nerian/bootstrap-wysihtml5-rails
