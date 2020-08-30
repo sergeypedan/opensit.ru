@@ -23,8 +23,8 @@ module UsersHelper
 
   def small_avatar_of(user, location = nil)
     image_path = avatar_image(user)
-    return image_tag image_path, alt: user.username if location == 'nav'
-    return link_to image_tag(image_path, alt: user.username, class: 'img-circle'), user_path(user)
+    return image_tag image_path if location == 'nav'
+    return link_to image_tag(image_path, class: 'img-circle'), user_path(user)
   end
 
   def large_avatar_of(user)
