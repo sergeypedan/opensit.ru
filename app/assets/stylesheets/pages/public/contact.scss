@@ -1,13 +1,14 @@
 .contact {
-
-  img {
+  .logomark {
     float: right;
+    width: 250px;
+    margin: 0 1em 1em 1em;
   }
 
   .email {
     text-align: center;
     color: $link-color;
     font-size: 1.8em;
-    margin: 1em 0 1.5em;
+    margin: 1.8em 0 1.5em;
   }
 }
