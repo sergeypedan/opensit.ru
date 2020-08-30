@@ -7,7 +7,8 @@
 
   .logo-link
     display: inline-block
-    margin-right: 30px
+    img
+      float: inherit
 
   .nav-text
     color: white
@@ -24,15 +25,24 @@
       text-decoration: underline
       color: white
 
-
   @media (max-width: 767px)
     .nav-text
       text-align: center
 
+  @media (min-width: 990px)
+    .logo-link
+      margin-right: 30px
+
+  @media (max-width: 990px)
     .expanded
       display: none
 
     .btn-primary
       margin-left: 20px
 
+@media (max-width: 384px)
+  .sign-up-nav
+    height: 85px
 
+  .logo-link
+    margin-bottom: 5px

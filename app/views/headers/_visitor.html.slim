@@ -3,8 +3,8 @@ nav class="navbar navbar-default navbar-fixed-top sign-up-nav" role="navigation"
     .navbar-header
       .nav-text
         = link_to image_tag('logos/logo-6.png', alt: ENV.fetch("BRAND"), class: 'nav-logomark'), root_path, class: "logo-link"
-        = ENV.fetch("BRAND")
         span.expanded
+          = ENV.fetch("BRAND")
           | —
           =<> t('header.unlogged')
           | —
