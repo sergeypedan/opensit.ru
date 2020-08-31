@@ -8,7 +8,7 @@ ul.nav.navbar-nav.navbar-right
         = content_tag :sup, current_user.new_notifications, class: "new-notifications", style: "margin-left: 0; color: crimson"
 
   = content_tag :li, class: ("active" if current_page?(messages_path))
-    = link_to messages_path, title: 'Inbox', class: "nav-option pull-left"
+    = link_to messages_path, title: 'Inbox', class: "nav-option"
       - if current_user.unread_count
         = fa_icon "envelope"
         span.unread-count = current_user.unread_count
