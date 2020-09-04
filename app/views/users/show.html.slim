@@ -79,7 +79,7 @@ div itemscope="" itemtype="http://schema.org/Person"
                 =< t("stats.entries_count", count: @stats[:entries_this_month])
 
           - @listed = []
-          = render collection: @sits, partial: 'sits/day_journal', as: :sit
+          = render collection: @sits, partial: 'sits/day_journal', as: :sit, locals: { is_current_user: current_user.id == @user.id }
 
           - if !@stats[:days_sat_this_month].zero?
             .month_navigation.col-md-12

@@ -18,7 +18,7 @@ class SitsController < ApplicationController
     @title = if @sit.is_meditation?
                 t('sit.meditation_by_duration', duration: @sit.duration, name: @user.display_name)
               else
-                t('sit.meditation_by_title', duration: @sit.duration, name: @user.display_name)
+                t('sit.meditation_by_title', title: @sit.title, duration: @sit.duration, name: @user.display_name)
               end
 
     @previous = @sit.prev(current_user)

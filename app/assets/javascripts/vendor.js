@@ -16,3 +16,4 @@
 //= require masonry-packaged-4.2.1
 //= require nprogress
 //= require likely-2.3.0/likely
+//= require social-share-button

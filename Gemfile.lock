@@ -330,6 +330,8 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
+    social-share-button (1.2.3)
+      coffee-rails
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
     split (3.4.1)
@@ -419,6 +421,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   slim-rails
+  social-share-button
   split
   textacular
   timecop

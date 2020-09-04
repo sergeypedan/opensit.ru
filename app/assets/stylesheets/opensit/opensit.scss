@@ -111,6 +111,17 @@
   }
 }
 
+/* Social share button */
+$social-share-button-size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $social-share-button-size $social-share-button-size;
+    height: $social-share-button-size;
+    width: $social-share-button-size;
+  }
+}
+
 /*
  *    RESPONSIVE
  *******************************/

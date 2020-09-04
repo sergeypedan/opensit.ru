@@ -17,4 +17,7 @@
     <div class="link"><%= link_to "<i class='fa fa-book'></i>".html_safe, sit_path(sit) %></div>
     <div class="teaser"><em><%= sit.title %></em>: <%= teaser(sit, 140)%></div> <br>
   <% end %>
+  <% if is_current_user && sit.public_visibility? %>
+    <%= social_share_button_tag(sit.body, :allow_sites => %w(twitter facebook vkontakte)) %>
+  <% end %>
 </div>

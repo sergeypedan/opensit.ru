@@ -37,6 +37,8 @@
 
       .row
         .col-md-12
+          - if @sit.public_visibility?
+            = social_share_button_tag(@sit.body, :allow_sites => %w(twitter facebook vkontakte))
           = fa_icon "flag-o", class: "report-flag", data: { container: 'body', toggle: :tooltip, placement: 'top', original_title: t("navigation.report") }
           = render 'reports/report_modal', reportable: @sit
 

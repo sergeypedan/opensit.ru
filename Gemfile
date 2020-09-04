@@ -33,6 +33,7 @@ gem 'uglifier'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'fog-aws'
+gem 'social-share-button'
 
 group :development do
   gem 'annotate'
