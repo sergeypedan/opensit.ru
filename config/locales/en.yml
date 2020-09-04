@@ -58,7 +58,10 @@ en:
   user:
     more: More
     no_stats: Zzzzz... Nothing logged this month.
-    latest_entries: Check out their latest journal entries
+    latest_entries:
+      checkout: Check out
+      these: their latest journal
+      records: entries.
     follow: Follow
     unfollow: Unfollow
 

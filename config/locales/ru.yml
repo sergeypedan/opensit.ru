@@ -57,8 +57,11 @@ ru:
 
   user:
     more: Развернуть
-    no_stats: За этот месяц записей пока не было
-    latest_entries: Были вот такие записи
+    no_stats: За этот месяц записей пока не было.
+    latest_entries:
+      checkout: Были
+      these: вот такие
+      records: записи.
     follow: Подписаться
     unfollow: Отписаться
 
