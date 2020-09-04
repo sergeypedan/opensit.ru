@@ -1,21 +1,6 @@
 module UsersHelper
 
-  Date::MONTHNAMES =
-    [
-      nil,
-      I18n.t('month.january'),
-      I18n.t('month.february'),
-      I18n.t('month.march'),
-      I18n.t('month.april'),
-      I18n.t('month.may'),
-      I18n.t('month.june'),
-      I18n.t('month.july'),
-      I18n.t('month.august'),
-      I18n.t('month.september'),
-      I18n.t('month.october'),
-      I18n.t('month.november'),
-      I18n.t('month.december')
-  ]
+  MONTHNAMES = %w[january february march april may june july august september october november december]
 
   def avatar_image(user)
     user.avatar.blank? ? image_path('placeholders/user-1.svg') : user.avatar.url(:small_thumb)
@@ -61,7 +46,7 @@ module UsersHelper
         selected = (current_year == params[:year].to_i && year_or_month == params[:month].to_i)
         # value    = "#{user_path(params[:username])}/#{params[:id]}?year=#{current_year}&month=#{year_or_month.to_s.rjust(2, '0')}"
         value = user_path(params[:username], year: current_year, month: year_or_month.to_s.rjust(2, '0'))
-        content  = "#{Date::MONTHNAMES[year_or_month]}, #{current_year}"
+        content  = "#{I18n.t("month.#{MONTHNAMES[year_or_month]}")}, #{current_year}"
         content_tag :option, content, value: value, selected: selected
       end
     end.join(' ').html_safe
@@ -81,7 +66,7 @@ module UsersHelper
   #       selected = (current_year == params[:year].to_i && year_or_month == params[:month].to_i)
   #       # value    = "#{user_path(params[:username])}/#{params[:id]}?year=#{current_year}&month=#{year_or_month.to_s.rjust(2, '0')}"
   #       value = user_path(params[:username], year: current_year, month: year_or_month.to_s.rjust(2, '0'))
-  #       content  = "#{Date::MONTHNAMES[year_or_month]}, #{current_year}"
+  #       content  = "#{MONTHNAMES[year_or_month]}, #{current_year}"
   #       content_tag :option, content, value: value, selected: selected
   #     end
   #   end
