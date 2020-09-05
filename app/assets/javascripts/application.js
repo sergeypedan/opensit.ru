@@ -228,6 +228,26 @@ $(document).ready(function(){
   $('#sits-select').change(function (e) {
     window.location.href = '/explore?visibility=' + $(this).val();
   });
+
+  $('.sit-delete-icon').click(function(e) {
+    let redirectUrl = $(this).data('redirect-url');
+
+    if (confirm($(this).data('confirm-message'))) {
+      $.ajax({
+        method: 'DELETE',
+        url: '/sits/' + $(this).data('id')
+      }).done(function(data) {
+        if (data.status == 'ok') {
+          console.log(redirectUrl);
+          if (redirectUrl) {
+            window.location.href = redirectUrl;
+          } else {
+            window.location.reload();
+          }
+        }
+      });
+    }
+  });
 });
 
 // https://github.com/Nerian/bootstrap-wysihtml5-rails

@@ -256,6 +256,8 @@ ru:
       other: Запись о практике на %{count} минут
     meditation_by_duration: "%{duration}-минутная медитация, проведённая %{name}"
     meditation_by_title: "%{title}, медитация, проведённая %{name}"
+    are_you_sure_delete: Вы действительно хотите удалить эту запись?
+    deleted: Запись удалена
 
   following:
     followed_users: На кого я подписан

@@ -2,8 +2,6 @@
 
   = render "shared/form_errors", record: @sit
 
-  = link_to t("forms.delete"), sit_path(@sit), method: :delete, confirm: t("forms.sure"), class: 'btn btn-danger delete-entry pull-right' if (controller.action_name == 'edit')
-
   .sit_type
     .btn-group data-toggle="buttons"
       = label_tag nil, for: "sit_s_type_meditation", class: ["btn", "btn-primary", ("active" if @sit.is_meditation?)]

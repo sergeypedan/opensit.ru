@@ -247,6 +247,8 @@ en:
       other: "З%{count} minutes meditation journal"
     meditation_by_duration: "%{duration} minute meditation journal by %{name}"
     meditation_by_title: "%{title}, a meditation journal by %{name}"
+    are_you_sure_delete: Are you sure want to delete this post?
+    deleted: Post was deleted
 
   following:
     followed_users: People I follow

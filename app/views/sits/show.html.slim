@@ -37,8 +37,11 @@
 
       .row
         .col-md-12
-          - if @sit.public_visibility?
-            = social_share_button_tag(@sit.body, :allow_sites => %w(twitter facebook vkontakte))
+          .col-xs-10
+            - if @sit.public_visibility?
+              = social_share_button_tag(@sit.body, :allow_sites => %w(twitter facebook vkontakte))
+          .col-xs-2
+            i.fa.fa-trash.fa-lg.sit-delete-icon data-id="#{ @sit.id }" data-confirm-message="#{ t('sit.are_you_sure_delete') }" data-redirect-url="/me"
           = fa_icon "flag-o", class: "report-flag", data: { container: 'body', toggle: :tooltip, placement: 'top', original_title: t("navigation.report") }
           = render 'reports/report_modal', reportable: @sit
 

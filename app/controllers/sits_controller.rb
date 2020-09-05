@@ -1,5 +1,7 @@
 class SitsController < ApplicationController
 
+  respond_to :json, only: %i[delete]
+
   before_action :authenticate_user!, except: :show
 
   # GET /sits/1
@@ -65,7 +67,10 @@ class SitsController < ApplicationController
   # PUT /sits/1
   def update
     @sit = Sit.find(params[:id])
-    return redirect_to root_path, status: :unauthorized, alert: "You can't edit this post" unless current_user == @sit.user
+    unless current_user == @sit.user
+      redirect_to root_path, status: :unauthorized, alert: t('sit.cant_edit')
+      return
+    end
 
     @sit.created_at = ::InputParsers::Datetime.call params[:custom_date]
     @sit.tags = Tag.parse_CSV params[:tag_list]
@@ -83,9 +88,9 @@ class SitsController < ApplicationController
 
     if current_user == @sit.user
       @sit.destroy
-      redirect_to me_path
+      render json: { status: :ok, alert: t('sit.deleted') }
     else
-      redirect_to root_path, status: :unauthorized, alert: t('sit.cant_destroy')
+      render json: { status: :unauthorized, alert: t('sit.cant_destroy') }
     end
   end
 
