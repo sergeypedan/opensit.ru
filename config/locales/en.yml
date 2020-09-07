@@ -252,6 +252,11 @@ en:
     meditation_by_title: "%{title}, a meditation journal by %{name}"
     are_you_sure_delete: Are you sure want to delete this post?
     deleted: Post was deleted
+    sit_teaser:
+      sit_text: "%{username} sat for <a class='sit-link' title='%{title}' href='%{href}'>%{text}</a>"
+      sit_title: "%{duration} minute meditation report by %{display_name}"
+      diary_text: "%{username} added a <a class='sit-link' title='%{title}' href='%{href}'></a>."
+      diary_title: "%{duration} by %{display_name}"
 
   following:
     followed_users: People I follow

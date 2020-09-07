@@ -9,11 +9,17 @@ module SitsHelper
 	end
 
 	def teaser_title(sit, type = false)
-		if sit.is_meditation?
-      " sat for <a class='sit-link' title='#{sit.duration} minute meditation report by #{sit.user.display_name}' href='#{sit_path(sit)}'>#{sit.duration} minutes</a>".html_safe
-		else
-			"added a <a class='sit-link' title='#{sit.title} by #{sit.user.display_name}' href='#{sit_path(sit)}'>diary</a>.".html_safe
-		end
+		message_type = sit.is_meditation? ? "sit" : 'diary'
+		duration = sit.is_meditation? ? sit.duration : sit.title
+		text = sit.is_meditation? ? I18n.t('units_of_time.minutes', count: sit.duration) : 'diary'
+
+		I18n.t(
+			"sit.sit_teaser.#{message_type}_text",
+			username: username(sit.user),
+			title: I18n.t("sit.sit_teaser.#{message_type}_title", duration: duration, display_name: sit.user.display_name),
+			href: sit_path(sit),
+			text: text
+		).html_safe
 	end
 
 	def display_lock_if_private(sit)

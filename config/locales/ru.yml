@@ -261,6 +261,11 @@ ru:
     meditation_by_title: "%{title}, медитация, проведённая %{name}"
     are_you_sure_delete: Вы действительно хотите удалить эту запись?
     deleted: Запись удалена
+    sit_teaser:
+      sit_text: "%{username} практиковал(а) <a class='sit-link' title='%{title}' href='%{href}'>%{text}</a>"
+      sit_title: "Отчёт о %{duration}-минутной медитации %{display_name}"
+      diary_text: "%{username} добавил <a class='sit-link' title='%{title}' href='%{href}'>%{text}</a>."
+      diary_title: "%{duration} от %{display_name}"
 
   following:
     followed_users: На кого я подписан

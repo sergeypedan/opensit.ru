@@ -81,13 +81,13 @@ class PagesController < ApplicationController
   def explore_scope_for(user)
     case params[:visibility]
     when 'mine'
-      Sit.private_for(@user)
+      Sit.includes(:user).private_for(@user)
     when 'followed'
-      Sit.followed_for(@user)
+      Sit.includes(:user).followed_for(@user)
     when 'popular'
-      Sit.most_popular_for(@user)
+      Sit.includes(:user).most_popular_for(@user)
     else
-      Sit.viewable_for(@user)
+      Sit.includes(:user).viewable_for(@user)
     end
   end
 end
