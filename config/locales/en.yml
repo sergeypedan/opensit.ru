@@ -217,6 +217,9 @@ en:
     h1: Comments
     body: Have your say
     submit: Post comment
+    commented_on_meditation_html: "%{annotator} commented on %{username}'s %{link}"
+    commented_on_diary_html: "%{annotator} commented on %{link}"
+    sit: sit
 
   search:
     form_title: You searched

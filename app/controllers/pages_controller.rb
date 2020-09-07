@@ -54,7 +54,7 @@ class PagesController < ApplicationController
   end
 
   def new_comments
-    @comments = Comment.latest(10).paginate(page: params[:page])
+    @comments = Comment.latest(10).includes(sit: [:user]).paginate(page: params[:page])
     @title    = 'New comments'
   end
 

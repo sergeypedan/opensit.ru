@@ -10,12 +10,7 @@
 	    	<div class="text">
 	    		<div class="time-ago"><%= time_ago_in_words(comment.created_at) %> ago</div>
 		    	<div class="summary">
-		    		<%= username(comment.user, true) %> commented on
-				    <% if comment.sit.is_meditation? %>
-				    	<%= username(comment.sit.user, true) %>'s <%= link_to 'sit', "/sits/#{comment.sit_id}/#comment-#{comment.id}" %>
-				    <% else %>
-				    	<%= link_to comment.sit.full_title, "/sits/#{comment.sit_id}/#comment-#{comment.id}" %> by <%= username(comment.user, true) %>
-				    <% end %>
+		    		<%= t("comments.commented_on_#{sit_type_for(comment)}_html", annotator: username(comment.user, true), link: link_by(comment), username: username(comment.sit.user, true)).html_safe %>
 				 	</div>
 				</div>
 	    </div>
