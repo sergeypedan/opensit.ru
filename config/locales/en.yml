@@ -220,6 +220,8 @@ en:
     commented_on_meditation_html: "%{annotator} commented on %{username}'s %{link}"
     commented_on_diary_html: "%{annotator} commented on %{link}"
     sit: sit
+    delete: Delete
+    confirm_delete: Delete your comment?
 
   search:
     form_title: You searched

@@ -3,10 +3,10 @@
   <div class="comment-body"><%= @comment.body.html_safe %></div>
   <div class="user">
     <div class="avatar"><%= small_avatar_of(@comment.user) %></div>
-    <%= username(@comment.user) %><br> <%= time_ago_in_words(@comment.created_at) %> ago
+    <%= username(@comment.user) %><br> <%= time_ago_in_words(@comment.created_at) %> <%= t('ago') %>
 
     <% if current_user == @comment.user %>
-      <br><%= link_to 'Delete', sit_comment_path(@sit, @comment), method: :delete, data: { confirm: 'Delete your comment?' }, class: 'delete-goal' %>
+      <br><%= link_to t('comments.delete'), sit_comment_path(@sit, @comment), method: :delete, data: { confirm: t('comments.confirm_delete') }, class: 'delete-goal' %>
     <% end %>
 
   </div>

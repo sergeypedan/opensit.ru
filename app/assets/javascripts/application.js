@@ -238,7 +238,6 @@ $(document).ready(function(){
         url: '/sits/' + $(this).data('id')
       }).done(function(data) {
         if (data.status == 'ok') {
-          console.log(redirectUrl);
           if (redirectUrl) {
             window.location.href = redirectUrl;
           } else {

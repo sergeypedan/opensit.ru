@@ -13,6 +13,6 @@
           = link_to notification.message, notification.link, class: "clickable-row"
           .time-ago
             => time_ago_in_words(notification.created_at)
-            | ago
+            = t 'ago'
 
   .pagination-container = will_paginate @feed_items, renderer: BootstrapPagination::Rails

@@ -21,7 +21,7 @@
               <a href="<%= message_path(msg) %>" class="clickable-row">
               <div class="msg-username"><%= msg.from_user.username %> <%= t("messages.says") %></div>
               <div class="msg-content"><%= msg.subject.blank? ? truncate(msg.body, length: 20, omission: "...").html_safe : msg.subject %></div>
-              <div class="msg-received"><%= t("messages.received") %> <%= time_ago_in_words(msg.created_at) %> ago</div>
+              <div class="msg-received"><%= t("messages.received") %> <%= time_ago_in_words(msg.created_at) %> <%= t('ago') %></div>
               </a>
             </td>
           </tr>

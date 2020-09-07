@@ -13,7 +13,7 @@
       <% if request.fullpath =~ /my/ %>
         <%= sit.date %>
       <% else %>
-       <%= time_ago_in_words(sit.created_at) %> ago
+       <%= time_ago_in_words(sit.created_at) %> <%= t('ago') %>
       <% end %>
       </span></div>
 

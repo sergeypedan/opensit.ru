@@ -116,7 +116,7 @@ ru:
         one: "%{count} минута"
         few: "%{count} минуты"
         many: "%{count} минут"
-        other: "%{count} минуты"
+        other: "%{count} минут"
       x_months:
         one: "%{count} месяц"
         few: "%{count} месяца"
