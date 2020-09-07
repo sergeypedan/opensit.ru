@@ -1,7 +1,7 @@
 - if @sit.likes.any?
 
 	#who_likes
-		= button_tag like_text, \
+		= button_tag like_button_text(@sit), \
 								type: :button, \
 								id: "likers-list", \
 								data: { container: "body",

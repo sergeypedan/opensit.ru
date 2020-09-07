@@ -33,10 +33,8 @@ module SitsHelper
 	end
 
 	def like_button_text(sit)
-		return 'Like it?' if (current_user != sit.user) && sit.likers.empty?
-		people  = pluralize(sit.likes.count, 'person')
-		do_like = sit.likes.count == 1 ? "likes" : "like"
-		"#{people} #{do_like} this"
+		return "#{I18n.t('sit.like.text')}?" if (current_user != sit.user) && sit.likers.empty?
+		I18n.t("sit.like.#{sit.likes.count > 1 ? 'people_' : ''}like_this", count: sit.likes.count)
 	end
 
 end

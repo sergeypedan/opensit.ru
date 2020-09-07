@@ -19,7 +19,7 @@
       .sit-stats
         = content_tag :div, link_to(fa_icon("cog", text: t("forms.edit")), edit_sit_path(@sit)), class: "stat" if current_user and @sit.mine?(current_user)
         = content_tag :div, fa_icon("clock-o", text: l(@sit.created_at, format: "%-d %B %Y, %H:%M")), class: "stat"
-        = content_tag :div, fa_icon("heart", text: @sit.likes.count), class: "stat" if @sit.liked?
+        = content_tag :div, fa_icon("heart", text: @sit.likes.count), class: "stat", id: 'sit-likes-count' if @sit.liked?
         = content_tag :div, fa_icon("comment", text: @sit.comments.count), class: "stat" if @sit.comments.present?
         = content_tag :div, fa_icon("lock", text: private_notice, class: "text-primary"), class: "stat" if private_notice
 
