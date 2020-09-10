@@ -133,9 +133,11 @@ ru:
   pages:
     about: О проекте
     about_journal: О журнале медитаций
-    contacts: Контакты
     messages: Сообщения
     search: Результаты поиска
+    contacts:
+      title: Контакты
+      page_html: "%{image}<p>С вопросами, предложениями и осознанной критикой пишите нам на <div class='email'><a href='mailto:admin@opensit.cloud.ru'>admin@opensit.cloud.ru</a></div></p>"
 
   messages:
     new: Написать
@@ -311,8 +313,8 @@ ru:
       few: "%{count} дня назад"
       many: "%{count} дней назад"
       other: "%{count} дней назад"
-    started_days_ago: Начали %{days_ago}. Вы достигнете цели в течение %{days_where_goal_met} дня/дней из %{days_into_goal}
-    days_period: С %{start_date} по %{end_date}. Вы достигнете цели в течение %{days_where_goal_met} дня/дней из %{days_into_goal}
+    started_days_ago: Начали %{days_ago}. Вы уже медитировали %{days_where_goal_met} дня/дней из %{days_into_goal}
+    days_period: С %{start_date} по %{end_date}. Вы уже медитировали %{days_where_goal_met} дня/дней из %{days_into_goal}
     sit_start: Буду практиковать
     ongoing_minutes_per_day:
       zero: 0 минут

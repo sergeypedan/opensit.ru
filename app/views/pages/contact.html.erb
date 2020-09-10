@@ -1,7 +1,11 @@
 <div class="page text-section">
-  <h1><%= t('pages.contacts') %></h1>
-  <%= image_tag 'logos/logo-2.png', class: 'logomark', alt: ENV.fetch("BRAND") %>
-  <p>My name is <%= ENV.fetch("PUBLIC_PERSON") %> and I am the founder and primary developer behind <%= ENV.fetch("BRAND") %>. I'd love hear how you're finding the site. What works? What could be better? What should we build next? Let me know!</p>
-  <div class="email"><%= mail_to ENV.fetch("PUBLIC_EMAIL") %></div>
-  <p>We're still new, and there's lots to improve upon, and plenty of new features in the pipeline. Check out <%= link_to "GitHub", "https://github.com/#{ENV.fetch("GITHUB_ID")}" %> to see what we're up to!</p>
+  <h1><%= t('pages.contacts.title') %></h1>
+  <%= t(
+          'pages.contacts.page_html',
+          image: image_tag('logos/logo-2.png', class: 'logomark', alt: ENV.fetch("BRAND")),
+          brand: ENV.fetch("BRAND"),
+          public_person: ENV.fetch("PUBLIC_PERSON"),
+          public_email: mail_to(ENV.fetch("PUBLIC_EMAIL")),
+          github_link: link_to('GitHub', "https://github.com/#{ENV.fetch("GITHUB_ID")}")
+      ) %>
 </div>

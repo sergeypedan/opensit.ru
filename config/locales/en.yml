@@ -134,9 +134,14 @@ en:
   pages:
     about: About us
     about_journal: About meditation journal
-    contacts: Contact us
     messages: Messaging
     search: Search results
+    contacts:
+      title: Contact us
+      page_html: "%{image}
+        <p>My name is %{public_person} and I am the founder and primary developer behind %{brand}. I'd love hear how you're finding the site. What works? What could be better? What should we build next? Let me know!</p>
+        <div class='email'>%{public_email}</div>
+        <p>We're still new, and there's lots to improve upon, and plenty of new features in the pipeline. Check out %{github_link} to see what we're up to!</p>"
 
   messages:
     new: New message
