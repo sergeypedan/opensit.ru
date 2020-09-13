@@ -41,12 +41,13 @@ class Goal < ActiveRecord::Base
 
 	# Returns how many days into the goal the user is
 	def days_into_goal
-		end_date = completed_date if completed_date
-		if fixed?
-			end_date = Date.today > last_day_of_goal ? last_day_of_goal : Date.today
-		else
-			end_date = Date.today
-		end
+		end_date = if !!completed_date
+								 completed_date
+							 elsif fixed?
+								 Date.today > last_day_of_goal ? last_day_of_goal : Date.today
+							 else
+								 Date.today
+							 end
 		(created_at.to_date .. end_date).count
 	end
 
@@ -55,20 +56,24 @@ class Goal < ActiveRecord::Base
 		# Rate based on last 2 weeks of results, or since started (if less than two weeks into goal)
 		start_from = days_into_goal < 14 ? created_at.to_date : Date.today - 13
 		end_date = completed? ? (fixed? ? last_day_of_goal : completed_date) : Date.today
-		total = 0
-		return user.days_sat_for_min_x_minutes_in_date_range(mins_per_day, start_from, end_date) unless fixed?
-		return user.days_sat_for_min_x_minutes_in_date_range(mins_per_day, start_from, end_date) if mins_per_day
-		return user.days_sat_in_date_range(created_at.to_date, end_date)
+		if !fixed? || mins_per_day
+			user.days_sat_for_min_x_minutes_in_date_range(mins_per_day, start_from, end_date)
+		else
+			user.days_sat_in_date_range(created_at.to_date, end_date)
+		end
 	end
 
 	# How well is the user meeting the goal?
 	def rating
+		days_to_goal = days_into_goal
+		days_to_goal_meet = days_where_goal_met
+
 		if fixed?
-			((days_where_goal_met.to_f / days_into_goal.to_f) * 100).round
+			((days_to_goal_meet.to_f / days_to_goal.to_f) * 100).round
 		else
 			# Rate based on last 2 weeks of results, or since started (if less than two weeks into goal)
-			last_2_weeks = days_into_goal < 14 ? days_into_goal : 14
-			((days_where_goal_met.to_f / last_2_weeks.to_f) * 100).round
+			last_2_weeks = days_to_goal < 14 ? days_to_goal : 14
+			((days_to_goal_meet.to_f / last_2_weeks.to_f) * 100).round
 		end
 	end
 

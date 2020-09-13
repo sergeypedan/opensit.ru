@@ -1,9 +1,9 @@
 <div class="goal row <%= goal.fixed? ? 'fixed' : 'ongoing' %>">
 	<div class="rating"><%= coloured_rating(goal.rating) %></div>
 	<div class="content">
-		<div class="goal-desc <%= 'completed' if completed %>"><%= goal.verbalise %></div>
+		<div class="goal-desc <%= 'completed' if goal.completed? %>"><%= goal.verbalise %></div>
 		<div class="goal-stats">
-			<% if !completed %>
+			<% if !goal.completed? %>
 				<% if goal.fixed? %>
           <%= t('goals.started_days_ago', days_ago: days_ago_in_words(goal.created_at), days_where_goal_met: goal.days_where_goal_met, days_into_goal: goal.days_into_goal) %>
 				<% end %>
@@ -11,7 +11,7 @@
         <%= t('goals.days_period', start_date: start_day_by(goal), end_date: end_day_by(goal), days_where_goal_met: goal.days_where_goal_met, days_into_goal: goal.days_into_goal) %>
 			<% end %>
 		</div>
-		<% if !completed %>
+		<% if !goal.completed? %>
 			<%= link_to t('goals.done_goal'), goal_path(goal), method: :put, class: 'finish-goal', data: { confirm: t('goals.are_you_sure') } %>
 		<% else %>
 			<%= link_to t('goals.delete'), goal_path(goal), method: :delete, data: { confirm: t('goals.are_you_sure_delete_all') }, class: 'delete-goal' %>
