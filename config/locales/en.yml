@@ -164,6 +164,13 @@ en:
     base: Notifications
     empty: No notifications
     subtitle: When others interact with you you'll know about it here
+    commented_on_your_sit: "%{username} commented on your sit."
+    commented_on_their_own_sit: "%{username} also commented on their own sit."
+    commented_on_sit_owner_sit: "%{username} also commented on %{sit_owner}'s sit."
+    following_you: "%{username} is now following you!"
+    likes_your_entry: "%{username} likes your entry."
+    other_person_liked_your_entry: "%{username} and 1 other person liked your entry."
+    other_people_liked_your_entry: "%{username} and %{likes_count} other people liked your entry."
 
   new_sit:
     created_notice: Your entry was added. Good job!

@@ -160,6 +160,13 @@ ru:
     base: Уведомления
     empty: Уведомлений нет
     subtitle: Тут будут отображаться уведомления о взаимодействиях с другими пользователями
+    commented_on_your_sit: "Пользователь %{username} прокомментировал Вашу запись."
+    commented_on_their_own_sit: "Пользователь %{username} также прокомментировал собственную запись."
+    commented_on_sit_owner_sit: "Пользователь %{username} также прокомментировал запись %{sit_owner}."
+    following_you: "Пользователь %{username} подписался на Вас!"
+    likes_your_entry: "Пользователю %{username} нравится Ваша запись."
+    other_person_liked_your_entry: "Пользователю %{username} и ещё 1 человеку нравится Ваша запись."
+    other_people_liked_your_entry: "Пользователю %{username} и ещё %{likes_count} людям нравится Ваша запись."
 
   new_sit:
     created_notice: Новая запись добавлена!

@@ -13,18 +13,21 @@ class Notification < ActiveRecord::Base
 
   # user_id = ID of the RECIPIENT
   def self.send_new_comment_notification(user_id, comment, mine)
-
     username = comment.user.display_name
     sit_owner = comment.sit.user.display_name
-    if mine
-      message = "#{username} commented on your sit."
-    else
-      if sit_owner == username
-        message = "#{username} also commented on their own sit."
-      else
-        message = "#{username} also commented on #{sit_owner}'s sit."
-      end
-    end
+    message = if mine
+                I18n.t('notifications.commented_on_your_sit', username: username)
+              else
+                if sit_owner == username
+                  I18n.t('notifications.commented_on_their_own_sit', username: username)
+                else
+                  I18n.t(
+                    'notifications.commented_on_sit_owner_sit',
+                    username: username,
+                    sit_owner: sit_owner
+                  )
+                end
+              end
 
     # No need to notify the user if they've just commented on their own sit
     if comment.user.id != user_id
@@ -44,7 +47,7 @@ class Notification < ActiveRecord::Base
   def self.send_new_follower_notification(user_id, follow)
 
     Notification.create(
-      message: "#{follow.follower.display_name} is now following you!",
+      message: I18n.t("notifications.following_you", username: follow.follower.display_name),
       user_id: user_id,
       link: Rails.application.routes.url_helpers.user_path(follow.follower),
       initiator: follow.follower.id,
@@ -62,11 +65,15 @@ class Notification < ActiveRecord::Base
     # if last notification was a like of the same sit
     if can_combine_likes?(last_notification, like)
 
-      like_count = Like.likers_for(obj).count
-      if like_count == 2
-        message = "#{like.user.display_name} and 1 other person liked your entry."
+      likes_count = Like.likers_for(obj).count
+      if likes_count == 2
+        message = I18n.t("notifications.other_person_liked_your_entry", username: like.user.display_name)
       else
-        message = "#{like.user.display_name} and #{like_count - 1} other people liked your entry."
+        message = I18n.t(
+          "notifications.other_person_liked_your_entry",
+          username: like.user.display_name,
+          likes_count: likes_count - 1
+        )
       end
       last_notification.update(
         message: message,
@@ -76,7 +83,7 @@ class Notification < ActiveRecord::Base
     else
 
       Notification.create(
-        message: "#{like.user.display_name} likes your entry.",
+        message: I18n.t("notifications.likes_your_entry", username: like.user.display_name),
         user_id: user_id,
         link: Rails.application.routes.url_helpers.sit_path(like.likeable_id),
         initiator: like.user.id,
