@@ -70,8 +70,13 @@ class UsersController < ApplicationController
       end
     end
 
-    @title = "#{@user.display_name}\'s meditation journal"
-    @desc  = "#{@user.display_name}\'s meditation journal has #{@user.sits_count} entries on #{ENV.fetch("BRAND")}, a free online meditation community."
+    @title = t('user.meditation_journal_title', username: @user.display_name)
+    @desc  = t(
+      'user.meditation_journal_entries',
+      username: @user.display_name,
+      sits_count: @user.sits_count,
+      brand: ENV.fetch("BRAND")
+    )
     @page_class = 'view-user'
   end
 
@@ -103,10 +108,10 @@ class UsersController < ApplicationController
   def feed
     if params[:scope] == 'global'
       @sits  = Sit.communal.newest_first.limit(50)
-      @title = "Global SitStream | OpenSit"
+      @title = t('user.global_sit_stream', brand: ENV.fetch("BRAND"))
     else
       @user  = User.where("lower(username) = lower(?)", params[:username]).first!
-      @title = "SitStream for #{@user.username}"
+      @title = t('user.user_sit_stream', username: @user.username)
       @sits  = @user.sits.communal.newest_first.limit(20)
     end
 
@@ -135,9 +140,9 @@ class UsersController < ApplicationController
       @user = User.where("lower(username) = lower(?)", params[:username]).first!
 
       if @user.destroy
-        redirect_to '/explore/users/new', notice: 'User deleted. Thanks for fighting the good fight 💪'
+        redirect_to '/explore/users/new', notice: t('user.deleted')
       else
-        redirect_to explore_path, notice: 'Something went wrong :('
+        redirect_to explore_path, notice: t('user.something_wrong')
       end
     end
   end

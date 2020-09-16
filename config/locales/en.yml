@@ -64,6 +64,12 @@ en:
       records: entries.
     follow: Follow
     unfollow: Unfollow
+    meditation_journal_title: "%{username}'s meditation journal"
+    meditation_journal_entries: "%{username}'s meditation journal has %{sits_count} entries on %{brand}, a free online meditation community."
+    global_sit_stream: "Global SitStream | %{brand}"
+    user_sit_stream: "SitStream for %{username}"
+    deleted: User deleted. Thanks for fighting the good fight 💪
+    something_wrong: Something went wrong :(
 
   welcome_screen:
     title: "Welcome to our community!"

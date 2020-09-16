@@ -9,7 +9,7 @@
 		- if u.sits_count.nonzero?
 			.sit-count
 				| —
-				=< pluralize(u.sits.count, "sit")
+				=< t("stats.entries_count", count: u.sits.count)
 
 		.location
 			=> content_tag :span, u.location, class: "city" if u.location
