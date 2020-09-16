@@ -157,6 +157,7 @@ en:
     subject: Subject
     body: Body
     send: Send message
+    reply: Reply
     choose_user: Choose a user
     inbox_empty: Your inbox is empty
     thinking: I'm sure someone is thinking of you…
@@ -165,6 +166,7 @@ en:
     says: "says:"
     sent_empty: You haven't sent any messages
     send_something: Why don't you send someone a message?
+    back_to_inbox: Back to inbox
 
   notifications:
     base: Notifications

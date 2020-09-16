@@ -29,11 +29,12 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @user = current_user
-    @message ||= Message.new
-
-    @title = 'New message'
+    @message = Message.new
+    @title = t('messages.new')
     @page_class = 'new-message'
-  end
+    html = { multiple: false, data: { placeholder: t('messages.choose_user')}, class: 'chosen-select' }
+    @message_options = { label: false, collection: current_user.followed_users, label_method: 'username', input_html: html }
+ end
 
   # GET /messages/sent
   def sent
@@ -48,9 +49,7 @@ class MessagesController < ApplicationController
   def create
     @user = current_user
 
-    @message = Message.new(params[:message])
-    @message.to_user_id = params[:message][:to_user_id]
-    @message.from_user_id = @user.id
+    @message = Message.new(message_params.merge({ from_user_id: @user.id }))
 
     if !@message.valid?
       render action: "new"
@@ -84,5 +83,11 @@ class MessagesController < ApplicationController
 
     return true if (@user.id == @message.from_user_id) or (@user.id == @message.to_user_id)
     redirect_to messages_path
+  end
+
+  private
+
+  def message_params
+    params.require(:message).permit(:subject, :body, :to_user_id)
   end
 end
