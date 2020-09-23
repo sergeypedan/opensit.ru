@@ -17,7 +17,7 @@ class GoalsController < ApplicationController
     @has_completed = @goals.any? { |g| g.completed? }
     @has_current   = @goals.any? { |g| !g.completed? }
 
-    @title = 'My goals'
+    @title = t('goals.my_goals')
     @page_class = 'goals'
   end
 
@@ -42,7 +42,7 @@ class GoalsController < ApplicationController
     @goal.completed_date = Date.today
 
     if @goal.save!
-      redirect_to goals_path, notice: 'Goal marked as completed'
+      redirect_to goals_path, notice: t("goals.goal_completed")
     end
   end
 
@@ -51,6 +51,6 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
     @goal.destroy
 
-    redirect_to goals_path, notice: 'Goal deleted'
+    redirect_to goals_path, notice: t("goals.goal_deleted")
   end
 end

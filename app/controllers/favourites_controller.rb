@@ -6,7 +6,7 @@ class FavouritesController < ApplicationController
 		@fav_sits = @user.favourite_sits
 		@latest = @user.latest_sit(current_user)
 
-		@title = 'My favourites'
+		@title = t('favourites.my_favourites')
 		@page_class = 'favourites'
 	end
 

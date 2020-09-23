@@ -6,7 +6,7 @@ class SearchController < ApplicationController
 		@sits       = Sit.basic_search(params[:q]).communal.paginate(page: params[:page])
 		@tagged     = Sit.tagged_with(params[:q]).communal.paginate(page: params[:page]) if Tag.find_by(name: params[:q])
 		@page_class = "search-results"
-		@title      = "Search: #{params[:q]}"
+		@title      = t('search.title', query: params[:q])
 		render %w[tagged users].include?( params[:type] ) ? params[:type] : "sits"
 	end
 

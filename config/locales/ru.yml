@@ -46,6 +46,7 @@ ru:
 
   sign_in:
     welcome: Рады видеть вас снова!
+    session: Вход
 
   me:
     empty_follow_list_header: Вы ни на кого не подписаны
@@ -144,6 +145,13 @@ ru:
     contacts:
       title: Контакты
       page_html: "%{image}<p>С вопросами, предложениями и осознанной критикой пишите нам на <div class='email'><a href='mailto:admin@opensit.cloud.ru'>admin@opensit.cloud.ru</a></div></p>"
+    contribute: Сотрудничать с OpenSit
+    explore: Обследовать
+    popular_tags: Популярные тэги
+    newest_users: Новейшие пользователи
+    new_comments: Новые комментарии
+    new_sitters: Новые медитирующие
+    users: Пользователи
 
   messages:
     new: Написать
@@ -163,6 +171,8 @@ ru:
     sent_empty: Отправленных писем нет
     send_something: Почему бы вам не отправить кому-нибудь письмо?
     back_to_inbox: Вернуться во "Входящие"
+    message_from: "Сообщение от %{username}"
+    message_sent: Ваше сообщение отправлено.
 
   notifications:
     base: Уведомления
@@ -175,6 +185,7 @@ ru:
     likes_your_entry: "Пользователю %{username} нравится Ваша запись."
     other_person_liked_your_entry: "Пользователю %{username} и ещё 1 человеку нравится Ваша запись."
     other_people_liked_your_entry: "Пользователю %{username} и ещё %{likes_count} людям нравится Ваша запись."
+    my_notifications: Мои уведомления
 
   new_sit:
     created_notice: Новая запись добавлена!
@@ -203,6 +214,7 @@ ru:
   tags:
     h1: Теги
     comma_separated: Через запятую
+    with_name: "Тэг: %{tag_name}"
 
   navigation:
     back_to_new_users: К новым пользователям
@@ -256,6 +268,7 @@ ru:
     sits: Медитации
     tagged: Теги
     users: Пользователи
+    title: "Поиск: %{query}"
 
   sit:
     updated: Запись успешно обновлена
@@ -302,6 +315,7 @@ ru:
   goals:
     h1: Цели
     intro: Цели — это отличный способ поддерживать мотивацию и усиливать вашу практику медитации. Установите цель и получайте обратную связь о том, насколько хорошо у вас получается ей следовать.
+    my_goals: Мои цели
     show_completed: Показать предыдущие цели
     hide_completed: Скрыть предыдущие цели
     add_another: Добавить цель?
@@ -317,6 +331,8 @@ ru:
     optional: необязательно
     quotation: “Путешествие в тысячу километров начинается с первой практики” - Вы справитесь!
     done_goal: Я выполнил(а) эту цель
+    goal_completed: Цель выполнена
+    goal_deleted: Цель удалена
     delete: Удалить
     are_you_sure: Вы уверены?
     are_you_sure_delete_all: Вы уверены? Вы удалите все записи для этой цели.
@@ -429,3 +445,6 @@ ru:
       report: Сообщить
       cancel: Отмена
     thank_you: Спасибо, что отправили отчёт!
+
+  favourites:
+    my_favourites: Избранное

@@ -46,6 +46,7 @@ en:
 
   sign_in:
     welcome: Welcome back!
+    session: 'Sign in'
 
   me:
     empty_follow_list_header: You're not following anyone yet.
@@ -148,6 +149,13 @@ en:
         <p>My name is %{public_person} and I am the founder and primary developer behind %{brand}. I'd love hear how you're finding the site. What works? What could be better? What should we build next? Let me know!</p>
         <div class='email'>%{public_email}</div>
         <p>We're still new, and there's lots to improve upon, and plenty of new features in the pipeline. Check out %{github_link} to see what we're up to!</p>"
+    contribute: Contribute to OpenSit
+    explore: Explore
+    popular_tags: Popular Tags
+    newest_users: Newest Users
+    new_comments: New comments
+    new_sitters: New Sitters
+    users: Users
 
   messages:
     new: New message
@@ -167,6 +175,8 @@ en:
     sent_empty: You haven't sent any messages
     send_something: Why don't you send someone a message?
     back_to_inbox: Back to inbox
+    message_from: "Message from %{username}"
+    message_sent: Your message has been sent.
 
   notifications:
     base: Notifications
@@ -179,6 +189,7 @@ en:
     likes_your_entry: "%{username} likes your entry."
     other_person_liked_your_entry: "%{username} and 1 other person liked your entry."
     other_people_liked_your_entry: "%{username} and %{likes_count} other people liked your entry."
+    my_notifications: My notifications
 
   new_sit:
     created_notice: Your entry was added. Good job!
@@ -208,6 +219,7 @@ en:
   tags:
     h1: Tags
     comma_separated: Comma separated
+    with_name: "Tag: %{tag_name}"
 
   navigation:
     back_to_new_users: Back to new users
@@ -246,10 +258,11 @@ en:
   search:
     form_title: You searched
     no_results: No matches
-    placeholder: Поиск
+    placeholder: Search
     sits: Sits
     tagged: Tagged
     users: Users
+    title: "Search: %{query}"
 
   sit:
     updated: Sit was successfully updated
@@ -297,6 +310,7 @@ en:
   goals:
     h1: Goals
     intro: Goals are great way to stay motivated and strengthen your meditation practice. Once you set one up here, you'll get feedback on how well you're meeting your goal.
+    my_goals: My goals
     show_completed: Show completed goals
     hide_completed: Hide completed goals
     add_another: Add another one?
@@ -312,6 +326,8 @@ en:
     optional: optional
     quotation: “A journey of a thousand miles begins with a single sit” - You can do it!
     done_goal: I'm done with this goal
+    goal_completed: Goal marked as completed
+    goal_deleted: Goal deleted
     delete: Delete
     are_you_sure: Are you sure?
     are_you_sure_delete_all: Are you sure? This will delete all record of this goal
@@ -419,3 +435,6 @@ en:
       report: Report
       cancel: Cancel
     thank_you: Your report has been sent. Thanks for letting us know!
+
+  favourites:
+    my_favourites: My favourites

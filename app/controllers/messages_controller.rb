@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @user = current_user
     @messages = @user.messages_received.newest_first.limit(10)
 
-    @title = 'Inbox'
+    @title = t('messages.inbox')
     @page_class = 'inbox'
   end
 
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
     # Only mark as read if the recipient is reading
     @message.mark_as_read unless @user.id == @from_user.id
 
-    @title = "Message from #{@from_user.display_name}"
+    @title = t('messages.message_from', username: @from_user.display_name)
     @page_class = "view-message"
   end
 
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
     @user = current_user
     @messages = @user.messages_sent.newest_first.limit(10)
 
-    @title = 'Sent items'
+    @title = t('messages.sent')
     @page_class = 'sent-items'
   end
 
@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
       render action: "new"
     else
       @message.save!
-      redirect_to messages_url, notice: 'Your message has been sent.'
+      redirect_to messages_url, notice: t('messages.message_sent')
     end
   end
 

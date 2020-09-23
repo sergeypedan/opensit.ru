@@ -1,7 +1,7 @@
 class SessionsController < Devise::SessionsController
 
   def new
-    @title = 'Sign in'
+    @title = t('sign_in.session')
     super
   end
 

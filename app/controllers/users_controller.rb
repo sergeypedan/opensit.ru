@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       end
     end
 
-    @title = 'Home'
+    @title = t('menu.home')
     @page_class = 'me'
   end
 

@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def contribute
-    @title      = 'Contribute to OpenSit'
+    @title      = t('pages.contribute')
     @page_class = 'contribute'
   end
 
@@ -32,7 +32,7 @@ class PagesController < ApplicationController
     @sits = explore_scope_for(@user).newest_first.with_body.limit(20).paginate(page: params[:page])
     @suggested_users = @user.users_to_follow if @user
 
-    @title      = 'Explore'
+    @title      = t('pages.explore')
     @page_class = 'explore'
   end
 
@@ -40,13 +40,13 @@ class PagesController < ApplicationController
   end
 
   def tag_cloud
-    @title = "Popular Tags"
+    @title = t('pages.popular_tags')
   end
 
   def new_users
     @users      = User.newest_users(10).paginate(page: params[:page])
     @page_class = 'new-users'
-    @title      = 'Newest Users'
+    @title      = t('pages.newest_users')
     render "users/user_results"
   end
 
@@ -55,18 +55,18 @@ class PagesController < ApplicationController
 
   def new_comments
     @comments = Comment.latest(10).includes(sit: [:user]).paginate(page: params[:page])
-    @title    = 'New comments'
+    @title    = t('pages.new_comments')
   end
 
   def users
     @users = User.active_users.limit(10).paginate(page: params[:page])
-    @title = "Users"
+    @title = t('pages.users')
     render "users/user_results"
   end
 
   def new_sitters
     @users = User.newest_users(10).where('sits_count > 0').paginate(page: params[:page])
-    @title = "New Sitters"
+    @title = t('pages.new_sitters')
     render "users/user_results"
   end
 
