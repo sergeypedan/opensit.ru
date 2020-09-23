@@ -69,11 +69,11 @@ class Goal < ActiveRecord::Base
 		days_to_goal_meet = days_where_goal_met
 
 		if fixed?
-			((days_to_goal_meet.to_f / days_to_goal.to_f) * 100).round
+			days_to_goal > 0 ? ((days_to_goal_meet.to_f / days_to_goal.to_f) * 100).round : 0
 		else
 			# Rate based on last 2 weeks of results, or since started (if less than two weeks into goal)
 			last_2_weeks = days_to_goal < 14 ? days_to_goal : 14
-			((days_to_goal_meet.to_f / last_2_weeks.to_f) * 100).round
+			last_2_weeks > 0 ? ((days_to_goal_meet.to_f / last_2_weeks.to_f) * 100).round : 0
 		end
 	end
 
