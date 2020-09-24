@@ -23,7 +23,7 @@ class PagesController < ApplicationController
   end
 
   def contact
-    @title      = t('pages.contacts')
+    @title      = t('pages.contacts.title')
     @page_class = 'contact'
   end
 
