@@ -46,35 +46,11 @@ module UsersHelper
         selected = (current_year == params[:year].to_i && year_or_month == params[:month].to_i)
         # value    = "#{user_path(params[:username])}/#{params[:id]}?year=#{current_year}&month=#{year_or_month.to_s.rjust(2, '0')}"
         value = user_path(params[:username], year: current_year, month: year_or_month.to_s.rjust(2, '0'))
-        content  = "#{I18n.t("month.#{MONTHNAMES[year_or_month]}")}, #{current_year}"
+        content  = "#{I18n.t("month.#{MONTHNAMES[year_or_month - 1]}")}, #{current_year}"
         content_tag :option, content, value: value, selected: selected
       end
     end.join(' ').html_safe
   end
-
-  # def select_options_from_sitting_totals(stats)
-  #   current_year = Time.now.year
-
-  #   html = ""
-
-  #   stats.each do |year_or_month, count|
-  #     if year_or_month.to_s.size == 4
-  #       current_year = year_or_month
-  #       # content_tag :optgroup, label: "#{year_or_month} (#{count})"
-  #       html << "<optgroup label='#{year_or_month} (#{count})'>"
-  #     else
-  #       selected = (current_year == params[:year].to_i && year_or_month == params[:month].to_i)
-  #       # value    = "#{user_path(params[:username])}/#{params[:id]}?year=#{current_year}&month=#{year_or_month.to_s.rjust(2, '0')}"
-  #       value = user_path(params[:username], year: current_year, month: year_or_month.to_s.rjust(2, '0'))
-  #       content  = "#{MONTHNAMES[year_or_month]}, #{current_year}"
-  #       content_tag :option, content, value: value, selected: selected
-  #     end
-  #   end
-
-  #   html << "</optgroup>"
-
-  #   html.html_safe
-  # end
 
   def joined_date(user)
     if Date.today.month == user.created_at.month
