@@ -20,7 +20,7 @@
   <% if is_current_user %>
     <div class="col-xs-10">
     <% if sit.public_visibility? %>
-      <%= social_share_button_tag(sit.body, allow_sites: %w[twitter facebook vkontakte]) %>
+      <%= social_share_button_tag(sit.title, allow_sites: %w[twitter facebook vkontakte]) %>
     <% end %>
     </div>
     <div class="col-xs-2 text-right">
