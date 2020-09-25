@@ -130,8 +130,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @sits }
-      format.xml { render xml: @sits }
+      format.json { render json: @sits.as_json(except: %i[id created_at updated_at]) }
+      format.xml { render xml: @sits.as_json(except: %i[id created_at updated_at], skip_types: true) }
     end
   end
 
