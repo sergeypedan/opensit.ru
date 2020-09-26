@@ -63,4 +63,12 @@ module UsersHelper
   def show_social_buttons_for?(user)
     current_user.present? && (current_user&.id == @user&.id)
   end
+
+  def hours_practice_text_by(user)
+    sum_duration = user.sits.without_diaries.sum(:duration)
+    total_hours = sum_duration / 60
+    sum_duration -= total_hours * 60
+    minutes = (sum_duration / 15) * 15 + (sum_duration % 15 > 0 ? 1 : 0) * 15
+    "#{t('stats.hours_logged', count: total_hours)} #{t('stats.minutes_logged', count: minutes)} #{t('stats.of_practice')}"
+  end
 end

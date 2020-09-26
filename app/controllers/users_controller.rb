@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   # GET /u/buddha
   def show
     @user        = User.where("lower(username) = lower(?)", params[:username]).first!
-    @total_hours = @user.total_hours_sat
     @by_month    = @user.journal_range
 
     month = params[:month] ? params[:month] : Date.today.month

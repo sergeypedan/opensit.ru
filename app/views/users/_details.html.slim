@@ -20,9 +20,7 @@
 
   - if @user.sits.count > 0
     .info-block = fa_icon "book fw", text: t('stats.entries_count', count: @user.sits_count)
-
-  - if @user.total_hours_sat > 0
-    .info-block = fa_icon "dashboard fw", text: t('stats.hours_logged', count: @user.total_hours_sat)
+    .info-block = fa_icon "dashboard fw", text: hours_practice_text_by(@user)
 
   - if @user.style.present?
     .info-block = fa_icon "bars fw", text: @user.style

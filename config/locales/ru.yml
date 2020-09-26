@@ -240,11 +240,17 @@ ru:
       many: "%{count} записей в журнале"
       other: "%{count} записей в журнале"
     hours_logged:
-      zero: "Нет практики"
-      one: "1 час практики"
-      few: "%{count} часа практики"
-      many: "%{count} часов практики"
-      other: "%{count} часов практики"
+      zero: ""
+      one: "1 час"
+      few: "%{count} часа"
+      many: "%{count} часов"
+      other: "%{count} часа/часов"
+    minutes_logged:
+      zero: ""
+      one: "1 минута"
+      few: "%{count} минут"
+      many: "%{count} минут"
+      other: "%{count} минут"
     of_practice: практики
     recorded: Записал
     sat: Медитировал

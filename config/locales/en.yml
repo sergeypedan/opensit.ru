@@ -238,7 +238,18 @@ en:
       many: Following %{count} users
     followers: followers
     joined: Joined
-    logged: Logged
+    hours_logged:
+      zero: ""
+      one: "1 hour"
+      few: "%{count} hours"
+      many: "%{count} hours"
+      other: "%{count} hours"
+    minutes_logged:
+      zero: ""
+      one: "1 minute"
+      few: "%{count} minutes"
+      many: "%{count} minutes"
+      other: "%{count} minutes"
     of_practice: of practice
     recorded: Recorded
     sat: Sat

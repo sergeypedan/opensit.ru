@@ -204,10 +204,6 @@ class User < ActiveRecord::Base
     total_time
   end
 
-  def total_hours_sat
-    sits.without_diaries.sum(:duration) / 60
-  end
-
   # Returns list of months a user has sat, and sitting totals for each month
   def journal_range
     return false if sits.empty?
