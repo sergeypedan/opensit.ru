@@ -11,7 +11,7 @@ module SitsHelper
 	def teaser_title(sit, type = false)
 		message_type = sit.is_meditation? ? "sit" : 'diary'
 		duration = sit.is_meditation? ? sit.duration : sit.title
-		text = sit.is_meditation? ? I18n.t('units_of_time.minutes', count: sit.duration) : 'diary'
+		text = sit.is_meditation? ? I18n.t('units_of_time.minutes', count: sit.duration) : I18n.t('sit.sit_teaser.diary')
 
 		I18n.t(
 			"sit.sit_teaser.#{message_type}_text",

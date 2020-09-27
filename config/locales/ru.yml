@@ -304,6 +304,7 @@ ru:
       sit_title: "Отчёт о %{duration}-минутной медитации %{display_name}"
       diary_text: "%{username} добавил(a) <a class='sit-link' title='%{title}' href='%{href}'>%{text}</a>."
       diary_title: "%{duration} от %{display_name}"
+      diary: заметку
     like:
       text: Нравится!
       like_this: 1 человеку нравится
@@ -454,3 +455,6 @@ ru:
 
   favourites:
     my_favourites: Избранное
+
+  streak:
+    days_streak: дней подряд!

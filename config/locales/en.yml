@@ -303,6 +303,7 @@ en:
       sit_title: "%{duration} minute meditation report by %{display_name}"
       diary_text: "%{username} added a <a class='sit-link' title='%{title}' href='%{href}'></a>."
       diary_title: "%{duration} by %{display_name}"
+      diary: diary
     like:
       text: Like it
       like_this: 1 person likes this
@@ -449,3 +450,6 @@ en:
 
   favourites:
     my_favourites: My favourites
+
+  streak:
+    days_streak: day streak!

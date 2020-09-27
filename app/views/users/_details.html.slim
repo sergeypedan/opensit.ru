@@ -2,12 +2,9 @@
   - if @user.streak > 1
     .location.info-block
       = fa_icon "bolt fw"
-      - title = (@user == current_user) ? 'You have' : "#{@user.display_name} has"
-      - title << "sat for #{@user.streak} days in a row!"
-      .value title=title
-        strong
-          => @user.streak
-          | day streak!
+      strong.user-streak-value
+        => @user.streak
+        = t('streak.days_streak')
 
   .info-block
     => fa_icon "bar-chart fw"
