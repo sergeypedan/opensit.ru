@@ -2,7 +2,7 @@ title = full_title(@title)
 
 meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
 meta name="viewport" content="width=device-width, initial-scale=1.0"
-= content_tag :link, nil, rel: "shortcut icon", href: image_path('logos/logo_32.png')
+= content_tag :link, nil, rel: "shortcut icon", href: image_path('logos/favicon_logo.png')
 = content_tag :meta, nil, name: "description", content: meta_desc(@desc) if !(request.fullpath =~ /sits/)
 
 = csrf_meta_tags
