@@ -39,7 +39,7 @@
     = f.label :created_at, t("forms.date"), class: "control-label"
     .custom-date.sit_created_at
       .input-group
-        - time = action_name == 'edit' ? @sit.created_at : Time.now
+        - time = action_name == 'edit' ? @sit.created_at : Time.now + Time.zone.utc_offset
         - value = l(time, format: :input_datetime)
         = text_field_tag :custom_date, value, class: "form-control", id: "sit_created_at", data: { plugin: :datetimepicker }
         span.input-group-addon = fa_icon "calendar"
