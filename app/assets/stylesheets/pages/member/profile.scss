@@ -86,25 +86,25 @@
       .link {
         float: left;
         margin-bottom: 10px;
-        width: 50px;
-        margin-right: 0.5em;
         text-align: center;
         color: #999;
+        padding: 0;
       }
       .teaser {
         float: left;
         margin-bottom: 10px;
         width: 90%;
       }
+      .diary-icon {
+        margin: 0 2.7em 0 0.7em;
+      }
       @media (max-width: 767px) {
           margin-top: 0px;
           .link {
-              float: none;
-              text-align: left;
+            text-align: left;
           }
           .teaser {
-              float: none;
-              margin-bottom: 0px;
+            margin-bottom: 0px;
           }
       }
       .sit-delete-icon {

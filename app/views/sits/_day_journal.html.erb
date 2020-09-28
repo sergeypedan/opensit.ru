@@ -6,17 +6,21 @@
 <% @listed.push(sit.created_at.to_date) %>
 
 <div class="entry">
-  <% if sit.is_meditation? %>
-  	<% if sit.stub? %>
-    	<div class="link"><i class='fa fa-clock-o'></i> <%=sit.duration%></div>
+  <div class="col-xs-12">
+    <% if sit.is_meditation? %>
+      <div class="link col-xs-1">
+        <% if sit.stub? %>
+          <i class='fa fa-clock-o'></i> <%=sit.duration%>
+        <% else %>
+          <%= link_to "<i class='fa fa-clock-o'></i> #{sit.duration}".html_safe, sit_path(sit) %>
+        <% end %>
+      </div>
+      <div class="teaser col-xs-11"><%= sit.body.empty? ? '&nbsp;'.html_safe : teaser(sit, 150)%></div> <br>
     <% else %>
-    	<div class="link"><%= link_to "<i class='fa fa-clock-o'></i> #{sit.duration}".html_safe, sit_path(sit) %></div>
+      <div class="link diary-icon"><%= link_to "<i class='fa fa-book'></i>".html_safe, sit_path(sit) %></div>
+      <div class="teaser"><em><%= sit.title %></em>: <%= teaser(sit, 140)%></div> <br>
     <% end %>
-    <div class="teaser"><%= sit.body.empty? ? '&nbsp;'.html_safe : teaser(sit, 150)%></div> <br>
-  <% else %>
-    <div class="link"><%= link_to "<i class='fa fa-book'></i>".html_safe, sit_path(sit) %></div>
-    <div class="teaser"><em><%= sit.title %></em>: <%= teaser(sit, 140)%></div> <br>
-  <% end %>
+  </div>
   <% if is_current_user %>
     <div class="col-xs-10">
     <% if sit.public_visibility? %>
