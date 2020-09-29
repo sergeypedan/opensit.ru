@@ -2,17 +2,13 @@ module ApplicationHelper
 
   # Returns the full title on a per-page basis
   def full_title(page_title)
-    if page_title.nil?
-      "#{ENV.fetch("BRAND")} | #{t('home.banner.title')}"
-    else
-      "#{page_title} | #{ENV.fetch("BRAND")}, #{t('home.banner.title')}"
-    end
+    "#{ENV.fetch("BRAND")} | #{t('home.banner.title')}" if page_title.nil?
+    "#{page_title} | #{ENV.fetch("BRAND")}, #{t('home.banner.title')}"
   end
 
   def meta_desc(desc)
-    base_desc = "OpenSit is a beautiful, free meditation journal, and place to share and deepen your meditation practice. Join other mindfulness, Vipassana, or Zen Buddhist practitioners!"
-    return base_desc if desc.nil?
-    return desc
+    return t('header.meta_description') if desc.nil?
+    desc
   end
 
 	def tag_cloud(tags, classes)
