@@ -9,6 +9,7 @@
 - else
 	.sit-container
 		= render "users/user_summary"
-		= render collection: @feed_items, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 3 }
+    .col-md-9.offset-md-3.col-xs-12.sits-items-container
+		  = render collection: @feed_items, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 4 }
 
 	.pagination-container = will_paginate @feed_items, renderer: BootstrapPagination::Rails

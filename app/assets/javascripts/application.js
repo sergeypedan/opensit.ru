@@ -109,11 +109,10 @@ $(document).ready(function(){
 
   // MASONRY
   if ($('.page-content.me .sit-container').length) {
-    var container = document.querySelector('.sit-container');
+    var container = document.querySelector('.sits-items-container');
     var msnry = new Masonry( container, {
-      columnWidth: '.col-md-3',
-      itemSelector: '.tile',
-      stamp: ".stamp"
+      columnWidth: '.col-md-4',
+      itemSelector: '.tile'
     });
   }
 
@@ -127,11 +126,10 @@ $(document).ready(function(){
   }
 
   if ($('.page-content.explore').length) {
-    var container = document.querySelector('.sit-container');
+    var container = document.querySelector('.sits-items-container');
     var msnry = new Masonry( container, {
-      columnWidth: '.col-md-3',
-      itemSelector: '.tile',
-      stamp: ".stamp"
+      columnWidth: '.col-md-4',
+      itemSelector: '.tile'
     });
   }
 
