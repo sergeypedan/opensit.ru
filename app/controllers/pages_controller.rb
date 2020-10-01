@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def front
     return redirect_to controller: :users, action: :me if user_signed_in?
-    @sits       = Sit.communal.with_body.newest_first.limit(30)
+    @sits       = Sit.communal.with_body.newest_first.limit(10)
     @page_class = 'front-page'
     render "front", layout: "minimal"
   end
