@@ -72,7 +72,7 @@ class SitsController < ApplicationController
       return
     end
 
-    @sit.created_at = ::InputParsers::Datetime.call params[:custom_date]
+    @sit.created_at = Time.at(::InputParsers::Datetime.call(params[:custom_date]).to_i - Time.zone.utc_offset)
     @sit.tags = Tag.parse_CSV params[:tag_list]
 
     if @sit.update_attributes(filtered_params)
