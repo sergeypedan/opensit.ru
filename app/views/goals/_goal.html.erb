@@ -3,12 +3,12 @@
 	<div class="content">
 		<div class="goal-desc <%= 'completed' if goal.completed? %>"><%= goal.verbalise %></div>
 		<div class="goal-stats">
-			<% if !goal.completed? %>
-				<% if goal.fixed? %>
-          <%= t('goals.started_days_ago', days_ago: days_ago_in_words(goal.created_at), days_where_goal_met: goal.days_where_goal_met, days_into_goal: goal.days_into_goal) %>
-				<% end %>
-			<% else %>
+			<% if goal.completed? %>
         <%= t('goals.days_period', start_date: start_day_by(goal), end_date: end_day_by(goal), days_where_goal_met: goal.days_where_goal_met, days_into_goal: goal.days_into_goal) %>
+			<% else %>
+        <% if goal.fixed? %>
+          <%= t('goals.started_days_ago', days_ago: days_ago_in_words(goal.created_at), days_where_goal_met: goal.days_where_goal_met, days_into_goal: goal.days_into_goal) %>
+        <% end %>
 			<% end %>
 		</div>
 		<% if !goal.completed? %>

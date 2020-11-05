@@ -54,10 +54,9 @@ class Goal < ActiveRecord::Base
 	# Returns the number of days (since the day the goal began) where the goal was met
 	def days_where_goal_met
 		# Rate based on last 2 weeks of results, or since started (if less than two weeks into goal)
-		start_from = days_into_goal < 14 ? created_at.to_date : Date.today - 13
 		end_date = completed? ? (fixed? ? last_day_of_goal : completed_date) : Date.today
 		if !fixed? || mins_per_day
-			user.days_sat_for_min_x_minutes_in_date_range(mins_per_day, start_from, end_date)
+			user.days_sat_for_min_x_minutes_in_date_range(mins_per_day, created_at.to_date, end_date)
 		else
 			user.days_sat_in_date_range(created_at.to_date, end_date)
 		end
@@ -68,13 +67,7 @@ class Goal < ActiveRecord::Base
 		days_to_goal = days_into_goal
 		days_to_goal_meet = days_where_goal_met
 
-		if fixed?
-			days_to_goal > 0 ? ((days_to_goal_meet.to_f / days_to_goal.to_f) * 100).round : 0
-		else
-			# Rate based on last 2 weeks of results, or since started (if less than two weeks into goal)
-			last_2_weeks = days_to_goal < 14 ? days_to_goal : 14
-			last_2_weeks > 0 ? ((days_to_goal_meet.to_f / last_2_weeks.to_f) * 100).round : 0
-		end
+		days_to_goal > 0 ? ((days_to_goal_meet.to_f / days_to_goal.to_f) * 100).round : 0
 	end
 
 	# Gold for 100%, Green for 80% and above, Amber for 50% and above, Red for anything below
