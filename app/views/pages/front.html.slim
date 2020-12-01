@@ -34,8 +34,3 @@ section.copy
   = link_to t('home.join.link'), new_user_registration_path, class: "btn btn-default"
   p style="margin: 20px auto -10px" = t 'home.join.incentive'
   = render "plugins/likely"
-
-
-section.padder
-  .sit-container
-    = render collection: @sits, partial: "sits/sit_teaser_block", as: :sit, locals: { width: 2 }
