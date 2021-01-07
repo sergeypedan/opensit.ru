@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.5'
+ruby '2.6.3'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'aws-sdk-s3'
@@ -47,7 +47,6 @@ group :development, :test do
   gem 'letter_opener'
   gem 'meta_request'
   gem 'pry-byebug'
-  gem 'pry-coolline'
   gem 'pry-rails'
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
