@@ -1,6 +1,6 @@
-.sidebar.col-md-3 = render "pages/explore_tile"
+.sidebar.col-xs-12.col-lg-3 = render "pages/explore_tile"
 
-.col-md-9.clearfix
+.clearfix.col-xs-12.col-lg-9
   .form-group
     .input-group
       = select_tag 'users-select', options_for_select([[t('explore.users_all'), explore_users_path], [t('explore.users_new'), explore_new_users_path], [t('explore.new_sitters'), explore_new_sitters_path]], request.original_fullpath)
