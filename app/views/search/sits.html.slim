@@ -7,7 +7,7 @@
 	= render "form"
 
 	- if @sits.any?
-		= render collection: @sits, partial: "sits/sit_teaser", as: :sit
+		= render collection: @sits, partial: "shared/sit_teaser", as: :sit
 
 		.pagination-container = will_paginate @sits, renderer: BootstrapPagination::Rails
 
