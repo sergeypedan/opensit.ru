@@ -6,7 +6,7 @@
 .col-md-9
 	= render "form"
 
-	- if @tagged.any?
+	- if @tagged&.any?
 		= render collection: @tagged, partial: "shared/sit_teaser", as: :sit
 
 		.pagination-container = will_paginate @tagged, renderer: BootstrapPagination::Rails
