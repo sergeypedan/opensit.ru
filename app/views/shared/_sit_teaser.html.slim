@@ -1,0 +1,28 @@
+= content_tag :article, class: "sit-teaser"
+  .side
+    = small_avatar_of(sit.user)
+
+  .sit-content
+    .top
+      = username(sit.user)
+      | &nbsp;
+      = teaser_title(sit)
+      - if sit.comments.count > 0
+        | &bull;
+        = pluralize(sit.comments.count, 'comment')
+
+      span.pull-right
+        - if request.fullpath =~ /my/
+          = sit.date
+        - else
+          = time_ago_in_words(sit.created_at)
+          | &nbsp;
+          = t('ago')
+
+    .body
+      - if request.path =~ /search/
+        = teaser(sit, 300, params[:q])
+      - else
+        = teaser(sit)
+
+    = display_lock_if_private(sit)
